@@ -10,52 +10,79 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f7f3ec; --card:#fffdf8; --card2:#efe8d8; --ink:#1a2332; --muted:#5b6577; --line:#ddd3bd;
-  --navy:#16233a; --navy2:#22365a; --gold:#b98a1e; --gold-bg:#fdf3d7; --teal:#0f766e; --teal-bg:#e6f4f1;
-  --red:#b42318; --red-bg:#fdecea; --green:#067647; --green-bg:#e6f4ea; --radius:14px;
+  --bg:#f4f4f5; --card:#ffffff; --card2:#ececee; --ink:#17181c; --muted:#6d7280; --line:#e4e4e8;
+  --dark:#111114; --gold:#b98a1e; --gold-bg:#fdf3d7; --teal:#0f766e; --teal-bg:#e6f4f1;
+  --red:#b42318; --red-bg:#fdecea; --green:#067647; --green-bg:#e6f4ea; --radius:18px;
+  --shadow:0 1px 3px rgba(16,16,20,.06),0 6px 18px rgba(16,16,20,.04);
 }
 @media(prefers-color-scheme:dark){
-  :root{--bg:#10141d; --card:#1a2130; --card2:#232d42; --ink:#eef1f6; --muted:#a7b0c2; --line:#33405c; --navy:#0b1220; --gold-bg:#3a2f10; --teal-bg:#0f2f2c; --red-bg:#3a1714; --green-bg:#123324;}
+  :root{--bg:#131316; --card:#1f2025; --card2:#2a2b31; --ink:#f2f3f5; --muted:#a1a5b0; --line:#33343b; --gold-bg:#3a2f10; --teal-bg:#0f2f2c; --red-bg:#3a1714; --green-bg:#123324; --shadow:0 1px 3px rgba(0,0,0,.4)}
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.65;font-size:16px}
-h1,h2,h3{font-family:"Noto Serif TC",serif;line-height:1.3;margin:0}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;line-height:1.65;font-size:16px}
+h1,h2,h3{font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.3;margin:0;font-weight:800;letter-spacing:-.01em}
 a{color:var(--teal)}
 button,.btn{min-height:44px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;cursor:pointer;font-size:15px}
-button.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+button.primary{background:var(--dark);color:#fff;border-color:var(--dark)}
+@media(prefers-color-scheme:dark){button.primary{background:#f2f3f5;color:#111;border-color:#f2f3f5}}
 button.gold{background:var(--gold);color:#fff;border-color:var(--gold)}
 button.small{min-height:38px;padding:6px 14px;font-size:14px}
-button.active{background:var(--navy);color:#fff}
-input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;width:100%}
+button.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+@media(prefers-color-scheme:dark){button.active{background:#f2f3f5;color:#111;border-color:#f2f3f5}}
+button:disabled{opacity:.45;cursor:default}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:44px;width:100%}
 textarea{min-height:140px;resize:vertical}
-.wrap{max-width:1080px;margin:0 auto;padding:0 16px 64px}
-/* header */
-.hero{background:var(--navy);color:#fff;padding:28px 0 22px}
-.hero .wrap{padding-bottom:0}
-.hero h1{font-size:clamp(26px,5vw,40px);font-weight:900}
-.hero h1 span{color:#e9c46a}
-.hero p{color:#cbd5e8;max-width:720px;margin:10px 0 0}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700}
-.badge.hot{background:#b98a1e;border-color:#b98a1e;color:#fff}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
-.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px;text-align:center}
-.stat b{display:block;font-size:22px}
-.stat span{font-size:12px;color:#cbd5e8}
-/* nav */
-nav.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0}
-nav.tabs .wrap{padding-bottom:0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
-nav.tabs .wrap::-webkit-scrollbar{display:none}
-nav.tabs button{white-space:nowrap;flex-shrink:0}
-section{padding:28px 0 6px;scroll-margin-top:78px}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px 64px}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.seg{display:flex;background:var(--card2);border-radius:999px;padding:3px;margin-left:auto}
+.seg button{min-height:36px;padding:5px 18px;border:none;background:transparent;border-radius:999px;font-size:14px;color:var(--muted)}
+.seg button.active{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.14)}
+#menuBtn{min-height:40px;min-width:44px;padding:6px 12px;border-radius:12px;font-size:18px;line-height:1}
+.menu{max-width:880px;margin:0 auto;padding:0 16px}
+.menu-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:8px;margin:8px 0 4px}
+.menu-panel.open{display:block}
+.menu-panel button{display:flex;width:100%;justify-content:space-between;align-items:center;border:none;background:transparent;border-radius:10px;min-height:44px;padding:8px 12px;text-align:left}
+.menu-panel button:hover,.menu-panel button:focus-visible{background:var(--card2)}
+.menu-panel button span{color:var(--muted);font-size:13px;font-weight:500}
+/* views */
+.view{display:none}
+.view.active{display:block}
+section{padding:22px 0 6px;scroll-margin-top:76px}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .sec-head h2{font-size:24px}
 .sec-head p{color:var(--muted);margin:4px 0 0;font-size:14px}
-/* cards */
+.mod-head{padding:26px 0 4px}
+.mod-head .kicker{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.mod-head h1{font-size:clamp(24px,4.5vw,32px);margin-top:4px}
+.mod-head p{color:var(--muted);margin:6px 0 0;font-size:14px}
+/* dashboard stats */
+.dash-label{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin:22px 0 10px}
+.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.stat-card b{display:block;font-size:30px;line-height:1.1;font-weight:800}
+.stat-card .lb{font-size:13.5px;font-weight:600;margin-top:4px}
+.stat-card .sub{font-size:12.5px;color:var(--muted)}
+/* study grid */
+.study-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.study-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;text-align:left;min-height:0;height:auto;display:block;width:100%}
+.study-card .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-weight:800;font-size:16px}
+.study-card .t .n{color:var(--muted);font-weight:600;font-size:14px}
+.study-card .d{color:var(--muted);font-size:13px;font-weight:500;margin-top:3px;line-height:1.45}
+.study-card.dark{background:var(--dark);border-color:var(--dark);color:#fff}
+.study-card.dark .d{color:#b9bcc4}.study-card.dark .t .n{color:#b9bcc4}
+.study-card.dim{opacity:.55}
+/* category rows */
+.cat-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cat-row{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;min-height:0;height:auto}
+.cat-row .cn{font-weight:700;font-size:15px}
+.cat-row .cm{color:var(--muted);font-size:13px;white-space:nowrap}
+/* generic cards */
 .grid{display:grid;gap:12px}
 .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
 .card h3{font-size:17px;margin-bottom:6px}
 .card p,.card li{font-size:14.5px}
 .muted{color:var(--muted)} .small{font-size:13px}
@@ -64,68 +91,83 @@ section{padding:28px 0 6px;scroll-margin-top:78px}
 table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
 th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
 th{background:var(--card2)}
-details{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);margin-bottom:10px;overflow:hidden}
+details{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
 summary{cursor:pointer;padding:16px 18px;font-weight:800;min-height:48px;display:flex;justify-content:space-between;gap:10px;align-items:center;list-style:none}
 summary::-webkit-details-marker{display:none}
 details .body{padding:0 18px 18px;border-top:1px solid var(--line)}
 details .body ul{margin:8px 0;padding-left:20px}
-.kbox{background:var(--gold-bg);border-radius:10px;padding:12px 14px;font-size:14px;margin:10px 0}
-.tbox{background:var(--teal-bg);border-radius:10px;padding:12px 14px;font-size:14px;margin:10px 0}
-/* progress */
+.kbox{background:var(--gold-bg);border-radius:12px;padding:12px 14px;font-size:14px;margin:10px 0}
+.tbox{background:var(--teal-bg);border-radius:12px;padding:12px 14px;font-size:14px;margin:10px 0}
 .progressbar{height:10px;background:var(--card2);border-radius:99px;overflow:hidden}
-.progressbar i{display:block;height:100%;background:var(--teal);width:0%;transition:width .3s}
+.progressbar i{display:block;height:100%;background:var(--ink);width:0%;transition:width .3s}
 /* flashcard */
 .flash{perspective:1200px;max-width:640px;margin:0 auto}
-.flash-inner{position:relative;min-height:280px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.flash-inner{position:relative;min-height:280px;transition:transform .5s;transform-style:preserve-3d}
 .flash.flipped .flash-inner{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px}
-.face.back{transform:rotateY(180deg);background:var(--navy);color:#fff;align-items:flex-start;text-align:left;overflow:auto}
-.face .q{font-size:20px;font-weight:800;font-family:"Noto Serif TC",serif}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:18px;padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px}
+.face.back{transform:rotateY(180deg);background:var(--dark);color:#fff;align-items:flex-start;text-align:left;overflow:auto}
+.face .q{font-size:20px;font-weight:800}
 .face.back p,.face.back li{font-size:15px}
 /* quiz */
-.opt{display:block;width:100%;text-align:left;margin:8px 0;border-radius:12px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;border-radius:12px;height:auto}
 .opt.correct{background:var(--green-bg);border-color:var(--green);color:var(--green);font-weight:800}
 .opt.wrong{background:var(--red-bg);border-color:var(--red);color:var(--red)}
 .explain{display:none;margin-top:12px}
 .explain.show{display:block}
-.filterrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filterrow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
 .filterrow button{min-height:38px;padding:6px 14px;font-size:14px}
 .scorepill{font-weight:900;font-size:18px}
 .timer{font-variant-numeric:tabular-nums;font-weight:900;font-size:22px}
+.qfoot{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.flag-btn{min-height:38px;padding:6px 14px;font-size:14px;border-radius:999px}
+.flag-btn.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.grade-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.grade-btn{min-height:38px;padding:6px 13px;font-size:14px;border-radius:999px}
+.grade-btn.on[data-g="again"]{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+.grade-btn.on[data-g="good"]{background:var(--gold-bg);border-color:var(--gold);color:var(--gold)}
+.grade-btn.on[data-g="easy"]{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+.due-note{font-size:12.5px;color:var(--muted)}
+/* short q session */
+.sess-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+.sess-top b{font-size:15px}
+.sess-top span{color:var(--muted);font-size:13px}
+.sq-rate{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.sq-rate .rate-btn{min-height:38px;min-width:42px;padding:4px 10px;font-size:14px}
+.sq-rate .rate-btn.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.sess-nav{display:flex;gap:8px;justify-content:space-between;margin-top:14px;flex-wrap:wrap}
+/* analysis */
+.an-row{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:13px 16px;margin-bottom:10px}
+.an-row .an-head{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;margin-bottom:8px}
+.an-row .an-head span{color:var(--muted);font-size:13px;white-space:nowrap}
 .checklist{list-style:none;padding:0;margin:0}
-.checklist li{padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);display:flex;gap:10px;align-items:flex-start}
-.checklist li::before{content:"☐";font-size:18px;line-height:1.4}
+.checklist li{padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:var(--card);display:flex;gap:10px;align-items:flex-start;box-shadow:var(--shadow)}
+.checklist li::before{content:"\2610";font-size:18px;line-height:1.4}
 footer{border-top:1px solid var(--line);margin-top:36px;padding:22px 0;color:var(--muted);font-size:13px}
-@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)} table{font-size:13px} th,td{padding:6px}}
-/* table horizontal scroll wrapper (JS wraps every table) */
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:8px 0}
 .table-scroll table{margin:0}
-/* focus visibility */
 summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.flash:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
-/* progress tools */
 .progress-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
-/* mock sticky bar */
-.mock-sticky{position:sticky;top:70px;z-index:15;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--card);border:1.5px solid var(--gold);border-radius:12px;padding:10px 14px;margin:14px 0;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.mock-sticky{position:sticky;top:70px;z-index:15;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--card);border:1.5px solid var(--gold);border-radius:14px;padding:10px 14px;margin:14px 0;box-shadow:var(--shadow)}
 .mock-sticky .timer{font-size:20px}
-/* flashcard: card itself is focusable for keyboard, text does not flip */
 .flash{outline-offset:4px}
-.flash-inner{cursor:default}
-/* short-q self rating */
-.sq-rate{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
-.sq-rate .rate-btn{min-height:36px;min-width:40px;padding:4px 10px;font-size:14px}
-.sq-rate .rate-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
-/* back to top */
-#backTop{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;min-height:48px;padding:0;border-radius:50%;background:var(--navy);color:#fff;border-color:var(--navy);font-size:22px;line-height:1;opacity:.92;visibility:visible;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-@media(max-width:760px){.mock-sticky{top:64px}}
-@media(prefers-reduced-motion:reduce){.flash-inner{transition:none} html{scroll-behavior:auto} #backTop{transition:none}}
+#backTop {
+  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 40;
+  width: 48px; height: 48px; min-height: 48px; padding: 0; border-radius: 50%;
+  background: var(--dark); color: #fff; border-color: var(--dark); font-size: 22px; line-height: 1;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+}
+#backTop.show { opacity: .92; visibility: visible; }
+@media(prefers-color-scheme:dark){#backTop{background:#f2f3f5;color:#111;border-color:#f2f3f5}}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}.stats4{grid-template-columns:repeat(2,1fr)}.study-grid{grid-template-columns:repeat(2,1fr)}.cat-list{grid-template-columns:1fr}table{font-size:13px}th,td{padding:6px}.mock-sticky{top:66px}.seg button{padding:5px 13px}}
+@media(prefers-reduced-motion:reduce){.flash-inner{transition:none}html{scroll-behavior:auto}}
 @media print{
   body{background:#fff;color:#000;font-size:11pt}
-  nav.tabs,#backTop,.mock-sticky,.filterrow,.progress-tools,.badges,button:not(.opt){display:none !important}
-  .hero{background:#fff;color:#000;padding:0 0 10px}
-  .hero p{color:#333}.hero h1 span{color:#000}.stats{display:none}
+  .topbar,#backTop,.mock-sticky,.filterrow,.progress-tools,.qfoot,.sess-nav,button:not(.opt){display:none !important}
+  .view{display:block !important}
   .wrap{max-width:none;padding:0 6px}
   section{padding:10px 0;page-break-inside:avoid}
-  .card,details{background:#fff;border-color:#999;break-inside:avoid}
+  .card,details,.stat-card,.study-card,.cat-row,.an-row{background:#fff;border-color:#999;break-inside:avoid;box-shadow:none}
   details .body{display:block}
   .opt{border:1px solid #999;background:#fff;color:#000;text-align:left}
   .explain{display:block}
@@ -139,43 +181,104 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
-    <div style="font-size:13px;letter-spacing:.12em;color:#e9c46a;font-weight:800">SAINT FRANCIS UNIVERSITY · SOWK403 / 613</div>
-    <h1>SOWK403 社工與法律 <span>溫書站</span></h1>
-    <p>照住你上傳嘅 L1–L9 講義（279 頁）+ Q1–Q20 導修案例整。老師已確認：<b style="color:#fff">考試只有 MC + Short Question，冇 Long Question</b>，考試佔全科 50%。今次更新：<b style="color:#fff">題目同答案改用英文（貼近考試語言），解釋中英並列；題目同選項次序可以洗牌</b>，唔使死記位置。</p>
-    <div class="badges">
-      <span class="badge hot">✓ 題型：MC + Short Q only</span>
-      <span class="badge">題庫合共 500 題（400 MC + 100 Short Q）</span>
-      <span class="badge">講師：Dr. Kwan Wai-hong Roger</span>
-      <span class="badge">導師：Vincent Chong</span>
-      <span class="badge">資料：L1–L9 + Q1–Q20</span>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>9</b><span>講課主題 L1–L9</span></div>
-      <div class="stat"><b>20</b><span>導修案例 Q1–Q20</span></div>
-      <div class="stat"><b id="statMc">400</b><span>MC 練習題</span></div>
-      <div class="stat"><b>100 + 28</b><span>Short Q · Flashcards</span></div>
-    </div>
+<div class="topbar"><div class="topbar-in">
+  <button id="menuBtn" aria-label="開啟選單 Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
+  <div class="seg" role="group" aria-label="主要頁面 Main pages">
+    <button data-go="study" class="active">Study</button>
+    <button data-go="analysis">Analysis</button>
+    <button data-go="settings">Settings</button>
   </div>
-</header>
-
-<nav class="tabs"><div class="wrap">
-  <button data-go="overview" class="active">總覽</button>
-  <button data-go="notes">重點筆記</button>
-  <button data-go="cases">案例庫 Q1–Q20</button>
-  <button data-go="flash">Flashcards</button>
-  <button data-go="mc">MC 練習</button>
-  <button data-go="shortq">Short Q 練習</button>
-  <button data-go="mock">模擬試</button>
-  <button data-go="plan">7 日衝刺</button>
-  <button data-go="howto">如何使用</button>
-</div></nav>
+</div>
+<div class="menu"><div class="menu-panel" id="menuPanel">
+  <button data-go="overview">總覽 Overview <span>打法・對比表・條文速查</span></button>
+  <button data-go="notes">重點筆記 Notes <span>L1–L9 + L10–L12 補充</span></button>
+  <button data-go="cases">案例庫 Cases Q1–Q20 <span>20 個導修案例</span></button>
+  <button data-go="flash">Flashcards <span>28 張背誦卡</span></button>
+  <button data-go="mc">MC 練習 <span>400 題</span></button>
+  <button data-go="shortq">Short Q 練習 <span>100 題・一次一題</span></button>
+  <button data-go="mock">模擬試 Mock Exam <span>隨機 10 MC + 2 Short Q</span></button>
+  <button data-go="plan">7 日衝刺 Plan <span>每日溫習清單</span></button>
+  <button data-go="howto">如何使用 How to use <span>連結・加主畫面</span></button>
+</div></div>
+</div>
 
 <div class="wrap">
 
+
+<!-- STUDY HOME -->
+<section id="study" class="view active">
+  <div class="mod-head">
+    <div class="kicker">SOWK403 Social Work and Law</div>
+    <h1>溫書 Dashboard</h1>
+    <p>500 questions · 12 categories · 400 MC + 100 Short Q + 28 Flashcards</p>
+  </div>
+  <div class="stats4" style="margin-top:16px">
+    <div class="stat-card"><b id="gSeen">0</b><div class="lb">Seen 已做</div><div class="sub">of 500</div></div>
+    <div class="stat-card"><b id="gAcc">–</b><div class="lb">Accuracy 正確率</div><div class="sub">MC 答對率</div></div>
+    <div class="stat-card"><b id="gFlag">0</b><div class="lb">Flagged 已標記</div><div class="sub">MC + Short Q</div></div>
+    <div class="stat-card"><b id="gDue">0</b><div class="lb">Due today 待複習</div><div class="sub">間隔重複到期</div></div>
+  </div>
+
+  <div class="dash-label">Study 學習</div>
+  <div class="study-grid">
+    <button class="study-card dark go-mode" data-view="mc" data-mode="continue"><span class="t">Continue 繼續<span class="n" id="gCntContinue">0</span></span><span class="d">Drill questions you haven't seen 繼續練習未做過嘅題目</span></button>
+    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d">Timed and scored like the real thing 計時模擬考試</span></button>
+    <button class="study-card go-mode" data-view="mc" data-mode="wrong"><span class="t">Review Wrong 複習錯題<span class="n" id="gCntWrong">0</span></span><span class="d">Questions you've missed before 重做答錯過嘅題目</span></button>
+    <button class="study-card go-mode" data-view="mc" data-mode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="gCntDue">0</span></span><span class="d">Cards scheduled for today 今日到期要複習嘅題目</span></button>
+    <button class="study-card go-mode" data-view="mc" data-mode="flagged"><span class="t">Flagged 已標記<span class="n" id="gCntFlag">0</span></span><span class="d">Questions you starred 你標記咗嘅題目</span></button>
+    <button class="study-card go-mode" data-view="shortq" data-mode="continue"><span class="t">Short Q 繼續<span class="n" id="gCntSq">0</span></span><span class="d">One question at a time 一次一題，寫完自評</span></button>
+  </div>
+
+  <div class="dash-label">Modules 溫習模組</div>
+  <div class="cat-list">
+    <button class="cat-row" data-go="mc"><span class="cn">MC 練習</span><span class="cm">400 題 →</span></button>
+    <button class="cat-row" data-go="shortq"><span class="cn">Short Q 練習</span><span class="cm">100 題 →</span></button>
+    <button class="cat-row" data-go="flash"><span class="cn">Flashcards 背誦卡</span><span class="cm">28 張 →</span></button>
+    <button class="cat-row" data-go="notes"><span class="cn">重點筆記</span><span class="cm">L1–L12 →</span></button>
+    <button class="cat-row" data-go="cases"><span class="cn">案例庫 Q1–Q20</span><span class="cm">20 案例 →</span></button>
+    <button class="cat-row" data-go="plan"><span class="cn">7 日衝刺計劃</span><span class="cm">每日清單 →</span></button>
+  </div>
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis" class="view">
+  <div class="mod-head"><div class="kicker">Analysis 分析</div><h1>每個 Topic 嘅熟練度</h1><p>基於 MC 正確率計算；Short Q 就用自評平均分。做得越多，數字越準。</p></div>
+  <div class="stats4" style="margin-top:16px">
+    <div class="stat-card"><b id="anMcAcc">–</b><div class="lb">MC Accuracy</div><div class="sub" id="anMcSub">已做 0 題</div></div>
+    <div class="stat-card"><b id="anSqAvg">–</b><div class="lb">Short Q Avg 自評</div><div class="sub" id="anSqSub">已自評 0 題</div></div>
+    <div class="stat-card"><b id="anWrong">0</b><div class="lb">Wrong 錯題</div><div class="sub">MC 答錯過</div></div>
+    <div class="stat-card"><b id="anDue">0</b><div class="lb">Due today</div><div class="sub">間隔重複到期</div></div>
+  </div>
+  <div class="dash-label">MC · Mastery by Topic 各主題熟練度（正確率）</div>
+  <div id="analysisList"></div>
+  <div class="dash-label">Short Q · Self-rating by Topic 自評平均（0–5）</div>
+  <div id="analysisSq"></div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="view">
+  <div class="mod-head"><div class="kicker">Settings 設定</div><h1>進度與資料</h1><p>進度（答題記錄、標記、間隔重複排程、草稿、自評）儲存在此裝置／瀏覽器嘅 localStorage。</p></div>
+  <div class="card" style="margin-top:16px">
+    <h3>備份 / 還原進度</h3>
+    <div class="progress-tools">
+      <button id="exportBtn" class="small" aria-label="匯出進度 JSON Export progress as JSON">⬇ 匯出進度 Export JSON</button>
+      <button id="importBtn" class="small" aria-label="匯入進度 JSON Import progress from JSON">⬆ 匯入進度 Import JSON</button>
+      <input type="file" id="importFile" accept=".json,application/json" hidden aria-label="選擇要匯入嘅進度 JSON 檔案">
+      <button id="printBtn" class="small" aria-label="列印或儲存為 PDF Print or save as PDF">🖨 列印／儲存 PDF</button>
+      <span id="progressMsg" class="muted small" role="status" aria-live="polite"></span>
+    </div>
+    <p class="muted small" style="margin:10px 0 0">換裝置或想備份，可以匯出 JSON，再喺另一部裝置匯入。列印會展開全部筆記內容。</p>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <h3>重置</h3>
+    <p class="muted small">清除呢部裝置上嘅全部進度（MC／Short Q 記錄、標記、排程、草稿、自評、Flashcards 已翻），題庫同筆記唔受影響。</p>
+    <button id="resetBtn" class="small" aria-label="清除全部進度 Reset all progress">↺ 清除全部進度 Reset</button>
+    <span id="resetMsg" class="muted small" role="status" aria-live="polite"></span>
+  </div>
+</section>
+
 <!-- OVERVIEW -->
-<section id="overview">
+<section id="overview" class="view">
   <div class="sec-head"><div><h2>點樣用呢個站溫書？</h2><p>MC 考「認得 + 分得清」，Short Q 考「Issue → Concept → Analysis → Conclusion」。兩種題型，兩套打法。</p></div></div>
   <div class="grid g3">
     <div class="card"><h3>① MC 打法：分清易混位</h3><p>出卷最鍾意考對比：刑事 vs 民事舉證標準、襲擊 vs 毆打、疏忽四元素、DCRVO 三種禁制令、監護令條件。MC 練習每題即對答案 + 解釋點解其他選項錯。</p><button class="small primary" data-go="mc">去練 MC →</button></div>
@@ -199,13 +302,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
       <div><div style="display:flex;justify-content:space-between"><span>Flashcards 已翻</span><b id="ovFl">0 / 28</b></div><div class="progressbar"><i id="barFl"></i></div></div>
       <div><div style="display:flex;justify-content:space-between"><span>Short Q 已睇範答</span><b id="ovSq">0 / 100</b></div><div class="progressbar"><i id="barSq"></i></div></div>
     </div>
-    <div class="progress-tools">
-      <button id="exportBtn" class="small" aria-label="匯出進度 JSON Export progress as JSON">⬇ 匯出進度 Export JSON</button>
-      <button id="importBtn" class="small" aria-label="匯入進度 JSON Import progress from JSON">⬆ 匯入進度 Import JSON</button>
-      <input type="file" id="importFile" accept=".json,application/json" hidden aria-label="選擇要匯入嘅進度 JSON 檔案">
-      <button id="printBtn" class="small" aria-label="列印或儲存為 PDF Print or save as PDF">🖨 列印／儲存 PDF</button>
-      <span id="progressMsg" class="muted small" role="status" aria-live="polite"></span>
-    </div>
+    <div class="progress-tools"><button class="small primary" data-go="settings">前往設定：匯出／匯入／列印進度 Settings →</button></div>
     <p class="muted small" style="margin:10px 0 0">進度（MC 答題記錄、Flashcards 已翻、Short Q 已睇範答、草稿、自評同 MC 題目次序）會儲存在此裝置／瀏覽器；換裝置或想備份，可以匯出 JSON，再喺另一部裝置匯入。</p>
   </div>
 
@@ -234,7 +331,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 </section>
 
 <!-- NOTES -->
-<section id="notes">
+<section id="notes" class="view">
   <div class="sec-head"><div><h2>重點筆記 L1–L9 + L10–L12 補充</h2><p>每課只抽考試會問嘅位：定義、元素、條文、案例一句講完。撳開嚟睇。</p></div></div>
 
   <details open><summary><span>L1–L2 香港法律制度</span><span class="tag gold">根基 · MC 高頻</span></summary><div class="body">
@@ -354,7 +451,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 </section>
 
 <!-- CASES -->
-<section id="cases">
+<section id="cases" class="view">
   <div class="sec-head"><div><h2>案例庫 Q1–Q20</h2><p>老師揀嘅 20 個導修案例。搜尋或按主題篩選；每張卡背熟「事實一句 + 法例 + 結果」。</p></div></div>
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px;margin-bottom:12px">
     <input id="caseSearch" type="search" placeholder="🔍 搜尋案例名、法例、關鍵字… 例：疏忽 / 國安 /綜援">
@@ -365,7 +462,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 </section>
 
 <!-- FLASHCARDS -->
-<section id="flash">
+<section id="flash" class="view">
   <div class="sec-head"><div><h2>Flashcards 背誦卡</h2><p>Questions in English, answers in English + 中文。用「翻轉」掣睇答案（撳卡面文字唔會翻），先自己諗咗先翻 — 主動回想先記得入腦；撳「隨機抽」就唔會固定次序。鍵盤：聚焦張卡後，Space / Enter 翻卡，← → 換卡。</p></div></div>
   <div class="flash" id="flashCard" tabindex="0" role="region" aria-label="Flashcard，按 Space 或 Enter 翻卡，左右方向鍵換卡"><div class="flash-inner">
     <div class="face"><div class="tag gold" id="flTopic"></div><div class="q" id="flQ"></div><div class="muted small">撳下面「翻轉」掣睇答案 · <span id="flIdx"></span></div></div>
@@ -377,25 +474,59 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 </section>
 
 <!-- MC -->
-<section id="mc">
-  <div class="sec-head"><div><h2>MC 練習（400 題）</h2><p>Questions and answers in English; explanations in English + 中文。即做即對，每題揀完即刻出解釋。題庫固定（全部來自你嘅講義同案例），但題目次序同選項位置可以洗牌，唔好死記答案位置。</p></div>
-  <div style="text-align:right"><span class="muted small">得分</span> <span class="scorepill" id="mcScore">0 / 0</span></div></div>
-  <div class="filterrow" id="mcFilters"></div>
-  <div class="filterrow" id="mcStatusFilters" role="group" aria-label="按完成狀態篩選 MC Filter by completion status"><button data-s="" class="active" aria-label="顯示全部 MC Show all">全部 All</button><button data-s="undone" aria-label="只顯示未做嘅 MC Show not done only">未做 Not done</button><button data-s="wrong" aria-label="只顯示答錯嘅 MC Show wrong answers only">錯題 Wrong</button></div>
-  <div class="filterrow"><button id="mcShuffleQ" aria-label="洗牌題目次序 Shuffle question order">🔀 洗牌題目次序 Shuffle questions</button><button id="mcShuffleO" aria-label="洗牌選項並重做 Shuffle options and restart">🔀 洗牌選項 + 重做 Shuffle options &amp; restart</button><button id="mcReset" aria-label="清除 MC 答案 Reset answers">↺ 清除答案 Reset</button><span class="muted small" style="align-self:center">每次練習都可以洗牌：題目次序同 A/B/C/D 位置都會變，要認內容，唔好認位置。答完一題會自動捲去解釋。</span></div>
+<section id="mc" class="view">
+  <div class="mod-head"><div class="kicker">MC Practice</div><h1>MC 練習</h1><p>Questions and answers in English; explanations in English + 中文。即做即對，答完可以按記憶程度排下次複習。</p></div>
+  <div class="stats4" style="margin-top:16px">
+    <div class="stat-card"><b id="mcStatSeen">0</b><div class="lb">Seen 已做</div><div class="sub">of 400</div></div>
+    <div class="stat-card"><b id="mcStatAcc">–</b><div class="lb">Accuracy 正確率</div><div class="sub" id="mcStatAccSub">未開始</div></div>
+    <div class="stat-card"><b id="mcStatFlag">0</b><div class="lb">Flagged 已標記</div><div class="sub">你標記咗嘅題目</div></div>
+    <div class="stat-card"><b id="mcStatDue">0</b><div class="lb">Due today 待複習</div><div class="sub">間隔重複到期</div></div>
+  </div>
+  <div class="dash-label">Study 學習</div>
+  <div class="study-grid">
+    <button class="study-card dark" data-mcmode="continue"><span class="t">Continue 繼續<span class="n" id="mcCntContinue">0</span></span><span class="d">Drill questions you haven't seen 未做過嘅題目</span></button>
+    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d">Timed and scored like the real thing</span></button>
+    <button class="study-card" data-mcmode="wrong"><span class="t">Review Wrong 複習錯題<span class="n" id="mcCntWrong">0</span></span><span class="d">Questions you've missed before</span></button>
+    <button class="study-card" data-mcmode="answered"><span class="t">Answered Before 重做<span class="n" id="mcCntAnswered">0</span></span><span class="d">Drill the questions you've already answered</span></button>
+    <button class="study-card" data-mcmode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="mcCntDue">0</span></span><span class="d">Cards scheduled for today</span></button>
+    <button class="study-card" data-mcmode="flagged"><span class="t">Flagged 已標記<span class="n" id="mcCntFlag">0</span></span><span class="d">Questions you starred</span></button>
+    <button class="study-card" data-mcmode="all"><span class="t">All MC 全部題目<span class="n">400</span></span><span class="d">Shuffle the entire bank 全部題目洗牌練習</span></button>
+  </div>
+  <div class="dash-label">Practice by Category 分類練習</div>
+  <div class="cat-list" id="mcCats"></div>
+  <div class="filterrow"><button id="mcShuffleQ" aria-label="洗牌題目次序 Shuffle question order">🔀 洗牌題目次序 Shuffle questions</button><button id="mcShuffleO" aria-label="洗牌選項並重做 Shuffle options and restart">🔀 洗牌選項 + 重做 Shuffle options &amp; restart</button><button id="mcReset" aria-label="清除 MC 答案 Reset answers">↺ 清除答案 Reset</button><span class="muted small" style="align-self:center" id="mcModeLabel">目前模式：全部題目 All</span></div>
+  <div style="text-align:right;margin-bottom:6px"><span class="muted small">得分</span> <span class="scorepill" id="mcScore">0 / 0</span></div>
   <div id="mcList"></div>
   <div style="text-align:center;margin:10px 0 4px"><button id="mcMore" class="primary">顯示更多題目 Show more</button> <span class="muted small" id="mcShownInfo"></span></div>
 </section>
 
 <!-- SHORT Q -->
-<section id="shortq">
-  <div class="sec-head"><div><h2>Short Q 練習（100 題）</h2><p>Questions and model answers in English（考試語言）; marking points in English + 中文。做法：先喺格入面用英文自己寫（建議每題 8–10 分鐘、150–250 字），寫完先開範答對畀分點。草稿會自動儲存喺呢部裝置；範答可以顯示／隱藏切換，對完畀自己 0–5 分自評。</p></div></div>
-  <div id="sqList"></div>
-  <div style="text-align:center;margin:10px 0 4px"><button id="sqMore" class="primary">顯示更多 Short Q Show more</button> <span class="muted small" id="sqInfo"></span></div>
+<section id="shortq" class="view">
+  <div class="mod-head"><div class="kicker">Short Q Practice</div><h1>Short Q 練習</h1><p>Questions and model answers in English; marking points in English + 中文。一次只做一題：先自己寫（建議 8–10 分鐘），再開範答對畀分點，最後 0–5 自評 —— 自評完會自動跳下一題。自評低過 3 分會自動排入間隔重複。</p></div>
+  <div class="stats4" style="margin-top:16px">
+    <div class="stat-card"><b id="sqStatSeen">0</b><div class="lb">Seen 已做</div><div class="sub">of 100</div></div>
+    <div class="stat-card"><b id="sqStatAvg">–</b><div class="lb">Avg 自評平均</div><div class="sub" id="sqStatAvgSub">未自評</div></div>
+    <div class="stat-card"><b id="sqStatFlag">0</b><div class="lb">Flagged 已標記</div><div class="sub">你標記咗嘅題目</div></div>
+    <div class="stat-card"><b id="sqStatDue">0</b><div class="lb">Due today 待複習</div><div class="sub">自評 &lt; 3 自動排入</div></div>
+  </div>
+  <div class="dash-label">Study 學習</div>
+  <div class="study-grid">
+    <button class="study-card dark" data-sqmode="continue"><span class="t">Continue 繼續<span class="n" id="sqCntContinue">0</span></span><span class="d">Questions you haven't answered 未做過嘅題目</span></button>
+    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d">Timed and scored like the real thing</span></button>
+    <button class="study-card" data-sqmode="wrong"><span class="t">Review Weak 複習弱項<span class="n" id="sqCntWrong">0</span></span><span class="d">Self-rated below 3 自評低過 3 分嘅題目</span></button>
+    <button class="study-card" data-sqmode="answered"><span class="t">Answered Before 重做<span class="n" id="sqCntAnswered">0</span></span><span class="d">Questions you've already rated</span></button>
+    <button class="study-card" data-sqmode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="sqCntDue">0</span></span><span class="d">Cards scheduled for today</span></button>
+    <button class="study-card" data-sqmode="flagged"><span class="t">Flagged 已標記<span class="n" id="sqCntFlag">0</span></span><span class="d">Questions you starred</span></button>
+    <button class="study-card" data-sqmode="all"><span class="t">All Short Q 全部題目<span class="n">100</span></span><span class="d">Shuffle the entire bank 全部題目洗牌練習</span></button>
+  </div>
+  <div class="dash-label">Practice by Category 分類練習</div>
+  <div class="cat-list" id="sqCats"></div>
+  <div class="dash-label">Practice 練習（一次一題）</div>
+  <div id="sqSession"></div>
 </section>
 
 <!-- MOCK -->
-<section id="mock">
+<section id="mock" class="view">
   <div class="sec-head"><div><h2>模擬試（自訂練習）</h2><p>每次由 500 題題庫隨機抽 10 條 MC + 2 條 Short Q，MC 選項次序亦會隨機，自己計時。呢個係練習計時，唔係官方考試時間（老師未公布時限）。</p></div>
   <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label>計時 <select id="mockMins" style="width:auto"><option value="30">30 分鐘</option><option value="45" selected>45 分鐘</option><option value="60">60 分鐘</option></select></label>
   <button class="primary" id="mockStart" aria-label="開始模擬試 Start mock exam">開始模擬試</button></div></div>
@@ -405,7 +536,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 
 
 <!-- HOW TO USE -->
-<section id="howto">
+<section id="howto" class="view">
   <div class="sec-head"><div><h2>如何使用呢個網頁</h2><p>唔使安裝任何程式，唔使去 GitHub 下載任何嘢 —— 撳連結就用得。</p></div></div>
   <div class="grid g2">
     <div class="card"><h3>① 用連結直接開啟</h3>
@@ -435,7 +566,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 </section>
 
 <!-- PLAN -->
-<section id="plan">
+<section id="plan" class="view">
   <div class="sec-head"><div><h2>7 日衝刺計劃</h2><p>考試日期未定，按「仲有 7 日」排；日子唔啱就成個表順延。每日：筆記 → 案例 → 練題，三件一齊做。</p></div></div>
   <ul class="checklist">
     <li><div><b>Day 1 — 法律制度</b><br><span class="muted">睇 L1–L2 筆記 + 法院架構表；做 MC「制度」組；背 Art 8/18/158/159。</span></div></li>
@@ -711,7 +842,7 @@ function progressData(){
     mcOptOrder:(typeof mcOptOrder!=='undefined'&&mcOptOrder)?mcOptOrder:{},
     flSeen:(typeof flSeen!=='undefined'&&flSeen)?flSeen:{},
     sqSeen:(typeof sqSeenSet!=='undefined'&&sqSeenSet)?sqSeenSet:{},
-    sqDrafts:sqDrafts, sqRatings:sqRatings};
+    sqDrafts:sqDrafts, sqRatings:sqRatings, mcFlagged:(typeof mcFlagged!=='undefined')?mcFlagged:{}, sqFlagged:(typeof sqFlagged!=='undefined')?sqFlagged:{}, mcSrs:(typeof mcSrs!=='undefined')?mcSrs:{}, sqSrs:(typeof sqSrs!=='undefined')?sqSrs:{}, mcGrade:(typeof mcGrade!=='undefined')?mcGrade:{}};
 }
 function saveProgress(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(progressData())); }catch(e){} }
 
@@ -753,6 +884,7 @@ function updateOverview(){
   var sqSeen=Object.keys(sqSeenSet).length;
   document.getElementById('ovSq').textContent=sqSeen+' / '+SQ.length;
   document.getElementById('barSq').style.width=(sqSeen/SQ.length*100)+'%';
+  if(typeof renderDash==='function') renderDash();
 }
 function flipFlash(){ var fc=document.getElementById('flashCard'); fc.classList.toggle('flipped'); if(fc.classList.contains('flipped')){ flSeen[flI]=1; saveProgress(); updateOverview(); } }
 var flFlipBtn=document.getElementById('flFlip'); if(flFlipBtn) flFlipBtn.addEventListener('click',flipFlash);
@@ -766,7 +898,12 @@ document.getElementById('flPrev').addEventListener('click',function(){ flI=(flI-
 document.getElementById('flShuffle').addEventListener('click',function(){ flI=Math.floor(Math.random()*FLASH.length); showFlash(); });
 
 /* MC */
-var mcState=(savedProgress.mcState&&typeof savedProgress.mcState==='object')?savedProgress.mcState:{}, mcFilter='', mcStatusFilter='', mcShown=20, mcKeep={};
+var mcFlagged=(savedProgress.mcFlagged&&typeof savedProgress.mcFlagged==='object')?savedProgress.mcFlagged:{};
+var sqFlagged=(savedProgress.sqFlagged&&typeof savedProgress.sqFlagged==='object')?savedProgress.sqFlagged:{};
+var mcSrs=(savedProgress.mcSrs&&typeof savedProgress.mcSrs==='object')?savedProgress.mcSrs:{};
+var sqSrs=(savedProgress.sqSrs&&typeof savedProgress.sqSrs==='object')?savedProgress.sqSrs:{};
+var mcGrade=(savedProgress.mcGrade&&typeof savedProgress.mcGrade==='object')?savedProgress.mcGrade:{};
+var mcState=(savedProgress.mcState&&typeof savedProgress.mcState==='object')?savedProgress.mcState:{}, mcFilter='', mcMode='all', mcShown=20, mcKeep={};
 function shuffleArr(a){ for(var k=a.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)); var tmp=a[k]; a[k]=a[r]; a[r]=tmp; } return a; }
 var mcOrder=MC.map(function(_,i){return i;});
 if(savedProgress.mcOrder&&savedProgress.mcOrder.length===MC.length){ var _seenO={}, _okO=true; savedProgress.mcOrder.forEach(function(v){ if(typeof v!=='number'||v<0||v>=MC.length||_seenO[v]) _okO=false; _seenO[v]=1; }); if(_okO) mcOrder=savedProgress.mcOrder.slice(); }
@@ -774,12 +911,25 @@ var mcOptOrder=(savedProgress.mcOptOrder&&typeof savedProgress.mcOptOrder==='obj
 function resetOptOrder(){ mcOptOrder={}; MC.forEach(function(q,i){ mcOptOrder[i]=shuffleArr([0,1,2,3]); }); }
 if(Object.keys(mcOptOrder).length<MC.length){ mcOptOrder={}; MC.forEach(function(q,i){ mcOptOrder[i]=shuffleArr([0,1,2,3]); }); }
 var topics=[]; MC.forEach(function(q){ if(topics.indexOf(q.t)<0) topics.push(q.t); });
-var mf=document.getElementById('mcFilters');
-mf.innerHTML='<button data-t="" class="active">全部 All</button>'+topics.map(function(t){return '<button data-t="'+t+'">'+t+'</button>';}).join('');
-mf.addEventListener('click',function(e){ if(e.target.tagName!=='BUTTON')return; mcShown=20; mcKeep={}; mcFilter=e.target.getAttribute('data-t'); var bs=mf.querySelectorAll('button'); for(var i=0;i<bs.length;i++) bs[i].classList.remove('active'); e.target.classList.add('active'); renderMC(); });
-var msf=document.getElementById('mcStatusFilters');
-if(msf) msf.addEventListener('click',function(e){ if(e.target.tagName!=='BUTTON')return; mcShown=20; mcKeep={}; mcStatusFilter=e.target.getAttribute('data-s')||''; var bs=msf.querySelectorAll('button'); for(var i=0;i<bs.length;i++) bs[i].classList.remove('active'); e.target.classList.add('active'); renderMC(); });
-function mcPass(i){ if(mcKeep[i]) return true; if(mcFilter && MC[i].t!==mcFilter) return false; if(mcStatusFilter==='undone' && mcState[i]!==undefined) return false; if(mcStatusFilter==='wrong' && !(mcState[i]!==undefined && mcState[i]!==MC[i].a)) return false; return true; }
+function endOfToday(){ var d=new Date(); d.setHours(23,59,59,999); return d.getTime(); }
+function isDue(ts){ return ts!==undefined && ts!==null && +ts<=endOfToday(); }
+function fmtDue(ts){ var d=new Date(+ts); var today=new Date(); var tom=new Date(); tom.setDate(tom.getDate()+1); function same(a,b){ return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate(); } if(same(d,today)) return '今日 Today'; if(same(d,tom)) return '聽日 Tomorrow'; return (d.getMonth()+1)+'/'+d.getDate(); }
+function mcPass(i){
+  if(mcKeep[i]) return true;
+  if(mcMode==='topic') return MC[i].t===mcFilter;
+  if(mcMode==='continue') return mcState[i]===undefined;
+  if(mcMode==='wrong') return mcState[i]!==undefined && mcState[i]!==MC[i].a;
+  if(mcMode==='answered') return mcState[i]!==undefined;
+  if(mcMode==='due') return isDue(mcSrs[i]);
+  if(mcMode==='flagged') return !!mcFlagged[i];
+  return true;
+}
+var MC_MODE_NAMES={all:'全部題目 All',continue:'繼續 Continue（未做）',wrong:'複習錯題 Review Wrong',answered:'重做已做 Answered Before',due:'間隔重複 Spaced Repetition',flagged:'已標記 Flagged',topic:'分類 Category'};
+function setMcMode(mode,topic){
+  mcMode=mode; if(topic!==undefined) mcFilter=topic; mcShown=20; mcKeep={}; renderMC();
+  var lb=document.getElementById('mcModeLabel'); if(lb) lb.textContent='目前模式：'+(mode==='topic'?('分類 Category · '+mcFilter):MC_MODE_NAMES[mode]);
+  var cards=document.querySelectorAll('[data-mcmode]'); for(var i=0;i<cards.length;i++){ cards[i].classList.toggle('dark', cards[i].getAttribute('data-mcmode')===mode); }
+}
 function renderMC(){
   var h='', n=0, total=0;
   mcOrder.forEach(function(i){ if(mcPass(i)) total++; });
@@ -794,57 +944,134 @@ function renderMC(){
       h+='<button class="'+cls+'" data-q="'+i+'" data-o="'+oj+'" '+(mcState[i]!==undefined?'disabled':'')+'>'+'ABCD'[d]+'. '+q.o[oj]+'</button>';
     });
     if(mcState[i]!==undefined){ var cp=ord.indexOf(q.a); h+='<div class="explain show tbox" id="mcExp'+i+'"><b>'+(mcState[i]===q.a?'\u2713 Correct! \u7b54\u5571\uff01':'\u2717 Wrong \u2014 the correct answer is '+'ABCD'[cp]+' \u7b54\u932f\uff0c\u6b63\u78ba\u7b54\u6848\u4fc2 '+'ABCD'[cp])+'</b><br>'+q.e+'</div>'; }
-    h+='</div>';
+    h+='<div class="qfoot"><button class="flag-btn'+(mcFlagged[i]?' on':'')+'" data-flag="'+i+'" aria-pressed="'+(mcFlagged[i]?'true':'false')+'" aria-label="標記呢題 Flag this question">⭐ 標記 Flag</button>';
+    if(mcState[i]!==undefined){
+      h+='<span class="grade-row" role="group" aria-label="記憶評分，設定下次複習"><span class="small muted">記得幾熟？</span>'
+        +'<button class="grade-btn'+(mcGrade[i]==='again'?' on':'')+'" data-grade="again" data-gq="'+i+'" data-g="again">🔴 Again 太難</button>'
+        +'<button class="grade-btn'+(mcGrade[i]==='good'?' on':'')+'" data-grade="good" data-gq="'+i+'" data-g="good">🟡 Good 普通</button>'
+        +'<button class="grade-btn'+(mcGrade[i]==='easy'?' on':'')+'" data-grade="easy" data-gq="'+i+'" data-g="easy">🟢 Easy 太易</button></span>';
+      if(mcSrs[i]) h+='<span class="due-note">下次複習：'+fmtDue(mcSrs[i])+'</span>';
+    }
+    h+='</div></div>';
   });
-  document.getElementById('mcList').innerHTML=h||'<p class="muted">呢個篩選底下冇題目（例如仲未有錯題）。No questions match this filter.</p>';
+  document.getElementById('mcList').innerHTML=h||'<p class="muted">呢個模式底下暫時冇題目（例如未有錯題／未有到期題目）。No questions in this mode yet.</p>';
   var inf=document.getElementById('mcShownInfo'); if(inf) inf.textContent='Showing '+(Math.min(mcShown,total))+' / '+total+' questions \u986f\u793a\u4e2d';
   var mb=document.getElementById('mcMore'); if(mb) mb.style.display=(mcShown>=total)?'none':'';
 }
 document.getElementById('mcList').addEventListener('click',function(e){
+  var fb=e.target.closest('[data-flag]');
+  if(fb){ var fi=+fb.getAttribute('data-flag'); if(mcFlagged[fi]) delete mcFlagged[fi]; else mcFlagged[fi]=1; saveProgress(); renderMC(); updateOverview(); return; }
+  var gb=e.target.closest('[data-grade]');
+  if(gb){ var gi=+gb.getAttribute('data-gq'), g=gb.getAttribute('data-grade'); mcGrade[gi]=g; var now=Date.now();
+    mcSrs[gi]= now + (g==='again'?10*60000 : g==='good'?3*86400000 : 7*86400000);
+    saveProgress(); renderMC(); updateOverview(); return; }
   var b=e.target.closest('.opt'); if(!b||b.disabled) return;
   var qi=+b.getAttribute('data-q'), oi=+b.getAttribute('data-o');
   mcState[qi]=oi; mcKeep[qi]=1; saveProgress(); renderMC(); updateOverview();
   var exp=document.getElementById('mcExp'+qi); if(exp) exp.scrollIntoView({behavior:'smooth',block:'center'});
 });
+var mcGridBtns=document.querySelectorAll('[data-mcmode]');
+for(var _mi=0;_mi<mcGridBtns.length;_mi++){ mcGridBtns[_mi].addEventListener('click',function(){ setMcMode(this.getAttribute('data-mcmode')); var l=document.getElementById('mcList'); if(l) l.scrollIntoView({behavior:'smooth'}); }); }
+var mcCatsEl=document.getElementById('mcCats');
+if(mcCatsEl) mcCatsEl.addEventListener('click',function(e){ var r=e.target.closest('[data-cat]'); if(!r) return; setMcMode('topic', r.getAttribute('data-cat')); var l=document.getElementById('mcList'); if(l) l.scrollIntoView({behavior:'smooth'}); });
 var shQ=document.getElementById('mcShuffleQ'); if(shQ) shQ.addEventListener('click',function(){ mcShown=20; mcKeep={}; shuffleArr(mcOrder); saveProgress(); renderMC(); });
 var shO=document.getElementById('mcShuffleO'); if(shO) shO.addEventListener('click',function(){ mcShown=20; mcKeep={}; resetOptOrder(); mcState={}; saveProgress(); renderMC(); updateOverview(); });
 var mmB=document.getElementById('mcMore'); if(mmB) mmB.addEventListener('click',function(){ mcShown+=20; renderMC(); });
-var rsB=document.getElementById('mcReset'); if(rsB) rsB.addEventListener('click',function(){ mcShown=20; mcKeep={}; mcState={}; saveProgress(); renderMC(); updateOverview(); });
+var rsB=document.getElementById('mcReset'); if(rsB) rsB.addEventListener('click',function(){ mcShown=20; mcKeep={}; mcState={}; mcGrade={}; mcSrs={}; saveProgress(); renderMC(); updateOverview(); });
 renderMC();
 
-/* Short Q */
+/* Short Q — one question at a time */
 var sqSeenSet=(savedProgress.sqSeen&&typeof savedProgress.sqSeen==='object')?savedProgress.sqSeen:{};
 function escTA(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function sqAnswerHTML(i){ var s=SQ[i]; return '<div class="kbox"><b>畀分點：</b><ul style="margin:6px 0;padding-left:20px">'+s.pts.map(function(p){return '<li>'+p+'</li>';}).join('')+'</ul></div><div class="tbox"><b>範答：</b><br>'+s.model+'</div>'; }
-var sqH='';
-SQ.forEach(function(s,i){
-  var rateBtns=''; for(var v=0;v<=5;v++){ rateBtns+='<button class="rate-btn'+(sqRatings[i]===v?' active':'')+'" data-rate="'+i+'" data-val="'+v+'" aria-label="自評 '+v+' 分 Self-rating '+v+' out of 5" aria-pressed="'+(sqRatings[i]===v?'true':'false')+'">'+v+'</button>'; }
-  sqH+='<details><summary><span>'+(i+1)+'. '+s.q.slice(0,60)+'…</span><span class="tag gold">'+s.tag+'</span></summary><div class="body"><p style="font-weight:700">'+s.q+'</p><label class="small muted" for="sqTa'+i+'">你嘅答案（自己計時 8–10 分鐘 · 草稿自動儲存）</label><textarea id="sqTa'+i+'" data-draft="'+i+'" placeholder="Write in English with the ICAC frame: Issue → Concept (case / section) → Analysis (apply to the facts) → Conclusion (take a stance)">'+escTA(sqDrafts[i])+'</textarea><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="small primary" data-sq="'+i+'" aria-expanded="false" aria-label="顯示或隱藏範答 Toggle model answer">顯示範答 + 畀分點 Show answer</button></div><div id="sqAns'+i+'" style="display:none"></div><div class="sq-rate"><span class="small muted">自評 Self-rating（0–5）：</span>'+rateBtns+'</div></div></details>';
-});
-document.getElementById('sqList').innerHTML=sqH;
-var sqShown=25;
-function applySq(){ var ds=document.querySelectorAll('#sqList details'); for(var i=0;i<ds.length;i++){ ds[i].style.display=(i<sqShown)?'':'none'; } var inf2=document.getElementById('sqInfo'); if(inf2) inf2.textContent='Showing '+Math.min(sqShown,SQ.length)+' / '+SQ.length; var sb=document.getElementById('sqMore'); if(sb) sb.style.display=(sqShown>=SQ.length)?'none':''; }
-var sqm=document.getElementById('sqMore'); if(sqm) sqm.addEventListener('click',function(){ sqShown+=25; applySq(); });
-applySq();
-document.getElementById('sqList').addEventListener('input',function(e){
-  var ta=e.target.closest('textarea[data-draft]'); if(!ta) return;
-  sqDrafts[+ta.getAttribute('data-draft')]=ta.value; saveProgress();
-});
-document.getElementById('sqList').addEventListener('click',function(e){
-  var rb=e.target.closest('[data-rate]');
-  if(rb){ var ri=+rb.getAttribute('data-rate'), rv=+rb.getAttribute('data-val'); sqRatings[ri]=rv; saveProgress();
-    var wrap=rb.parentElement, rbs=wrap.querySelectorAll('.rate-btn'); for(var k=0;k<rbs.length;k++){ var on=+rbs[k].getAttribute('data-val')===rv; rbs[k].classList.toggle('active',on); rbs[k].setAttribute('aria-pressed',on?'true':'false'); }
-    return; }
-  var b=e.target.closest('[data-sq]'); if(!b) return; var i=+b.getAttribute('data-sq');
-  var box=document.getElementById('sqAns'+i); if(!box) return;
-  if(box.style.display==='none'||!box.style.display){
-    if(!box.innerHTML) box.innerHTML=sqAnswerHTML(i);
-    box.style.display='block'; b.textContent='隱藏範答 Hide answer'; b.setAttribute('aria-expanded','true');
-    if(!sqSeenSet[i]){ sqSeenSet[i]=1; saveProgress(); updateOverview(); }
-  } else {
-    box.style.display='none'; b.textContent='顯示範答 + 畀分點 Show answer'; b.setAttribute('aria-expanded','false');
+function sqTopicOf(s){ var t=String(s.tag||''); if(t.indexOf('\u00b7')>=0){ t=t.split('\u00b7')[0]; } t=t.replace(/^L\d+\s*/,'').trim(); var alias={'Criminal':'Criminal Law','Domestic Violence':'Domestic Violence & Adults','Privacy':'Privacy & Doxxing','Conduct':'Sexual Harassment & Conduct'}; if(alias[t]) t=alias[t]; return t||'Other'; }
+function sqAttempted(i){ return sqRatings[i]!==undefined||!!sqSeenSet[i]; }
+var sqQueue=[], sqPos=0, sqMode='continue', sqDone=false, sqAnsOpen=false;
+function buildSqQueue(mode,tagKey){
+  var idx=[];
+  SQ.forEach(function(s,i){
+    if(mode==='continue'){ if(!sqAttempted(i)) idx.push(i); }
+    else if(mode==='wrong'){ if(sqRatings[i]!==undefined&&sqRatings[i]<3) idx.push(i); }
+    else if(mode==='answered'){ if(sqRatings[i]!==undefined) idx.push(i); }
+    else if(mode==='due'){ if(isDue(sqSrs[i])) idx.push(i); }
+    else if(mode==='flagged'){ if(sqFlagged[i]) idx.push(i); }
+    else if(mode==='topic'){ if(sqTopicOf(s)===tagKey) idx.push(i); }
+    else idx.push(i);
+  });
+  if(mode==='all'||mode==='topic') shuffleArr(idx);
+  return idx;
+}
+function startSq(mode,tagKey){
+  sqMode=mode; sqQueue=buildSqQueue(mode,tagKey); sqPos=0; sqDone=false; sqAnsOpen=false; renderSqSession();
+}
+function renderSqSession(){
+  var box=document.getElementById('sqSession'); if(!box) return;
+  if(!sqQueue.length){
+    box.innerHTML='<div class="card"><h3>呢個模式暫時冇題目</h3><p class="muted">例如未有自評低過 3 分嘅題目、未有標記或者未有到期題目。轉去「全部題目」或者「繼續」模式就有題做。</p><button class="small primary" data-sqmode2="all">做全部 Short Q →</button></div>';
+    return;
   }
-});
+  if(sqDone){
+    box.innerHTML='<div class="card" style="text-align:center"><h3>🎉 呢一輪做完！</h3><p class="muted">共 '+sqQueue.length+' 題。自評低過 3 分嘅題目已自動排入間隔重複，會喺「Due today」出現。</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="small primary" data-sqmode2="'+sqMode+'">再嚟一輪 Restart</button><button class="small" data-sqmode2="continue">繼續未做嘅題目 →</button></div></div>';
+    return;
+  }
+  var i=sqQueue[sqPos], s=SQ[i];
+  var pct=Math.round((sqPos)/sqQueue.length*100);
+  var rateBtns=''; for(var v=0;v<=5;v++){ rateBtns+='<button class="rate-btn'+(sqRatings[i]===v?' active':'')+'" data-rate="'+i+'" data-val="'+v+'" aria-label="自評 '+v+' 分 Self-rating '+v+' out of 5" aria-pressed="'+(sqRatings[i]===v?'true':'false')+'">'+v+'</button>'; }
+  box.innerHTML='<div class="sess-top"><b>第 '+(sqPos+1)+' / '+sqQueue.length+' 題</b><span>全庫第 '+(i+1)+' / '+SQ.length+' 題 · '+sqTopicOf(s)+'</span></div>'
+    +'<div class="progressbar" style="margin-bottom:12px"><i style="width:'+pct+'%"></i></div>'
+    +'<div class="card"><div><span class="tag navy">'+s.tag+'</span>'+(sqSrs[i]?'<span class="due-note">下次複習：'+fmtDue(sqSrs[i])+'</span>':'')+'</div>'
+    +'<p style="font-weight:700;font-size:16.5px;margin:8px 0">'+s.q+'</p>'
+    +'<label class="small muted" for="sqTa">你嘅答案（自己計時 8–10 分鐘 · 草稿自動儲存）</label>'
+    +'<textarea id="sqTa" data-draft="'+i+'" placeholder="Write in English with the ICAC frame: Issue \u2192 Concept (case / section) \u2192 Analysis (apply to the facts) \u2192 Conclusion (take a stance)">'+escTA(sqDrafts[i])+'</textarea>'
+    +'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="small primary" data-act="toggle" aria-expanded="false">顯示範答 + 畀分點 Show answer</button>'
+    +'<button class="flag-btn'+(sqFlagged[i]?' on':'')+'" data-act="flag" aria-pressed="'+(sqFlagged[i]?'true':'false')+'" aria-label="標記呢題 Flag this question">⭐ 標記 Flag</button></div>'
+    +'<div id="sqAnsBox" style="display:none"></div>'
+    +'<div class="sq-rate"><span class="small muted">自評 Self-rating（0–5，揀完自動去下一題）：</span>'+rateBtns+'</div>'
+    +'<div class="sess-nav"><button class="small" data-act="prev" '+(sqPos===0?'disabled':'')+'>← 上一題 Prev</button><button class="small" data-act="next">下一題 Next →</button></div>'
+    +'</div>';
+}
+var sqSessEl=document.getElementById('sqSession');
+if(sqSessEl){
+  sqSessEl.addEventListener('input',function(e){
+    var ta=e.target.closest('textarea[data-draft]'); if(!ta) return;
+    sqDrafts[+ta.getAttribute('data-draft')]=ta.value; saveProgress();
+  });
+  sqSessEl.addEventListener('click',function(e){
+    var m2=e.target.closest('[data-sqmode2]');
+    if(m2){ startSq(m2.getAttribute('data-sqmode2')); return; }
+    var rb=e.target.closest('[data-rate]');
+    if(rb){
+      var ri=+rb.getAttribute('data-rate'), rv=+rb.getAttribute('data-val');
+      sqRatings[ri]=rv;
+      if(rv<3) sqSrs[ri]=Date.now();
+      else if(rv===3) sqSrs[ri]=Date.now()+3*86400000;
+      else sqSrs[ri]=Date.now()+7*86400000;
+      saveProgress(); updateOverview();
+      var rbs=sqSessEl.querySelectorAll('.rate-btn'); for(var k=0;k<rbs.length;k++){ var on=+rbs[k].getAttribute('data-val')===rv; rbs[k].classList.toggle('active',on); rbs[k].setAttribute('aria-pressed',on?'true':'false'); }
+      setTimeout(function(){
+        if(sqPos<sqQueue.length-1){ sqPos++; sqAnsOpen=false; renderSqSession(); var t=document.getElementById('sqSession'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }
+        else { sqDone=true; renderSqSession(); }
+      },650);
+      return;
+    }
+    var b=e.target.closest('[data-act]'); if(!b) return;
+    var act=b.getAttribute('data-act'), i=sqQueue[sqPos];
+    if(act==='flag'){ if(sqFlagged[i]) delete sqFlagged[i]; else sqFlagged[i]=1; saveProgress(); renderSqSession(); updateOverview(); }
+    else if(act==='toggle'){
+      var ab=document.getElementById('sqAnsBox'); if(!ab) return;
+      if(!sqAnsOpen){ if(!ab.innerHTML) ab.innerHTML=sqAnswerHTML(i); ab.style.display='block'; sqAnsOpen=true; b.textContent='隱藏範答 Hide answer'; b.setAttribute('aria-expanded','true');
+        if(!sqSeenSet[i]){ sqSeenSet[i]=1; saveProgress(); updateOverview(); } }
+      else { ab.style.display='none'; sqAnsOpen=false; b.textContent='顯示範答 + 畀分點 Show answer'; b.setAttribute('aria-expanded','false'); }
+    }
+    else if(act==='prev'){ if(sqPos>0){ sqPos--; sqAnsOpen=false; sqDone=false; renderSqSession(); } }
+    else if(act==='next'){ if(sqPos<sqQueue.length-1){ sqPos++; sqAnsOpen=false; renderSqSession(); } else { sqDone=true; renderSqSession(); } }
+  });
+}
+var sqGridBtns=document.querySelectorAll('[data-sqmode]');
+for(var _si=0;_si<sqGridBtns.length;_si++){ sqGridBtns[_si].addEventListener('click',function(){ startSq(this.getAttribute('data-sqmode')); var t=document.getElementById('sqSession'); if(t) t.scrollIntoView({behavior:'smooth'}); }); }
+var sqCatsEl=document.getElementById('sqCats');
+if(sqCatsEl) sqCatsEl.addEventListener('click',function(e){ var r=e.target.closest('[data-sqcat]'); if(!r) return; startSq('topic', r.getAttribute('data-sqcat')); var t=document.getElementById('sqSession'); if(t) t.scrollIntoView({behavior:'smooth'}); });
+startSq('continue');
 
 /* Mock */
 var mockTimerId=null;
@@ -916,10 +1143,15 @@ if(importBtn&&importFile){
         if(p.sqSeen&&typeof p.sqSeen==='object') sqSeenSet=p.sqSeen;
         if(p.sqDrafts&&typeof p.sqDrafts==='object') sqDrafts=p.sqDrafts;
         if(p.sqRatings&&typeof p.sqRatings==='object') sqRatings=p.sqRatings;
+        if(p.mcFlagged&&typeof p.mcFlagged==='object') mcFlagged=p.mcFlagged;
+        if(p.sqFlagged&&typeof p.sqFlagged==='object') sqFlagged=p.sqFlagged;
+        if(p.mcSrs&&typeof p.mcSrs==='object') mcSrs=p.mcSrs;
+        if(p.sqSrs&&typeof p.sqSrs==='object') sqSrs=p.sqSrs;
+        if(p.mcGrade&&typeof p.mcGrade==='object') mcGrade=p.mcGrade;
         mcKeep={}; saveProgress(); renderMC(); updateOverview(); showFlash();
         document.querySelectorAll('textarea[data-draft]').forEach(function(ta){ ta.value=sqDrafts[ta.getAttribute('data-draft')]||''; });
         document.querySelectorAll('.rate-btn').forEach(function(rb2){ var on=sqRatings[rb2.getAttribute('data-rate')]===+rb2.getAttribute('data-val'); rb2.classList.toggle('active',on); rb2.setAttribute('aria-pressed',on?'true':'false'); });
-        setProgressMsg('已匯入進度 ✓ Imported');
+        setProgressMsg('已匯入進度 ✓ Imported'); if(typeof startSq==='function') startSq(sqMode||'continue');
       }catch(err){ setProgressMsg('匯入失敗：檔案唔係有效嘅進度 JSON'); }
       importFile.value='';
     };
@@ -931,12 +1163,72 @@ if(printBtn) printBtn.addEventListener('click',function(){
   document.querySelectorAll('details').forEach(function(d){ d.open=true; });
   window.print();
 });
-/* nav */
-document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){
-  var id=b.getAttribute('data-go'); var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'});
-  var bs=document.querySelectorAll('nav.tabs button'); bs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-go')===id); });
-});});
-showFlash(); updateOverview();
+/* nav + dashboard rendering */
+var VIEW_IDS=['study','analysis','settings','overview','notes','cases','flash','mc','shortq','mock','plan','howto'];
+function showView(id){
+  VIEW_IDS.forEach(function(v){ var el=document.getElementById(v); if(el) el.classList.toggle('active', v===id); });
+  var segBtns=document.querySelectorAll('.seg button');
+  var segTarget=(id==='analysis')?'analysis':(id==='settings')?'settings':'study';
+  for(var i=0;i<segBtns.length;i++){ segBtns[i].classList.toggle('active', segBtns[i].getAttribute('data-go')===segTarget); }
+  var mp=document.getElementById('menuPanel'); if(mp) mp.classList.remove('open');
+  var mb2=document.getElementById('menuBtn'); if(mb2) mb2.setAttribute('aria-expanded','false');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='shortq'&&!sqQueue.length&&!sqDone) startSq('continue');
+}
+document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ showView(b.getAttribute('data-go')); }); });
+var menuBtn=document.getElementById('menuBtn');
+if(menuBtn) menuBtn.addEventListener('click',function(){ var mp=document.getElementById('menuPanel'); var open=mp.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',open?'true':'false'); });
+var goModeBtns=document.querySelectorAll('.go-mode');
+for(var _gi=0;_gi<goModeBtns.length;_gi++){ goModeBtns[_gi].addEventListener('click',function(){
+  var v=this.getAttribute('data-view'), m=this.getAttribute('data-mode');
+  if(v==='mc') setMcMode(m); else if(v==='shortq') startSq(m);
+  showView(v);
+});}
+function setTxt(id,txt){ var el=document.getElementById(id); if(el) el.textContent=txt; }
+function countKeys(o){ return Object.keys(o).length; }
+function renderDash(){
+  var mcDone=0,mcRight=0; MC.forEach(function(q,i){ if(mcState[i]!==undefined){ mcDone++; if(mcState[i]===q.a) mcRight++; } });
+  var mcAcc=mcDone?Math.round(mcRight/mcDone*100):null;
+  var mcWrong=mcDone-mcRight, mcFlagN=countKeys(mcFlagged), mcDueN=0; Object.keys(mcSrs).forEach(function(k){ if(isDue(mcSrs[k])) mcDueN++; });
+  setTxt('mcStatSeen',mcDone); setTxt('mcStatAcc',mcAcc===null?'–':mcAcc+'%'); setTxt('mcStatAccSub',mcDone?('答對 '+mcRight+' / '+mcDone):'未開始');
+  setTxt('mcStatFlag',mcFlagN); setTxt('mcStatDue',mcDueN);
+  setTxt('mcCntContinue',MC.length-mcDone); setTxt('mcCntWrong',mcWrong); setTxt('mcCntAnswered',mcDone); setTxt('mcCntDue',mcDueN); setTxt('mcCntFlag',mcFlagN);
+  var catsEl=document.getElementById('mcCats');
+  if(catsEl){ catsEl.innerHTML=topics.map(function(t){ var tot=0,und=0; MC.forEach(function(q,i){ if(q.t===t){ tot++; if(mcState[i]===undefined) und++; } }); return '<button class="cat-row" data-cat="'+t+'"><span class="cn">'+t+'</span><span class="cm">未做 '+und+' · 共 '+tot+'</span></button>'; }).join(''); }
+  var sqRated=0,sqSum=0,sqSeenN=0; SQ.forEach(function(s,i){ if(sqAttempted(i)) sqSeenN++; if(sqRatings[i]!==undefined){ sqRated++; sqSum+=sqRatings[i]; } });
+  var sqAvg=sqRated?(sqSum/sqRated):null, sqFlagN=countKeys(sqFlagged), sqDueN=0; Object.keys(sqSrs).forEach(function(k){ if(isDue(sqSrs[k])) sqDueN++; });
+  var sqWeak=0; SQ.forEach(function(s,i){ if(sqRatings[i]!==undefined&&sqRatings[i]<3) sqWeak++; });
+  setTxt('sqStatSeen',sqSeenN); setTxt('sqStatAvg',sqAvg===null?'–':(Math.round(sqAvg*10)/10)); setTxt('sqStatAvgSub',sqRated?('已自評 '+sqRated+' 題'):'未自評');
+  setTxt('sqStatFlag',sqFlagN); setTxt('sqStatDue',sqDueN);
+  setTxt('sqCntContinue',SQ.length-sqSeenN); setTxt('sqCntWrong',sqWeak); setTxt('sqCntAnswered',sqRated); setTxt('sqCntDue',sqDueN); setTxt('sqCntFlag',sqFlagN);
+  var sqCatsEl2=document.getElementById('sqCats');
+  if(sqCatsEl2){ var groups={}; SQ.forEach(function(s,i){ var t=sqTopicOf(s); (groups[t]=groups[t]||[]).push(i); });
+    sqCatsEl2.innerHTML=Object.keys(groups).map(function(t){ var und=0; groups[t].forEach(function(i){ if(!sqAttempted(i)) und++; }); return '<button class="cat-row" data-sqcat="'+t+'"><span class="cn">'+t+'</span><span class="cm">未做 '+und+' · 共 '+groups[t].length+'</span></button>'; }).join(''); }
+  setTxt('gSeen',mcDone+sqSeenN); setTxt('gAcc',mcAcc===null?'–':mcAcc+'%'); setTxt('gFlag',mcFlagN+sqFlagN); setTxt('gDue',mcDueN+sqDueN);
+  setTxt('gCntContinue',MC.length-mcDone); setTxt('gCntWrong',mcWrong); setTxt('gCntDue',mcDueN+sqDueN); setTxt('gCntFlag',mcFlagN+sqFlagN); setTxt('gCntSq',SQ.length-sqSeenN);
+  setTxt('anMcAcc',mcAcc===null?'–':mcAcc+'%'); setTxt('anMcSub','已做 '+mcDone+' / '+MC.length);
+  setTxt('anSqAvg',sqAvg===null?'–':(Math.round(sqAvg*10)/10)+' / 5'); setTxt('anSqSub','已自評 '+sqRated+' / '+SQ.length);
+  setTxt('anWrong',mcWrong); setTxt('anDue',mcDueN+sqDueN);
+  var anEl=document.getElementById('analysisList');
+  if(anEl){ anEl.innerHTML=topics.map(function(t){ var tot=0,att=0,cor=0; MC.forEach(function(q,i){ if(q.t===t){ tot++; if(mcState[i]!==undefined){ att++; if(mcState[i]===q.a) cor++; } } }); var pct=att?Math.round(cor/att*100):0;
+    return '<div class="an-row"><div class="an-head"><b>'+t+'</b><span>'+(att?('正確率 '+pct+'% · 已做 '+att+' / '+tot):('未開始 · 共 '+tot+' 題'))+'</span></div><div class="progressbar"><i style="width:'+pct+'%"></i></div></div>'; }).join(''); }
+  var anSq=document.getElementById('analysisSq');
+  if(anSq){ var g2={}; SQ.forEach(function(s,i){ var t=sqTopicOf(s); (g2[t]=g2[t]||[]).push(i); });
+    anSq.innerHTML=Object.keys(g2).map(function(t){ var att=0,sum=0; g2[t].forEach(function(i){ if(sqRatings[i]!==undefined){ att++; sum+=sqRatings[i]; } }); var pct=att?Math.round(sum/att/5*100):0;
+    return '<div class="an-row"><div class="an-head"><b>'+t+'</b><span>'+(att?('平均 '+(Math.round(sum/att*10)/10)+' / 5 · 已自評 '+att+' / '+g2[t].length):('未自評 · 共 '+g2[t].length+' 題'))+'</span></div><div class="progressbar"><i style="width:'+pct+'%"></i></div></div>'; }).join(''); }
+}
+var resetBtn=document.getElementById('resetBtn');
+if(resetBtn) resetBtn.addEventListener('click',function(){
+  if(resetBtn.getAttribute('data-armed')==='1'){ try{ localStorage.removeItem(LS_KEY); }catch(e){} location.reload(); return; }
+  resetBtn.setAttribute('data-armed','1'); resetBtn.textContent='⚠ 再撳一次確認清除全部進度';
+  var rm=document.getElementById('resetMsg'); if(rm) rm.textContent='此操作不能復原（建議先匯出 JSON 備份）。';
+  setTimeout(function(){ resetBtn.removeAttribute('data-armed'); resetBtn.textContent='↺ 清除全部進度 Reset'; },4000);
+});
+showFlash(); updateOverview(); showView('study');
+window.addEventListener('beforeprint', function() {
+  document.querySelectorAll('details').forEach(function(d) { d.open = true; });
+});
+
 </script>
 </body>
 </html>
