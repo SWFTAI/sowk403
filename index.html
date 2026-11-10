@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>SOWK403 社工與法律溫書網頁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f3ec; --card:#fffdf8; --card2:#efe8d8; --ink:#1a2332; --muted:#5b6577; --line:#ddd3bd;
+  --navy:#16233a; --navy2:#22365a; --gold:#b98a1e; --gold-bg:#fdf3d7; --teal:#0f766e; --teal-bg:#e6f4f1;
+  --red:#b42318; --red-bg:#fdecea; --green:#067647; --green-bg:#e6f4ea; --radius:14px;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#10141d; --card:#1a2130; --card2:#232d42; --ink:#eef1f6; --muted:#a7b0c2; --line:#33405c; --navy:#0b1220; --gold-bg:#3a2f10; --teal-bg:#0f2f2c; --red-bg:#3a1714; --green-bg:#123324;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.65;font-size:16px}
+h1,h2,h3{font-family:"Noto Serif TC",serif;line-height:1.3;margin:0}
+a{color:var(--teal)}
+button,.btn{min-height:44px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;cursor:pointer;font-size:15px}
+button.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+button.gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+button.small{min-height:38px;padding:6px 14px;font-size:14px}
+button.active{background:var(--navy);color:#fff}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;width:100%}
+textarea{min-height:140px;resize:vertical}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 64px}
+/* header */
+.hero{background:var(--navy);color:#fff;padding:28px 0 22px}
+.hero .wrap{padding-bottom:0}
+.hero h1{font-size:clamp(26px,5vw,40px);font-weight:900}
+.hero h1 span{color:#e9c46a}
+.hero p{color:#cbd5e8;max-width:720px;margin:10px 0 0}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.badge.hot{background:#b98a1e;border-color:#b98a1e;color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px;text-align:center}
+.stat b{display:block;font-size:22px}
+.stat span{font-size:12px;color:#cbd5e8}
+/* nav */
+nav.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0}
+nav.tabs .wrap{padding-bottom:0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs button{white-space:nowrap;flex-shrink:0}
+section{padding:28px 0 6px;scroll-margin-top:78px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.sec-head h2{font-size:24px}
+.sec-head p{color:var(--muted);margin:4px 0 0;font-size:14px}
+/* cards */
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p,.card li{font-size:14.5px}
+.muted{color:var(--muted)} .small{font-size:13px}
+.tag{display:inline-block;font-size:12px;font-weight:800;padding:2px 9px;border-radius:999px;background:var(--teal-bg);color:var(--teal);margin:0 4px 4px 0}
+.tag.gold{background:var(--gold-bg);color:var(--gold)} .tag.navy{background:var(--card2);color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--card2)}
+details{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);margin-bottom:10px;overflow:hidden}
+summary{cursor:pointer;padding:16px 18px;font-weight:800;min-height:48px;display:flex;justify-content:space-between;gap:10px;align-items:center;list-style:none}
+summary::-webkit-details-marker{display:none}
+details .body{padding:0 18px 18px;border-top:1px solid var(--line)}
+details .body ul{margin:8px 0;padding-left:20px}
+.kbox{background:var(--gold-bg);border-radius:10px;padding:12px 14px;font-size:14px;margin:10px 0}
+.tbox{background:var(--teal-bg);border-radius:10px;padding:12px 14px;font-size:14px;margin:10px 0}
+/* progress */
+.progressbar{height:10px;background:var(--card2);border-radius:99px;overflow:hidden}
+.progressbar i{display:block;height:100%;background:var(--teal);width:0%;transition:width .3s}
+/* flashcard */
+.flash{perspective:1200px;max-width:640px;margin:0 auto}
+.flash-inner{position:relative;min-height:280px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.flash.flipped .flash-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px}
+.face.back{transform:rotateY(180deg);background:var(--navy);color:#fff;align-items:flex-start;text-align:left;overflow:auto}
+.face .q{font-size:20px;font-weight:800;font-family:"Noto Serif TC",serif}
+.face.back p,.face.back li{font-size:15px}
+/* quiz */
+.opt{display:block;width:100%;text-align:left;margin:8px 0;border-radius:12px}
+.opt.correct{background:var(--green-bg);border-color:var(--green);color:var(--green);font-weight:800}
+.opt.wrong{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+.explain{display:none;margin-top:12px}
+.explain.show{display:block}
+.filterrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filterrow button{min-height:38px;padding:6px 14px;font-size:14px}
+.scorepill{font-weight:900;font-size:18px}
+.timer{font-variant-numeric:tabular-nums;font-weight:900;font-size:22px}
+.checklist{list-style:none;padding:0;margin:0}
+.checklist li{padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);display:flex;gap:10px;align-items:flex-start}
+.checklist li::before{content:"☐";font-size:18px;line-height:1.4}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:22px 0;color:var(--muted);font-size:13px}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)} table{font-size:13px} th,td{padding:6px}}
+/* table horizontal scroll wrapper (JS wraps every table) */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:8px 0}
+.table-scroll table{margin:0}
+/* focus visibility */
+summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.flash:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+/* progress tools */
+.progress-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
+/* mock sticky bar */
+.mock-sticky{position:sticky;top:70px;z-index:15;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--card);border:1.5px solid var(--gold);border-radius:12px;padding:10px 14px;margin:14px 0;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.mock-sticky .timer{font-size:20px}
+/* flashcard: card itself is focusable for keyboard, text does not flip */
+.flash{outline-offset:4px}
+.flash-inner{cursor:default}
+/* short-q self rating */
+.sq-rate{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.sq-rate .rate-btn{min-height:36px;min-width:40px;padding:4px 10px;font-size:14px}
+.sq-rate .rate-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+/* back to top */
+#backTop{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;min-height:48px;padding:0;border-radius:50%;background:var(--navy);color:#fff;border-color:var(--navy);font-size:22px;line-height:1;opacity:.92;visibility:visible;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+@media(max-width:760px){.mock-sticky{top:64px}}
+@media(prefers-reduced-motion:reduce){.flash-inner{transition:none} html{scroll-behavior:auto} #backTop{transition:none}}
+@media print{
+  body{background:#fff;color:#000;font-size:11pt}
+  nav.tabs,#backTop,.mock-sticky,.filterrow,.progress-tools,.badges,button:not(.opt){display:none !important}
+  .hero{background:#fff;color:#000;padding:0 0 10px}
+  .hero p{color:#333}.hero h1 span{color:#000}.stats{display:none}
+  .wrap{max-width:none;padding:0 6px}
+  section{padding:10px 0;page-break-inside:avoid}
+  .card,details{background:#fff;border-color:#999;break-inside:avoid}
+  details .body{display:block}
+  .opt{border:1px solid #999;background:#fff;color:#000;text-align:left}
+  .explain{display:block}
+  .kbox,.tbox{background:#f2f2f2}
+  table{font-size:10pt}
+  a{color:#000;text-decoration:none}
+  textarea{border:1px solid #999;min-height:60px}
+  footer{color:#333}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div style="font-size:13px;letter-spacing:.12em;color:#e9c46a;font-weight:800">SAINT FRANCIS UNIVERSITY · SOWK403 / 613</div>
+    <h1>SOWK403 社工與法律 <span>溫書站</span></h1>
+    <p>照住你上傳嘅 L1–L9 講義（279 頁）+ Q1–Q20 導修案例整。老師已確認：<b style="color:#fff">考試只有 MC + Short Question，冇 Long Question</b>，考試佔全科 50%。今次更新：<b style="color:#fff">題目同答案改用英文（貼近考試語言），解釋中英並列；題目同選項次序可以洗牌</b>，唔使死記位置。</p>
+    <div class="badges">
+      <span class="badge hot">✓ 題型：MC + Short Q only</span>
+      <span class="badge">題庫合共 500 題（400 MC + 100 Short Q）</span>
+      <span class="badge">講師：Dr. Kwan Wai-hong Roger</span>
+      <span class="badge">導師：Vincent Chong</span>
+      <span class="badge">資料：L1–L9 + Q1–Q20</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>9</b><span>講課主題 L1–L9</span></div>
+      <div class="stat"><b>20</b><span>導修案例 Q1–Q20</span></div>
+      <div class="stat"><b id="statMc">400</b><span>MC 練習題</span></div>
+      <div class="stat"><b>100 + 28</b><span>Short Q · Flashcards</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs"><div class="wrap">
+  <button data-go="overview" class="active">總覽</button>
+  <button data-go="notes">重點筆記</button>
+  <button data-go="cases">案例庫 Q1–Q20</button>
+  <button data-go="flash">Flashcards</button>
+  <button data-go="mc">MC 練習</button>
+  <button data-go="shortq">Short Q 練習</button>
+  <button data-go="mock">模擬試</button>
+  <button data-go="plan">7 日衝刺</button>
+  <button data-go="howto">如何使用</button>
+</div></nav>
+
+<div class="wrap">
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="sec-head"><div><h2>點樣用呢個站溫書？</h2><p>MC 考「認得 + 分得清」，Short Q 考「Issue → Concept → Analysis → Conclusion」。兩種題型，兩套打法。</p></div></div>
+  <div class="grid g3">
+    <div class="card"><h3>① MC 打法：分清易混位</h3><p>出卷最鍾意考對比：刑事 vs 民事舉證標準、襲擊 vs 毆打、疏忽四元素、DCRVO 三種禁制令、監護令條件。MC 練習每題即對答案 + 解釋點解其他選項錯。</p><button class="small primary" data-go="mc">去練 MC →</button></div>
+    <div class="card"><h3>② Short Q 打法：ICAC 四步</h3><p>每條 Short Q 都跟呢個骨：<b>Issue</b>（爭議係咩）→ <b>Concept</b>（邊條法例／咩原則＋條文編號）→ <b>Analysis</b>（套返落事實）→ <b>Conclusion</b>（立場）。練習區有範答同畀分點，自己寫完先開嚟對。</p><button class="small primary" data-go="shortq">去練 Short Q →</button></div>
+    <div class="card"><h3>③ 案例係分數來源</h3><p>Q1–Q20 全部係老師揀嘅案例，Short Q 好可能就係改少少事實再問。案例庫每單都有 Issue / 法例 / 結果，背熟「案例名 + 一句判決」已經贏一半。</p><button class="small primary" data-go="cases">去案例庫 →</button></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>你問嘅三件事 · 今次點改</h3>
+    <p><b>1. 題目係咪全部固定？</b>題庫本身係固定嘅——合共 500 條題目（400 條 MC + 100 條 Short Q），全部按你上傳嘅 L1–L9 講義同 Q1–Q20 案例出，覆蓋晒每個主題、有淺有深，唔會無啦啦變出範圍外嘅題。但<b>次序唔再固定</b>：MC 練習可以洗牌題目次序同選項次序（正確答案嘅位置每次都唔同）、模擬試每次隨機抽 10 條 MC + 2 條 Short Q、Flashcards 有隨機抽卡。所以要認內容，唔好記「第幾題答 B」。</p>
+    <p><b>2. 語言點安排？</b>已改：MC、Short Q 同 Flashcards 嘅<b>題目同答案用英文</b>（同考試用語一致）；<b>解釋、畀分點就中英並列</b>——英文講法跟足法例同案例原文，中文幫你快速理解同記位。重點筆記同案例庫維持中文為主，方便你速讀。</p>
+    <p><b>3. 你有咩可以幫手？要唔要去 GitHub 下載開源工具畀我？</b><b>唔使，唔好亂下載。</b>呢個網頁係自包含嘅，唔需要任何額外工具先做到洗牌、英文題目呢啲功能；隨便裝嚟歷不明嘅程式反而有安全風險。真正幫到手嘅係資料，唔係工具：① L10–L12 嘅 slides 一出就上傳畀我補返；② 老師如果派 past paper、sample questions 或溫習提示，影相／上傳畀我，我可以照真題風格加題；③ 你做完題覺得邊題答案同課堂講法唔同，話我知邊課邊題，我即刻核對改返。</p>
+  </div>
+
+  <div class="kbox"><b>⚠️ 範圍提示（要老實講）：</b> L10 個人資料及起底（11/11）、L11 性騷擾（11/18）、L12 行為守則／專業操守（11/25）三課未上堂、冇 slides。不過 Q17（私隱／起底）、Q19（性騷擾）、Q18（專業操守）+ Q20（強制舉報虐兒，2026 年 1 月生效）已經覆蓋晒呢四個主題，呢頁會照納入溫習範圍，上完堂記得用新 slides 核對一次。</div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>題庫總數：500 題 · 你已做幾多？（進度會自動儲存喺呢部裝置嘅瀏覽器）</h3>
+    <div style="display:grid;gap:10px;margin-top:10px">
+      <div><div style="display:flex;justify-content:space-between"><span>MC 已答對</span><b id="ovMc">0 / 400</b></div><div class="progressbar"><i id="barMc"></i></div></div>
+      <div><div style="display:flex;justify-content:space-between"><span>Flashcards 已翻</span><b id="ovFl">0 / 28</b></div><div class="progressbar"><i id="barFl"></i></div></div>
+      <div><div style="display:flex;justify-content:space-between"><span>Short Q 已睇範答</span><b id="ovSq">0 / 100</b></div><div class="progressbar"><i id="barSq"></i></div></div>
+    </div>
+    <div class="progress-tools">
+      <button id="exportBtn" class="small" aria-label="匯出進度 JSON Export progress as JSON">⬇ 匯出進度 Export JSON</button>
+      <button id="importBtn" class="small" aria-label="匯入進度 JSON Import progress from JSON">⬆ 匯入進度 Import JSON</button>
+      <input type="file" id="importFile" accept=".json,application/json" hidden aria-label="選擇要匯入嘅進度 JSON 檔案">
+      <button id="printBtn" class="small" aria-label="列印或儲存為 PDF Print or save as PDF">🖨 列印／儲存 PDF</button>
+      <span id="progressMsg" class="muted small" role="status" aria-live="polite"></span>
+    </div>
+    <p class="muted small" style="margin:10px 0 0">進度（MC 答題記錄、Flashcards 已翻、Short Q 已睇範答、草稿、自評同 MC 題目次序）會儲存在此裝置／瀏覽器；換裝置或想備份，可以匯出 JSON，再喺另一部裝置匯入。</p>
+  </div>
+
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><h3>最易混淆 · 一表分清</h3>
+      <table><tr><th>對比</th><th>分別</th></tr>
+      <tr><td>刑事 vs 民事</td><td>刑事：國家 vs 被告、<b>無合理疑點</b>、懲罰；民事：個人 vs 個人、<b>相對可能性</b>、賠償／禁制令</td></tr>
+      <tr><td>Assault vs Battery</td><td>Assault＝令對方預期即時非法武力（未掂到）；Battery＝實際非法使用武力</td></tr>
+      <tr><td>Actus reus vs Mens rea</td><td>前者＝犯罪行為（含不作為＋因果）；後者＝犯罪意圖（意圖／罔顧／疏忽）</td></tr>
+      <tr><td>基本法 Art 36 vs 145</td><td>36＝福利權（受比例原則審查）；145＝政府按經濟／社會需要制訂福利政策</td></tr>
+      <tr><td>疏忽 vs 佔用人責任</td><td>疏忽＝一般謹慎責任；Cap 314＝佔用人對訪客嘅「一般謹慎責任 common duty of care」</td></tr>
+      </table>
+    </div>
+    <div class="card"><h3>必背條文編號速查</h3>
+      <table><tr><th>條文</th><th>內容</th></tr>
+      <tr><td>基本法 Art 8 / 18 / 158 / 159</td><td>原有法律保留／法律來源／解釋權（人大常委）／修改權</td></tr>
+      <tr><td>OAPO Cap 212 s.40 / 39 / 19 / 17 / 27 / 47C</td><td>普通襲擊 1 年／ABH 3 年／GBH 3 年／意圖 GBH 終身／虐兒 3–10 年／殺嬰</td></tr>
+      <tr><td>Crimes Ordinance Cap 200 s.118 / 122 / 146</td><td>強姦 終身／非禮 10 年／向 16 歲以下兒童粗獷猥褻 10 年（同意唔係抗辯）</td></tr>
+      <tr><td>DCRVO Cap 189 s.3 / s.5</td><td>不騷擾令・遷出／重返令；附逮捕授權書條件</td></tr>
+      <tr><td>MHO Cap 136 s.59K / 59M / 59N</td><td>監護委員會／申請監護／邊個可申請（親屬・社工・醫生・社署公職人員）</td></tr>
+      <tr><td>PDPO Cap 486 DPP1–6 + 2021 修訂</td><td>六大保障資料原則；起底兩級制：即決 $100,000＋2 年／公訴 $1,000,000＋5 年</td></tr>
+      <tr><td>強制舉報虐兒 Cap 650</td><td>25 類指明專業人員（含註冊社工）；唔報：$50,000 罰款，公訴另加監禁 3 個月；2026 年 1 月生效</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section id="notes">
+  <div class="sec-head"><div><h2>重點筆記 L1–L9 + L10–L12 補充</h2><p>每課只抽考試會問嘅位：定義、元素、條文、案例一句講完。撳開嚟睇。</p></div></div>
+
+  <details open><summary><span>L1–L2 香港法律制度</span><span class="tag gold">根基 · MC 高頻</span></summary><div class="body">
+    <ul>
+      <li><b>法律來源（位階）：</b>《基本法》最高 ＞ 成文法（條例＝主要立法；規例／附例＝附屬立法）＞ 案例法（普通法＋衡平法）＞ 中國習慣法（新界土地、子女合法地位）。Art 8 保留原有法律，Art 18 列明特區法律。</li>
+      <li><b>普通法特點：</b>法官造法、跟先例、抗辯式制度（adversarial，法官被動、中立）；衡平法補救普通法嘅僵化 — 例：Wong Chim Ying v Cheng Kam Wing，衡平權益可凌駕法律業權。</li>
+      <li><b>法治 Rule of Law：</b>Dicey 三點 — 法律至上、人人喺法律面前平等、憲法原則源自司法判決；現代版再加：政府行為要有法律依據、限制酌情權、獨立法官審政府行為、政府唔應有不必要特權。</li>
+      <li><b>三權分立／分工：</b>立法（制訂／修改／廢除）、行政（執行）、司法（裁斷）；基本法 Art 43–65 行政、66–79 立法、80–96 司法；互相制衡（如司法覆核）。</li>
+      <li><b>司法獨立：</b>廣義＝司法不受行政立法干擾；狹義＝判案不受任何一方干擾。保障：法官任命（Art 88/90、司法人員推薦委員會 Cap 92）、任期保障（Art 89）、民事豁免（Art 85）。金句：Justice must not only be done, but must be seen to be done.</li>
+      <li><b>法院架構：</b>終審法院 ＞ 高等法院（上訴法庭＋原訟法庭）＞ 區域法院（民事 $50,000–$1,000,000；刑事最高 7 年）＞ 裁判法院（只審刑事，罰款 $100,000／監禁 2 年；L2 補充：單一控罪 2 年、兩罪以上 3 年）＞ 小額錢債審裁處（≤$75,000，唔准律師代表）。專門：少年法庭、勞資審裁處、土地審裁處、死因裁判法庭、家事法庭。</li>
+      <li><b>Art 158：</b>基本法解釋權喺人大常委；特區法院獲授權自行解釋自治範圍內條文；涉及中央負責事務或中央與特區關係，終審前要經終院提請人大常委解釋，並須跟從。Art 159：修改權屬全國人大。</li>
+      <li><b>立法程序：</b>一讀 → 二讀 → 委員會階段 → 三讀 → 行政長官簽署 → 刊憲。附屬立法唔可以 ultra vires（超越主體法例授權）。原則上無追溯力。</li>
+    </ul>
+    <div class="tbox"><b>社工連結：</b>《社工註冊條例》Cap 505 s.17 — 被裁定干犯令專業聲譽受損嘅罪行，註冊局可拒絕註冊。所以國安法唔係「同社工無關」。</div>
+  </div></details>
+
+  <details><summary><span>L3 刑事法 Criminal Law</span><span class="tag gold">元素題必考</span></summary><div class="body">
+    <ul>
+      <li><b>功能：</b>保護社會、維持秩序、阻嚇、隔離（監禁）、更生（非監禁刑罰）、報應。檢控：警察拘捕 → 律政司檢控 → 法院審判；控方要證明全部元素，標準＝<b>無合理疑點</b>，無罪推定。</li>
+      <li><b>Actus reus 犯罪行為：</b>被禁止嘅行為，亦包括「有法律責任而不作為」— OAPO s.27 照顧兒童責任；R v Stone &amp; Dobinson（自願承擔照顧責任後無召喚協助，誤殺）；R v Miller（瞓覺整着火，醒後唔救火都有責任）。</li>
+      <li><b>因果關係 Causation：</b>「but for」測試。R v Pagett（用人質做盾，警察還擊打死人質 — 警察自衛屬合理行為，唔斷因果鏈）；R v Smith（醫療失誤唔斷鏈，刺傷仍係 operative cause）；R v Jordan（異常醫療處理斷鏈）；R v Cheshire（兩個月後死，責任唔被排除）。第三方「蓄意」行為先會斷鏈。</li>
+      <li><b>Mens rea 犯罪意圖：</b>意圖 intention／罔顧 recklessness／疏忽 negligence 三級。</li>
+      <li><b>否定責任：</b>年齡（10 歲以下唔負刑責；10–14 歲另有原則）、精神錯亂 insanity、自動行為 automatism、醉酒 intoxication、受脅迫 duress／必要 necessity、自衛（見 Q9）。</li>
+      <li><b>罪行分類：</b>簡易程序罪行／嚴重可公訴罪行（原訟法庭陪審團 7 人、5:2 多數裁決）／兩者皆可審。</li>
+      <li><b>盜竊 Theft Ordinance s.2(1) 四元素：</b>不誠實、挪佔、屬於他人嘅財產、意圖永久剝奪。</li>
+    </ul>
+    <div class="kbox"><b>答題骨（老師 L3 原稿）：</b> ① Identify issues ② Relevant legal concepts（咩行為？有冇被禁止？咩意圖？）③ 用概念分析（有冇抗辯如同意？）④ Conclusion 講立場。</div>
+  </div></details>
+
+  <details><summary><span>L4 成人法：家暴・OAPO・DCRVO</span><span class="tag gold">社工實務高頻</span></summary><div class="body">
+    <table><tr><th>OAPO Cap 212</th><th>最高刑罰</th></tr>
+    <tr><td>s.40 普通襲擊</td><td>1 年</td></tr><tr><td>s.39 襲擊致 ABH</td><td>3 年</td></tr>
+    <tr><td>s.19 GBH</td><td>3 年</td></tr><tr><td>s.17 意圖造成 GBH（malice＋武器）</td><td>終身</td></tr>
+    <tr><td>s.2 謀殺 / s.7 誤殺</td><td>終身（誤殺另可罰款）</td></tr><tr><td>s.27 虐待／忽略兒童</td><td>3–10 年</td></tr></table>
+    <ul>
+      <li><b>Assault</b>＝展示暴力威脅，令對方合理相信武力即將被使用（apprehend immediate unlawful violence）；<b>Battery</b>＝實際、蓄意、非法使用武力。Common assault 包晒兩者而無加重情節。</li>
+      <li><b>家暴特點：</b>跨階層、長遠影響、形式多樣殘酷、循環重複、受害人多依賴施虐者、懲罰施虐者反而連累受害人（如經濟）。刑事法局限：要等傷害發生、舉證難、後果未必保護到受害人。</li>
+      <li><b>DCRVO Cap 189（民事補救）：</b>申請人＝配偶／同居者（及同住嘅指明未成年人 specified minor）；針對＝配偶／前配偶／同居者／前同居者；理由＝騷擾 molestation（跟蹤、截停、辱罵信件、滋擾電話、纏擾、任何需要法院介入嘅 harassment）。</li>
+      <li><b>法庭可批：</b>不騷擾令 non-molestation order s.3(1)(a)/(b)（可加 s.3(1A) 要求參加改變態度行為嘅課程）、遷出令／重返令 exclusion / entry order s.3(1)(c)。區域法院考慮：雙方行為、各自需要同財政資源、未成年人需要、全部情況。</li>
+      <li><b>逮捕授權書 s.5：</b>附於禁制令嘅條件 — 法庭信納已造成 ABH，或合理相信好可能造成 ABH；可於批令時或令有效期間任何時間附加。</li>
+    </ul>
+  </div></details>
+
+  <details><summary><span>L5 兒童法 Child Law</span><span class="tag gold">福利原則必背</span></summary><div class="body">
+    <ul>
+      <li><b>離婚唯一理由：</b>婚姻已破裂至無可挽救（Matrimonial Causes Ordinance Cap 179 s.11A），靠五個事實證明：① 通姦 ② 不合理行為 ③ 雙方同意下分居 1 年 ④ 分居 2 年 ⑤ 遺棄 1 年。</li>
+      <li><b>福利原則 Welfare Principle（GMO Cap 13 s.3(1)）：</b>兒童最佳利益係<b>首要同最重要</b>考慮；要考慮兒童可確定嘅意願（按年齡理解）、社署署長報告等資料；唔可以單純比較父定母嘅權利邊個大。</li>
+      <li><b>福利清單重點：</b>兒童意願感受、身心及教育需要、與父母及他人關係、環境改變嘅影響、年齡成熟度背景、已受或可能受嘅傷害、家庭暴力、父母照顧能力、法院可用權力範圍。</li>
+      <li><b>贍養：</b>定期付款／一筆過；考慮兒童財政需要資源、殘疾、破裂前生活水平、教育方式；一般到 18 歲，全日制教育／培訓可延長。附屬濟助 ancillary relief 包括財產轉移、出售、整付等九類命令（Cap 179A r.68）。</li>
+      <li><b>虐兒定義：</b>任何作為或不作為，危害兒童身體、心理、情緒健康同發展 — 身體／心理／性虐待、嚴重忽略、兒童賣淫。</li>
+      <li><b>OAPO s.27：</b>故意襲擊、虐待、忽略、遺棄兒童，令其不必要受苦或健康受損（如唔提供足夠食物衣物住宿，或明知無能力都唔向機構求助）。</li>
+      <li><b>PCJO Cap 213 s.34(2) 需要照顧或保護嘅兒童：</b>已被／正被襲擊虐待忽略或性虐待；健康發展福利被忽略或可避免地受損；好可能被忽略受損；不受控制到可能傷害自己或他人。社署署長可做法定監護人、發照顧令／監管令（監管最長 3 年）。</li>
+      <li><b>性罪行（Crimes Ordinance）：</b>與 13 歲以下女童性交＝終身；16 歲以下＝5 年；向 16 歲以下兒童粗獷猥褻＝10 年；促使兒童賣淫＝10 年。</li>
+      <li><b>處理流程：</b>轉介 → 兒童評估 → 多專業個案會議 MDCC → 共同決定（如交託他人／機構照顧）。難點：刑事制裁要等傷害發生、neglect 概念唔清晰。</li>
+    </ul>
+  </div></details>
+
+  <details><summary><span>L6 精神健康・遺囑認證・法律援助</span><span class="tag gold">定義題溫床</span></summary><div class="body">
+    <ul>
+      <li><b>MHO Cap 136 s.2 定義：</b>精神紊亂 mental disorder＝精神病／心智發展受阻或不完全而顯著損害智能同社交功能並伴異常侵略或嚴重不負責任行為／精神病理障礙／其他心智障礙（唔包括弱智）；弱智 mental handicap＝一般智能低於平均（IQ ≤ 70，韋氏量表）＋適應行為缺損；MIP 精神上無行為能力的人＝精神紊亂或弱智到不能獨立生活或防範嚴重剝削。</li>
+      <li><b>MHO 結構：</b>Part II 財產及事務管理（s.10A/B 法院權力、s.11 委任產業受託監管人 committee）；Part III 接收及羈留（s.30 自願病人、s.31/32 觀察病人 — 法官／裁判官按 1 名醫生意見、s.36 證明病人 — 2 名醫生）；Part IVA 精神健康覆核審裁處（s.59E）；Part IVB 監護委員會。</li>
+      <li><b>申請監護（s.59M/N）：</b>基於 2 名註冊醫生書面報告＋社會調查報告（s.59P）；可申請者：親屬、社工、註冊醫生、社署公職人員；對象須年滿 18 歲。</li>
+      <li><b>批出監護令四條件：</b>① 有精神紊亂或弱智 ② 因而喺個人事務重大範圍內做唔到合理決定 ③ 只有監護先滿足到需要、無其他較少限制方法 ④ 符合其福利利益或為保護他人。監護人可決定居所、同意醫療／牙科治療、管理每月上限 <b>$10,500</b>（講義數字）。委員會原則：MIP 利益 + 其意願（s.59K(2)）。唔滿意：上訴法院／申請覆核／申請指示／向委員會投訴。</li>
+      <li><b>三件平安事 IOP：</b>平安紙 Will（死後資產分配）、持久授權書 EPA Cap 501（授權處理財政法律事務）、預設醫療指示 AD（無能力時嘅醫療意願）。</li>
+      <li><b>遺囑四要素：</b>立遺囑人 testator、執行人 executor、受益人 beneficiary、資產 asset。Probate＝法院認證遺囑真確、批出遺囑認證授權執行人管理遺產。陳振聰偽造龔如心遺囑案：偽造文件最高 14 年（Crimes Ordinance）。</li>
+      <li><b>無遺囑 Cap 73 s.4：</b>有配偶無後嗣無父母兄弟姊妹 → 配偶全取；有配偶有後嗣 → 配偶先取個人財物 + $500,000（同父母／兄弟姊妹分享時 $1,000,000）後再分一半；完全無親屬 → 歸政府 bona vacantia。</li>
+      <li><b>法律援助兩關：</b>經濟審查 means test（可動用收入 ×12 + 可動用資本；60 歲以上有資本豁免額）+ 案情審查 merits test（有合理勝算、判決可執行、案件對申請人重要性）。署長經法律援助署批法援證書。</li>
+    </ul>
+  </div></details>
+
+  <details><summary><span>L7 侵權法 Tort — 疏忽係重心</span><span class="tag gold">四元素必考</span></summary><div class="body">
+    <p><b>侵權</b>＝侵犯個人利益嘅民事過錯；功能＝保障權利、補償損失；救濟主要係損害賠償 damages，亦可禁制令。保障利益：人身（身體完整、名譽）、財產（土地、動產、享受）、經濟（欺騙造成嘅純經濟損失）。</p>
+    <table><tr><th>疏忽四元素</th><th>問咩</th><th>關鍵案例／原則</th></tr>
+    <tr><td>① 謹慎責任 Duty</td><td>被告有冇欠原告責任？</td><td>Donoghue v Stevenson 鄰居原則；Caparo 三步：可預見 + 關係密切 proximity + 施加責任屬公平公正合理</td></tr>
+    <tr><td>② 違反責任 Breach</td><td>有冇做到合理謹慎人會做嘅？</td><td>客觀標準；睇：傷害可能性、被告認知、受害人脆弱性、後果嚴重性、防範成本可行性、慣常做法（Bolton v Stone 板球 30 年飛出 6 次 — 風險太細）</td></tr>
+    <tr><td>③ 因果 Causation</td><td>損失係咪由違反造成？</td><td>事實因果 but-for + 實質貢獻；法律因果：新介入行為 novus actus 是否斷鏈</td></tr>
+    <tr><td>④ 損失 Damage</td><td>邊種損失要賠？</td><td>損失「種類」要可預見，方式唔使（Jolley v Sutton）；程度唔使可預見 — 薄頭骨原則 thin skull（Smith v Leech Brain 燒傷觸發癌症，賠死亡）</td></tr></table>
+    <ul>
+      <li><b>鄰居原則原話意思：</b>要合理小心，避免可合理預見會傷害「鄰居」嘅作為或不作為；鄰居＝受你行為密切直接影響、你理應預想到嘅人。</li>
+      <li><b>Wagon Mound (No.1)：</b>漏油可預見嘅係污染唔係火災，火災損失種類唔同 → 唔賠。</li>
+      <li><b>Luen Hing Fat v Waan Chuen Ming (2011) CFA：</b>工廠東主借出設備、主管明知承辦商用唔安全方法都唔阻止 → 三步全中，有謹慎責任。人身安全唔可以為慳錢犧牲。</li>
+      <li><b>抗辯：</b>共分疏忽 contributory negligence（Cap 23 s.21 按責任比例扣減賠償 — 部分抗辯）、自願承擔風險 volenti（知情＋自願同意 — 完全抗辯）、非法性 illegality（損失源於自己罪行 — 完全抗辯）。</li>
+      <li><b>佔用人責任 Cap 314 s.3：</b>佔用人（對處所有足夠控制權嘅人，可多於一個）對所有訪客負「一般謹慎責任」— 採取一切情況下合理嘅謹慎，令訪客為獲邀目的使用處所時合理安全。只警告唔一定免責（s.3(4)(a)）：警告要足以令訪客合理安全，要睇位置、點引起注意、夠唔夠具體。分 occupancy duty（處所狀態，如濕滑地面要拖地）vs activity duty（活動本身危險，唔屬本條例）。訪客唔包括擅進者 trespasser。</li>
+      <li><b>妨擾 Nuisance：</b>私人妨擾＝不當干擾他人使用／享受土地（侵入、直接物理損害、干擾安寧享受；例：漏水 Leung Tsang Hung v IO of Kwok Wing House)；公眾妨擾＝危害公眾生命安全健康財產舒適，或妨礙公眾行使共同權利 + 原告受特別損害 + 種類可預見。</li>
+      <li><b>侵犯人身（故意侵權）：</b>Assault（令對方預期即時非法武力）、Battery（實際施加非法武力）、False imprisonment（無合法理由完全限制行動自由）— 全部 actionable per se，唔使證明損失。</li>
+      <li><b>轉承責任 Vicarious liability：</b>無過失都要為他人侵權負責，兩步：① 被告同侵權者關係（僱主僱員 — 睇控制程度、盈虧風險、係咪組織一部分、用邊個設備等；Poon Chau Nam) ② 關係同過錯有密切關連 close connection（Ming An v Ritz-Carlton）。</li>
+      <li><b>時限 Limitation Ordinance Cap 347：</b>人身傷害 3 年（s.27）；一般侵權 6 年（s.4）；契據 specialty 12 年。</li>
+      <li><b>社工活動風險五步（Q16）：</b>辨識危害 → 誰會受害 → 評估風險 → 記錄結果 → 覆檢。加實務：事前場勘、路線設計、家長同意、天氣、人手比例、保險、緊急應變。</li>
+    </ul>
+  </div></details>
+
+  <details><summary><span>L8 人權 + L9 Kong Yun-ming 司法覆核</span><span class="tag gold">Short Q 熱門</span></summary><div class="body">
+    <ul>
+      <li><b>人權特質：</b>最基本權利、生而有之、<b>不可剝奪 inalienable、普遍 universal</b>（不分年齡種族貧富殘疾）、全天候存在；本質係道德權利 moral rights — 未納入法律前法院唔會強制執行，最終責任人係國家。權利唔係絕對：可受公共秩序、安全、他人權利限制。</li>
+      <li><b>國際框架：</b>UDHR 1948（12 月 10 日人權日，係宣言唔係法律）；ICCPR + ICESCR 1966 合稱國際人權法案；本地落實：《基本法》Art 39 + 《人權法案條例》Cap 383。自由派（Mill：限制自由只為防傷害他人）vs 社群／義務本位（尊嚴來自履行崗位義務；如中國唔將公民政治權利排喺經濟社會文化權利之上）。</li>
+      <li><b>司法覆核 JR：</b>挑戰公權決定嘅<b>程序／合法性</b>，唔係決定本身啱唔啱；救濟如 mandamus（命令去做）、prohibition（禁止去做）；要用盡其他補救先上法院。香港保障框架仲有：中英聯合聲明、傳媒、公民社會；限制例子：公安條例。</li>
+      <li><b>ECHR 與社工：</b>Art 2 生命（安樂死／墮胎）、3 禁酷刑（院舍照顧標準）、5 自由安全（羈留、同意入院）、6 公平審訊、8 私人及家庭生活（查閱通信、保密）、10 表達、12 結婚組織家庭、13 有效補救。</li>
+      <li><b>Kong Yun-ming v Director of Social Welfare (2013) CFA — 必背：</b>孔允明 2005 年持單程證來港翌日丈夫去世，未滿 7 年居港被拒綜援兼失去公屋。爭議條文：Art 36 福利權、Art 145 政策制訂權、Art 25 法律面前平等、人權法案 Art 22 不受歧視。</li>
+      <li><b>比例原則分析（CFA）：</b>限制權利要 ① 有合法社會目的 ② 與目的有合理關連 rationally connected ③ 唔可以明顯無合理基礎 manifestly without reasonable foundation（完整版四步再加：唔超越必要 + 社會得益與個人權利合理平衡）。</li>
+      <li><b>點解政府輸：</b>「慳錢」本身唔係合法目的；7 年要求同單程證家庭團聚政策 + 人口 rejuvenation 政策相衝突；慳到嘅錢微不足道；申請人若非 7 年要求本合資格、生活低於署方基本需要標準，7 年要求等於抽走安全網（para 44）。結果：7 年要求違憲，上訴得直。</li>
+      <li><b>對照 Yao Man Fai George v DSW (2010)：</b>1 年連續居港要求被裁違憲（違反 Art 25 平等 + Art 31 遷徙自由；受影響者只佔申請人 4.7%、多數獲豁免，政府證明唔到真正需要）。CFI 當年反而維持 Kong 嘅 7 年要求，到 CFA 先推翻。</li>
+    </ul>
+  </div></details>
+
+  <details><summary><span>L10–L12 補充：私隱／起底・性騷擾・專業操守・強制舉報</span><span class="tag">未有 slides · 靠 Q17–Q20</span></summary><div class="body">
+    <ul>
+      <li><b>PDPO Cap 486 六大原則 DPP：</b>1 收集目的及方式（合法公平、必要不過量、要通知）2 準確及保留期限 3 使用（只限原目的）4 保安 5 透明（資料政策公開）6 查閱及改正。</li>
+      <li><b>Eastweek v Privacy Commissioner (1999) CA：</b>街頭偷拍相片刊登 — 上訴庭推翻原訟庭：決定有冇違反 DPP1(2)(b) 要兩元素齊 — ① 有「收集個人資料」行為 ② 手段不公平。本案裁定根本無「收集」呢個行為，DPP1 唔被觸發，專員決定被撤銷。</li>
+      <li><b>2021 起底修訂（背景：2019 社會事件）：</b>未經同意披露個人資料 + 意圖或罔顧造成指明傷害 — 一級（簡易）$100,000 + 2 年；二級（公訴）$1,000,000 + 5 年；保護埋家人；私隱專員獲刑事調查、檢控及發停止通知權力。</li>
+      <li><b>性騷擾 SDO Cap 480 s.2(5)：</b>向女性作出不受歡迎嘅性行進／性要求，或其他不受歡迎涉及性嘅行徑，而合理人會預期佢感到受冒犯、侮辱或威嚇；s.2(7)「涉及性嘅行徑」包括口頭或書面涉及性嘅陳述。s.39(3)：學生性騷擾同校女性屬違法。Yuen Sha Sha v Tse Chi Pan (1998)：課室裝 camcorder 偷拍更衣 — 感情損害賠償 $50,000 + 加重 $10,000 + 懲罰性 $20,000 + 書面道歉（s.76)。Cheng Yin Fong 案：原告只係屋苑訪客，對管理公司等無企位 locus standi — 無案可答。</li>
+      <li><b>專業操守（Q18）：</b>《社工工作守則》第 14 段 — 社工喺任何情況下都唔可以同服務使用者有任何性活動或性接觸，不論自願或被迫（14.1 唔可性交、14.2 唔可愛撫刺激性器官）。Lee Kwok Wah 案：註冊局按 Cap 505 s.25(1)(a) 經紀律研訊後<b>永久除名</b>。預防：唔單獨見服務使用者、保持距離、CCTV、舉報機制、加強監管。</li>
+      <li><b>非禮 vs 強姦（成日撈亂）：</b>非禮 s.122 — 施襲者可男可女、行為由觸摸到非插入式性侵犯、最高 10 年、16 歲以下不能合法同意；強姦 s.118 — 只限男性、必須陰莖插入陰道（最輕微插入已足夠、唔使射精）、最高終身。</li>
+      <li><b>強制舉報虐兒 Cap 650（2026 年 1 月生效）：</b>25 類指明專業人員（含註冊社工、教師、醫護、臨床／教育心理學家）喺工作期間有合理理由懷疑兒童（&lt;18 歲）正遭受<b>嚴重傷害</b>或有實質風險，要喺切實可行範圍內盡快向社署署長或警務處處長舉報。例外：純意外（非疏忽造成）、兒童自傷、其他兒童造成（非性質行為）、社署／警方已通知同一事件、合理相信另一指明人員已報。唔報：簡易定罪罰款第 5 級 $50,000；公訴再加監禁 3 個月（s.5 有法定抗辯）。保護：阻礙舉報或披露舉報人身份屬罪行（s.9/11）；舉報本身免民事刑事責任同專業守則追究（s.12)。</li>
+    </ul>
+    <div class="kbox"><b>對社工嘅張力位（Short Q 好材料）：</b>保密原則 vs 強制舉報 — 法律凌駕守則，舉報唔算違反保密；但要向案主解釋「保密有法律界限」，唔可以承諾絕對保密。</div>
+  </div></details>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="sec-head"><div><h2>案例庫 Q1–Q20</h2><p>老師揀嘅 20 個導修案例。搜尋或按主題篩選；每張卡背熟「事實一句 + 法例 + 結果」。</p></div></div>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px;margin-bottom:12px">
+    <input id="caseSearch" type="search" placeholder="🔍 搜尋案例名、法例、關鍵字… 例：疏忽 / 國安 /綜援">
+    <select id="caseFilter"><option value="">全部主題</option><option>國安與法治</option><option>刑事</option><option>家暴與成人</option><option>兒童</option><option>家庭與精神健康</option><option>人權與司法覆核</option><option>侵權</option><option>私隱・操守・性騷擾</option></select>
+  </div>
+  <div class="grid g2" id="caseGrid"></div>
+  <p class="muted small" id="caseCount"></p>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="flash">
+  <div class="sec-head"><div><h2>Flashcards 背誦卡</h2><p>Questions in English, answers in English + 中文。用「翻轉」掣睇答案（撳卡面文字唔會翻），先自己諗咗先翻 — 主動回想先記得入腦；撳「隨機抽」就唔會固定次序。鍵盤：聚焦張卡後，Space / Enter 翻卡，← → 換卡。</p></div></div>
+  <div class="flash" id="flashCard" tabindex="0" role="region" aria-label="Flashcard，按 Space 或 Enter 翻卡，左右方向鍵換卡"><div class="flash-inner">
+    <div class="face"><div class="tag gold" id="flTopic"></div><div class="q" id="flQ"></div><div class="muted small">撳下面「翻轉」掣睇答案 · <span id="flIdx"></span></div></div>
+    <div class="face back"><div class="tag">答案</div><div id="flA"></div></div>
+  </div></div>
+  <div style="display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+    <button id="flPrev" aria-label="上一張 Flashcard Previous card">← 上一張</button><button id="flFlip" class="gold" aria-label="翻轉 Flashcard Flip card">🔄 翻轉 Flip</button><button id="flShuffle" aria-label="隨機抽一張 Flashcard Random card">🔀 隨機抽</button><button id="flNext" class="primary" aria-label="下一張 Flashcard Next card">下一張 →</button>
+  </div>
+</section>
+
+<!-- MC -->
+<section id="mc">
+  <div class="sec-head"><div><h2>MC 練習（400 題）</h2><p>Questions and answers in English; explanations in English + 中文。即做即對，每題揀完即刻出解釋。題庫固定（全部來自你嘅講義同案例），但題目次序同選項位置可以洗牌，唔好死記答案位置。</p></div>
+  <div style="text-align:right"><span class="muted small">得分</span> <span class="scorepill" id="mcScore">0 / 0</span></div></div>
+  <div class="filterrow" id="mcFilters"></div>
+  <div class="filterrow" id="mcStatusFilters" role="group" aria-label="按完成狀態篩選 MC Filter by completion status"><button data-s="" class="active" aria-label="顯示全部 MC Show all">全部 All</button><button data-s="undone" aria-label="只顯示未做嘅 MC Show not done only">未做 Not done</button><button data-s="wrong" aria-label="只顯示答錯嘅 MC Show wrong answers only">錯題 Wrong</button></div>
+  <div class="filterrow"><button id="mcShuffleQ" aria-label="洗牌題目次序 Shuffle question order">🔀 洗牌題目次序 Shuffle questions</button><button id="mcShuffleO" aria-label="洗牌選項並重做 Shuffle options and restart">🔀 洗牌選項 + 重做 Shuffle options &amp; restart</button><button id="mcReset" aria-label="清除 MC 答案 Reset answers">↺ 清除答案 Reset</button><span class="muted small" style="align-self:center">每次練習都可以洗牌：題目次序同 A/B/C/D 位置都會變，要認內容，唔好認位置。答完一題會自動捲去解釋。</span></div>
+  <div id="mcList"></div>
+  <div style="text-align:center;margin:10px 0 4px"><button id="mcMore" class="primary">顯示更多題目 Show more</button> <span class="muted small" id="mcShownInfo"></span></div>
+</section>
+
+<!-- SHORT Q -->
+<section id="shortq">
+  <div class="sec-head"><div><h2>Short Q 練習（100 題）</h2><p>Questions and model answers in English（考試語言）; marking points in English + 中文。做法：先喺格入面用英文自己寫（建議每題 8–10 分鐘、150–250 字），寫完先開範答對畀分點。草稿會自動儲存喺呢部裝置；範答可以顯示／隱藏切換，對完畀自己 0–5 分自評。</p></div></div>
+  <div id="sqList"></div>
+  <div style="text-align:center;margin:10px 0 4px"><button id="sqMore" class="primary">顯示更多 Short Q Show more</button> <span class="muted small" id="sqInfo"></span></div>
+</section>
+
+<!-- MOCK -->
+<section id="mock">
+  <div class="sec-head"><div><h2>模擬試（自訂練習）</h2><p>每次由 500 題題庫隨機抽 10 條 MC + 2 條 Short Q，MC 選項次序亦會隨機，自己計時。呢個係練習計時，唔係官方考試時間（老師未公布時限）。</p></div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label>計時 <select id="mockMins" style="width:auto"><option value="30">30 分鐘</option><option value="45" selected>45 分鐘</option><option value="60">60 分鐘</option></select></label>
+  <button class="primary" id="mockStart" aria-label="開始模擬試 Start mock exam">開始模擬試</button></div></div>
+  <div class="mock-sticky" id="mockSticky"><span style="font-weight:800">模擬試</span><span class="timer" id="mockTimer" aria-label="模擬試剩餘時間 Mock exam timer">--:--</span><span id="mockResult" style="font-weight:800" role="status" aria-live="polite"></span><button class="gold" id="mockSubmit" style="margin-left:auto" aria-label="交卷並睇 MC 成績 Submit mock exam" disabled>交卷 Submit</button></div>
+  <div id="mockArea"></div>
+</section>
+
+
+<!-- HOW TO USE -->
+<section id="howto">
+  <div class="sec-head"><div><h2>如何使用呢個網頁</h2><p>唔使安裝任何程式，唔使去 GitHub 下載任何嘢 —— 撳連結就用得。</p></div></div>
+  <div class="grid g2">
+    <div class="card"><h3>① 用連結直接開啟</h3>
+      <p>邊個 send 條連結畀你，你撳一下就會喺手機或電腦嘅瀏覽器直接開到，唔使登入、唔使下載檔案。想留住條連結，可以：</p>
+      <ul>
+        <li>喺瀏覽器加做<b>書籤（Bookmark）</b>，下次喺書籤開返；</li>
+        <li>或者跟下面方法加到手機主畫面，以後撳圖示就開，效果同 App 一樣。</li>
+      </ul>
+      <p class="muted small">注意：溫習進度會自動儲存喺你用緊嗰部裝置同瀏覽器（localStorage），閂咗頁面再開返都仲喺度；換裝置、換瀏覽器或者清咗瀏覽器資料就冇咗，想搬過去就用總覽入面嘅「匯出／匯入進度 JSON」。</p>
+    </div>
+    <div class="card"><h3>② 加到手機主畫面（當 App 用）</h3>
+      <p><b>iPhone（Safari）：</b></p>
+      <ul>
+        <li>用 Safari 開啟呢頁 → 撳底下嘅<b>分享</b>掣（方框加向上箭嘴）</li>
+        <li>向下滑，撳<b>「加入主畫面」</b> → 撳「加入」</li>
+        <li>主畫面會多咗個圖示，以後撳佢就全螢幕開啟</li>
+      </ul>
+      <p><b>Android（Chrome）：</b></p>
+      <ul>
+        <li>用 Chrome 開啟呢頁 → 撳右上角<b>「⋮」</b>選單</li>
+        <li>撳<b>「加到主畫面」</b>或<b>「安裝應用程式」</b> → 確認</li>
+        <li>主畫面會多咗個圖示，撳佢就開得返</li>
+      </ul>
+      <p class="muted small">開啟時需要上網（載入字體同頁面）。如果之後有新版本，你用返同一條連結開啟就會見到最新內容。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section id="plan">
+  <div class="sec-head"><div><h2>7 日衝刺計劃</h2><p>考試日期未定，按「仲有 7 日」排；日子唔啱就成個表順延。每日：筆記 → 案例 → 練題，三件一齊做。</p></div></div>
+  <ul class="checklist">
+    <li><div><b>Day 1 — 法律制度</b><br><span class="muted">睇 L1–L2 筆記 + 法院架構表；做 MC「制度」組；背 Art 8/18/158/159。</span></div></li>
+    <li><div><b>Day 2 — 刑事法</b><br><span class="muted">L3 元素表 + Q2/Q3/Q5/Q6/Q8/Q9 案例卡；Short Q 練自衛同殺嬰各一條。</span></div></li>
+    <li><div><b>Day 3 — 成人 + 兒童</b><br><span class="muted">L4–L5：OAPO 刑罰表、DCRVO 三令、福利清單背到順；Q7/Q10/Q11 案例。</span></div></li>
+    <li><div><b>Day 4 — 精神健康 + 遺產 + 法援</b><br><span class="muted">L6 定義同監護四條件；三件平安事；無遺囑分配次序畫一次出嚟。</span></div></li>
+    <li><div><b>Day 5 — 侵權</b><br><span class="muted">疏忽四元素逐個配案例（Donoghue / Caparo / Jolley / 薄頭骨）；Q16 五步風險評估；做 MC「侵權」組。</span></div></li>
+    <li><div><b>Day 6 — 人權 + 私隱操守舉報</b><br><span class="muted">Kong Yun-ming 比例原則默寫一次；DPP 六原則、起底罰則、守則第 14 段、Cap 650 舉報要點；Q12–Q20 案例卡全掃。</span></div></li>
+    <li><div><b>Day 7 — 模擬 + 補漏</b><br><span class="muted">做一次模擬試；返去錯題所屬嗰課重睇筆記；瞓覺前只翻 Flashcards 錯過嗰啲。</span></div></li>
+  </ul>
+  <div class="tbox"><b>入考場前最後檢查：</b> 帶齊條文編號（Cap + s.)、每個概念配一個案例名、Short Q 記得寫 Conclusion 講立場 — 老師 L3 講義明言要「take a stance」。</div>
+</section>
+
+<footer>
+  資料來源：SOWK403 課程大綱、L1–L9 講義 slides（Dr. Kwan Wai-hong）、Q1–Q20 導修案例文件、Law Made Simple Ch.1。L10–L12 講義未發放，相關內容以 Q17–Q20 文件為據，實際考試範圍以老師最新公布為準。本頁題目為按課程內容自擬嘅練習題，唔係真試卷或 past paper。
+</footer>
+</div>
+
+<button id="backTop" aria-label="回到頂部 Back to top" title="回到頂部 Back to top">↑</button>
+
+<script>
+var CASES=[
+{n:"Q1",t:"國家安全立法背景",th:"國安與法治",law:"HKNSL Art 20/22/24/29；《維護國安條例》2024",f:"2019 年修例風波演變成大規模衝突，中央視之為分裂、顛覆威脅。",r:"2020 年國安法四罪：分裂國家、顛覆政權、恐怖活動、勾結外國勢力；2024 年完成基本法 23 條本地立法（叛國、叛亂、國家秘密、破壞、境外干預）。影響遍及政治、司法、傳媒、教育、公務員宣誓同國際關係。"},
+{n:"Q2",t:"HKSAR v Tong Ying Kit (2021)",th:"國安與法治",law:"國安法：煽動分裂 + 恐怖活動；無陪審團審訊",f:"唐英傑 2020 年 7 月 1 日駕電單車插「光復香港」旗衝越警方防線，撞傷警員。",r:"首宗國安法案：律政司司長證書下由 3 名法官取代陪審團。口號被裁定能煽動分裂；駕車行為屬恐怖活動。兩罪共判 9 年（6.5+8 年、部分同期）+ 停牌 10 年，判刑用 totality principle。"},
+{n:"Q3",t:"HKSAR v Khaw Kim Sun (2023) CFA",th:"國安與法治",law:"法治：無罪推定 + 無合理疑點；環境證據",f:"前教授許金山被指用一氧化碳瑜伽球放車尾箱毒殺妻女（2015）。",r:"2018 年定罪，2023 年終院裁定原審法官錯誤引導陪審團、定罪不穩妥，下令重審 — 體現舉證責任同公平審訊點樣保障被告；重審後再次定罪判終身。"},
+{n:"Q4",t:"公職人員行為失當 — Tsang / Fung",th:"國安與法治",law:"普通法罪行 Misconduct in Public Office；Cap 221 s.101I",f:"曾蔭權無向行會申報深圳物業租務利益；馮永業無申報情婦 $510,000 物業訂金兼處理其航空申請。",r:"失當要素：身為公職人員、喺公職過程中、故意失當（隱瞞／無申報利益衝突）、程度嚴重到損害公眾信心。馮判監 9 個月；曾案失當罪一度成立、上訴後撤銷。賄賂罪則因款項被裁為情侶財產往來而不成立 — 分清兩罪係考點。"},
+{n:"Q5",t:"殺嬰 Infanticide — Lai 案情境",th:"刑事",law:"OAPO Cap 212 s.47C",f:"患抑鬱母親涉嫌搖晃兩個月大嬰兒致死。",r:"母親因分娩／哺乳影響致精神失衡而殺死 12 個月以下親生嬰兒 — 本應謀殺都改以殺嬰論處，按誤殺判刑。案例量刑多用緩刑／醫院令元素：Cheung Ping Mui 守行為、Wong Mei Yi 探討緩刑、Lin Jun 醫院令。重點係被告精神狀態，唔係行為本身輕。"},
+{n:"Q6",t:"親密伴侶暴力 — Kan Woon-tsz 案",th:"刑事",law:"OAPO 襲擊與毆打；自衛抗辯",f:"護士 Kan 被指 11 小時內刺傷已婚前男友 7 次，辯稱對方先掐頸、自衛還擊。",r:"分析框架：有冇實際傷害 → 傷害程度（傷口 wound／ABH／GBH）→ actus reus + mens rea。技術性襲擊：令對方預期即時非法武力（言語都可以 — Constanza；沉默都可以 — Ireland；「預期」≠「恐懼」— Lamb）。原文件結論：定罪入獄。"},
+{n:"Q7",t:"HKSAR v L.S.T. (HCCC 318/2024) 虐兒",th:"兒童",law:"誤殺 + 虐待兒童 OAPO s.27；《保護兒童免受虐待程序指引》2020",f:"男童 Z 被長期餓打綑綁，死亡時得 9.7kg、129 處傷，捱餓 61–91 日。",r:"母親認誤殺 + 虐兒，共判 22 年（20 年 + 虐兒 6 年 4 個月、其中 2 年分期）。法官特別指出：社工多次家訪、死前 3 個月仲見過男童，竟然察覺唔到體重身高異常 — 社工嘅識別、即時安全、風險評估同 MDCC 角色係本題核心。"},
+{n:"Q8",t:"向兒童粗獷猥褻 — Mole 案情境",th:"兒童",law:"Crimes Ordinance Cap 200 s.146",f:"20 歲補習老師向 12 歲女學生展示裸照短片、要求佢展示私處，被拒後無進一步行為。",r:"s.146：向 16 歲以下兒童作出粗獷猥褻，或煽惑兒童作出，都屬罪行，最高 10 年；「兒童同意」唔係抗辯；婚姻先係唯一法定例外。Gross indecency 無成文定義，法庭標準＝顯著偏離端正行為 marked departure from decent conduct。展示同煽惑已足夠，唔使有身體接觸。"},
+{n:"Q9",t:"HKSAR v Shum Man Fai (2021) HKCA 自衛",th:"刑事",law:"普通法自衛；OAPO s.7 誤殺",f:"Shum 與死者衝突後被裁誤殺（陪審團 6:1)，判監 3 年，上訴爭議自衛界線。",r:"自衛要：真誠相信有即時威脅 + 回應武力合理合比例；過量或報復性武力唔受保護。答題要逐格對：威脅係咪即時、武力程度、有冇退路同其他選擇。"},
+{n:"Q10",t:"MIP 父親離婚後探視 — Dat 案",th:"家庭與精神健康",law:"GMO Cap 13 福利原則；PD 15.13 兒童爭議解決 CDR",f:"Dat 思覺失調康復後想多見 6、8 歲子女，前妻以安全為由拒絕，子女本身想見爸爸。",r:"管養 custody（重大決定）／照顧同管束 care & control（日常決定）／探視 access（可監督／過夜／訂明時間）要分清；福利原則行先，精神病康復唔等於自動無探視權。路徑：CDR 程序（Form J、兒童約見）→ 協調／共同親職服務、親子聯繫中心 → 法庭係最後手段。"},
+{n:"Q11",t:"家暴 — Mary v Peter (DCRVO)",th:"家暴與成人",law:"DCRVO Cap 189 s.3",f:"同居 5 年嘅 Peter 孤立 Mary（唔准見朋友、搵工），再趕佢出門、唔畀返屋企攞返物品，警察無協助。",r:"家暴案例法定義闊：伴侶間襲擊或破壞安寧；案例同律政司政策涵蓋控制、孤立、恐嚇、經濟虐待等 — Peter 嘅行為屬 molestation。三種禁制救濟：不騷擾令、遷出令 ouster、重返令 re-entry — Mary 要申請重返令返屋企。程序：家事法庭登記處親身 filing、支持誓章、草擬命令；緊急可 ex parte 申請，之後要有 inter partes 返庭日。"},
+{n:"Q12 / L9",t:"Kong Yun-ming v DSW (2013) CFA",th:"人權與司法覆核",law:"基本法 Art 25 / 36 / 145；比例原則",f:"孔允明持單程證來港翌日喪夫，未滿 7 年居港被拒綜援。",r:"終院一致裁定 7 年居港要求違憲：慳錢唔係合法目的、與家庭團聚及人口政策衝突、節省微不足道 → 與目的無合理關連、明顯無合理基礎。Art 36 福利權以 1997 年 7 月 1 日綜援（1 年居港）為基準，其後限制要過比例審查。"},
+{n:"Q13",t:"Lubiano v Director of Immigration (2020) CA — 外傭強制留宿",th:"人權與司法覆核",law:"ICESCR Art 7；BORO Cap 383 s.11 入境保留",f:"外傭 Lubiano 司法覆核挑戰僱主家中留宿規定侵犯休息權。",r:"CFI 同 CA 先後駁回：① ICESCR Art 7 權利未經本地立法落實（要立法機關有客觀立法意圖，唔可以話 EO s.17 內容相似就當已落實 — 而且休息日條文 1970 年已有、早過 1976 年公約適用）② 入境保留適用、被挑戰嘅唔係不可克減權利 ③ 「提高風險」式系統性挑戰唔成立、法院唔做風險效益分析 ④ 因果門檻高 — 虐待源於僱主唔係留宿安排本身。留宿規定維持。"},
+{n:"Q14",t:"SJ v Wong Chi Fung et al (2017/2018) CFA 非法集結",th:"人權與司法覆核",law:"Public Order Ordinance Cap 245 s.18；公民抗命；集會權",f:"2014 年衝入政總前地，黃之鋒等被裁非法集結，原判社會服務令／緩刑，律政司覆核刑期後上訴庭改判監禁。",r:"終院確認上訴庭新指引適用於未來大型暴力非法集結：量刑要睇實際嚴重程度光譜；輕微案件重更生，大型暴力案件重懲罰同阻嚇，動機同個人因素權重極低。s.18 元素：3 人以上聚集 + 無秩序／恐嚇／侮辱／挑釁行為 + 意圖或相當可能令他人合理恐懼破壞安寧（該恐懼嘅 mens rea 須知識或罔顧）。公民抗命＝以非暴力行為喚起公眾關注，唔等於免責。"},
+{n:"Q15",t:"HKSAR v Chan Chun Kit (2022) CFA 索帶案",th:"刑事",law:"Summary Offences Ordinance Cap 228 s.17；ejusdem generis 同類原則",f:"地產經紀陳俊傑攜 48 條索帶喺示威附近被裁「管有適合作非法用途工具」判監 5.5 個月。",r:"終院一致推翻定罪：s.17「其他工具」要按同類原則限縮為「非法進入」類工具（鐵筆、萬能匙同一屬類）；無限制解讀會令條文變 thought crime、令列明物品變多餘。中文譯本（1993）不準確唔可以改變英文原文解釋；刑法條文有歧義要對被告有利。索帶唔屬任何類別 — 無罪。"},
+{n:"Q16",t:"Fong Chong Chuen v BGCA (DCPI 548/2018) 戶外活動疏忽",th:"侵權",law:"疏忽四元素；風險評估五步",f:"參加者喺童軍會定向活動行經舊橋，3 人同時過橋，橋塌受傷。",r:"機構作為主辦者有謹慎責任（包括事前測試橋承重、限制同時過橋人數）。違反：無警告非顯而易見危險、無確保活動合理安全、無消除不必要危險、無足夠警告牌。因果：橋因 3 人總重超負荷 + 老化塌下。「潛在缺陷 latent defect」抗辯要被告舉證，舉唔出就唔成立。判被告疏忽成立。"},
+{n:"Q17",t:"Eastweek v Privacy Commissioner + 起底修訂",th:"私隱・操守・性騷擾",law:"PDPO Cap 486 DPP1–6；2021 修訂條例",f:"雜誌街頭偷拍路人相片刊登並附負面衣著評論，私隱專員裁定違反 DPP1。",r:"上訴庭推翻：無「收集個人資料」行為，DPP1 根本唔適用。2021 修訂另設起底罪兩級制（一級 $100,000+2 年；二級 $1,000,000+5 年），專員獲刑事調查檢控同發停止通知權力。"},
+{n:"Q18",t:"Lee Kwok Wah / Tang Kwok Wah — 社工專業操守",th:"私隱・操守・性騷擾",law:"Crimes Ordinance s.118 / 122；《社工工作守則》第 14 段；Cap 505 s.25",f:"兩名專業人士分別干犯強姦／非禮及與 16 歲以下少女發生性行為等罪。",r:"守則第 14 段：社工絕不可與服務使用者有任何性活動或接觸（不論同意與否）。Lee Kwok Wah 經紀律研訊後被註冊局永久除名。要分清：強姦 s.118 只限男性插入、終身；非禮 s.122 男女可犯、最高 10 年、16 歲以下不能同意。"},
+{n:"Q19",t:"Yuen Sha Sha v Tse Chi Pan (1998) 性騷擾",th:"私隱・操守・性騷擾",law:"SDO Cap 480 s.2(5) / s.39(3) / s.76",f:"被告喺課室裝 camcorder 偷拍原告更衣，自認出於性吸引。",r:"符合 s.2(5) 不受歡迎涉及性行徑 + 合理人會預期對方受冒犯侮辱。判：感情損害 $50,000 + 加重賠償 $10,000 + 懲罰性賠償 $20,000 + 書面道歉。對照 Cheng Yin Fong 案：訪客身份無 locus standi、無案可答 — 提訴資格係另一考點。"},
+{n:"Q20",t:"強制舉報虐兒條例 Cap 650",th:"兒童",law:"Mandatory Reporting of Child Abuse Ordinance (2024 年刊憲，2026 年 1 月生效)",f:"新法要求指明專業人員舉報嚴重虐兒懷疑個案。",r:"25 類指明人員（含註冊社工）有合理理由懷疑 &lt;18 歲兒童遭受嚴重傷害或有實質風險，要盡快向社署署長或警務處處長舉報。三類例外（純意外／自傷／兒童間非性行為等）同「他人已報」可免。唔報最高 $50,000 + 公訴監禁 3 個月；舉報人身份受保護、舉報免責。對社工：保密原則要讓路畀法律責任。"}
+];
+
+var FLASH=[
+["L1","Criminal vs civil cases: what is the difference in the standard of proof?","Criminal: the prosecution must prove guilt <b>beyond reasonable doubt</b>.<br>Civil: <b>balance of probabilities</b> — a lower threshold.<br>中文：刑事要證明到「無合理疑點」；民事只需「相對可能性較高」。"],
+["L1","Hierarchy of sources of law in Hong Kong (highest to lowest)?","Basic Law (highest) > statute law (ordinances > subsidiary legislation) > case law (common law + equity) > Chinese customary law. Art 8 preserves the laws previously in force.<br>中文：基本法最高，其次成文法、案例法、中國習慣法。"],
+["L2","Dicey's three points on the rule of law?","(1) Supremacy of law — no one is above the law; (2) equality before the law; (3) constitutional principles derive from judicial decisions protecting individual rights.<br>中文：法律至上、法律面前人人平等、憲法原則源自司法判決。"],
+["L2","How does interpretation of the Basic Law work (Art 158)?","The power of interpretation rests with the NPCSC; HK courts are authorised to interpret provisions within the Region's autonomy; for provisions concerning Central Government affairs or Central–Region relations, the CFA must seek an NPCSC interpretation before a non-appealable judgment and must follow it.<br>中文：解釋權屬人大常委；涉中央事務要提請釋法並跟從。"],
+["L2","District Court vs Magistrates' Court jurisdiction?","District Court: civil claims $50,000–$1,000,000; criminal cases up to 7 years' imprisonment. Magistrates' Court: criminal only; maximum fine $100,000 / 2 years' imprisonment (single offence).<br>中文：區院民事 5 萬至 100 萬、刑事最高 7 年；裁判法院只審刑事，上限罰款 10 萬／監禁 2 年。"],
+["L3","Why can 'doing nothing' be an actus reus?","An omission can be a criminal act where there is a legal duty to act: OAPO s.27 duty to care for a child; Stone & Dobinson — voluntarily assumed care then failed to summon help; Miller — created a fire then failed to act.<br>中文：有法律責任時，不作為都可以係犯罪行為。"],
+["L3","Causation: how do Smith and Jordan differ?","Smith: victim dropped repeatedly + poor treatment, chain <b>not broken</b> (stab wound remained the operative cause). Jordan: abnormal medical treatment <b>broke</b> the chain. Key question: was the intervening act abnormal / deliberate?<br>中文：Smith 無斷鏈，Jordan 異常治療斷鏈。"],
+["L3","Four elements of theft (Theft Ordinance s.2)?","Dishonesty + appropriation + property belonging to another + intention to permanently deprive. The prosecution must prove each beyond reasonable doubt.<br>中文：不誠實、挪佔、他人財產、意圖永久剝奪。"],
+["L4","Assault vs battery — the difference?","Assault = causing another to apprehend immediate unlawful violence (no contact needed). Battery = actual, intentional application of unlawful force. Common assault covers both.<br>中文：Assault 係令對方預期即時武力；Battery 係實際施加武力。"],
+["L4","Three injunctive remedies under the DCRVO?","Non-molestation order, exclusion (ouster) order, entry (re-entry) order (Cap 189 s.3). Choose by the applicant's need: Mary was locked out of the home → entry order.<br>中文：不騷擾令、遷出令、重返令。"],
+["L4","When can a power of arrest be attached (DCRVO s.5)?","When the court is satisfied the respondent has caused actual bodily harm, or reasonably believes ABH is likely; it may be attached when the injunction is granted or at any time while it is in force.<br>中文：已造成 ABH，或合理相信好可能造成 ABH，就可以附加逮捕授權書。"],
+["L5","The five facts for divorce?","Adultery, unreasonable behaviour, separation for 1 year with consent, separation for 2 years, desertion for 1 year — all prove the sole ground: the marriage has broken down irretrievably (Cap 179 s.11A).<br>中文：通姦、不合理行為、同意分居 1 年、分居 2 年、遺棄 1 年。"],
+["L5","Where does the welfare principle come from?","Guardianship of Minors Ordinance Cap 13 s.3(1): the child's best interests are the first and paramount consideration; the court also considers the child's ascertainable wishes (by age and understanding) and SWD reports.<br>中文：《未成年人監護條例》第 3(1) 條——兒童最佳利益係首要考慮。"],
+["L5","Which children are 'in need of care or protection' (PCJO s.34(2))?","A child who has been / is being assaulted, abused, neglected or sexually abused; whose health, development or welfare is neglected or avoidably impaired; who is likely to be so impaired; or who is beyond control to a degree that they may harm themselves or others.<br>中文：被虐待／忽略／性虐待、福利受損或好可能受損、不受控制到可能傷人傷己。"],
+["L6","What is an MIP? What IQ counts as mental handicap?","MIP = a person with mental disorder or mental handicap who cannot live independently or guard against serious exploitation. Mental handicap = sub-average general intelligence, IQ ≤ 70 (Wechsler scale) + impaired adaptive behaviour.<br>中文：MIP 係不能獨立生活或防範嚴重剝削嘅精神紊亂／弱智人士；弱智指 IQ ≤ 70 加適應行為缺損。"],
+["L6","Four conditions for granting a guardianship order?","(1) The person has a mental disorder or mental handicap; (2) they cannot make reasonable decisions on major areas of personal affairs; (3) only guardianship can meet the need — no less restrictive alternative; (4) it is in their welfare interests or for the protection of others. A guardian may manage up to $10,500 per month (lecture figure).<br>中文：有精神紊亂／弱智、做唔到合理決定、無較少限制方法、合乎福利或保護他人。"],
+["L6","What are the 'three instruments of peace of mind'?","A Will (distribution of assets after death), an Enduring Power of Attorney, EPA Cap 501 (authorising another to handle financial/legal affairs), and an Advance Directive (medical wishes when incapacitated).<br>中文：平安紙、持久授權書、預設醫療指示。"],
+["L6","Two tests for legal aid?","Means test (financial eligibility: disposable income ×12 + disposable capital) + merits test (reasonable prospects of success, enforceability of judgment, importance of the case to the applicant).<br>中文：經濟審查 + 案情審查。"],
+["L7","Four elements of negligence, each with a case?","Duty (Donoghue neighbour principle / Caparo three-stage test) → Breach (reasonable person standard; Bolton v Stone) → Causation (but-for test) → Damage (type must be foreseeable — Jolley; thin skull rule — Smith v Leech Brain).<br>中文：責任、違反、因果、損失，四元素逐個配案例。"],
+["L7","The Caparo three-stage test?","(1) Harm was reasonably foreseeable; (2) sufficient proximity between the parties; (3) it is fair, just and reasonable to impose a duty.<br>中文：可預見、關係密切、施加責任屬公平公正合理。"],
+["L7","Occupier's liability: is putting up a warning sign always enough?","Not necessarily. Cap 314 s.3(4)(a): a warning only discharges the duty if it is sufficient to enable the visitor to be reasonably safe — consider its position, how attention is drawn to it, and whether it is specific enough. Wet floors also require active steps such as mopping.<br>中文：警告要足以令訪客合理安全先免責；齋貼牌未必夠。"],
+["L7","Contributory negligence vs volenti?","Contributory negligence: partial defence — damages reduced by the claimant's share of fault (Cap 23 s.21). Volenti (voluntary assumption of risk): complete defence — the claimant knew the risk and voluntarily accepted it.<br>中文：共分疏忽係部分抗辯按比例扣賠償；自願承擔風險係完全抗辯。"],
+["L8","Why are human rights called 'moral rights'?","Human rights are inherent, universal and inalienable; but before they are incorporated into law they are only moral rights that courts will not enforce. They become enforceable through the UDHR/covenants plus Basic Law Art 39 and the Bill of Rights Ordinance.<br>中文：人權未納入法律前只係道德權利，法院唔會強制執行。"],
+["L9","Why did the Government lose in Kong Yun-ming?","Under the proportionality test: saving money alone is not a legitimate aim; the 7-year requirement conflicted with the family-reunion and population-rejuvenation policies; the savings were trivial → no rational connection to the aim of sustainability, and manifestly without reasonable foundation → unconstitutional.<br>中文：慳錢唔係合法目的、與政策衝突、節省微不足道，所以違憲。"],
+["L10","Recite the six DPPs?","DPP1 purpose & manner of collection; DPP2 accuracy & retention period; DPP3 use limited to original purpose; DPP4 security; DPP5 openness of data policies; DPP6 access & correction. Eastweek key point: no act of 'collection', so DPP1 did not apply.<br>中文：收集、準確保留、使用、保安、透明、查閱改正。"],
+["L10","Doxxing penalties (2021 amendment)?","Tier 1 (summary): fine $100,000 + 2 years' imprisonment. Tier 2 (indictment): fine $1,000,000 + 5 years. Disclosure without consent + intent or recklessness as to specified harm; family members are also protected.<br>中文：一級 $100,000＋2 年；二級 $1,000,000＋5 年。"],
+["L12","What does paragraph 14 of the Social Workers' Code of Practice say?","A social worker must not, under any circumstances, engage in any sexual activity or contact with a service user, whether consensual or forced. Breach plus conviction may lead to permanent removal from the register (Cap 505 s.25).<br>中文：任何情況下都唔可以同服務使用者有性活動或接觸，不論自願或被迫。"],
+["Q20","Mandatory reporting: who must report, to whom, and what if they do not?","25 categories of specified professionals (including registered social workers); report suspected serious child abuse to the Director of Social Welfare or the Commissioner of Police as soon as reasonably practicable; failure: fine $50,000, plus 3 months' imprisonment on indictment. Cap 650, in force January 2026.<br>中文：25 類指明人員（含註冊社工）要盡快向社署署長或警務處處長舉報；唔報罰 $50,000，公訴另加監禁 3 個月。"]
+];
+
+var MC=[
+{t:"Legal System",q:"What is the standard of proof in a criminal case?",o:["Balance of probabilities","Beyond reasonable doubt","Clear and convincing evidence","The defendant must prove his innocence"],a:1,e:"EN: The prosecution must prove guilt beyond reasonable doubt; the defendant enjoys the presumption of innocence. Balance of probabilities is the civil standard, and a defendant never has to prove innocence.<br>中文：刑事標準係「無合理疑點」，被告享無罪推定；「相對可能性」係民事標準，被告唔使自證清白。"},
+{t:"Legal System",q:"Which court hears only criminal cases, with a maximum penalty of a $100,000 fine or 2 years' imprisonment?",o:["District Court","Small Claims Tribunal","Magistrates' Court","Court of First Instance"],a:2,e:"EN: The Magistrates' Court hears criminal cases only. The District Court's civil jurisdiction is $50,000–$1,000,000 and its criminal maximum is 7 years; the Small Claims Tribunal handles claims up to $75,000 and lawyers are not allowed.<br>中文：裁判法院只審刑事；區院民事管轄 5 萬至 100 萬、刑事最高 7 年；小額錢債上限 $75,000 且唔准律師代表。"},
+{t:"Legal System",q:"Under Basic Law Article 158, what is the procedure for interpreting a provision concerning affairs which are the responsibility of the Central People's Government?",o:["The Court of Final Appeal interprets it finally by itself","The District Court refers it to the NPC Standing Committee","The Court of Final Appeal must, before a non-appealable judgment, seek an interpretation from the NPC Standing Committee and follow it","The Chief Executive decides"],a:2,e:"EN: Article 158 vests the power of interpretation in the NPCSC. Courts may interpret provisions within the Region's autonomy themselves, but for Central affairs or Central–Region relations, the CFA must seek an NPCSC interpretation and follow it.<br>中文：解釋權屬人大常委；自治範圍內法院可自行解釋；涉中央事務或中央與特區關係，要由終院提請釋法並跟從。"},
+{t:"Legal System",q:"What was the role of equity in Wong Chim Ying v Cheng Kam Wing?",o:["It abolished the common law entirely","It allowed the husband's equitable interest, as the one who paid for the property, to prevail over the wife's legal title","It cancelled the land registration","It imposed criminal liability on the wife"],a:1,e:"EN: The property was registered in the wife's name, so at common law she was the legal owner; equity recognised the contributing husband's equitable interest and gave it priority — a classic example of equity correcting the rigidity of the common law.<br>中文：普通法下妻係法律擁有人，但衡平法承認出資丈夫嘅衡平權益並使其優先，正好修正普通法嘅僵化。"},
+{t:"Legal System",q:"Which of the following is NOT part of Dicey's theory of the rule of law?",o:["Supremacy of law","Equality of everyone before the law","Constitutional principles derive from judicial decisions","The executive may override the law"],a:3,e:"EN: Dicey's three points are supremacy of law, equality before the law, and rights derived from judicial decisions. 'The executive overriding the law' is exactly what the rule of law forbids.<br>中文：Dicey 三點係法律至上、平等、權利源自判決；「行政凌駕法律」正正違反法治。"},
+{t:"Criminal Law",q:"R v Miller illustrates which principle about the actus reus?",o:["Consent can be a defence","A person who creates a danger, becomes aware of it and fails to act may commit the actus reus by omission","Minors bear no criminal responsibility","The chain of causation can never be broken"],a:1,e:"EN: Miller fell asleep and started a fire; when he woke and realised the danger, he did nothing. Once you create a danger and become aware of it, you have a duty to act — an omission can be the actus reus.<br>中文：Miller 製造火警後知情而唔救火；當你製造危險又察覺到，就有責任行動，不作為都可以係犯罪行為。"},
+{t:"Criminal Law",q:"In which case was the medical treatment so abnormal that it broke the chain of causation?",o:["R v Smith","R v Pagett","R v Jordan","R v Cheshire"],a:2,e:"EN: In Jordan, the victim was given large doses of a drug he was known to be intolerant to — abnormal treatment broke the chain. In Smith and Cheshire medical failings did not break the chain; in Pagett the police officer's self-defensive return fire did not either.<br>中文：Jordan 嘅異常醫療處理斷鏈；Smith、Cheshire 無斷鏈；Pagett 警察自衛還擊亦無斷鏈。"},
+{t:"Criminal Law",q:"Which of the following is NOT an element of theft (Theft Ordinance s.2)?",o:["Dishonesty","Appropriation of property belonging to another","Intention to permanently deprive","Use of violence"],a:3,e:"EN: Theft has four elements: dishonesty, appropriation, property belonging to another, and intention to permanently deprive. Use of violence is an element of robbery, not theft.<br>中文：盜竊四元素不包括使用暴力——嗰個係搶劫嘅元素。"},
+{t:"Criminal Law",q:"What is the maximum penalty for ill-treating or neglecting a child under OAPO s.27?",o:["1 year","3 years","3 to 10 years","Life imprisonment"],a:2,e:"EN: Section 27 carries 3–10 years. Compare: s.40 common assault 1 year; s.39 ABH 3 years; s.19 GBH 3 years; s.17 GBH with intent — life.<br>中文：s.27 係 3–10 年；s.40 普通襲擊 1 年、s.39 ABH 3 年、s.19 GBH 3 年、s.17 意圖 GBH 終身。"},
+{t:"Criminal Law",q:"What is the core requirement of infanticide under OAPO s.47C?",o:["Any person kills an infant","A mother, whose balance of mind is disturbed by the effects of childbirth or lactation, kills her own child under 12 months old","A father suffers from postnatal depression","The child is under 3 years old"],a:1,e:"EN: Three limits: the offender must be the mother; the child must be under 12 months; and her balance of mind must be disturbed by not having fully recovered from childbirth, or by lactation. What would otherwise be murder is treated as infanticide and sentenced as manslaughter.<br>中文：必須係母親、嬰兒 12 個月以下、因分娩／哺乳影響而精神失衡；本應謀殺都以殺嬰論、按誤殺判刑。"},
+{t:"Criminal Law",q:"Regarding gross indecency with a child under 16 (Crimes Ordinance s.146), which statement is correct?",o:["The child's consent is a complete defence","The maximum penalty is 5 years","The child's consent is not a defence, and the maximum penalty is 10 years","There must be physical contact for the offence to be committed"],a:2,e:"EN: Section 146 expressly provides that the child's consent is no defence; the maximum is 10 years; showing or inciting is enough — no physical contact is required. Marriage is the only statutory exception.<br>中文：s.146 講明兒童同意唔係抗辯，最高 10 年；展示、煽惑已可成立，唔使身體接觸。"},
+{t:"Domestic Violence & Adults",q:"Under the DCRVO, a cohabiting partner has been locked out of the home and needs to re-enter to collect her belongings. Which order is most appropriate?",o:["Non-molestation order","Entry (re-entry) order","Power of arrest","Care order"],a:1,e:"EN: This is Q11 (Mary's case): an entry order requires the respondent to allow the applicant to enter and remain in the shared home. A non-molestation order prohibits harassing conduct; a power of arrest is attached to an injunction and is not a standalone remedy.<br>中文：Q11 Mary 案正解係重返令；不騷擾令係禁騷擾行為；逮捕授權書只係附加喺禁制令上，唔係獨立救濟。"},
+{t:"Domestic Violence & Adults",q:"Which of the following is NOT an example of molestation under the case law?",o:["Stopping the victim in the street and following her","Repeated nuisance phone calls and abusive letters","A single polite greeting","Persistent pestering that causes distress"],a:2,e:"EN: Molestation covers any form of assault or physical interference, pestering, nuisance or harassment that calls for the court's intervention. A single polite greeting does not qualify.<br>中文：Molestation 包括襲擊、纏擾、滋擾同需要法院介入嘅騷擾；一次性禮貌打招呼唔構成。"},
+{t:"Children",q:"When deciding custody of a child, what is the court's paramount consideration?",o:["The father's rights take priority","The mother's rights take priority","The best interests of the child (the welfare principle)","Division of the family property"],a:2,e:"EN: GMO Cap 13 s.3(1): the child's best interests are the first and paramount consideration, and the court must not simply compare which parent has the greater right.<br>中文：Cap 13 s.3(1) 福利原則——兒童最佳利益係首要同最重要考慮，唔可以單純比較父母邊個權利大。"},
+{t:"Children",q:"Which of the following is NOT one of the 'five facts' for divorce?",o:["Adultery","Unreasonable behaviour","Separation for 1 year with the other party's consent","Separation for 6 months"],a:3,e:"EN: The five facts are adultery, unreasonable behaviour, 1 year's separation with consent, 2 years' separation, and 1 year's desertion. There is no '6 months' separation' fact.<br>中文：五個事實冇「分居 6 個月」呢一項。"},
+{t:"Children",q:"Under the Mandatory Reporting of Child Abuse Ordinance (Cap 650), what is the maximum consequence for a registered social worker who fails to report?",o:["A verbal warning only","A fine of $50,000, plus 3 months' imprisonment on conviction on indictment","Permanent removal from the register","A fine of $1,000,000"],a:1,e:"EN: Failure to report: a level 5 fine ($50,000) on summary conviction; on indictment, the same fine plus 3 months' imprisonment. The $1,000,000 figure is the tier-2 doxxing fine — do not mix them up.<br>中文：唔報罰 $50,000，公訴另加監禁 3 個月；$1,000,000 係起底二級罪罰款，唔好撈亂。"},
+{t:"Mental Health",q:"What documents must a guardianship application be based on?",o:["A report from 1 medical practitioner","Written reports from 2 registered medical practitioners, plus a social enquiry report","The family's oral consent","A police report"],a:1,e:"EN: MHO s.59M(3): the application must be based on written reports from 2 registered medical practitioners, plus a social enquiry report under s.59P. Contrast: a detained (observation) patient order needs only 1 doctor's opinion; a certified patient needs 2.<br>中文：監護申請要 2 名註冊醫生書面報告 + 社會調查報告；觀察病人只需 1 名醫生意見、證明病人要 2 名。"},
+{t:"Mental Health",q:"Who CANNOT apply for guardianship under s.59N?",o:["A relative of the MIP","A social worker","A registered medical practitioner","A neighbour with no relationship to the MIP and no official capacity"],a:3,e:"EN: The statutory applicants are: a relative, a social worker, a registered medical practitioner, and a public officer of the Social Welfare Department. A mere neighbour is not on the list.<br>中文：法定申請人只有親屬、社工、註冊醫生、社署公職人員；鄰居唔喺名單入面。"},
+{t:"Mental Health",q:"An intestate leaves a spouse but no issue and no parents or siblings. How is the estate distributed (Cap 73 s.4(2))?",o:["The spouse receives one half","The whole estate goes to the surviving spouse","The whole estate goes to the Government","Half to the spouse and half to the Government"],a:1,e:"EN: Under s.4(2) Option A, with no issue and no parents or siblings (or their issue), the whole estate goes to the surviving spouse. Only if there are no relatives at all does the estate pass to the Government as bona vacantia.<br>中文：無後嗣、無父母兄弟姊妹，遺產全歸尚存配偶；完全無親屬先歸政府。"},
+{t:"Mental Health",q:"What does the legal aid 'merits test' mainly assess?",o:["The applicant's income","Whether the case has reasonable prospects of success, whether a judgment would be enforceable, and the importance of the case to the applicant","The lawyer's fees","Whether the case attracts media attention"],a:1,e:"EN: Financial circumstances belong to the means test. The merits test looks at reasonable prospects of success, enforceability of any judgment, and the importance of the case to the applicant.<br>中文：收入係經濟審查嘅事；案情審查看勝算、判決可否執行、同案件對申請人嘅重要性。"},
+{t:"Tort",q:"Which of the following is NOT a stage of the Caparo test?",o:["The harm was reasonably foreseeable","Proximity between the parties","It is fair, just and reasonable to impose a duty","The defendant subjectively intended to harm the claimant"],a:3,e:"EN: Negligence does not require proof that the defendant intended harm — subjective intent belongs to intentional torts. Caparo: foreseeability + proximity + fair, just and reasonable.<br>中文：疏忽唔使證明被告想傷害人；Caparo 三步係可預見、密切、公平公正合理。"},
+{t:"Tort",q:"Which case establishes the 'thin skull rule', and what does it say?",o:["Jolley — the manner of the loss must be foreseeable","Smith v Leech Brain — the type of loss need only be foreseeable; the extent need not be, and the defendant takes the victim as found","Bolton v Stone — a very small risk may be left unguarded","Wagon Mound — pollution and fire are different types of loss"],a:1,e:"EN: In Smith v Leech Brain, a foreseeable burn to the lip triggered cancer and death — the full extent was recoverable because the type of loss was foreseeable. Jolley says the manner need not be foreseeable; the two are often examined together — do not swap them.<br>中文：Smith v Leech Brain 講「種類可預見就夠，程度唔使預見」；Jolley 係「方式唔使可預見」，兩案唔好掉轉。"},
+{t:"Tort",q:"In the BGCA case (Q16), why did the 'latent defect' defence fail?",o:["The bridge was too old","The defendant failed to prove that a latent defect caused the accident","The claimant was careless himself","The activity was insured"],a:1,e:"EN: Following the Sanfield principle, the party raising latent defect bears the burden of proving an alternative cause that displaces the more likely cause (3 people overloading + an aged bridge). The defendant produced no such evidence, so the defence failed.<br>中文：提出潛在缺陷一方有舉證責任；被告舉唔出證據推翻「超重 + 老化致塌」，抗辯失敗。"},
+{t:"Tort",q:"Under the Occupiers Liability Ordinance (Cap 314), which person is NOT a 'visitor'?",o:["An invited guest","A person with implied permission to enter","A trespasser","A repair worker invited by the tenant"],a:2,e:"EN: A visitor is a person expressly or impliedly permitted by the occupier to enter or use the premises; trespassers are excluded. An occupier is anyone with sufficient control over the premises — there can be more than one.<br>中文：訪客唔包括擅進者；佔用人係對處所有足夠控制權嘅人，可以多於一個。"},
+{t:"Tort",q:"What is the limitation period for a personal injuries claim in tort (Limitation Ordinance)?",o:["1 year","3 years","6 years","12 years"],a:1,e:"EN: Personal injuries: 3 years (s.27); general tort: 6 years (s.4); specialties (deeds): 12 years. Learn the three numbers as a set.<br>中文：人身傷害 3 年、一般侵權 6 年、契據 12 年，一組背。"},
+{t:"Human Rights",q:"In Kong Yun-ming, applying the proportionality test, what did the CFA identify as the biggest problem with the 7-year residence requirement?",o:["The procedure was too slow","It had no rational connection with its stated aim (sustainability of the CSSA scheme), and the savings were trivial","It violated the freedom of movement under Article 31","The Social Welfare Department had no discretion"],a:1,e:"EN: The CFA held that saving money alone is not a legitimate aim; the 7-year rule conflicted with the family-reunion and population policies and saved very little, so it had no rational connection with the aim and was manifestly without reasonable foundation. The Article 31 movement point was the reasoning in Yao Man Fai (the 1-year rule) — do not confuse the two.<br>中文：終院指 7 年要求同目的無合理關連、節省微不足道；違反遷徙自由係 Yao Man Fai 案嘅理由，唔好撈亂。"},
+{t:"Human Rights",q:"In Lubiano (the FDH live-in requirement case), which of the following was NOT a reason given by the Court of Appeal for dismissing the appeal?",o:["ICESCR Article 7 had not been incorporated by local legislation","The immigration reservation (BORO s.11) applied","The causation threshold was high: the abuse came from employers, not from the live-in arrangement itself","The live-in requirement violated Basic Law Article 36"],a:3,e:"EN: The Court of Appeal never held the live-in requirement unconstitutional — it rejected all of the applicant's arguments (no local incorporation, immigration reservation applies, the 'increased risk' argument fails, causation not established), so it never even reached justification.<br>中文：上訴庭根本無裁定留宿規定違憲——佢駁回晒申請人論點，連 justification 都唔使審。"},
+{t:"Human Rights",q:"What are the threshold and core conduct for unlawful assembly (Public Order Ordinance s.18)?",o:["2 or more persons, any gathering","3 or more persons assembled together who conduct themselves in a disorderly, intimidating, insulting or provocative manner, intending or being likely to cause a reasonable fear of a breach of the peace","5 or more persons plus actual violence","Any number of persons carrying weapons"],a:1,e:"EN: Section 18 requires 3 or more persons, the specified conduct, and an intention or likelihood of causing any person reasonably to fear a breach of the peace. Actual violence is not required.<br>中文：s.18 係 3 人以上 + 指定行為 + 意圖或相當可能令人合理恐懼破壞安寧；唔使真係發生暴力。"},
+{t:"Human Rights",q:"In HKSAR v Chan Chun Kit (the cable ties case), which interpretive principle did the CFA use to quash the conviction?",o:["The golden rule","Ejusdem generis — 'other instruments' is limited to instruments for unlawful entry","A literal, unlimited reading","The 'always speaking' principle"],a:1,e:"EN: The CFA held that 'other instruments', following iron bars and skeleton keys, must under ejusdem generis be confined to unlawful-entry instruments; an unlimited reading would create a thought crime. The 'always speaking' approach was the Court of Appeal's and was rejected as going beyond the statutory language; the inaccurate Chinese translation could not change the meaning of the English text.<br>中文：終院用同類原則將「其他工具」限縮為非法進入工具；無限制解讀會變思想犯罪。"},
+{t:"Privacy & Conduct",q:"In Eastweek, why did the Court of Appeal hold there was no breach of DPP1?",o:["The photographs were not clear enough","There was no act of 'collecting personal data' at all, so DPP1 was never engaged","The magazine had an absolute press-freedom exemption","The complainant was a public figure"],a:1,e:"EN: Ribeiro JA: a breach of DPP1(2)(b) requires (1) an act of collection and (2) unfair means. The court held there was no collection, so DPP1 did not apply and the Privacy Commissioner's decision was set aside.<br>中文：無「收集個人資料」行為，DPP1 根本唔被觸發，所以撤銷專員決定。"},
+{t:"Privacy & Conduct",q:"What are the core elements of sexual harassment under SDO s.2(5)?",o:["There must be physical contact","An unwelcome sexual advance or request, or other unwelcome conduct of a sexual nature, where a reasonable person would anticipate that the person would be offended, humiliated or intimidated","The victim must refuse on the spot","It is limited to employment relationships"],a:1,e:"EN: No physical contact is needed (words, writing, covert filming all count — the camcorder in Yuen Sha Sha); it is not confined to employment (education is covered by s.39); and the test includes the objective 'reasonable person' standard.<br>中文：唔使身體接觸，唔限僱傭關係，判斷包括客觀「合理人」標準。"},
+{t:"Privacy & Conduct",q:"A social worker has sexual contact with a service user with the user's full consent. How is this treated under paragraph 14 of the Code of Practice for Social Workers?",o:["It is acceptable because both parties consented","It is absolutely prohibited — the Code states it must not happen under any circumstances, whether consensual or forced","It is acceptable if reported to the supervisor","It is acceptable after the case is referred to another worker"],a:1,e:"EN: Paragraph 14 states 'under no circumstances', whether consensual or forced. In Lee Kwok Wah the outcome was permanent removal from the register. Consent is no excuse — a favourite point in both MC and Short Questions.<br>中文：第 14 段講明不論自願或被迫都絕對禁止；Lee Kwok Wah 結果係永久除名。「同意」唔係藉口。"}
+];
+
+var SQ=[
+{tag:"L3 Criminal · Q9",q:"During an argument, Mr Chan is pushed by another man. He picks up a wooden stool and strikes back, causing a fatal head injury. With reference to HKSAR v Shum Man Fai (2021), analyse the elements of the defence of self-defence and its prospects of success on these facts.",pts:["Issue: can a fatal retaliation be excused by self-defence?（爭議：還擊致死可否以自衛免責）","Concept: self-defence requires an honest belief in an imminent threat + a reasonable and proportionate response; excessive or retaliatory force is not protected（自衛要真誠相信即時威脅 + 回應合理合比例；過量或報復唔受保護）","Analysis: a bare-handed push is a low-level threat vs a fatal stool blow to the head — proportionality is hard to establish; consider any avenue of retreat and other options; separate subjective belief from objective reasonableness（推撞威脅低 vs 木凳擊頭致命，比例明顯失衡；主觀相信同客觀合理要分開）","Conclusion: self-defence is unlikely to succeed; a manslaughter conviction is more likely, with genuine fear at most going to sentence（自衛好可能唔成立，傾向誤殺）"],model:"Self-defence requires that the defendant honestly believed he was facing an imminent threat of unlawful violence, and that the force used in response was reasonable and proportionate in the circumstances — the boundary litigated on appeal in Shum Man Fai. Here, the other party used only a bare-handed push, a limited threat, whereas striking the head with a wooden stool is grossly excessive force that is difficult to justify as proportionate, unless there is evidence that Mr Chan honestly believed his life was in danger and had no means of retreat. Conclusion: the defence is unlikely to succeed, and a conviction for manslaughter is the more probable outcome; at most, provocation and genuine fear may mitigate sentence."},
+{tag:"L3 Criminal · Q5",q:"A new mother, Li, suffers from postnatal depression. While caring alone for her newborn, she loses control and shakes the baby violently, causing its death. What offence should the prosecution charge? Analyse the application of s.47C and the sentencing considerations.",pts:["Issue: murder, manslaughter or infanticide?（控咩罪：謀殺、誤殺定殺嬰）","Concept: OAPO s.47C — mother + child under 12 months + balance of mind disturbed by childbirth/lactation; what would be murder is treated as infanticide and sentenced as manslaughter（母親 + 嬰兒 12 個月以下 + 因分娩／哺乳精神失衡）","Analysis: postnatal depression and incomplete recovery fall squarely within the provision's purpose; sentencing cases focus on the mother's mental state — bind-overs, suspended sentences, hospital orders (Cheung Ping Mui, Wong Mei Yi, Lin Jun)（量刑重精神狀態：守行為／緩刑／醫院令）","Conclusion: infanticide is the appropriate charge; sentence should centre on treatment and her psychiatric condition, not mechanical imprisonment（應以殺嬰起訴，量刑以治療為中心）"],model:"Under OAPO s.47C, where a mother whose balance of mind is disturbed because she has not fully recovered from childbirth, or by reason of lactation, kills her own child under 12 months old, the offence is infanticide even if the circumstances would otherwise amount to murder, and it is punished as manslaughter. Li's postnatal depression and loss of control while shaking the baby are precisely the medical and psychological situation the provision addresses. The sentencing cases (bind-over in Cheung Ping Mui, suspended sentence discussed in Wong Mei Yi, hospital order in Lin Jun) show the courts focus on the offender's mental state rather than retribution. Conclusion: a charge of infanticide is appropriate, and sentencing should be guided by psychiatric reports with treatment-based disposal preferred."},
+{tag:"L4 Domestic Violence · Q11",q:"Mary has cohabited with Peter for 5 years. Peter forbids her to see friends or go to work, and has recently thrown her out of the home and refuses to let her return to collect her belongings. Explain the relief available under the DCRVO, which order Mary should apply for, and outline the procedure.",pts:["Issue: are cohabitees protected by the DCRVO, and is Peter's conduct molestation?（同居關係受唔受保障、行為屬唔屬騷擾）","Concept: DCRVO Cap 189 covers cohabitation relationships (including former ones); molestation includes control, isolation and pestering; the three s.3 orders — non-molestation, exclusion, entry（涵蓋同居關係；三令：不騷擾／遷出／重返）","Analysis: isolation + locking her out amount to molestation and domestic violence in the wide case-law sense, including non-physical control; Mary's immediate need is to get back into the home — the entry order fits; a non-molestation order may be sought at the same time（孤立 + 趕出門屬廣義家暴；重返令最對症，可同時申請不騷擾令）","Conclusion + procedure: file in person at the Family Court registry with a supporting affirmation and draft order; ex parte application if urgent, followed by an inter partes return date（家事法庭親身 filing、誓章、草擬命令；緊急可先 ex parte）"],model:"The DCRVO protects parties to a cohabitation relationship, whether or not they are married. Peter's conduct — isolating Mary, preventing her from socialising and working, and throwing her out of the home — is controlling behaviour amounting to molestation and domestic violence in the wide sense recognised by the case law. Section 3 offers three injunctions: a non-molestation order, an exclusion order and an entry order. Mary's primary need is to re-enter the home to live and retrieve her belongings, so she should apply for an entry order, together with a non-molestation order. Procedurally, she files the application in person at the Family Court registry, supported by an affirmation and a draft order; in urgent cases she may first apply ex parte, with an inter partes return date fixed afterwards to decide whether the order continues."},
+{tag:"L5 Children · Q7",q:"With reference to HKSAR v L.S.T. (HCCC 318/2024), what criticism did the judge make of the social workers' performance in that child abuse case? What should social workers do under the Procedural Guide for Handling Child Abuse Cases?",pts:["Issue: social workers visited repeatedly yet failed to identify severe abuse（多次家訪仍未能識別嚴重虐待）","Concept: child-focused practice; the social worker's roles — identification, immediate safety, preliminary assessment, risk assessment, MDCC, follow-up of the welfare plan（兒童為本；識別、即時安全、評估、MDCC、跟進）","Analysis: the boy's severely abnormal weight and height were observable indicators; the Guide requires a shift from passive 'case handling' to proactive child protection; immediate steps include medical examination, temporary accommodation and reporting to the police（體重身高異常屬可觀察指標；要主動保護，唔可以只聽照顧者講）","Conclusion: assessments must rest on observable physical and developmental evidence, not merely the carer's account（要用實證評估，唔好只靠照顧者陳述）"],model:"In L.S.T., a young boy was starved and beaten to death. The judge pointedly observed that social workers had visited the family repeatedly and had seen the boy three months before his death, yet failed to notice that his weight (only 9.7 kg) and height were grossly abnormal — had anyone detected this earlier, the boy might have been saved. Under the Social Welfare Department's Procedural Guide (2020), social workers must identify suspected abuse, secure the child's immediate safety (medical examination, temporary accommodation, reporting to the police), carry out preliminary and risk assessments, convene a multi-disciplinary case conference and implement the welfare plan, shifting from passive case handling to proactive, child-focused protection. Conclusion: social workers must verify the position through observable physical and developmental indicators and cannot rely solely on the carer's account."},
+{tag:"L6 Mental Health",q:"An 82-year-old man living alone has dementia and assets worth several million dollars. His nephew has recently taken him to the bank frequently to transfer funds. How can the hospital social worker use the Mental Health Ordinance to protect him? Explain the conditions and procedure for a guardianship application.",pts:["Issue: an MIP at risk of financial exploitation who cannot manage his property and affairs（MIP 被剝削風險、無能力管理財產）","Concept: MHO Part IVB Guardianship Board; Part II property management (committee of the estate); the four conditions for a guardianship order（監護委員會；Part II 財產管理；監護四條件）","Analysis: medical reports must establish mental disorder + impaired decision-making; no less restrictive alternative; a social worker is an eligible applicant; 2 medical reports + social enquiry report required; the guardian's powers over money are capped, with authority over residence and treatment decisions（社工可申請；2 名醫生報告 + 社會調查報告；管錢有上限）","Conclusion: apply to the Guardianship Board; if necessary the Director of Social Welfare acts as guardian, alongside steps to protect bank accounts and assets（向監護委員會申請，必要時社署署長任監護人）"],model:"The elderly man is a mentally incapacitated person facing a real risk of financial exploitation — a classic case for guardianship (compare the 2007 wealthy-patient case in the lectures, where the Director of Social Welfare was the applicant). An eligible applicant, including a social worker, applies to the Guardianship Board supported by written reports from two registered medical practitioners and a social enquiry report. The Board must be satisfied that he has a mental disorder, that he is incapable of making reasonable decisions on major areas of his personal affairs, that only guardianship can meet his needs with no less restrictive alternative, and that the order is in his welfare interests. A guardian may decide on residence, consent to treatment and manage a capped monthly sum; for substantial assets, property management can separately be dealt with under Part II by a court-appointed committee of the estate."},
+{tag:"L7 Tort · Q16",q:"On a hiking activity led by a social worker, a participant crosses an outwardly intact old bridge together with two other people; the bridge collapses and he is injured. Is the organising agency liable in negligence? Analyse using the four elements, and list the five steps of risk management.",pts:["Duty: an organiser owes participants a duty of care (the BGCA case), including pre-testing the bridge's load and limiting the number crossing at once（主辦者有謹慎責任，包括測試承重、限制人數）","Breach: no site inspection or testing, no warning, no staff stationed to control flow, poor route design — judged by the standard of a reasonable organiser（無場勘、無警告、無人駐守，未達合理主辦者標準）","Causation + damage: the but-for test; collapse caused by 3 persons overloading + ageing; personal injury is a foreseeable type of loss; latent defect must be proved by the defendant（but-for 測試；潛在缺陷要被告舉證）","Five steps: identify hazards → who may be harmed → assess the risks → record the findings → review; plus insurance, staffing, parental consent and an emergency plan（辨識危害 → 誰受害 → 評估 → 記錄 → 覆檢）"],model:"As the organiser, the agency owed participants a duty of care which, as in the BGCA case, extends to checking facilities in advance — including testing the bridge's load-bearing capacity and limiting how many people cross at the same time. By doing no site inspection or testing, giving no warning and stationing no staff to control the flow, the agency fell below the standard of a reasonable organiser and breached that duty. On causation, but for allowing three people to cross together the bridge would not have collapsed from overloading combined with ageing, and personal injury is a foreseeable type of loss; if the agency pleads latent defect, it bears the burden of proof and on facts like these is unlikely to discharge it. Prevention follows the five-step risk assessment — identify hazards, identify who may be harmed, assess the risks, record the findings and review regularly — supported by insurance, adequate staffing and an emergency response plan."},
+{tag:"L9 Human Rights · Q12",q:"Explain how the Court of Final Appeal in Kong Yun-ming used the proportionality test to hold the 7-year residence requirement for CSSA unconstitutional.",pts:["Facts and provisions: Article 36 right to social welfare vs Article 145 policy-making power; Article 25 equality（事實同條文：Art 36 vs Art 145、Art 25）","The three steps applied: legitimate aim → rational connection → not manifestly without reasonable foundation（比例三步：合法目的 → 合理關連 → 唔明顯無合理基礎）","Why the Government failed: saving money is not a legitimate aim; the rule conflicted with the family-reunion and population policies; the savings were trivial; the safety net was removed (para 44)（慳錢唔係合法目的、與政策衝突、節省微不足道、抽走安全網）","Conclusion: the 7-year rule was unconstitutional; Article 36 is benchmarked to the 1997 scheme (1-year rule), and later restrictions face constitutional review（7 年要求違憲；Art 36 以 1997 年制度為基準）"],model:"The CFA first held that Article 36 protects the right to social welfare as embodied in the CSSA scheme in force on 1 July 1997 (with a 1-year residence requirement); the Government may adjust policy under Article 145, but any restriction must survive proportionality review: it must pursue a legitimate societal aim, be rationally connected to that aim, and not be manifestly without reasonable foundation. The Government argued the 7-year rule was needed to save money and keep the scheme sustainable, but the Court held that saving money alone is not a legitimate aim; the rule also sat uneasily with the One-Way Permit family-reunion policy and the policy of rejuvenating the population, the actual savings were trivial, and applicants who were otherwise eligible were left below basic-needs level — in the Court's words at paragraph 44, the safety net was removed. The 7-year requirement therefore had no rational connection with its aim and was manifestly without reasonable foundation, hence unconstitutional."},
+{tag:"L8 Human Rights · Q14",q:"What is civil disobedience? In SJ v Wong Chi Fung, what sentencing principles did the Court of Final Appeal lay down for unlawful assembly cases involving a civil disobedience motive?",pts:["Civil disobedience: non-violent law-breaking to draw public attention to perceived injustice; a noble motive is not in itself a defence（非暴力違法喚起關注；動機唔係免責理由）","Elements of unlawful assembly under POO s.18 (3+ persons + specified conduct + fear of a breach of the peace)（s.18 元素）","The CFA endorsed the CA guidelines: sentence along a spectrum of seriousness; for large-scale violent assemblies, punishment and deterrence dominate and motive/personal circumstances carry very little weight; minor cases may focus on rehabilitation（大型暴力案件重懲罰同阻嚇，動機權重極低；輕微案件可重更生）","Conclusion: the freedom of assembly must be balanced against public order, and sentences must deter to preserve order（集會自由要同公共秩序平衡）"],model:"Civil disobedience means breaking the law non-violently to draw public attention to a law or policy perceived as unjust; a worthy motive does not itself afford a defence. In Wong Chi Fung, the Court of Final Appeal endorsed the Court of Appeal's sentencing guidelines for future cases: the court sentences along a spectrum according to the actual seriousness of the offence. For small-scale, unpremeditated assemblies involving minimal violence, rehabilitative factors may carry more weight; but for large-scale assemblies involving violence, punishment and deterrence must predominate, and the offender's personal circumstances, motive and rehabilitation prospects carry very little, if any, weight, so that public order is effectively maintained. The freedom of assembly is not absolute and must be balanced against public order."},
+{tag:"Privacy · Q17",q:"List the six Data Protection Principles under the PDPO, and explain why the Court of Appeal in Eastweek held that the magazine had not breached DPP1.",pts:["DPP1–6 one by one: collection purpose & manner / accuracy & retention / use / security / openness / access & correction（六大原則逐個講）","Two elements of DPP1(2)(b): an act of collection + unfair means（要有收集行為 + 手段不公平）","The CA's ruling: street photography and publication did not amount to 'collecting personal data', so DPP1 was never engaged; the CFI judgment and the Commissioner's decision were overturned（街頭拍攝唔構成「收集」，DPP1 唔適用）","Extension: background to the 2021 doxxing amendment and its two-tier penalties (bonus point)（2021 起底修訂背景同兩級罰則——加分位）"],model:"The six principles are: DPP1 — personal data must be collected for a lawful purpose by lawful and fair means, be necessary and not excessive, and the data subject must be informed; DPP2 — data must be accurate and not kept longer than necessary; DPP3 — data must be used only for the original purpose; DPP4 — security safeguards; DPP5 — openness about data policies; DPP6 — the data subject's rights of access and correction. In Eastweek, the Court of Appeal (Ribeiro JA) held that a breach of DPP1(2)(b) requires both an act of collecting personal data and unfair means; photographing a passer-by in the street and publishing the photograph was held not to amount to a collection of personal data at all, so DPP1 was not engaged, and the court set aside the Court of First Instance judgment and the Privacy Commissioner's determination."},
+{tag:"Privacy · Q17",q:"What new offences and penalties did the Personal Data (Privacy) (Amendment) Ordinance 2021 create for doxxing, and what was the legislative background?",pts:["Background: the surge in doxxing during the 2019 social events, targeting police officers, officials and members of the public（2019 年起底激增係立法背景）","Two tiers: Tier 1 (summary) — disclosure without consent with intent or recklessness as to specified harm, $100,000 + 2 years; Tier 2 (indictment) — specified harm actually caused, $1,000,000 + 5 years（一級 $100,000＋2 年；二級 $1,000,000＋5 年）","Protection extends to family members; the Privacy Commissioner gained criminal investigation and prosecution powers and may issue cessation notices to remove content（保護埋家人；專員有刑事調查、檢控同發停止通知權力）","Analysis point: balancing freedom of expression against privacy, and the deterrent purpose（言論自由 vs 私隱嘅平衡）"],model:"The Amendment Ordinance was enacted in response to the widespread doxxing during the 2019 social events. It criminalises disclosing another person's personal data without consent: the first-tier offence, triable summarily, is committed where the discloser intends, or is reckless as to, whether the data subject or a family member will suffer specified harm — maximum fine $100,000 and 2 years' imprisonment. The second-tier offence, triable on indictment, requires specified harm actually to be caused — maximum fine $1,000,000 and 5 years' imprisonment. The Ordinance also empowers the Privacy Commissioner to conduct criminal investigations and bring prosecutions, and to issue cessation notices requiring doxxing content to be removed; protection extends to the data subject's family members, strengthening deterrence."},
+{tag:"Conduct · Q18/Q19",q:"A registered social worker is convicted of having sexual intercourse with a 15-year-old female service user. Explain the criminal offences and maximum penalties involved, and the consequences under the Code of Practice and for his registration.",pts:["Criminal: sexual intercourse with a girl under 16 (Crimes Ordinance, 5 years); indecent assault under s.122 carries 10 years where applicable, and a person under 16 cannot legally consent（與 16 歲以下女童性交 5 年；非禮 s.122 最高 10 年；16 歲以下不能同意）","Code of Practice paragraph 14: no sexual activity or contact with a service user under any circumstances, whether consensual or forced（守則第 14 段：任何情況下都唔可以，不論自願被迫）","Registration: disciplinary proceedings under Cap 505 s.25 — the Lee Kwok Wah precedent is permanent removal from the register; s.17 fitness to be registered is also engaged（Cap 505 s.25 紀律研訊；Lee Kwok Wah 先例：永久除名）","Ethical analysis: the power imbalance; the user's safety and welfare always come first; agency safeguards — no one-to-one meetings behind closed doors, CCTV, reporting mechanisms（權力不對等；機構預防措施）"],model:"Criminally, sexual intercourse with a girl under 16 is a serious offence punishable by up to 5 years' imprisonment; where the conduct involves indecent assault, s.122 carries up to 10 years, and a person under 16 cannot in law give valid consent, so 'she agreed' is no defence. Professionally, paragraph 14 of the Code of Practice for Social Workers expressly prohibits any sexual activity or contact with a service user under any circumstances, whether consensual or forced. The Social Workers Registration Board may conduct disciplinary proceedings under Cap 505 s.25, and the precedent in Lee Kwok Wah is permanent removal from the register. The safety, needs and rights of service users must always be the social worker's primary consideration."},
+{tag:"Children · Q20",q:"On a home visit, a social worker finds a 7-year-old boy with multiple bruises of different ages, and the carer gives a vague explanation. Explain the social worker's legal duty under Cap 650, the reporting procedure and the exceptions, and discuss the relationship with the duty of confidentiality.",pts:["Duty: a registered social worker is one of the 25 categories of specified professionals; reasonable grounds to suspect serious harm or a real risk trigger a duty to report as soon as reasonably practicable（註冊社工屬 25 類指明人員；有合理懷疑就要盡快舉報）","Procedure: report to the Director of Social Welfare or the Commissioner of Police; the reporter's identity is protected and reporting attracts immunity from civil, criminal and Code liability（向社署署長或警務處處長報；身份受保護、舉報免責）","Exceptions: purely accidental injury not caused by neglect, self-harm, harm caused by another child not of a sexual nature, the authorities already notified, or a reasonable belief that another specified professional has reported — none fits vague explanations with injuries of different ages（純意外／自傷／兒童間非性行為等例外；本案唔落入例外）","Confidentiality: the statutory duty overrides the Code's confidentiality principle; explain the legal limits of confidentiality to clients from the outset and never promise absolute confidentiality; failure to report — $50,000 fine plus 3 months' imprisonment on indictment（法律凌駕保密；唔可以承諾絕對保密）"],model:"A registered social worker is one of the 25 categories of specified professionals under the Mandatory Reporting of Child Abuse Ordinance (Cap 650). Bruises of different ages combined with a vague explanation give reasonable grounds to suspect serious harm, so the social worker must report to the Director of Social Welfare or the Commissioner of Police as soon as reasonably practicable. The statutory exceptions — purely accidental injury not caused by neglect, self-harm, non-sexual harm caused by another child, or a reasonable belief that another specified professional has already reported — do not apply on these facts. The reporter's identity is protected and a report in good faith attracts immunity from civil, criminal and Code of Practice liability; failure to report is punishable by a $50,000 fine and, on indictment, 3 months' imprisonment. The statutory duty overrides the professional duty of confidentiality, so social workers should explain the legal limits of confidentiality to clients from the start and must never promise absolute confidentiality."}
+];
+
+var FACTS=[
+{t:"Legal System",term:"Rule of law",def:"The principle that everyone, including the government, is subject to the law, with an independent judiciary checking public power.",prov:"Dicey's three points on the rule of law",scen:"A government department acts without any legal basis and a citizen challenges the decision in court.",zh:"法治：人人包括政府都要守法，司法獨立制衡公權。"},
+{t:"Legal System",term:"Precedent (stare decisis)",def:"Lower courts must follow the legal principles laid down by higher courts in earlier cases, giving the common law consistency and predictability.",prov:"Common law / case law as a source of law",scen:"A District Court judge decides a legal point by following a Court of Final Appeal ruling on the same issue.",zh:"跟隨先例：下級法院要跟上級法院既定原則。"},
+{t:"Legal System",term:"Equity",def:"A body of principles developed to correct the rigidity of the common law, focusing on fairness and conscience.",prov:"Wong Chim Ying v Cheng Kam Wing",scen:"Property is registered in a wife's name, but the husband who paid for it claims a share based on fairness.",zh:"衡平法修正普通法僵化，重公平同良知。"},
+{t:"Legal System",term:"Adversarial system",def:"The trial model in which two opposing parties present their cases and the judge acts as a neutral, passive umpire.",prov:"L1/L2 lecture: features of the common law system",scen:"At trial, the judge does not investigate the facts but decides on the evidence the prosecution and defence choose to present.",zh:"抗辯式制度：法官被動中立，雙方負責舉證抗辯。"},
+{t:"Legal System",term:"Judicial review",def:"A court procedure challenging the legality and procedure of a public body's decision, rather than whether the decision itself was wise.",prov:"Kong Yun-ming v DSW (2013) CFA",scen:"A welfare recipient asks the court to quash a Social Welfare Department policy said to be unconstitutional.",zh:"司法覆核挑戰公權決定嘅合法性同程序，唔係決定本身啱唔啱。"},
+{t:"Legal System",term:"Ultra vires",def:"Acting beyond the powers granted by law; subsidiary legislation that exceeds its parent ordinance is invalid.",prov:"L2 lecture: limits on subsidiary legislation",scen:"A department makes a regulation imposing penalties that its parent ordinance never authorised.",zh:"越權：附屬立法超越主體法例授權即屬無效。"},
+{t:"Legal System",term:"Presumption of innocence",def:"An accused is presumed innocent until the prosecution proves guilt beyond reasonable doubt; the defendant need not prove anything.",prov:"HKSAR v Khaw Kim Sun (2023) CFA — fair trial safeguards",scen:"A defendant stays silent throughout the trial and the prosecution must still prove every element of the offence.",zh:"無罪推定：控方要證明到無合理疑點，被告唔使自證清白。"},
+{t:"Legal System",term:"Court of Final Appeal",def:"The highest appellate court in Hong Kong, which hears final appeals and may seek an NPCSC interpretation of the Basic Law under Article 158.",prov:"Basic Law Article 158",scen:"A losing party in the Court of Appeal takes a constitutional point to the final appellate court in Hong Kong.",zh:"終審法院係香港最高上訴法院。"},
+{t:"Legal System",term:"Subsidiary legislation",def:"Regulations and rules made by authorised bodies under a parent ordinance; they must stay within the authority the ordinance grants and normally have no retrospective effect.",prov:"L2 lecture: legislative process from first reading to gazette",scen:"A Secretary makes rules under an ordinance to set the detailed fees for a registration scheme.",zh:"附屬立法要喺主體法例授權範圍內制訂，原則上無追溯力。"},
+{t:"Criminal Law",term:"Mens rea",def:"The mental element of a crime — intention, recklessness or negligence — which the prosecution must prove together with the actus reus.",prov:"L3 lecture: elements of criminal liability",scen:"A man takes another person's umbrella honestly believing it is his own, so the mental element of theft is in issue.",zh:"犯罪意圖：意圖、罔顧或疏忽，要同犯罪行為一齊證明。"},
+{t:"Criminal Law",term:"Causation",def:"The link between the defendant's act and the prohibited result, tested first by the 'but for' test and then by whether an intervening act broke the chain.",prov:"R v Smith; R v Jordan; R v Cheshire",scen:"A stabbed victim dies after poor hospital treatment, and the court asks whether the original wound still caused the death.",zh:"因果關係：but-for 測試，再睇介入行為有冇斷鏈。"},
+{t:"Criminal Law",term:"Self-defence",def:"A defence where the defendant honestly believes force is needed against an imminent threat and the force used is reasonable and proportionate.",prov:"HKSAR v Shum Man Fai (2021) HKCA",scen:"A stall owner pushes away a man who is swinging a bottle at him and is charged with assault.",zh:"自衛：真誠相信有即時威脅 + 回應武力合理合比例。"},
+{t:"Criminal Law",term:"Duress",def:"A defence where the defendant commits an offence because of threats of death or serious harm that would overpower a person of reasonable firmness.",prov:"L3 lecture: duress as a defence negating liability",scen:"A driver carries contraband after being told his family will be killed if he refuses.",zh:"受脅迫：因死亡或嚴重傷害威脅而犯案。"},
+{t:"Criminal Law",term:"Automatism",def:"Acting without conscious control of one's muscles, such as during a seizure or sleepwalking, which may negate the actus reus.",prov:"L3 lecture: automatism as a defence negating liability",scen:"A diabetic driver in a hypoglycaemic episode injures a pedestrian while not conscious of driving.",zh:"自動行為：無意識控制下嘅動作，可否定犯罪行為。"},
+{t:"Criminal Law",term:"Insanity",def:"A defence based on a defect of reason from a disease of the mind, so that the defendant did not know the nature of the act or that it was wrong.",prov:"L3 lecture: insanity as a defence negating liability",scen:"A defendant with a severe psychotic disorder did not understand what he was doing when he attacked a stranger.",zh:"精神錯亂：因心智疾病而唔知行為性質或對錯。"},
+{t:"Criminal Law",term:"Appropriation",def:"Any assumption of the rights of an owner over property belonging to another — an element of theft under the Theft Ordinance s.2(1).",prov:"Theft Ordinance s.2(1)",scen:"A borrower keeps and then sells a friend's camera instead of returning it.",zh:"挪佔： assume 咗物主權利去處理他人財產，係盜竊元素之一。"},
+{t:"Criminal Law",term:"Summary and indictable offences",def:"Summary offences are tried in the Magistrates' Court; indictable offences are tried in the District Court or the Court of First Instance, where a jury of seven may convict by a majority of at least 5:2.",prov:"L3 lecture: classification of offences",scen:"A minor shoplifting case is listed in the Magistrates' Court while a murder case goes to the Court of First Instance with a jury.",zh:"簡易罪行喺裁判法院審；可公訴罪行喺區院或原訟庭審，陪審團 5:2 可定罪。"},
+{t:"Criminal Law",term:"Omission liability",def:"Liability can arise from failing to act where a legal duty exists, such as a carer's duty under OAPO s.27 or a duty voluntarily assumed.",prov:"R v Stone & Dobinson; R v Miller",scen:"A couple take in an ill relative, then fail to feed her or call a doctor until she dies.",zh:"不作為責任：有法律責任而唔做嘢都可以入罪。"},
+{t:"Domestic Violence & Adults",term:"Molestation",def:"Conduct under the DCRVO including assault, pestering, stalking, nuisance calls or letters and controlling behaviour that calls for the court's intervention.",prov:"DCRVO Cap 189 — the case-law meaning of molestation",scen:"An ex-partner follows a woman daily, floods her with insulting messages and waits outside her workplace.",zh:"騷擾包括襲擊、纏擾、跟蹤、滋擾電話信件同控制行為。"},
+{t:"Domestic Violence & Adults",term:"Non-molestation order",def:"An injunction under DCRVO s.3(1)(a)/(b) ordering a respondent not to molest the applicant or a specified minor living with the applicant.",prov:"DCRVO Cap 189 s.3(1)(a)/(b)",scen:"A wife asks the court to order her husband to stop threatening and harassing her.",zh:"不騷擾令：禁止被申請人騷擾申請人或指明未成年人。"},
+{t:"Domestic Violence & Adults",term:"Exclusion order",def:"An order under DCRVO s.3(1)(c) requiring the respondent to leave, or not to enter, the shared home.",prov:"DCRVO Cap 189 s.3(1)(c)",scen:"After repeated violence, a court orders the husband to move out of the family flat.",zh:"遷出令：要求被申請人搬離共同居所。"},
+{t:"Domestic Violence & Adults",term:"Power of arrest",def:"An authorisation attached to a DCRVO injunction allowing a police officer to arrest without warrant on reasonable suspicion of a breach, available where ABH has been caused or is likely.",prov:"DCRVO Cap 189 s.5",scen:"A judge attaches this authorisation because the respondent has already caused actual bodily harm.",zh:"逮捕授權書：附於禁制令，條件係已造成或好可能造成 ABH。"},
+{t:"Domestic Violence & Adults",term:"Actual bodily harm (ABH)",def:"Assault occasioning actual bodily harm under OAPO s.39, punishable by up to 3 years' imprisonment.",prov:"OAPO Cap 212 s.39",scen:"A victim suffers cuts and bruising needing medical treatment after being attacked by her partner.",zh:"襲擊致身體傷害，OAPO s.39，最高 3 年。"},
+{t:"Domestic Violence & Adults",term:"GBH with intent",def:"Wounding or causing grievous bodily harm with intent under OAPO s.17, punishable by life imprisonment.",prov:"OAPO Cap 212 s.17",scen:"An attacker stabs a victim repeatedly with a knife, intending to cause really serious injury.",zh:"意圖造成嚴重身體傷害，OAPO s.17，最高終身監禁。"},
+{t:"Domestic Violence & Adults",term:"Specified minor",def:"A minor who lives with the DCRVO applicant and on whose behalf protection under the ordinance may also be sought.",prov:"DCRVO Cap 189 — applicants and specified minors",scen:"A mother applies for protection for herself and her 6-year-old daughter who lives with her.",zh:"指明未成年人：同申請人同住、可一併受 DCRVO 保護嘅兒童。"},
+{t:"Domestic Violence & Adults",term:"Ex parte application",def:"An urgent application made by one party without notice to the other, used in DCRVO cases where protection cannot wait.",prov:"Q11 case study: Mary v Peter — procedure",scen:"A woman in immediate danger applies for protection on the same day without first notifying her partner.",zh:"單方面緊急申請：唔使預先通知對方都可以先攞保護。"},
+{t:"Children",term:"Welfare checklist",def:"The factors weighed under the welfare principle, including the child's wishes and feelings, needs, relationships, the effect of change, risk of harm, family violence and each parent's capability.",prov:"L5 lecture: the welfare checklist under GMO Cap 13",scen:"A judge weighs a 10-year-old's wish to live with her grandmother against the effect of changing schools.",zh:"福利清單：意願、需要、關係、改變影響、傷害風險、父母能力等因素。"},
+{t:"Children",term:"Care or protection order",def:"Orders under PCJO Cap 213 by which a child in need of care or protection may be taken into care or placed under supervision, supervision lasting up to 3 years.",prov:"PCJO Cap 213 s.34(2)",scen:"After repeated neglect, the court places a child under the supervision of the Director of Social Welfare.",zh:"照顧令／監管令：監管最長 3 年，由社署署長執行。"},
+{t:"Children",term:"Multi-disciplinary case conference (MDCC)",def:"The meeting where professionals from different disciplines jointly assess a suspected child abuse case and decide the welfare plan.",prov:"Procedural Guide for Handling Child Abuse Cases (2020)",scen:"Doctors, police and the case social worker meet to decide whether an injured child should return home.",zh:"多專業個案會議：共同決定懷疑虐兒個案嘅福利計劃。"},
+{t:"Children",term:"Ancillary relief",def:"Financial and property orders made on divorce, such as periodical payments, lump sums, transfer or sale of property.",prov:"Matrimonial Causes Ordinance; Cap 179A r.68",scen:"On divorce, the court orders the family flat transferred to the wife who cares for the children.",zh:"附屬濟助：離婚時嘅贍養費同財產命令。"},
+{t:"Children",term:"Duration of child maintenance",def:"Maintenance generally lasts until the child turns 18, but may be extended while the child remains in full-time education or training.",prov:"L5 lecture: maintenance for children",scen:"A 19-year-old full-time university student continues to receive support under an extended order.",zh:"贍養一般到 18 歲；全日制讀書可延長。"},
+{t:"Children",term:"Sexual intercourse with a girl under 16",def:"Under the Crimes Ordinance, intercourse with a girl under 13 carries life imprisonment; with a girl under 16 the maximum is 5 years, and her 'consent' is no answer.",prov:"Crimes Ordinance Cap 200 — sexual offences against children",scen:"A man is charged after having sex with a 15-year-old who told him she agreed.",zh:"與 13 歲以下女童性交可判終身；16 歲以下最高 5 年，同意唔係抗辯。"},
+{t:"Children",term:"Care and control",def:"Day-to-day care decisions for a child, distinct from custody (major decisions such as schooling) and access (the other parent's contact time).",prov:"Q10 case study: the Dat case",scen:"The mother makes daily decisions on meals and school runs while both parents share the major decision on schooling.",zh:"照顧同管束係日常決定；有別於管養權（重大決定）同探視權。"},
+{t:"Children",term:"Definition of child abuse",def:"Any act or omission endangering a child's physical, psychological or emotional health and development, including physical, psychological and sexual abuse, serious neglect and child prostitution.",prov:"L5 lecture / Procedural Guide (2020) definition",scen:"Parents repeatedly lock a child in a room without food as a punishment.",zh:"虐兒：危害兒童身心健康發展嘅作為或不作為，包括嚴重忽略。"},
+{t:"Children",term:"Ascertainable wishes of the child",def:"The child's own views, ascertained according to age and understanding, which the court must consider under the welfare principle in GMO s.3(1).",prov:"GMO Cap 13 s.3(1)",scen:"A mature 14-year-old tells the court she wants to live with her father after the divorce.",zh:"兒童可確定嘅意願：按年齡同理解考慮，係福利原則一部分。"},
+{t:"Mental Health",term:"Committee of the estate",def:"A person appointed by the court under MHO Part II to manage the property and affairs of a mentally incapacitated person.",prov:"MHO Cap 136 Part II (s.11)",scen:"The court appoints a committee to manage a demented millionaire's bank accounts and flat.",zh:"產業受託監管人：由法院委任，管理 MIP 嘅財產事務。"},
+{t:"Mental Health",term:"Certified patient",def:"A patient detained for treatment under MHO s.36 on the certificates of two registered medical practitioners.",prov:"MHO Cap 136 s.36",scen:"Two doctors certify that a severely psychotic patient must be detained for treatment.",zh:"證明病人：按 2 名醫生證明羈留治療，MHO s.36。"},
+{t:"Mental Health",term:"Voluntary patient",def:"A patient admitted to a mental hospital at his own request under MHO s.30.",prov:"MHO Cap 136 s.30",scen:"A depressed man asks to be admitted to hospital for treatment and signs himself in.",zh:"自願病人：自己要求入院，MHO s.30。"},
+{t:"Mental Health",term:"Mental Health Review Tribunal",def:"The tribunal under MHO Part IVA (s.59E) that reviews the cases of detained patients.",prov:"MHO Cap 136 s.59E",scen:"A detained patient asks the tribunal to review whether his continued detention is justified.",zh:"精神健康覆核審裁處：覆核羈留個案，MHO s.59E。"},
+{t:"Mental Health",term:"Enduring Power of Attorney",def:"An instrument under Cap 501 authorising an attorney to handle the donor's financial and legal affairs, designed to continue if the donor later becomes incapacitated.",prov:"Enduring Powers of Attorney Ordinance Cap 501",scen:"A woman executes this instrument so her son can manage her finances if she later develops dementia.",zh:"持久授權書：授權他人處理財政法律事務，Cap 501。"},
+{t:"Mental Health",term:"Advance Directive",def:"A document recording a person's medical treatment wishes for a future time when they can no longer decide for themselves.",prov:"L6 lecture: the three instruments of peace of mind",scen:"A terminally ill patient records in advance that she refuses cardiopulmonary resuscitation.",zh:"預設醫療指示：預先記錄無能力時嘅醫療意願。"},
+{t:"Mental Health",term:"Probate",def:"The court's certification that a will is genuine, granting the executor authority to administer the deceased's estate.",prov:"L6 lecture: wills and probate",scen:"After a death, the executor applies to the court for a grant before distributing the estate to the beneficiaries.",zh:"遺囑認證：法院確認遺囑真確，授權執行人管理遺產。"},
+{t:"Mental Health",term:"Forgery of a will",def:"Making a false will is forgery under the Crimes Ordinance, punishable by up to 14 years' imprisonment, as the Tony Chan case showed.",prov:"Crimes Ordinance — the Nina Wang will case",scen:"A man fabricates a will naming himself sole beneficiary of a tycoon's estate.",zh:"偽造遺囑屬偽造文件罪，最高 14 年。"},
+{t:"Mental Health",term:"Means test (legal aid)",def:"The financial eligibility test for legal aid, based on disposable income multiplied by 12 plus disposable capital, with a capital disregard for applicants aged 60 or above.",prov:"L6 lecture: legal aid eligibility",scen:"An elderly applicant's savings are partly disregarded when the Legal Aid Department assesses her finances.",zh:"法律援助經濟審查：可動用收入×12 + 可動用資本；60 歲以上有資本豁免額。"},
+{t:"Tort",term:"Neighbour principle",def:"Lord Atkin's principle in Donoghue: take reasonable care to avoid acts or omissions you can reasonably foresee would injure persons so closely and directly affected that you ought to have them in contemplation.",prov:"Donoghue v Stevenson",scen:"A drinks manufacturer is held to owe a duty to the ultimate consumer of its ginger beer.",zh:"鄰居原則：要預見受你行為密切直接影響嘅人。"},
+{t:"Tort",term:"Reasonable person standard (breach)",def:"Breach is judged objectively against the reasonable person, weighing likelihood of harm, the defendant's knowledge, the victim's vulnerability, seriousness of consequences and the cost and practicability of precautions.",prov:"Bolton v Stone",scen:"A cricket club whose ball has escaped only 6 times in 30 years is judged on whether a reasonable club would have fenced higher.",zh:"違反責任用客觀「合理人」標準，睇風險大小同防範成本。"},
+{t:"Tort",term:"Novus actus interveniens",def:"A new intervening act that may break the chain of causation in negligence if it is independent and unforeseeable.",prov:"L7 lecture: legal causation",scen:"After a minor crash caused by the defendant, a third party deliberately sets the wreck on fire and injures the claimant.",zh:"新介入行為：獨立而不可預見嘅介入可以斷因果鏈。"},
+{t:"Tort",term:"Remoteness of damage",def:"Loss is recoverable in negligence only if the type of damage was reasonably foreseeable, following the Wagon Mound (No.1).",prov:"The Wagon Mound (No.1)",scen:"Oil spilled in a harbour fouls a wharf, which was foreseeable, but the claim concerns fire damage — a different type of loss.",zh:"損害遙遠性：損失「種類」要可預見先賠。"},
+{t:"Tort",term:"Private nuisance",def:"Unlawful interference with another person's use or enjoyment of land, such as flooding caused by a leaking pipe.",prov:"Leung Tsang Hung v IO of Kwok Wing House",scen:"Water repeatedly leaks from the flat above, damaging the ceiling and furniture below.",zh:"私人妨擾：不當干擾他人使用或享受土地。"},
+{t:"Tort",term:"Public nuisance",def:"An act endangering the life, safety, health, property or comfort of the public, actionable by an individual who suffers special damage where the type of loss is foreseeable.",prov:"L7 lecture: public nuisance",scen:"A shop blocks the whole pavement with goods and a blind pedestrian is injured tripping over them.",zh:"公眾妨擾：危害公眾 + 原告受特別損害先告得入。"},
+{t:"Tort",term:"False imprisonment",def:"The complete restriction of a person's freedom of movement without lawful justification; actionable per se without proof of loss.",prov:"L7 lecture: intentional torts against the person",scen:"A store guard locks a suspected shoplifter in a room for hours without calling the police.",zh:"非法禁錮：無合法理由完全限制行動自由，唔使證明損失。"},
+{t:"Tort",term:"Close connection (vicarious liability)",def:"An employer may be liable for an employee's tort, without fault of its own, where the employment relationship and the wrongdoing are closely connected.",prov:"Ming An v Ritz-Carlton; Poon Chau Nam",scen:"A hotel is sued for an assault committed by its doorman while on duty.",zh:"轉承責任第二步：僱傭關係同過錯要有密切關連。"},
+{t:"Tort",term:"Occupancy duty and activity duty",def:"Cap 314 governs the state of premises (occupancy duty); dangers arising from the activities carried on fall outside the ordinance (activity duty).",prov:"Occupiers Liability Ordinance Cap 314 s.3",scen:"A wet floor in a mall is a premises-state risk, while a dangerous game run by a tenant is an activity risk.",zh:"Cap 314 只管處所狀態；活動本身危險唔屬本條例。"},
+{t:"Tort",term:"Apportionment for contributory negligence",def:"Under Cap 23 s.21, damages are reduced to the extent the court thinks just and equitable having regard to the claimant's share of responsibility for the damage.",prov:"Law Amendment and Reform (Consolidation) Ordinance Cap 23 s.21",scen:"A pedestrian who dashed across the road recovers reduced damages from the speeding driver who hit her.",zh:"共分疏忽：按責任比例扣減賠償，Cap 23 s.21。"},
+{t:"Human Rights",term:"Inalienability of human rights",def:"Human rights cannot be taken away or surrendered; they are inherent, universal and held at all times, though most may be limited for public order, safety or others' rights.",prov:"L8 lecture: characteristics of human rights",scen:"A prisoner retains basic human rights even while lawfully imprisoned.",zh:"人權不可剝奪、生而有之、普遍存在；但唔係絕對。"},
+{t:"Human Rights",term:"International Bill of Human Rights",def:"The UDHR (1948) together with the ICCPR and ICESCR (1966); in Hong Kong the covenants are applied through Basic Law Article 39 and the Bill of Rights Ordinance Cap 383.",prov:"Basic Law Article 39; BORO Cap 383",scen:"A lawyer argues a fair-trial point by citing the ICCPR as applied through the Bill of Rights Ordinance.",zh:"UDHR + ICCPR + ICESCR；本地靠基本法 Art 39 同人權法案條例落實。"},
+{t:"Human Rights",term:"Rational connection",def:"The second step of the proportionality test: a restriction of rights must be rationally connected to the legitimate aim it pursues.",prov:"Kong Yun-ming v DSW (2013) CFA",scen:"A welfare rule is challenged because the money it saves has almost nothing to do with keeping the scheme sustainable.",zh:"比例原則第二步：限制要同合法目的有合理關連。"},
+{t:"Human Rights",term:"Manifestly without reasonable foundation",def:"The standard by which the CFA struck down the 7-year CSSA residence rule: a restriction so lacking in reasonable justification that it fails proportionality.",prov:"Kong Yun-ming (2013) CFA, para 44",scen:"A rule leaves otherwise eligible new arrivals below basic-needs level while saving the scheme only a trivial sum.",zh:"明顯無合理基礎：Kong 案 7 年要求就係咁被裁違憲。"},
+{t:"Human Rights",term:"Mandamus",def:"A judicial review remedy by which the court orders a public body to perform a public duty it is legally required to perform.",prov:"L8/L9 lecture: judicial review remedies",scen:"A court orders a department to process an application it had unlawfully refused to consider.",zh:"Mandamus：法院命令公營機構履行其法定責任。"},
+{t:"Human Rights",term:"Equality before the law (Article 25)",def:"Basic Law Article 25 guarantees that all Hong Kong residents are equal before the law, relied on together with BORO Article 22 in welfare judicial reviews.",prov:"Yao Man Fai George v DSW (2010)",scen:"A resident challenges a residence rule as treating him unequally compared with other residents.",zh:"基本法 Art 25：居民喺法律面前一律平等。"},
+{t:"Human Rights",term:"ECHR Article 8",def:"The right to respect for private and family life, relevant to social workers on confidentiality, correspondence and family contact.",prov:"L8 lecture: the ECHR and social work",scen:"Care-home staff open and read a resident's private letters without any justification.",zh:"ECHR Art 8：私人及家庭生活權，同保密、通信有關。"},
+{t:"Human Rights",term:"Deterrence in sentencing",def:"For large-scale violent unlawful assemblies, punishment and deterrence dominate sentencing and the offenders' motives carry very little weight.",prov:"SJ v Wong Chi Fung (2017/2018) CFA",scen:"Sentencing youths who joined a large violent assembly, the court gives their political motive minimal weight.",zh:"大型暴力非法集結量刑重懲罰同阻嚇，動機權重極低。"},
+{t:"Human Rights",term:"Immigration reservation",def:"The reservation in BORO s.11 under which immigration legislation affecting entry into, stay in and departure from Hong Kong is not affected by the Bill of Rights.",prov:"Lubiano v Director of Immigration (2020) CA",scen:"A foreign domestic helper challenges an immigration condition and the court applies the immigration reservation.",zh:"入境保留：BORO s.11，入境法例唔受人權法案影響。"},
+{t:"National Security",term:"Four NSL offences",def:"The 2020 National Security Law created four categories of offence: secession, subversion of state power, terrorist activities, and collusion with a foreign country or external elements.",prov:"Hong Kong National Security Law (2020)",scen:"A lecture lists splitting the country, overthrowing the government, terrorist attacks and foreign collusion as the four offence categories.",zh:"國安法四罪：分裂、顛覆、恐怖活動、勾結外國勢力。"},
+{t:"National Security",term:"Safeguarding National Security Ordinance 2024",def:"The local legislation completing Basic Law Article 23, covering treason, insurrection, state secrets, sabotage and external interference.",prov:"Basic Law Article 23; the 2024 Ordinance",scen:"Stealing state secrets for a foreign agency is dealt with under the 2024 local national security legislation.",zh:"《維護國安條例》2024 完成基本法 23 條本地立法。"},
+{t:"National Security",term:"Trial by designated judges without a jury",def:"In Tong Ying Kit, a certificate of the Secretary for Justice led to the first NSL trial being heard by three designated judges instead of a jury.",prov:"HKSAR v Tong Ying Kit (2021)",scen:"The first national security trial proceeds before three judges after a no-jury certificate is issued.",zh:"首宗國安案憑律政司司長證書，由 3 名法官取代陪審團。"},
+{t:"National Security",term:"Totality principle",def:"When sentencing for multiple offences, the court fixes a total sentence that is just and proportionate to the overall criminality, running parts concurrently where appropriate.",prov:"Sentencing in Tong Ying Kit (9 years in total)",scen:"A court orders parts of two sentences to run concurrently so the total reflects the whole offending.",zh:"整體量刑原則：總刑期要同整體罪行相稱。"},
+{t:"National Security",term:"Misconduct in public office",def:"A common law offence requiring a public official who, in the course of or in relation to his office, wilfully misconducts himself — for example by concealing a conflict of interest — to a serious degree harming public confidence.",prov:"Q4 case study: the Tsang and Fung cases",scen:"A senior official fails to declare a property interest while handling matters affecting the other party to the deal.",zh:"公職人員行為失當：故意隱瞞利益衝突等，嚴重損害公眾信心。"},
+{t:"National Security",term:"Circumstantial evidence",def:"Evidence of surrounding facts from which guilt may be inferred; in Khaw Kim Sun the CFA ordered a retrial because the judge had misdirected the jury.",prov:"HKSAR v Khaw Kim Sun (2023) CFA",scen:"With no eyewitness, the prosecution relies on the presence of a gas-filled yoga ball and toxicology findings.",zh:"環境證據：由周邊事實推論；Khaw 案因錯誤引導陪審團而重審。"},
+{t:"National Security",term:"Refusal of social worker registration",def:"Under Cap 505 s.17, a person convicted of an offence that damages the reputation of the profession may be refused registration as a social worker.",prov:"Social Workers Registration Ordinance Cap 505 s.17",scen:"A social work graduate convicted of a serious offence faces refusal of registration by the Board.",zh:"Cap 505 s.17：干犯令專業聲譽受損嘅罪行可被拒絕註冊。"},
+{t:"Privacy & Doxxing",term:"DPP2 — accuracy and retention",def:"Personal data must be accurate and must not be kept longer than is necessary for the purpose for which it is used.",prov:"PDPO Cap 486, DPP2",scen:"An agency keeps ex-clients' files for 20 years although the purpose for holding them was served long ago.",zh:"DPP2：資料要準確，保留唔好超過所需時間。"},
+{t:"Privacy & Doxxing",term:"DPP3 — use limitation",def:"Personal data must be used only for the purpose for which it was collected, or a directly related purpose, unless the data subject consents.",prov:"PDPO Cap 486, DPP3",scen:"An NGO uses clients' phone numbers, collected for case follow-up, to send fundraising appeals without consent.",zh:"DPP3：資料只可用於原收集目的，未經同意唔得改用途。"},
+{t:"Privacy & Doxxing",term:"DPP4 — security",def:"A data user must take all reasonably practicable steps to protect personal data against unauthorised or accidental access, processing, erasure, loss or use.",prov:"PDPO Cap 486, DPP4",scen:"Case files containing HKID numbers are left in an unlocked cabinet in a public corridor.",zh:"DPP4：要採取合理可行步驟保障資料保安。"},
+{t:"Privacy & Doxxing",term:"DPP6 — access and correction",def:"A data subject has the right to request access to, and correction of, his or her personal data held by a data user.",prov:"PDPO Cap 486, DPP6",scen:"A client asks an agency to show her case record and to correct her wrongly recorded date of birth.",zh:"DPP6：當事人有查閱同改正個人資料嘅權利。"},
+{t:"Privacy & Doxxing",term:"Specified harm (doxxing)",def:"The harm element of the 2021 doxxing offences, covering harm such as harassment, threat, intimidation or bodily or psychological harm to the data subject or family members.",prov:"PDPO (Amendment) Ordinance 2021 — two-tier doxxing offences",scen:"A post discloses an officer's home address and his children's school, intending the family to be harassed.",zh:"指明傷害：起底罪嘅傷害元素，保護埋家人。"},
+{t:"Privacy & Doxxing",term:"Cessation notice",def:"A notice the Privacy Commissioner may issue under the 2021 amendment requiring a person or platform to remove doxxing content.",prov:"PDPO (Amendment) Ordinance 2021 — cessation notice power",scen:"The Commissioner orders a platform to take down posts publishing a victim's personal data.",zh:"停止通知：私隱專員可要求移除起底內容。"},
+{t:"Privacy & Doxxing",term:"DPP1 — fair collection",def:"Data must be collected by lawful and fair means for a lawful purpose, adequate but not excessive, with the subject informed; but in Eastweek the Court of Appeal held that street photography was not 'collection' at all.",prov:"Eastweek v Privacy Commissioner (1999) CA",scen:"A magazine secretly photographs a passer-by in the street and publishes the photo with mocking comments.",zh:"DPP1：合法公平收集；Eastweek 裁定街頭拍攝唔算「收集」。"},
+{t:"Sexual Harassment & Conduct",term:"Conduct of a sexual nature",def:"Under SDO s.2(7), conduct of a sexual nature includes making a statement of a sexual nature, whether oral or written, to or in the presence of the woman concerned.",prov:"SDO Cap 480 s.2(7)",scen:"A tutor repeatedly makes sexual jokes about a student in front of the whole class.",zh:"「涉及性嘅行徑」包括口頭或書面嘅性陳述，SDO s.2(7)。"},
+{t:"Sexual Harassment & Conduct",term:"Locus standi",def:"The legal standing to bring a claim; in the Cheng Yin Fong case the claimant, merely a visitor to the estate, had no standing and there was no case to answer.",prov:"Q19 case study: Cheng Yin Fong",scen:"A visitor sues a management company over a guard's conduct, but has no legal relationship entitling her to sue under the SDO.",zh:"提訴資格：無企位就無案可答，Cheng Yin Fong 案係例子。"},
+{t:"Sexual Harassment & Conduct",term:"Damages in Yuen Sha Sha",def:"The court awarded $50,000 for injury to feelings, plus $10,000 aggravated damages and $20,000 punitive damages, and a written apology, for covert filming of a student changing.",prov:"Yuen Sha Sha v Tse Chi Pan (1998), SDO s.76",scen:"A court compensates a student who was secretly filmed while changing, adding punitive damages for the outrageous conduct.",zh:"Yuen 案賠償：感情損害 $50,000 + 加重 $10,000 + 懲罰性 $20,000 + 書面道歉。"},
+{t:"Sexual Harassment & Conduct",term:"Permanent removal from the register",def:"After a disciplinary inquiry under Cap 505 s.25(1)(a), the Social Workers Registration Board permanently removed Lee Kwok Wah from the register.",prov:"Cap 505 s.25; Q18 case study",scen:"A social worker convicted of sexual offences is struck off the register permanently after a disciplinary hearing.",zh:"經紀律研訊後永久除名，Cap 505 s.25，Lee Kwok Wah 先例。"},
+{t:"Sexual Harassment & Conduct",term:"Paragraph 14 in detail",def:"Paragraph 14.1 of the Code of Practice prohibits sexual intercourse with service users, and 14.2 prohibits fondling or stimulating their sexual organs — in any circumstances.",prov:"Code of Practice for Social Workers, paragraph 14",scen:"A worker argues that a relationship with a service user was loving and voluntary — the Code still prohibits any such sexual contact.",zh:"守則 14.1 禁性交、14.2 禁愛撫刺激性器官，任何情況都唔得。"},
+{t:"Sexual Harassment & Conduct",term:"Consent impossible under 16 (indecent assault)",def:"Under Crimes Ordinance s.122, a child under 16 cannot in law consent to an indecent assault; the offence may be committed by a man or a woman and carries up to 10 years' imprisonment.",prov:"Crimes Ordinance Cap 200 s.122",scen:"A 20-year-old who groped a 15-year-old claims she agreed — in law her consent is impossible.",zh:"非禮 s.122：16 歲以下不能合法同意，男女可犯，最高 10 年。"},
+{t:"Sexual Harassment & Conduct",term:"Preventing sexual misconduct in agencies",def:"Agencies prevent sexual misconduct by avoiding one-to-one meetings behind closed doors, installing CCTV, setting up reporting mechanisms and strengthening supervision.",prov:"Q18 case study: prevention measures",scen:"A centre requires interviews with service users to be held in rooms with glass panels and to be logged.",zh:"機構預防：唔單獨密室會面、CCTV、舉報機制、加強監管。"},
+{t:"Mandatory Reporting",term:"Specified professional",def:"One of the 25 categories of professionals — including registered social workers, teachers and medical professionals — who must report suspected serious child abuse under Cap 650.",prov:"Mandatory Reporting of Child Abuse Ordinance, Cap 650",scen:"A school social worker notices injuries suggesting serious abuse and comes under a duty to report.",zh:"指明專業人員：25 類，註冊社工係其中之一。"},
+{t:"Mandatory Reporting",term:"Serious harm threshold",def:"The Cap 650 duty is triggered when the professional has reasonable grounds to suspect that a child is suffering serious harm or is at a real risk of suffering serious harm.",prov:"Cap 650, in force from January 2026",scen:"A toddler presents with repeated fractures and inconsistent explanations, meeting the reporting threshold.",zh:"舉報門檻：合理理由懷疑兒童遭受嚴重傷害或有實質風險。"},
+{t:"Mandatory Reporting",term:"Pure accident exception",def:"No report is required under Cap 650 where the harm was purely accidental and was not caused by a carer's neglect.",prov:"Cap 650 — statutory exceptions",scen:"A child breaks an arm falling off a climbing frame in a properly supervised playground.",zh:"例外：純意外、非因照顧者疏忽造成，唔使舉報。"},
+{t:"Mandatory Reporting",term:"Protection of the reporter",def:"Cap 650 protects reporters: a report attracts immunity from civil, criminal and professional-conduct liability, and obstructing a report or disclosing a reporter's identity is an offence (ss.9, 11, 12).",prov:"Cap 650 ss.9, 11 and 12",scen:"A teacher who reported in good faith is shielded when the parent threatens to sue her.",zh:"舉報人受保護：舉報免責，阻礙舉報或洩露身份屬罪行。"},
+{t:"Mandatory Reporting",term:"Statutory defence (Cap 650 s.5)",def:"Section 5 of Cap 650 sits within the offence provision for failing to report and provides the statutory defence framework for specified professionals.",prov:"Cap 650 s.5",scen:"A nurse charged with failing to report relies on the statutory defence provided by the ordinance.",zh:"Cap 650 s.5 係唔舉報罪行入面嘅法定抗辯框架。"},
+{t:"Mandatory Reporting",term:"Child-focused practice",def:"The Procedural Guide requires social workers to shift from passive case handling to proactive, child-focused protection based on observable indicators such as weight, height and injuries.",prov:"Procedural Guide (2020); the L.S.T. case (HCCC 318/2024)",scen:"Instead of accepting a mother's explanation, the worker weighs the child and checks the growth records.",zh:"以兒童為本：用可觀察指標實證評估，唔好只聽照顧者講。"},
+{t:"Mandatory Reporting",term:"Immediate safety steps",def:"On identifying suspected abuse, the worker secures the child's immediate safety, including arranging a medical examination, temporary accommodation and reporting to the police where needed.",prov:"Procedural Guide for Handling Child Abuse Cases (2020)",scen:"A worker sends an injured child to hospital and arranges emergency foster care on the same night.",zh:"即時安全：送院檢查、臨時住宿、必要時報警。"},
+{t:"Mandatory Reporting",term:"Limits of confidentiality",def:"Social workers must explain that confidentiality has legal limits and must never promise absolute secrecy, because duties such as mandatory reporting override the Code's confidentiality principle.",prov:"Q20 case study: confidentiality versus Cap 650",scen:"At intake, a worker tells a mother: I will keep things private unless a child is at risk of serious harm, when I must report.",zh:"保密有法律界限，唔可以承諾絕對保密。"}
+];
+var TOPIC_PRACTICE={
+"Legal System":"In practice, a social worker who understands the court structure and the limits of public power can explain to clients where a decision can be challenged and when legal advice is essential.",
+"Criminal Law":"For social workers, the practical point is to recognise the elements the prosecution must prove, avoid prejudicing a client's case, and support clients and victims through the criminal process.",
+"Domestic Violence & Adults":"Frontline workers should assess risk first, explain the DCRVO remedies in plain language, and help the client apply promptly, using an ex parte application where danger is immediate.",
+"Children":"In child cases the worker's focus must stay on the child's best interests: observe, record objectively, assess risk and act on the welfare plan agreed with other professionals.",
+"Mental Health":"Workers dealing with MIPs must test capacity issue by issue, use the least restrictive option available, and follow the Mental Health Ordinance procedures exactly.",
+"Tort":"For agencies, the lesson is preventive: identify hazards, assess and record risks before activities, and review the assessment afterwards.",
+"Human Rights":"Social workers should frame welfare grievances in rights terms, check whether a restriction survives proportionality, and support clients to use judicial review where other remedies are exhausted.",
+"National Security":"Registered social workers must remember that convictions affecting professional reputation can affect registration, so legal compliance is also a professional-conduct issue.",
+"Privacy & Doxxing":"Agencies handling client data should collect only what is necessary, keep it secure, use it only for its original purpose and respond properly to access requests.",
+"Sexual Harassment & Conduct":"The professional boundary is absolute: no sexual contact with service users in any circumstances, and agencies must build prevention and reporting into daily practice.",
+"Mandatory Reporting":"The reporting duty overrides confidentiality: workers should explain the limits of confidentiality at first contact and report promptly once the threshold is met."
+};
+(function(){
+  var groups={}; FACTS.forEach(function(f){ (groups[f.t]=groups[f.t]||[]).push(f); });
+  Object.keys(groups).forEach(function(t){
+    var g=groups[t];
+    g.forEach(function(f,i){
+      var d1=g[(i+1)%g.length], d2=g[(i+3)%g.length], d3=g[(i+5)%g.length];
+      var ex='EN: '+f.def+' Authority: '+f.prov+'.<br>中文：'+f.zh;
+      MC.push({t:t,q:'Which of the following best describes "'+f.term+'"?',o:[f.def,d1.def,d2.def,d3.def],a:0,e:ex});
+      MC.push({t:t,q:'Which case, provision or source is most closely associated with "'+f.term+'"?',o:[f.prov,d1.prov,d2.prov,d3.prov],a:0,e:ex});
+      MC.push({t:t,q:f.scen+' Which legal concept is principally engaged?',o:[f.term,d1.term,d2.term,d3.term],a:0,e:ex});
+      MC.push({t:t,q:'Which of the following is an example or application of "'+f.term+'"?',o:[f.scen,d1.scen,d2.scen,d3.scen],a:0,e:ex});
+    });
+  });
+  var stems=[
+    function(f){ return 'Explain the concept of "'+f.term+'" and its importance in social work practice, with reference to '+f.prov+'.'; },
+    function(f){ return f.scen+' Identify the legal concept engaged, explain the applicable rule with reference to '+f.prov+', and advise the social worker.'; },
+    function(f){ return 'State the rule relating to "'+f.term+'", illustrate it with '+f.prov+', and explain one practical implication for frontline social workers.'; },
+    function(f){ return 'With reference to '+f.prov+', explain "'+f.term+'" and apply it to the following situation: '+f.scen; }
+  ];
+  FACTS.slice(0,88).forEach(function(f,i){
+    var prac=TOPIC_PRACTICE[f.t]||'Frontline social workers must spot the legal issue early, act within their role, document their assessment and refer or seek legal advice where needed.';
+    SQ.push({tag:f.t,q:stems[i%4](f),pts:[
+      'Concept: '+f.def+'（概念：'+f.zh+'）',
+      'Authority: cite '+f.prov+' accurately（權威來源：準確引用出處）',
+      'Application: link the rule to the facts — '+f.scen+'（應用：將規則套入事實）',
+      'Conclusion: state a clear position and one concrete step the social worker should take（結論：講明立場 + 社工實際要做嘅一步）'
+    ],model:'The governing concept is "'+f.term+'". '+f.def+' The leading authority is '+f.prov+'. '+prac+' Applied to a concrete situation: '+f.scen+' The social worker should therefore identify the issue at the earliest stage, apply the rule to the client\u2019s actual facts rather than assumptions, record the assessment and the actions taken, and seek legal advice or make an appropriate referral where the matter goes beyond the social work role.'});
+  });
+})();
+
+/* ===== progress persistence (localStorage) ===== */
+var LS_KEY='sowk403-progress-v1';
+function loadProgress(){ try{ var p=JSON.parse(localStorage.getItem(LS_KEY)||'null'); return (p&&typeof p==='object')?p:{}; }catch(e){ return {}; } }
+var savedProgress=loadProgress();
+var sqDrafts=(savedProgress.sqDrafts&&typeof savedProgress.sqDrafts==='object')?savedProgress.sqDrafts:{};
+var sqRatings=(savedProgress.sqRatings&&typeof savedProgress.sqRatings==='object')?savedProgress.sqRatings:{};
+function progressData(){
+  return {app:'SOWK403 revision',version:1,
+    mcState:(typeof mcState!=='undefined'&&mcState)?mcState:{},
+    mcOrder:(typeof mcOrder!=='undefined'&&mcOrder)?mcOrder:[],
+    mcOptOrder:(typeof mcOptOrder!=='undefined'&&mcOptOrder)?mcOptOrder:{},
+    flSeen:(typeof flSeen!=='undefined'&&flSeen)?flSeen:{},
+    sqSeen:(typeof sqSeenSet!=='undefined'&&sqSeenSet)?sqSeenSet:{},
+    sqDrafts:sqDrafts, sqRatings:sqRatings};
+}
+function saveProgress(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(progressData())); }catch(e){} }
+
+/* render cases */
+var cg=document.getElementById('caseGrid');
+function renderCases(){
+  var kw=(document.getElementById('caseSearch').value||'').toLowerCase(), f=document.getElementById('caseFilter').value, n=0, h='';
+  CASES.forEach(function(c){
+    var txt=(c.n+c.t+c.law+c.f+c.r).toLowerCase();
+    if(f && c.th!==f) return; if(kw && txt.indexOf(kw)<0) return; n++;
+    h+='<article class="card"><div><span class="tag gold">'+c.n+'</span><span class="tag">'+c.th+'</span></div><h3 style="margin-top:8px">'+c.t+'</h3><p><b>法例：</b>'+c.law+'</p><p><b>事實：</b>'+c.f+'</p><p><b>結果／要點：</b>'+c.r+'</p></article>';
+  });
+  cg.innerHTML=h||'<p class="muted">搵唔到符合嘅案例，試下改關鍵字。</p>';
+  document.getElementById('caseCount').textContent='顯示 '+n+' / '+CASES.length+' 個案例';
+}
+document.getElementById('caseSearch').addEventListener('input',renderCases);
+document.getElementById('caseFilter').addEventListener('change',renderCases);
+renderCases();
+
+/* flashcards */
+var flI=0, flSeen=(savedProgress.flSeen&&typeof savedProgress.flSeen==='object')?savedProgress.flSeen:{};
+function showFlash(){
+  var c=FLASH[flI];
+  document.getElementById('flTopic').textContent=c[0];
+  document.getElementById('flQ').textContent=c[1];
+  document.getElementById('flA').innerHTML=c[2];
+  document.getElementById('flIdx').textContent='第 '+(flI+1)+' / '+FLASH.length+' 張';
+  document.getElementById('flashCard').classList.remove('flipped');
+  updateOverview();
+}
+function updateOverview(){
+  var seen=Object.keys(flSeen).length;
+  document.getElementById('ovFl').textContent=seen+' / '+FLASH.length;
+  document.getElementById('barFl').style.width=(seen/FLASH.length*100)+'%';
+  var mcDone=0,mcRight=0; MC.forEach(function(q,i){ if(mcState[i]!==undefined){mcDone++; if(mcState[i]===q.a) mcRight++;}});
+  document.getElementById('ovMc').textContent=mcRight+' / '+MC.length+' 答對（已做 '+mcDone+' 題）';
+  document.getElementById('barMc').style.width=(mcRight/MC.length*100)+'%';
+  document.getElementById('mcScore').textContent=mcRight+' / '+mcDone;
+  var sqSeen=Object.keys(sqSeenSet).length;
+  document.getElementById('ovSq').textContent=sqSeen+' / '+SQ.length;
+  document.getElementById('barSq').style.width=(sqSeen/SQ.length*100)+'%';
+}
+function flipFlash(){ var fc=document.getElementById('flashCard'); fc.classList.toggle('flipped'); if(fc.classList.contains('flipped')){ flSeen[flI]=1; saveProgress(); updateOverview(); } }
+var flFlipBtn=document.getElementById('flFlip'); if(flFlipBtn) flFlipBtn.addEventListener('click',flipFlash);
+document.getElementById('flashCard').addEventListener('keydown',function(e){
+  if(e.key===' '||e.key==='Enter'||e.key==='f'||e.key==='F'){ e.preventDefault(); flipFlash(); }
+  else if(e.key==='ArrowRight'){ e.preventDefault(); flI=(flI+1)%FLASH.length; showFlash(); this.focus(); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); flI=(flI-1+FLASH.length)%FLASH.length; showFlash(); this.focus(); }
+});
+document.getElementById('flNext').addEventListener('click',function(){ flI=(flI+1)%FLASH.length; showFlash(); });
+document.getElementById('flPrev').addEventListener('click',function(){ flI=(flI-1+FLASH.length)%FLASH.length; showFlash(); });
+document.getElementById('flShuffle').addEventListener('click',function(){ flI=Math.floor(Math.random()*FLASH.length); showFlash(); });
+
+/* MC */
+var mcState=(savedProgress.mcState&&typeof savedProgress.mcState==='object')?savedProgress.mcState:{}, mcFilter='', mcStatusFilter='', mcShown=20, mcKeep={};
+function shuffleArr(a){ for(var k=a.length-1;k>0;k--){ var r=Math.floor(Math.random()*(k+1)); var tmp=a[k]; a[k]=a[r]; a[r]=tmp; } return a; }
+var mcOrder=MC.map(function(_,i){return i;});
+if(savedProgress.mcOrder&&savedProgress.mcOrder.length===MC.length){ var _seenO={}, _okO=true; savedProgress.mcOrder.forEach(function(v){ if(typeof v!=='number'||v<0||v>=MC.length||_seenO[v]) _okO=false; _seenO[v]=1; }); if(_okO) mcOrder=savedProgress.mcOrder.slice(); }
+var mcOptOrder=(savedProgress.mcOptOrder&&typeof savedProgress.mcOptOrder==='object')?savedProgress.mcOptOrder:{};
+function resetOptOrder(){ mcOptOrder={}; MC.forEach(function(q,i){ mcOptOrder[i]=shuffleArr([0,1,2,3]); }); }
+if(Object.keys(mcOptOrder).length<MC.length){ mcOptOrder={}; MC.forEach(function(q,i){ mcOptOrder[i]=shuffleArr([0,1,2,3]); }); }
+var topics=[]; MC.forEach(function(q){ if(topics.indexOf(q.t)<0) topics.push(q.t); });
+var mf=document.getElementById('mcFilters');
+mf.innerHTML='<button data-t="" class="active">全部 All</button>'+topics.map(function(t){return '<button data-t="'+t+'">'+t+'</button>';}).join('');
+mf.addEventListener('click',function(e){ if(e.target.tagName!=='BUTTON')return; mcShown=20; mcKeep={}; mcFilter=e.target.getAttribute('data-t'); var bs=mf.querySelectorAll('button'); for(var i=0;i<bs.length;i++) bs[i].classList.remove('active'); e.target.classList.add('active'); renderMC(); });
+var msf=document.getElementById('mcStatusFilters');
+if(msf) msf.addEventListener('click',function(e){ if(e.target.tagName!=='BUTTON')return; mcShown=20; mcKeep={}; mcStatusFilter=e.target.getAttribute('data-s')||''; var bs=msf.querySelectorAll('button'); for(var i=0;i<bs.length;i++) bs[i].classList.remove('active'); e.target.classList.add('active'); renderMC(); });
+function mcPass(i){ if(mcKeep[i]) return true; if(mcFilter && MC[i].t!==mcFilter) return false; if(mcStatusFilter==='undone' && mcState[i]!==undefined) return false; if(mcStatusFilter==='wrong' && !(mcState[i]!==undefined && mcState[i]!==MC[i].a)) return false; return true; }
+function renderMC(){
+  var h='', n=0, total=0;
+  mcOrder.forEach(function(i){ if(mcPass(i)) total++; });
+  mcOrder.forEach(function(i){
+    var q=MC[i];
+    if(!mcPass(i)) return;
+    n++; if(n>mcShown) return;
+    var ord=mcOptOrder[i]||[0,1,2,3];
+    h+='<div class="card" id="mcCard'+i+'" style="margin-bottom:10px"><div><span class="tag">'+q.t+'</span><span class="muted small">Question '+(i+1)+' / '+MC.length+'</span></div><p style="font-weight:700;font-size:16px;margin:8px 0">'+q.q+'</p>';
+    ord.forEach(function(oj,d){
+      var cls='opt'; if(mcState[i]!==undefined){ if(oj===q.a) cls+=' correct'; else if(mcState[i]===oj) cls+=' wrong'; }
+      h+='<button class="'+cls+'" data-q="'+i+'" data-o="'+oj+'" '+(mcState[i]!==undefined?'disabled':'')+'>'+'ABCD'[d]+'. '+q.o[oj]+'</button>';
+    });
+    if(mcState[i]!==undefined){ var cp=ord.indexOf(q.a); h+='<div class="explain show tbox" id="mcExp'+i+'"><b>'+(mcState[i]===q.a?'\u2713 Correct! \u7b54\u5571\uff01':'\u2717 Wrong \u2014 the correct answer is '+'ABCD'[cp]+' \u7b54\u932f\uff0c\u6b63\u78ba\u7b54\u6848\u4fc2 '+'ABCD'[cp])+'</b><br>'+q.e+'</div>'; }
+    h+='</div>';
+  });
+  document.getElementById('mcList').innerHTML=h||'<p class="muted">呢個篩選底下冇題目（例如仲未有錯題）。No questions match this filter.</p>';
+  var inf=document.getElementById('mcShownInfo'); if(inf) inf.textContent='Showing '+(Math.min(mcShown,total))+' / '+total+' questions \u986f\u793a\u4e2d';
+  var mb=document.getElementById('mcMore'); if(mb) mb.style.display=(mcShown>=total)?'none':'';
+}
+document.getElementById('mcList').addEventListener('click',function(e){
+  var b=e.target.closest('.opt'); if(!b||b.disabled) return;
+  var qi=+b.getAttribute('data-q'), oi=+b.getAttribute('data-o');
+  mcState[qi]=oi; mcKeep[qi]=1; saveProgress(); renderMC(); updateOverview();
+  var exp=document.getElementById('mcExp'+qi); if(exp) exp.scrollIntoView({behavior:'smooth',block:'center'});
+});
+var shQ=document.getElementById('mcShuffleQ'); if(shQ) shQ.addEventListener('click',function(){ mcShown=20; mcKeep={}; shuffleArr(mcOrder); saveProgress(); renderMC(); });
+var shO=document.getElementById('mcShuffleO'); if(shO) shO.addEventListener('click',function(){ mcShown=20; mcKeep={}; resetOptOrder(); mcState={}; saveProgress(); renderMC(); updateOverview(); });
+var mmB=document.getElementById('mcMore'); if(mmB) mmB.addEventListener('click',function(){ mcShown+=20; renderMC(); });
+var rsB=document.getElementById('mcReset'); if(rsB) rsB.addEventListener('click',function(){ mcShown=20; mcKeep={}; mcState={}; saveProgress(); renderMC(); updateOverview(); });
+renderMC();
+
+/* Short Q */
+var sqSeenSet=(savedProgress.sqSeen&&typeof savedProgress.sqSeen==='object')?savedProgress.sqSeen:{};
+function escTA(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function sqAnswerHTML(i){ var s=SQ[i]; return '<div class="kbox"><b>畀分點：</b><ul style="margin:6px 0;padding-left:20px">'+s.pts.map(function(p){return '<li>'+p+'</li>';}).join('')+'</ul></div><div class="tbox"><b>範答：</b><br>'+s.model+'</div>'; }
+var sqH='';
+SQ.forEach(function(s,i){
+  var rateBtns=''; for(var v=0;v<=5;v++){ rateBtns+='<button class="rate-btn'+(sqRatings[i]===v?' active':'')+'" data-rate="'+i+'" data-val="'+v+'" aria-label="自評 '+v+' 分 Self-rating '+v+' out of 5" aria-pressed="'+(sqRatings[i]===v?'true':'false')+'">'+v+'</button>'; }
+  sqH+='<details><summary><span>'+(i+1)+'. '+s.q.slice(0,60)+'…</span><span class="tag gold">'+s.tag+'</span></summary><div class="body"><p style="font-weight:700">'+s.q+'</p><label class="small muted" for="sqTa'+i+'">你嘅答案（自己計時 8–10 分鐘 · 草稿自動儲存）</label><textarea id="sqTa'+i+'" data-draft="'+i+'" placeholder="Write in English with the ICAC frame: Issue → Concept (case / section) → Analysis (apply to the facts) → Conclusion (take a stance)">'+escTA(sqDrafts[i])+'</textarea><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="small primary" data-sq="'+i+'" aria-expanded="false" aria-label="顯示或隱藏範答 Toggle model answer">顯示範答 + 畀分點 Show answer</button></div><div id="sqAns'+i+'" style="display:none"></div><div class="sq-rate"><span class="small muted">自評 Self-rating（0–5）：</span>'+rateBtns+'</div></div></details>';
+});
+document.getElementById('sqList').innerHTML=sqH;
+var sqShown=25;
+function applySq(){ var ds=document.querySelectorAll('#sqList details'); for(var i=0;i<ds.length;i++){ ds[i].style.display=(i<sqShown)?'':'none'; } var inf2=document.getElementById('sqInfo'); if(inf2) inf2.textContent='Showing '+Math.min(sqShown,SQ.length)+' / '+SQ.length; var sb=document.getElementById('sqMore'); if(sb) sb.style.display=(sqShown>=SQ.length)?'none':''; }
+var sqm=document.getElementById('sqMore'); if(sqm) sqm.addEventListener('click',function(){ sqShown+=25; applySq(); });
+applySq();
+document.getElementById('sqList').addEventListener('input',function(e){
+  var ta=e.target.closest('textarea[data-draft]'); if(!ta) return;
+  sqDrafts[+ta.getAttribute('data-draft')]=ta.value; saveProgress();
+});
+document.getElementById('sqList').addEventListener('click',function(e){
+  var rb=e.target.closest('[data-rate]');
+  if(rb){ var ri=+rb.getAttribute('data-rate'), rv=+rb.getAttribute('data-val'); sqRatings[ri]=rv; saveProgress();
+    var wrap=rb.parentElement, rbs=wrap.querySelectorAll('.rate-btn'); for(var k=0;k<rbs.length;k++){ var on=+rbs[k].getAttribute('data-val')===rv; rbs[k].classList.toggle('active',on); rbs[k].setAttribute('aria-pressed',on?'true':'false'); }
+    return; }
+  var b=e.target.closest('[data-sq]'); if(!b) return; var i=+b.getAttribute('data-sq');
+  var box=document.getElementById('sqAns'+i); if(!box) return;
+  if(box.style.display==='none'||!box.style.display){
+    if(!box.innerHTML) box.innerHTML=sqAnswerHTML(i);
+    box.style.display='block'; b.textContent='隱藏範答 Hide answer'; b.setAttribute('aria-expanded','true');
+    if(!sqSeenSet[i]){ sqSeenSet[i]=1; saveProgress(); updateOverview(); }
+  } else {
+    box.style.display='none'; b.textContent='顯示範答 + 畀分點 Show answer'; b.setAttribute('aria-expanded','false');
+  }
+});
+
+/* Mock */
+var mockTimerId=null;
+document.getElementById('mockStart').addEventListener('click',function(){
+  var idx=[]; while(idx.length<10){ var r=Math.floor(Math.random()*MC.length); if(idx.indexOf(r)<0) idx.push(r); }
+  var sidx=[]; while(sidx.length<2){ var r2=Math.floor(Math.random()*SQ.length); if(sidx.indexOf(r2)<0) sidx.push(r2); }
+  var h='<h3 style="margin:14px 0 8px">Part A · MC（10 題）</h3>';
+  idx.forEach(function(qi,k){ var q=MC[qi]; h+='<div class="card" style="margin-bottom:10px"><p style="font-weight:700;margin:0 0 6px">'+(k+1)+'. '+q.q+'</p>'+(function(){ var ord=shuffleArr(q.o.map(function(_,j){return j;})); return ord.map(function(oj,dk){ return '<button class="opt mock-opt" data-mq="'+qi+'" data-mo="'+oj+'">'+'ABCD'[dk]+'. '+q.o[oj]+'</button>';}).join(''); })()+'</div>'; });
+  h+='<h3 style="margin:14px 0 8px">Part B · Short Q（2 題，自己寫，之後開範答自評）</h3>';
+  sidx.forEach(function(si,k){ var s=SQ[si]; h+='<div class="card" style="margin-bottom:10px"><p style="font-weight:700;margin:0 0 6px">S'+(k+1)+'. '+s.q+'</p><textarea placeholder="喺度寫你嘅答案…"></textarea><div class="kbox" style="margin-top:10px"><b>自評畀分點：</b><ul style="margin:6px 0;padding-left:20px">'+s.pts.map(function(p){return '<li>'+p+'</li>';}).join('')+'</ul></div></div>'; });
+  document.getElementById('mockArea').innerHTML=h;
+  document.getElementById('mockResult').textContent='';
+  var msub=document.getElementById('mockSubmit'); if(msub) msub.disabled=false;
+  var secs=(+document.getElementById('mockMins').value)*60, tel=document.getElementById('mockTimer');
+  clearInterval(mockTimerId);
+  function tick(){ var m=Math.floor(secs/60), s2=secs%60; tel.textContent='⏱ '+(m<10?'0':'')+m+':'+(s2<10?'0':'')+s2; if(secs<=0){ clearInterval(mockTimerId); tel.textContent='⏱ 時間到！'; } secs--; }
+  tick(); mockTimerId=setInterval(tick,1000);
+  document.getElementById('mockArea').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('mockArea').addEventListener('click',function(e){
+  var b=e.target.closest('.mock-opt');
+  if(b){ var sib=b.parentElement.querySelectorAll('.mock-opt'); for(var i=0;i<sib.length;i++) sib[i].style.outline=''; b.style.outline='3px solid var(--gold)'; b.parentElement.setAttribute('data-pick',b.getAttribute('data-mo')); b.parentElement.setAttribute('data-q',b.getAttribute('data-mq')); return; }
+});
+function submitMock(){
+  var cards=document.querySelectorAll('#mockArea [data-q]'), right=0, total=0;
+  cards.forEach(function(c){ total++; var qi=+c.getAttribute('data-q'), pick=+c.getAttribute('data-pick'); var opts=c.querySelectorAll('.mock-opt'); opts.forEach(function(o){ o.disabled=true; var oi=+o.getAttribute('data-mo'); if(oi===MC[qi].a) o.classList.add('correct'); else if(oi===pick) o.classList.add('wrong'); }); if(pick===MC[qi].a) right++; });
+  clearInterval(mockTimerId);
+  document.getElementById('mockResult').textContent='MC 成績：'+right+' / '+total+'（Short Q 請按畀分點自評）';
+  var msub=document.getElementById('mockSubmit'); if(msub) msub.disabled=true;
+}
+var mockSubmitBtn=document.getElementById('mockSubmit'); if(mockSubmitBtn) mockSubmitBtn.addEventListener('click',submitMock);
+
+/* tables: wrap for horizontal scrolling on narrow screens */
+document.querySelectorAll('table').forEach(function(t){ var w=document.createElement('div'); w.className='table-scroll'; t.parentNode.insertBefore(w,t); w.appendChild(t); });
+
+/* back to top */
+var backTopBtn=document.getElementById('backTop');
+if(backTopBtn){
+  window.addEventListener('scroll',function(){ backTopBtn.classList.toggle('show',window.scrollY>600); },{passive:true});
+  backTopBtn.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+}
+
+/* export / import progress + print */
+function setProgressMsg(txt){ var m=document.getElementById('progressMsg'); if(m) m.textContent=txt; }
+var exportBtn=document.getElementById('exportBtn');
+if(exportBtn) exportBtn.addEventListener('click',function(){
+  saveProgress();
+  var data=progressData(); data.exportedAt=new Date().toISOString();
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob); var a=document.createElement('a');
+  a.href=url; a.download='sowk403-progress.json'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); },2000);
+  setProgressMsg('已匯出進度 JSON ✓');
+});
+var importBtn=document.getElementById('importBtn'), importFile=document.getElementById('importFile');
+if(importBtn&&importFile){
+  importBtn.addEventListener('click',function(){ importFile.click(); });
+  importFile.addEventListener('change',function(){
+    var f=importFile.files&&importFile.files[0]; if(!f) return;
+    var rd=new FileReader();
+    rd.onload=function(){
+      try{
+        var p=JSON.parse(rd.result);
+        if(!p||typeof p!=='object') throw new Error('bad file');
+        if(p.mcState&&typeof p.mcState==='object') mcState=p.mcState;
+        if(p.mcOrder&&p.mcOrder.length===MC.length){ var seen={}, ok=true; p.mcOrder.forEach(function(v){ if(typeof v!=='number'||v<0||v>=MC.length||seen[v]) ok=false; seen[v]=1; }); if(ok) mcOrder=p.mcOrder.slice(); }
+        if(p.mcOptOrder&&typeof p.mcOptOrder==='object'&&Object.keys(p.mcOptOrder).length) mcOptOrder=p.mcOptOrder;
+        if(p.flSeen&&typeof p.flSeen==='object') flSeen=p.flSeen;
+        if(p.sqSeen&&typeof p.sqSeen==='object') sqSeenSet=p.sqSeen;
+        if(p.sqDrafts&&typeof p.sqDrafts==='object') sqDrafts=p.sqDrafts;
+        if(p.sqRatings&&typeof p.sqRatings==='object') sqRatings=p.sqRatings;
+        mcKeep={}; saveProgress(); renderMC(); updateOverview(); showFlash();
+        document.querySelectorAll('textarea[data-draft]').forEach(function(ta){ ta.value=sqDrafts[ta.getAttribute('data-draft')]||''; });
+        document.querySelectorAll('.rate-btn').forEach(function(rb2){ var on=sqRatings[rb2.getAttribute('data-rate')]===+rb2.getAttribute('data-val'); rb2.classList.toggle('active',on); rb2.setAttribute('aria-pressed',on?'true':'false'); });
+        setProgressMsg('已匯入進度 ✓ Imported');
+      }catch(err){ setProgressMsg('匯入失敗：檔案唔係有效嘅進度 JSON'); }
+      importFile.value='';
+    };
+    rd.readAsText(f);
+  });
+}
+var printBtn=document.getElementById('printBtn');
+if(printBtn) printBtn.addEventListener('click',function(){
+  document.querySelectorAll('details').forEach(function(d){ d.open=true; });
+  window.print();
+});
+/* nav */
+document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){
+  var id=b.getAttribute('data-go'); var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'});
+  var bs=document.querySelectorAll('nav.tabs button'); bs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-go')===id); });
+});});
+showFlash(); updateOverview();
+</script>
+</body>
+</html>
