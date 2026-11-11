@@ -236,12 +236,24 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 .assistant-close:hover{opacity:1}
 /* ===== V2.4 equipment: inventory / gacha result / frame overlays ===== */
 .avatar-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:20px;line-height:1;flex:0 0 auto}
-.name-wrap{position:relative;display:inline-block;padding:3px 12px}
-.name-wrap #userName{position:relative;z-index:1}
+/* ===== shared name-frame (nf-frame): ONE class for navbar + leaderboard + greeting =====
+   Only the .framed state (a name banner is equipped) gets the fixed ribbon
+   sizing and the white-text treatment, so short names (e.g. "hi", "Hong")
+   never squash the banner, and unequipped names keep their normal colour.
+   The banner image uses object-fit:cover — never fill — so its proportions
+   are preserved and only the excess is cropped. */
+.nf-frame{position:relative;display:inline-flex;align-items:center;justify-content:center;z-index:0}
+.nf-frame .nf-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-position:center;background-repeat:no-repeat;pointer-events:none;z-index:0}
+.nf-frame .nf-txt{position:relative;z-index:1}
+.nf-frame.framed{min-width:120px;height:30px;padding:0 12px;text-align:center}
+.nf-frame.framed .nf-txt{color:#fff;text-shadow:1px 1px 2px #000;text-align:center;line-height:1.2}
+.nf-frame.small.framed{min-width:104px;height:26px;padding:0 10px;font-size:13.5px}
+@media print{.nf-frame.framed .nf-txt{color:#000;text-shadow:none}}
 .inv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin-top:10px}
 .inv-item{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:10px 8px;text-align:center}
 .inv-imgbox{height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
-.inv-imgbox img{max-width:100%;max-height:64px;object-fit:contain;pointer-events:none}
+.inv-imgbox img{max-width:100%;height:auto;max-height:64px;object-fit:contain;pointer-events:none}
+.avatar-wrap #userAvatar{position:relative;z-index:0}
 .inv-name{font-size:13px;font-weight:700;line-height:1.35;min-height:34px}
 .rarity{display:inline-block;font-size:11px;font-weight:900;padding:1px 8px;border-radius:999px;margin:2px 0 6px}
 .rarity.R{background:var(--card);color:var(--muted);border:1px solid var(--line)}
@@ -251,9 +263,9 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 #gachaResultImg{margin:12px auto 4px;pointer-events:none}
 #gachaResultImg.frame{width:130px;height:130px;object-fit:contain}
 #gachaResultImg.banner{width:100%;max-width:280px;max-height:90px;object-fit:contain}
-.lb-avwrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;font-size:20px;line-height:1;vertical-align:middle}
-.lb-namewrap{position:relative;display:inline-block;padding:2px 10px}
-.lb-namewrap .lb-nm{position:relative;z-index:1}
+.lb-avwrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:20px;line-height:1;vertical-align:middle;flex:0 0 auto}
+.lb-avwrap .lb-emoji{position:relative;z-index:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%;text-align:center;line-height:1}
+.lb-avwrap .lb-frameimg{position:absolute;inset:0;width:32px;height:32px;object-fit:cover;pointer-events:none;z-index:1}
 @media print{#invModal,#gachaModal{display:none !important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -263,7 +275,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 <div class="topbar"><div class="topbar-in">
   <button id="menuBtn" aria-label="開啟選單 Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
   <div class="userbar" aria-label="用戶與遊戲化 User and rewards">
-    <span class="user-chip" id="userChip"><span class="avatar-wrap"><span id="userAvatar" aria-hidden="true">🦊</span><img id="userFrameImg" alt="" aria-hidden="true" style="display:none;position:absolute;inset:-4px;width:40px;height:40px;pointer-events:none"></span> <span class="name-wrap"><img id="userBannerImg" alt="" aria-hidden="true" style="display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0"><span id="userName">同學</span></span> <span aria-hidden="true">|</span> <span class="xp">🌟 XP: <span id="xpVal">0</span></span> <span aria-hidden="true">|</span> <span class="streak">🔥 Streak: <span id="streakVal">0</span> 天</span></span>
+    <span class="user-chip" id="userChip"><span class="avatar-wrap"><span id="userAvatar" aria-hidden="true">🦊</span><img id="userFrameImg" alt="" aria-hidden="true" onerror="this.style.display='none'" style="display:none;position:absolute;inset:-4px;width:40px;height:40px;object-fit:contain;pointer-events:none;z-index:1"></span> <span class="nf-frame" id="nameWrap"><img id="userBannerImg" class="nf-bg" alt="" aria-hidden="true" onerror="this.style.display='none'" style="display:none"><span id="userName" class="nf-txt">同學</span></span> <span aria-hidden="true">|</span> <span class="xp">🌟 XP: <span id="xpVal">0</span></span> <span aria-hidden="true">|</span> <span class="streak">🔥 Streak: <span id="streakVal">0</span> 天</span></span>
     <button id="gachaBtn" class="small" aria-label="抽蛋，50 XP 隨機抽頭像框或名字框 Gacha, 50 XP">🥚 抽蛋 (50 XP)</button>
     <button id="invOpenBtn" class="small" aria-label="開啟背包 Open inventory">🎒 背包</button>
     <button id="lbOpenBtn" class="small" aria-label="開啟排行榜 Open leaderboard">🏆 排行榜</button>
@@ -1336,7 +1348,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 <div class="gmodal" id="gachaModal" role="dialog" aria-modal="true" aria-labelledby="gachaTitle">
   <div class="gmodal-card" style="text-align:center">
     <h2 id="gachaTitle">🎉 恭喜抽中！</h2>
-    <img id="gachaResultImg" alt="抽中嘅物品 Gacha prize">
+    <img id="gachaResultImg" alt="抽中嘅物品 Gacha prize" onerror="this.style.display='none'">
     <p style="margin:4px 0 0;font-size:17px;font-weight:800" id="gachaResultName"></p>
     <p style="margin:2px 0 0" id="gachaResultMeta"></p>
     <div class="row" style="justify-content:center">
@@ -2139,10 +2151,15 @@ const CHANGELOG = {
       if(fp){ f.src=fp; f.style.display='block'; } else { f.removeAttribute('src'); f.style.display='none'; }
     }
     var b=document.getElementById('userBannerImg');
+    var nw=document.getElementById('nameWrap');
     if(b){
       b.onerror=function(){ this.style.display='none'; };
       var bp=getEqBanner();
-      if(bp){ b.src=bp; b.style.display='block'; } else { b.removeAttribute('src'); b.style.display='none'; }
+      /* The .framed class is what gives the container its fixed ribbon size
+         (min-width 120px, height 30px, centred) and the white text + shadow;
+         without a banner equipped the name renders at its natural size in
+         its normal colour. */
+      if(bp){ b.src=bp; b.style.display='block'; if(nw) nw.classList.add('framed'); } else { b.removeAttribute('src'); b.style.display='none'; if(nw) nw.classList.remove('framed'); }
     }
   }
 
@@ -2247,7 +2264,7 @@ const CHANGELOG = {
     inv.push(won.id); lsSet(K_INV,JSON.stringify(inv));
     renderUser(false); scheduleSync();
     var img=document.getElementById('gachaResultImg');
-    if(img){ img.src=won.path; img.alt=won.name; img.className=(won.type==='avatar_frame'?'frame':'banner'); }
+    if(img){ img.onerror=function(){ this.style.display='none'; }; img.style.display='block'; img.src=won.path; img.alt=won.name; img.className=(won.type==='avatar_frame'?'frame':'banner'); }
     var nm=document.getElementById('gachaResultName'); if(nm) nm.textContent='🎉 恭喜抽中 '+won.name+'！';
     var mt=document.getElementById('gachaResultMeta'); if(mt) mt.innerHTML='<span class="rarity '+won.rarity+'">'+won.rarity+'</span> '+(won.type==='avatar_frame'?'頭像框':'名字框')+' · 餘下 '+getXP()+' XP';
     if(gachaModal) gachaModal.classList.add('open');
@@ -2270,7 +2287,7 @@ const CHANGELOG = {
     var h='<div class="inv-grid">';
     owned.forEach(function(it){
       var eq=equippedPath===it.path;
-      h+='<div class="inv-item"><div class="inv-imgbox"><img src="'+it.path+'" alt="'+escHtml(it.name)+'" loading="lazy" onerror="this.remove()"></div><div class="inv-name">'+escHtml(it.name)+'</div><span class="rarity '+it.rarity+'">'+it.rarity+'</span><br>'+(eq?'<button class="small" disabled>✓ 已裝備</button>':'<button class="small primary" data-equip="'+it.id+'">裝備</button>')+'</div>';
+      h+='<div class="inv-item"><div class="inv-imgbox"><img src="'+it.path+'" alt="'+escHtml(it.name)+'" style="max-width:100%;height:auto;object-fit:contain" onerror="this.style.display=\'none\'"></div><div class="inv-name">'+escHtml(it.name)+'</div><span class="rarity '+it.rarity+'">'+it.rarity+'</span><br>'+(eq?'<button class="small" disabled>✓ 已裝備</button>':'<button class="small primary" data-equip="'+it.id+'">裝備</button>')+'</div>';
     });
     return h+'</div>';
   }
@@ -2371,8 +2388,9 @@ const CHANGELOG = {
         var medal=idx===0?'🥇':idx===1?'🥈':idx===2?'🥉':(idx+1);
         var mine=me && String(r.username||'')===me;
         var val=isMock?(+r.mock_score||0):(+r.score||0);
-        var avCell='<span class="lb-avwrap"><span aria-hidden="true">'+escHtml(r.avatar||'🦊')+'</span>'+(r.avatar_frame?'<img src="'+escHtml(r.avatar_frame)+'" alt="" aria-hidden="true" onerror="this.remove()" style="position:absolute;inset:-3px;width:34px;height:34px;pointer-events:none">':'')+'</span>';
-        var nmCell='<span class="lb-namewrap">'+(r.name_frame?'<img src="'+escHtml(r.name_frame)+'" alt="" aria-hidden="true" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0">':'')+'<span class="lb-nm">'+escHtml(r.username||'—')+(mine?' （你）':'')+'</span></span>';
+        var avCell='<span class="lb-avwrap"><span class="lb-emoji" aria-hidden="true">'+escHtml(r.avatar||'🦊')+'</span>'+(r.avatar_frame?'<img class="lb-frameimg" src="'+escHtml(r.avatar_frame)+'" alt="" aria-hidden="true" onerror="this.style.display=\'none\'">':'')+'</span>';
+        var nmText=escHtml(r.username||'—')+(mine?' （你）':'');
+        var nmCell=r.name_frame?'<span class="nf-frame small framed"><img class="nf-bg" src="'+escHtml(r.name_frame)+'" alt="" aria-hidden="true" onerror="this.style.display=\'none\'"><span class="nf-txt">'+nmText+'</span></span>':'<span>'+nmText+'</span>';
         h+='<tr'+(mine?' class="lb-me"':'')+'><td>'+medal+'</td><td>'+avCell+'</td><td>'+nmCell+'</td><td class="n">🔥 '+(+r.streak||0)+' 天</td><td class="n">'+val+'</td></tr>';
       });
       h+='</tbody></table>';
