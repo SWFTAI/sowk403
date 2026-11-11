@@ -224,7 +224,37 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 .lb-tabs{display:flex;gap:8px;margin-top:14px}
 .lb-tab{flex:1;border-radius:12px;padding:10px 8px;font-weight:800;min-height:44px}
 .lb-tab.on{background:var(--dark);color:#fff;border-color:var(--dark)}
-@media print{.gmodal,#gToast,.userbar{display:none !important}}
+@media print{.gmodal,#gToast,.userbar,.assistant-row{display:none !important}}
+/* ===== V2.3 assistant greeting (Duolingo style) ===== */
+.assistant-row{display:flex;align-items:flex-start;gap:12px;margin-top:16px}
+.assistant-avatar{font-size:46px;line-height:1.1;flex:0 0 auto;animation:avatarBounce 1.6s ease-in-out infinite;filter:drop-shadow(0 3px 4px rgba(0,0,0,.18))}
+@keyframes avatarBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.assistant-avatar{animation:none}}
+.assistant-bubble{position:relative;flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:18px;border-bottom-left-radius:6px;box-shadow:var(--shadow);padding:14px 42px 16px 16px}
+.assistant-bubble p{margin:0;font-size:15.5px;font-weight:600;line-height:1.65}
+.assistant-close{position:absolute;right:6px;bottom:6px;background:none;border:none;box-shadow:none;font-size:12px;line-height:1;padding:6px;min-height:28px;min-width:28px;cursor:pointer;opacity:.7;border-radius:8px}
+.assistant-close:hover{opacity:1}
+/* ===== V2.4 equipment: inventory / gacha result / frame overlays ===== */
+.avatar-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:20px;line-height:1;flex:0 0 auto}
+.name-wrap{position:relative;display:inline-block;padding:3px 12px}
+.name-wrap #userName{position:relative;z-index:1}
+.inv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin-top:10px}
+.inv-item{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:10px 8px;text-align:center}
+.inv-imgbox{height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.inv-imgbox img{max-width:100%;max-height:64px;object-fit:contain;pointer-events:none}
+.inv-name{font-size:13px;font-weight:700;line-height:1.35;min-height:34px}
+.rarity{display:inline-block;font-size:11px;font-weight:900;padding:1px 8px;border-radius:999px;margin:2px 0 6px}
+.rarity.R{background:var(--card);color:var(--muted);border:1px solid var(--line)}
+.rarity.SR{background:#ede9fe;color:#6d28d9;border:1px solid #c4b5fd}
+.rarity.SSR{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold)}
+.inv-empty{color:var(--muted);font-size:14px;margin:8px 0 0}
+#gachaResultImg{margin:12px auto 4px;pointer-events:none}
+#gachaResultImg.frame{width:130px;height:130px;object-fit:contain}
+#gachaResultImg.banner{width:100%;max-width:280px;max-height:90px;object-fit:contain}
+.lb-avwrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;font-size:20px;line-height:1;vertical-align:middle}
+.lb-namewrap{position:relative;display:inline-block;padding:2px 10px}
+.lb-namewrap .lb-nm{position:relative;z-index:1}
+@media print{#invModal,#gachaModal{display:none !important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -233,8 +263,9 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 <div class="topbar"><div class="topbar-in">
   <button id="menuBtn" aria-label="開啟選單 Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
   <div class="userbar" aria-label="用戶與遊戲化 User and rewards">
-    <span class="user-chip" id="userChip"><span id="userAvatar" aria-hidden="true">🦊</span> <span id="userName">同學</span> <span aria-hidden="true">|</span> <span class="xp">🌟 XP: <span id="xpVal">0</span></span> <span aria-hidden="true">|</span> <span class="streak">🔥 Streak: <span id="streakVal">0</span> 天</span></span>
-    <button id="gachaBtn" class="small" aria-label="抽蛋，50 XP 解鎖隨機主題 Gacha, 50 XP">🥚 抽蛋 (50 XP)</button>
+    <span class="user-chip" id="userChip"><span class="avatar-wrap"><span id="userAvatar" aria-hidden="true">🦊</span><img id="userFrameImg" alt="" aria-hidden="true" style="display:none;position:absolute;inset:-4px;width:40px;height:40px;pointer-events:none"></span> <span class="name-wrap"><img id="userBannerImg" alt="" aria-hidden="true" style="display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0"><span id="userName">同學</span></span> <span aria-hidden="true">|</span> <span class="xp">🌟 XP: <span id="xpVal">0</span></span> <span aria-hidden="true">|</span> <span class="streak">🔥 Streak: <span id="streakVal">0</span> 天</span></span>
+    <button id="gachaBtn" class="small" aria-label="抽蛋，50 XP 隨機抽頭像框或名字框 Gacha, 50 XP">🥚 抽蛋 (50 XP)</button>
+    <button id="invOpenBtn" class="small" aria-label="開啟背包 Open inventory">🎒 背包</button>
     <button id="lbOpenBtn" class="small" aria-label="開啟排行榜 Open leaderboard">🏆 排行榜</button>
   </div>
   <div class="seg" role="group" aria-label="主要頁面 Main pages">
@@ -261,6 +292,13 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 
 <!-- STUDY HOME -->
 <section id="study" class="view active">
+  <div class="assistant-row" id="assistantGreet">
+    <div class="assistant-avatar" id="assistantAvatar" aria-hidden="true">🦊</div>
+    <div class="assistant-bubble">
+      <p id="assistantText" role="status">👋 你好！今日一齊溫書啦。</p>
+      <button type="button" class="assistant-close" id="assistantClose" aria-label="關閉助手問候 Close greeting" title="關閉 Close">❌</button>
+    </div>
+  </div>
   <div class="mod-head">
     <div class="kicker">SOWK403 Social Work and Law</div>
     <h1>溫書 Dashboard</h1>
@@ -325,7 +363,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
   </div>
   <div class="card" style="margin-top:12px">
     <h3>🎨 主題切換 Theme</h3>
-    <p class="muted small" style="margin:0">Pikmin 同 Pikachu 主題要先喺頂部撳「🥚 抽蛋 (50 XP)」隨機解鎖；解鎖咗就可以隨時喺呢度切換，選擇會自動儲存。</p>
+    <p class="muted small" style="margin:0">Pikmin 同 Pikachu 主題而家免費任揀，隨時喺呢度切換，選擇會自動儲存。抽蛋改為抽頭像框同名字框，抽中之後去「🎒 背包」就可以裝備。</p>
     <div class="theme-opts" role="group" aria-label="主題選擇 Theme options">
       <button class="theme-opt" data-theme-opt="default"><span><span class="tn">Default 預設</span><br><span class="td">簡潔灰白 · Quizer 風</span></span><span data-theme-state="default"></span></button>
       <button class="theme-opt" data-theme-opt="pikmin"><span><span class="tn">🌱 Pikmin 皮克敏風</span><br><span class="td">綠色 · 大自然色系</span></span><span data-theme-state="pikmin"></span></button>
@@ -339,6 +377,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
     <button id="resetBtn" class="small" aria-label="清除全部進度 Reset all progress">↺ 清除全部進度 Reset</button>
     <span id="resetMsg" class="muted small" role="status" aria-live="polite"></span>
   </div>
+  <p class="muted small" style="text-align:center;margin:16px 0 4px">版本 Version 2.4</p>
 </section>
 
 <!-- OVERVIEW -->
@@ -1232,6 +1271,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 
 <footer>
   資料來源：SOWK403 課程大綱、L1–L9 講義 slides（Dr. Kwan Wai-hong）、Q1–Q20 導修案例文件、Law Made Simple Ch.1。L10–L12 講義未發放，相關內容以 Q17–Q20 文件為據，實際考試範圍以老師最新公布為準。本頁題目為按課程內容自擬嘅練習題，唔係真試卷或 past paper。
+  <div class="muted small" style="margin-top:10px;text-align:center">版本 Version 2.4</div>
 </footer>
 </div>
 
@@ -1242,7 +1282,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 <div class="gmodal" id="nameModal" role="dialog" aria-modal="true" aria-labelledby="nameModalTitle">
   <div class="gmodal-card">
     <h2 id="nameModalTitle">👋 歡迎嚟到 SOWK403 溫書站！</h2>
-    <p class="muted" style="margin:0;font-size:14.5px">先輸入你嘅用戶名稱，先可以開始儲 XP、抽蛋解鎖主題，同上傳成績去排行榜。新用戶即刻有 <b>🌟 100 XP 新手禮包</b>！</p>
+    <p class="muted" style="margin:0;font-size:14.5px">先輸入你嘅用戶名稱，先可以開始儲 XP、抽蛋抽頭像框同名字框，同上傳成績去排行榜。新用戶即刻有 <b>🌟 100 XP 新手禮包</b>！</p>
     <label class="small muted" for="nameInput" style="display:block;margin-top:14px">用戶名稱 Username</label>
     <input id="nameInput" type="text" maxlength="24" placeholder="例如：Chiu" autocomplete="off">
     <p id="nameErr" class="small" style="color:var(--red);margin:6px 0 0;min-height:18px" role="alert"></p>
@@ -1276,6 +1316,33 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
       <button id="lbClose" class="small">關閉 Close</button>
     </div>
     <p class="small muted" style="margin:10px 0 0">💡 提示：成績會隨住你溫書自動同步，毋須手動上傳。</p>
+  </div>
+</div>
+
+<!-- V2.4: inventory / equipment modal -->
+<div class="gmodal" id="invModal" role="dialog" aria-modal="true" aria-labelledby="invTitle">
+  <div class="gmodal-card">
+    <h2 id="invTitle">🎒 背包 Inventory</h2>
+    <p class="muted" style="margin:0;font-size:14px">你抽中嘅頭像框同名字框會喺呢度，撳「裝備」即刻套用喺 Navbar 同排行榜。</p>
+    <h3 style="margin:16px 0 0;font-size:16px">🖼️ 頭像框 Avatar Frames</h3>
+    <div id="invFrames"></div>
+    <h3 style="margin:18px 0 0;font-size:16px">🏷️ 名字框 Name Frames</h3>
+    <div id="invBanners"></div>
+    <div class="row"><button id="invClose" class="small" style="flex:1">關閉 Close</button></div>
+  </div>
+</div>
+
+<!-- V2.4: gacha result modal -->
+<div class="gmodal" id="gachaModal" role="dialog" aria-modal="true" aria-labelledby="gachaTitle">
+  <div class="gmodal-card" style="text-align:center">
+    <h2 id="gachaTitle">🎉 恭喜抽中！</h2>
+    <img id="gachaResultImg" alt="抽中嘅物品 Gacha prize">
+    <p style="margin:4px 0 0;font-size:17px;font-weight:800" id="gachaResultName"></p>
+    <p style="margin:2px 0 0" id="gachaResultMeta"></p>
+    <div class="row" style="justify-content:center">
+      <button id="gachaToInv" class="primary">🎒 去背包裝備</button>
+      <button id="gachaOk">知道了</button>
+    </div>
   </div>
 </div>
 
@@ -1989,14 +2056,56 @@ window.addEventListener('beforeprint', function() {
 
 </script>
 <script>
-const APP_VERSION = '2.2';
-const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 Avatar 頭像', '🔥 新增連續溫書 Streak 獎勵', '🏆 新增模擬試排行榜', '☁️ 成績現已自動同步', '🎨 加入皮克敏與皮卡丘主題'];
+const APP_VERSION = '2.4';
+/* CHANGELOG is keyed by version so the update modal only ever shows the
+   current version's notes; keep the most recent 3–4 versions and delete
+   older keys by hand. maybeShowUpdate() reads CHANGELOG[APP_VERSION]. */
+const CHANGELOG = {
+  '2.4': ['🎒 新增裝備與扭蛋系統', '🖼️ 新增頭像框與名字框', '🎨 主題改為免費任揀'],
+  '2.3': ['🌞 新增專屬助手打招呼', '🔔 修復更新提示框', '🧹 自動清理舊更新紀錄'],
+  '2.2': ['💬 新增意見反饋及截圖上傳'],
+  '2.1': ['🦊 新增自訂 Avatar', '🔥 新增連續溫書 Streak', '🏆 新增模擬試排行榜'],
+  '2.0': ['🎉 新增排行榜功能', '☁️ 成績自動同步', '🎨 加入皮克敏與皮卡丘主題']
+};
 /* ===== Gamification: identity + XP + gacha themes + Supabase leaderboard =====
    All network code is wrapped in try...catch so an offline / failed
    Supabase call can never break the revision site. */
 (function(){
   var K_NAME='sowk403_username', K_EXP='sowk403_exp', K_THEME='sowk403_theme', K_UNLOCK='sowk403_unlocked';
   var K_AVATAR='sowk403_avatar', K_LAST='sowk403_last_login', K_STREAK='sowk403_streak', K_MOCK='sowk403_mock_score', K_SREWARD='sowk403_streak_rewarded';
+  var K_INV='sowk403_inventory', K_EQF='sowk403_equipped_avatar_frame', K_EQB='sowk403_equipped_name_frame';
+  /* ===== V2.4 item pool: 23 items with FIXED rarities (14 R / 7 SR / 2 SSR).
+     Images live in the repo's assets/ folder next to this file and are
+     referenced by relative path; the gacha draws uniformly at random. ===== */
+  var ITEM_POOL=[
+    {id:'frame_1',type:'avatar_frame',name:'經典紅框',rarity:'R',path:'assets/frame_1.png'},
+    {id:'frame_2',type:'avatar_frame',name:'海洋藍框',rarity:'R',path:'assets/frame_2.png'},
+    {id:'frame_3',type:'avatar_frame',name:'森林綠框',rarity:'R',path:'assets/frame_3.png'},
+    {id:'frame_4',type:'avatar_frame',name:'櫻花粉框',rarity:'R',path:'assets/frame_4.png'},
+    {id:'frame_5',type:'avatar_frame',name:'星空紫框',rarity:'SR',path:'assets/frame_5.png'},
+    {id:'frame_6',type:'avatar_frame',name:'黃金太陽框',rarity:'R',path:'assets/frame_6.png'},
+    {id:'frame_7',type:'avatar_frame',name:'薄荷清新框',rarity:'R',path:'assets/frame_7.png'},
+    {id:'frame_8',type:'avatar_frame',name:'霓虹電競框',rarity:'SR',path:'assets/frame_8.png'},
+    {id:'frame_9',type:'avatar_frame',name:'復古銅框',rarity:'R',path:'assets/frame_9.png'},
+    {id:'frame_10',type:'avatar_frame',name:'彩虹夢幻框',rarity:'SR',path:'assets/frame_10.png'},
+    {id:'frame_11',type:'avatar_frame',name:'雲朵白框',rarity:'R',path:'assets/frame_11.png'},
+    {id:'frame_12',type:'avatar_frame',name:'傳說皇冠框',rarity:'SSR',path:'assets/frame_12.png'},
+    {id:'banner_1',type:'name_frame',name:'經典紅帶',rarity:'R',path:'assets/banner_1.png'},
+    {id:'banner_2',type:'name_frame',name:'海洋藍帶',rarity:'R',path:'assets/banner_2.png'},
+    {id:'banner_3',type:'name_frame',name:'星空紫帶',rarity:'SR',path:'assets/banner_3.png'},
+    {id:'banner_4',type:'name_frame',name:'櫻花粉帶',rarity:'R',path:'assets/banner_4.png'},
+    {id:'banner_5',type:'name_frame',name:'森林綠帶',rarity:'R',path:'assets/banner_5.png'},
+    {id:'banner_6',type:'name_frame',name:'黃金榮耀帶',rarity:'SR',path:'assets/banner_6.png'},
+    {id:'banner_7',type:'name_frame',name:'薄荷清新帶',rarity:'R',path:'assets/banner_7.png'},
+    {id:'banner_8',type:'name_frame',name:'霓虹電競帶',rarity:'SR',path:'assets/banner_8.png'},
+    {id:'banner_9',type:'name_frame',name:'復古銅帶',rarity:'R',path:'assets/banner_9.png'},
+    {id:'banner_10',type:'name_frame',name:'彩虹夢幻帶',rarity:'SR',path:'assets/banner_10.png'},
+    {id:'banner_11',type:'name_frame',name:'傳說龍紋帶',rarity:'SSR',path:'assets/banner_11.png'}
+  ];
+  function itemById(id){ for(var i=0;i<ITEM_POOL.length;i++) if(ITEM_POOL[i].id===id) return ITEM_POOL[i]; return null; }
+  function getInventory(){ try{ var a=JSON.parse(lsGet(K_INV)||'[]'); return Array.isArray(a)?a.filter(function(x){ return !!itemById(x); }):[]; }catch(e){ return []; } }
+  function getEqFrame(){ return lsGet(K_EQF)||''; }
+  function getEqBanner(){ return lsGet(K_EQB)||''; }
   var THEMES={default:{label:'Default 預設',icon:'🎓'},pikmin:{label:'Pikmin 皮克敏',icon:'🌱'},pikachu:{label:'Pikachu 皮卡丘',icon:'⚡'}};
   function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
@@ -2018,6 +2127,25 @@ const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 
     toastTimer=setTimeout(function(){ t.classList.remove('show'); }, ms||3200);
   }
 
+  /* ----- V2.4 equipped-frame overlays in the navbar -----
+     The avatar frame image sits absolutely over the emoji avatar and
+     the name banner sits behind the username (both pointer-events:none).
+     onerror hides the layer if the image cannot load. */
+  function renderEquipped(){
+    var f=document.getElementById('userFrameImg');
+    if(f){
+      f.onerror=function(){ this.style.display='none'; };
+      var fp=getEqFrame();
+      if(fp){ f.src=fp; f.style.display='block'; } else { f.removeAttribute('src'); f.style.display='none'; }
+    }
+    var b=document.getElementById('userBannerImg');
+    if(b){
+      b.onerror=function(){ this.style.display='none'; };
+      var bp=getEqBanner();
+      if(bp){ b.src=bp; b.style.display='block'; } else { b.removeAttribute('src'); b.style.display='none'; }
+    }
+  }
+
   function renderUser(pop){
     var n=getName(), x=getXP();
     var un=document.getElementById('userName'); if(un) un.textContent=n||'同學';
@@ -2027,8 +2155,40 @@ const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 
     var sx=document.getElementById('setXp'); if(sx) sx.textContent=x;
     var sn=document.getElementById('setName'); if(sn) sn.textContent=n||'—';
     if(pop){ var chip=document.getElementById('userChip'); if(chip){ chip.classList.remove('pop'); void chip.offsetWidth; chip.classList.add('pop'); } }
+    renderEquipped();
     renderThemeOpts();
+    renderGreeting();
   }
+
+  /* ----- V2.3 assistant greeting (Duolingo style) -----
+     Shown at the top of the Study dashboard. Priority: Streak first,
+     then the gacha / XP hint, then the time-of-day greeting. The ❌
+     button only hides the bubble for this visit — no localStorage —
+     so it comes back on the next load / refresh. */
+  function renderGreeting(){
+    var av=document.getElementById('assistantAvatar'); if(av) av.textContent=getAvatar();
+    var txt=document.getElementById('assistantText'); if(!txt) return;
+    var name=getName()||'同學', streak=getStreak(), xp=getXP(), msg;
+    if(streak>=3){
+      msg='🔥 連續第 '+streak+' 日啦！繼續保持！';
+    }else if(xp>=45 && xp<50){
+      msg='🥚 你而家有 '+xp+' XP 喇，就差少少就有得抽蛋！';
+    }else if(xp>=50){
+      msg='🥚 夠 50 XP 啦！快啲撳頂部抽蛋抽個頭像框！';
+    }else{
+      var h=new Date().getHours();
+      if(h>=6 && h<12) msg='🌞 早晨呀 '+name+'！今日準備好溫書未呀？';
+      else if(h>=12 && h<18) msg='☕ 晏晝好 '+name+'！食飽飯做幾條 MC 啦。';
+      else if(h>=18) msg='🌙 晚上好 '+name+'！溫一陣記得早啲休息。';
+      else msg='🦉 夜喇喎 '+name+'... 仲未瞓？溫多陣好去休息啦！';
+    }
+    txt.textContent=msg;
+  }
+  var assistantCloseBtn=document.getElementById('assistantClose');
+  if(assistantCloseBtn) assistantCloseBtn.addEventListener('click',function(){
+    var box=document.getElementById('assistantGreet');
+    if(box) box.style.display='none';
+  });
   window.awardXP=function(n){
     setXP(getXP()+(+n||0)); renderUser(true); scheduleSync();
   };
@@ -2043,42 +2203,94 @@ const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 
   /* ----- themes ----- */
   function applyTheme(t,quiet){
     if(!THEMES[t]) t='default';
-    if(t!=='default' && getUnlocked().indexOf(t)<0){ if(!quiet) showToast('🔒 呢個主題未解鎖，去抽蛋試下運氣！'); return; }
     document.body.classList.remove('theme-pikmin','theme-pikachu');
     if(t!=='default') document.body.classList.add('theme-'+t);
     lsSet(K_THEME,t); renderThemeOpts();
     if(syncArmed) scheduleSync();
   }
   function renderThemeOpts(){
-    var cur=getTheme(), un=getUnlocked();
+    var cur=getTheme();
     document.querySelectorAll('[data-theme-opt]').forEach(function(btn){
-      var t=btn.getAttribute('data-theme-opt'), locked=(t!=='default'&&un.indexOf(t)<0);
+      var t=btn.getAttribute('data-theme-opt');
       btn.classList.toggle('on', cur===t);
-      btn.classList.toggle('locked', locked);
+      btn.classList.remove('locked');
       var st=btn.querySelector('[data-theme-state]');
-      if(st) st.textContent = locked ? '🔒 未解鎖' : (cur===t ? '✓ 使用中' : '已解鎖');
+      if(st) st.textContent = (cur===t ? '✓ 使用中' : '免費使用');
     });
   }
   document.querySelectorAll('[data-theme-opt]').forEach(function(btn){
     btn.addEventListener('click',function(){
       var t=btn.getAttribute('data-theme-opt');
-      if(t!=='default' && getUnlocked().indexOf(t)<0){ showToast('🔒 '+THEMES[t].label+' 未解鎖 — 撳頂部「🥚 抽蛋 (50 XP)」隨機解鎖！'); return; }
       applyTheme(t); showToast('🎨 已切換主題：'+THEMES[t].label);
     });
   });
 
-  /* ----- gacha ----- */
+  /* ----- V2.4 gacha: frames only (Pikmin / Pikachu themes are free in
+     Settings now). Costs 50 XP, draws uniformly from ITEM_POOL. A
+     duplicate converts back to 25 XP; a new item joins the inventory,
+     shows the prize modal and triggers an auto-sync. ----- */
+  var gachaModal=document.getElementById('gachaModal');
+  function closeGacha(){ if(gachaModal) gachaModal.classList.remove('open'); }
   var gachaBtn=document.getElementById('gachaBtn');
   if(gachaBtn) gachaBtn.addEventListener('click',function(){
-    var locked=['pikmin','pikachu'].filter(function(t){ return getUnlocked().indexOf(t)<0; });
-    if(!locked.length){ showToast('🎉 你已經解鎖晒全部主題，唔使再抽啦！去 Settings 切換主題啦。',4200); return; }
     var xp=getXP();
     if(xp<50){ showToast('🥚 XP 唔夠！抽蛋需要 50 XP，你而家得 '+xp+' XP。答啱 MC 或者完成 Short Q 自評，每次 +5 XP。',4600); return; }
     setXP(xp-50);
-    var won=locked[Math.floor(Math.random()*locked.length)];
-    var un=getUnlocked(); un.push(won); lsSet(K_UNLOCK,JSON.stringify(un));
-    applyTheme(won,true); renderUser(false);
-    showToast('🎉 恭喜！你抽中並解鎖咗 '+THEMES[won].icon+' '+THEMES[won].label+' 主題，已經幫你套用！（餘下 '+getXP()+' XP）',5200);
+    var won=ITEM_POOL[Math.floor(Math.random()*ITEM_POOL.length)];
+    var inv=getInventory();
+    if(inv.indexOf(won.id)>=0){
+      renderUser(false);
+      showToast('抽到重複物品！已轉換為 25 XP',4200);
+      window.awardXP(25);
+      return;
+    }
+    inv.push(won.id); lsSet(K_INV,JSON.stringify(inv));
+    renderUser(false); scheduleSync();
+    var img=document.getElementById('gachaResultImg');
+    if(img){ img.src=won.path; img.alt=won.name; img.className=(won.type==='avatar_frame'?'frame':'banner'); }
+    var nm=document.getElementById('gachaResultName'); if(nm) nm.textContent='🎉 恭喜抽中 '+won.name+'！';
+    var mt=document.getElementById('gachaResultMeta'); if(mt) mt.innerHTML='<span class="rarity '+won.rarity+'">'+won.rarity+'</span> '+(won.type==='avatar_frame'?'頭像框':'名字框')+' · 餘下 '+getXP()+' XP';
+    if(gachaModal) gachaModal.classList.add('open');
+  });
+  var gachaOkBtn=document.getElementById('gachaOk');
+  if(gachaOkBtn) gachaOkBtn.addEventListener('click',closeGacha);
+  if(gachaModal) gachaModal.addEventListener('click',function(e){ if(e.target===gachaModal) closeGacha(); });
+  var gachaToInvBtn=document.getElementById('gachaToInv');
+  if(gachaToInvBtn) gachaToInvBtn.addEventListener('click',function(){ closeGacha(); openInv(); });
+
+  /* ----- V2.4 inventory & equipment -----
+     Owned item ids live in localStorage (sowk403_inventory). Equipping
+     stores the item's image PATH in sowk403_equipped_avatar_frame /
+     sowk403_equipped_name_frame, re-renders the navbar overlays at once
+     and lets the debounced auto-sync upload the paths to Supabase. */
+  var invModal=document.getElementById('invModal');
+  function invSectionHtml(type, equippedPath){
+    var owned=getInventory().map(itemById).filter(function(it){ return it && it.type===type; });
+    if(!owned.length) return '<p class="inv-empty">仲未有呢類物品 — 撳頂部「🥚 抽蛋 (50 XP)」抽返個啦！</p>';
+    var h='<div class="inv-grid">';
+    owned.forEach(function(it){
+      var eq=equippedPath===it.path;
+      h+='<div class="inv-item"><div class="inv-imgbox"><img src="'+it.path+'" alt="'+escHtml(it.name)+'" loading="lazy" onerror="this.remove()"></div><div class="inv-name">'+escHtml(it.name)+'</div><span class="rarity '+it.rarity+'">'+it.rarity+'</span><br>'+(eq?'<button class="small" disabled>✓ 已裝備</button>':'<button class="small primary" data-equip="'+it.id+'">裝備</button>')+'</div>';
+    });
+    return h+'</div>';
+  }
+  function renderInv(){
+    var f=document.getElementById('invFrames'); if(f) f.innerHTML=invSectionHtml('avatar_frame',getEqFrame());
+    var b=document.getElementById('invBanners'); if(b) b.innerHTML=invSectionHtml('name_frame',getEqBanner());
+  }
+  function openInv(){ renderInv(); if(invModal) invModal.classList.add('open'); }
+  function closeInv(){ if(invModal) invModal.classList.remove('open'); }
+  var invOpenBtn=document.getElementById('invOpenBtn');
+  if(invOpenBtn) invOpenBtn.addEventListener('click',openInv);
+  var invCloseBtn=document.getElementById('invClose');
+  if(invCloseBtn) invCloseBtn.addEventListener('click',closeInv);
+  if(invModal) invModal.addEventListener('click',function(e){
+    if(e.target===invModal){ closeInv(); return; }
+    var btn=e.target.closest('[data-equip]'); if(!btn) return;
+    var it=itemById(btn.getAttribute('data-equip')); if(!it) return;
+    if(it.type==='avatar_frame') lsSet(K_EQF,it.path); else lsSet(K_EQB,it.path);
+    renderUser(false); renderInv(); scheduleSync();
+    showToast('✅ 已裝備「'+it.name+'」！',3200);
   });
 
   /* ----- avatar picker (inside the username modal) ----- */
@@ -2136,7 +2348,7 @@ const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 
     try{
       var name=getName();
       if(!name || !supabaseClient) return;
-      var res=await supabaseClient.from('leaderboard').upsert({username:name,score:getXP(),avatar:getAvatar(),streak:getStreak(),mock_score:getMockScore()},{onConflict:'username'});
+      var res=await supabaseClient.from('leaderboard').upsert({username:name,score:getXP(),avatar:getAvatar(),streak:getStreak(),mock_score:getMockScore(),avatar_frame:getEqFrame()||null,name_frame:getEqBanner()||null},{onConflict:'username'});
       if(res.error) throw res.error;
     }catch(e){ /* silent by design */ }
   }
@@ -2159,7 +2371,9 @@ const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 
         var medal=idx===0?'🥇':idx===1?'🥈':idx===2?'🥉':(idx+1);
         var mine=me && String(r.username||'')===me;
         var val=isMock?(+r.mock_score||0):(+r.score||0);
-        h+='<tr'+(mine?' class="lb-me"':'')+'><td>'+medal+'</td><td style="font-size:20px">'+escHtml(r.avatar||'🦊')+'</td><td>'+escHtml(r.username||'—')+(mine?' （你）':'')+'</td><td class="n">🔥 '+(+r.streak||0)+' 天</td><td class="n">'+val+'</td></tr>';
+        var avCell='<span class="lb-avwrap"><span aria-hidden="true">'+escHtml(r.avatar||'🦊')+'</span>'+(r.avatar_frame?'<img src="'+escHtml(r.avatar_frame)+'" alt="" aria-hidden="true" onerror="this.remove()" style="position:absolute;inset:-3px;width:34px;height:34px;pointer-events:none">':'')+'</span>';
+        var nmCell='<span class="lb-namewrap">'+(r.name_frame?'<img src="'+escHtml(r.name_frame)+'" alt="" aria-hidden="true" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0">':'')+'<span class="lb-nm">'+escHtml(r.username||'—')+(mine?' （你）':'')+'</span></span>';
+        h+='<tr'+(mine?' class="lb-me"':'')+'><td>'+medal+'</td><td>'+avCell+'</td><td>'+nmCell+'</td><td class="n">🔥 '+(+r.streak||0)+' 天</td><td class="n">'+val+'</td></tr>';
       });
       h+='</tbody></table>';
       lbBody.innerHTML=h;
@@ -2250,9 +2464,13 @@ const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 
   var K_VER='sowk403_version';
   var updateModal=document.getElementById('updateModal');
   var updateList=document.getElementById('updateList');
-  if(updateList) updateList.innerHTML=CHANGELOG.map(function(c){ return '<li>'+escHtml(c)+'</li>'; }).join('');
   function maybeShowUpdate(){
-    if(lsGet(K_VER)!==APP_VERSION && updateModal) updateModal.classList.add('open');
+    if(lsGet(K_VER)===APP_VERSION) return;
+    /* Read this version's notes dynamically by key, so adding a '2.4'
+       entry to CHANGELOG is all a future release needs. */
+    var notes=CHANGELOG[APP_VERSION]||[];
+    if(updateList) updateList.innerHTML=notes.map(function(c){ return '<li>'+escHtml(c)+'</li>'; }).join('');
+    if(updateModal) updateModal.classList.add('open');
   }
   var updateOkBtn=document.getElementById('updateOk');
   if(updateOkBtn) updateOkBtn.addEventListener('click',function(){
