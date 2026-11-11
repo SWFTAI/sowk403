@@ -98,6 +98,8 @@ details .body{padding:0 18px 18px;border-top:1px solid var(--line)}
 details .body ul{margin:8px 0;padding-left:20px}
 .kbox{background:var(--gold-bg);border-radius:12px;padding:12px 14px;font-size:14px;margin:10px 0}
 .tbox{background:var(--teal-bg);border-radius:12px;padding:12px 14px;font-size:14px;margin:10px 0}
+.zh-note{display:block;margin-top:10px;margin-bottom:12px;padding:10px 14px;background-color:var(--card2);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;font-size:14.5px;line-height:1.7;color:var(--ink);opacity:1}
+.zh-note b{color:var(--teal)}
 .progressbar{height:10px;background:var(--card2);border-radius:99px;overflow:hidden}
 .progressbar i{display:block;height:100%;background:var(--ink);width:0%;transition:width .3s}
 /* flashcard */
@@ -171,7 +173,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
   details .body{display:block}
   .opt{border:1px solid #999;background:#fff;color:#000;text-align:left}
   .explain{display:block}
-  .kbox,.tbox{background:#f2f2f2}
+  .kbox,.tbox,.zh-note{background:#f2f2f2}
   table{font-size:10pt}
   a{color:#000;text-decoration:none}
   textarea{border:1px solid #999;min-height:60px}
@@ -339,56 +341,56 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Sources of Law (法律來源)</div>
         <div style="margin-bottom:8px;">The hierarchy is: <b>Basic Law</b> is supreme, followed by <b>Statute Law</b> — Ordinances and Subsidiary Legislation — then <b>Case Law</b>, comprising Common Law and Equity, and Chinese Customary Law on matters such as New Territories land. <b>Basic Law Article 8</b> preserves the laws previously in force, while <b>Basic Law Article 18</b> lists the laws in force in the HKSAR.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：法律位階由高至低排列，附屬立法唔可以超越主體條例，否則屬 ultra vires（越權）而無效。答題時唔好將位階倒轉。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>法律位階由高至低排列，附屬立法唔可以超越主體條例，否則屬 ultra vires（越權）而無效。答題時唔好將位階倒轉。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Common Law &amp; Equity (普通法與衡平法)</div>
         <div style="margin-bottom:8px;"><b>Common Law</b> is judge-made law developed through precedent in an adversarial system, where the judge is passive and neutral. <b>Equity</b> developed to mitigate the rigidity of the common law, providing fair remedies where strict legal rights would produce injustice. Where they conflict, Equity prevails.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：普通法靠先例、法官被動中立；衡平法補救普通法嘅僵化。兩者衝突時以衡平法優先，但要先分清邊一方持有 legal interest（法律權益）、邊一方持有 equitable interest（衡平權益）。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>普通法靠先例、法官被動中立；衡平法補救普通法嘅僵化。兩者衝突時以衡平法優先，但要先分清邊一方持有 legal interest（法律權益）、邊一方持有 equitable interest（衡平權益）。</div>
         <div class="tbox" style="margin: 10px 0; line-height:1.65;">
           <b>📌 Case: <i>Wong Chim Ying v Cheng Kam Wing</i></b><br>
           <b>Facts:</b> Matrimonial home bought with husband's money but registered in wife's name. Wife later sold it.<br>
           <b>Holding:</b> Common law recognized wife as legal owner, but Equity recognized husband's equitable interest. Equitable interest prevailed.<br>
-          <span style="color:var(--ink); opacity:0.88; font-size:13.5px; line-height:1.6; display:block; margin-top:6px;">中文：男方出錢買樓但登記女方名下，女方其後賣樓。普通法重形式，衡平法重實質公義，最終衡平權益勝出。Short Q 要寫齊邊個出錢、登記喺邊個名下、點解 Equity 介入。</span>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：男方出錢買樓但登記女方名下，女方其後賣樓。普通法重形式，衡平法重實質公義，最終衡平權益勝出。Short Q 要寫齊邊個出錢、登記喺邊個名下、點解 Equity 介入。</div>
         </div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Rule of Law (法治)</div>
         <div style="margin-bottom:8px;"><b>Dicey's Three Points:</b> (1) <b>Supremacy of Law</b> — no one is punishable except for a distinct breach of law, and government power must have a legal basis. (2) <b>Equality before the Law</b> — every person, including officials, is subject to the ordinary law and ordinary courts. (3) Constitutional principles derive from judicial decisions — rights are protected through remedies given by courts in individual cases.</div>
         <div style="margin-bottom:8px;">Modern views add that government acts need a legal basis, discretionary power must be restricted and reviewable, and an independent judiciary must be able to review government action.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：戴雪三點：(1) 法律至上 —— 除非明確違法，否則無人可受罰；(2) 法律面前人人平等，包括官員；(3) 憲法原則源自司法判決。現代觀點再強調限制酌情權同司法覆核。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>戴雪三點：(1) 法律至上 —— 除非明確違法，否則無人可受罰；(2) 法律面前人人平等，包括官員；(3) 憲法原則源自司法判決。現代觀點再強調限制酌情權同司法覆核。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Separation of Powers (三權分立)</div>
         <div style="margin-bottom:8px;">State power is divided into the Legislature which makes, amends and repeals laws, the Executive which implements and enforces laws, and the Judiciary which adjudicates disputes and interprets laws. The doctrine works through checks and balances — for example, judicial review lets courts check executive action, preventing any one branch from abusing power.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：立法制訂法律、行政執行法律、司法裁斷爭議，三權互相制衡。引用條文要準：Basic Law Articles 43–65（行政）、Articles 66–79（立法）、Articles 80–96（司法）。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>立法制訂法律、行政執行法律、司法裁斷爭議，三權互相制衡。引用條文要準：Basic Law Articles 43–65（行政）、Articles 66–79（立法）、Articles 80–96（司法）。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Judicial Independence (司法獨立)</div>
         <div style="margin-bottom:8px;">In the broad sense, it means the judiciary is free from interference by the executive and legislature as an institution. In the narrow sense, it means an individual judge is free from interference in decision-making in a particular case.</div>
         <div style="margin-bottom:8px;">Constitutional safeguards include <b>Basic Law Article 85</b> — courts exercise judicial power independently, <b>Article 88</b> — appointment on the recommendation of the Judicial Officers Recommendation Commission (Cap 92), <b>Article 89</b> — security of tenure, removal only for inability or misbehaviour, and <b>Article 90</b> — the Chief Justice is appointed and removed with LegCo endorsement. Guiding principle: <i>"Justice must not only be done but must also be seen to be done."</i></div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：廣義係司法機關整體不受干擾，狹義係個別法官判案不受干擾。就算實際無偏袒，表面偏頗 appearance of bias 都足以損害公信力。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>廣義係司法機關整體不受干擾，狹義係個別法官判案不受干擾。就算實際無偏袒，表面偏頗 appearance of bias 都足以損害公信力。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Court Structure (法院架構)</div>
         <div style="margin-bottom:8px;">From the top: Court of Final Appeal (CFA) → Court of Appeal (CA) → Court of First Instance (CFI) — the CA and CFI together form the High Court → District Court (DC): civil jurisdiction up to $3,000,000 and criminal sentencing up to 7 years' imprisonment → Magistrates' Court: up to 2 years' imprisonment and a $100,000 fine → Small Claims Tribunal: claims up to $75,000, with no legal representation to keep proceedings cheap and informal.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：數字係畀分點，要背齊：區域法院民事 $3M / 刑事 7 年、裁判法院 2 年 / $100,000、小額錢債 $75,000 兼唔准律師。另有少年法庭、勞資審裁處、土地審裁處、死因裁判法庭、家事法庭。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>數字係畀分點，要背齊：區域法院民事 $3M / 刑事 7 年、裁判法院 2 年 / $100,000、小額錢債 $75,000 兼唔准律師。另有少年法庭、勞資審裁處、土地審裁處、死因裁判法庭、家事法庭。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Basic Law Article 158 (基本法第 158 條 · 解釋權)</div>
         <div style="margin-bottom:8px;">The power of interpretation of the Basic Law is vested in the Standing Committee of the National People's Congress (NPCSC). HKSAR courts are authorised to interpret on their own, in adjudicating cases, provisions within the limits of the Region's autonomy.</div>
         <div style="margin-bottom:8px;">But if a provision concerns affairs which are the responsibility of the Central People's Government or the relationship between the Central Authorities and the Region, and its interpretation affects the judgment, the CFA must, before making its final judgment, seek an interpretation from the NPCSC, and must follow that interpretation. Related: <b>Basic Law Article 159</b> — the power of amendment belongs to the NPC.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：解釋權歸人大常委。自治範圍內條文法院可自行解釋；涉及中央事務或中央與特區關係，先要喺終局判決前提請釋法。唔好同第 159 條修改權撈亂。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>解釋權歸人大常委。自治範圍內條文法院可自行解釋；涉及中央事務或中央與特區關係，先要喺終局判決前提請釋法。唔好同第 159 條修改權撈亂。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">National Security Law (《香港國安法》)</div>
         <div style="margin-bottom:8px;">It creates four categories of offence: Secession, Subversion, Terrorist Activities and Collusion with a Foreign Country or External Elements. The local Safeguarding National Security Ordinance 2024 adds offences including Treason, Insurrection, offences relating to State Secrets, Sabotage and External Interference.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：國安法四罪：分裂國家、顛覆國家政權、恐怖活動、勾結外國或境外勢力。2024 年《維護國家安全條例》再加叛國、叛亂、國家秘密、破壞活動、境外干預。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>國安法四罪：分裂國家、顛覆國家政權、恐怖活動、勾結外國或境外勢力。2024 年《維護國家安全條例》再加叛國、叛亂、國家秘密、破壞活動、境外干預。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Legislative Process (立法程序)</div>
         <div style="margin-bottom:8px;">A bill passes through First Reading → Second Reading → Committee Stage → Third Reading, then is signed by the Chief Executive and gazetted before taking effect. Subsidiary legislation must stay within the power conferred by its parent Ordinance, otherwise it is ultra vires and invalid. Legislation is in principle not retrospective.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：一讀、二讀、委員會階段、三讀，再經行政長官簽署刊憲生效。附屬立法唔可以超越主體法例授權；法例原則上無追溯力。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>一讀、二讀、委員會階段、三讀，再經行政長官簽署刊憲生效。附屬立法唔可以超越主體法例授權；法例原則上無追溯力。</div>
       </li>
     </ul>
     <div class="tbox" style="line-height:1.65;"><b>Social Work Link（社工連結）：</b> <b>Social Workers Registration Ordinance, Cap 505, s.17</b> — 被裁定干犯令專業聲譽受損嘅罪行，註冊局可拒絕註冊。所以國安法唔係「同社工無關」：刑事定罪會直接影響註冊資格同專業前途。</div>
@@ -408,74 +410,74 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Functions of Criminal Law &amp; Prosecution (刑事法功能與檢控)</div>
         <div style="margin-bottom:8px;">Criminal law protects society and maintains order through deterrence, incapacitation, rehabilitation and retribution. The process is: arrest by the police → prosecution by the Department of Justice → trial by the court. The prosecution must prove every element of the offence — <b>Actus Reus</b> + <b>Mens Rea</b>.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：刑事法透過阻嚇、隔離、更生、報應保護社會。社工答題第一步永遠係拆元素，唔好一開始就講應唔應該罰。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>刑事法透過阻嚇、隔離、更生、報應保護社會。社工答題第一步永遠係拆元素，唔好一開始就講應唔應該罰。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Burden of Proof &amp; Standard of Proof (舉證責任與標準)</div>
         <div style="margin-bottom:8px;">In criminal cases the prosecution must prove guilt <b>beyond reasonable doubt</b> — the highest standard, because the defendant's liberty is at stake. In civil cases the standard is only the <b>balance of probabilities</b> — more likely than not. This rests on the <b>Presumption of Innocence</b>: the accused is presumed innocent until proven guilty, so the accused does not have to prove his own innocence.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：刑事要無合理疑點，民事只需相對可能性。MC 最鍾意將兩個標準對調出題，見到 civil case 用 beyond reasonable doubt 即係錯。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>刑事要無合理疑點，民事只需相對可能性。MC 最鍾意將兩個標準對調出題，見到 civil case 用 beyond reasonable doubt 即係錯。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Actus Reus (犯罪行為)</div>
         <div style="margin-bottom:8px;">The <b>Actus Reus</b> is the prohibited act specified by the offence, and it can also consist of a failure to act — an omission — where there is a legal duty to act. There is no general duty to rescue. A duty may arise from statute, contract, voluntary assumption of care, or creating a danger. Local example: <b>OAPO Cap 212, s.27</b> imposes a duty on persons responsible for a child.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：一般原則係「唔救人本身唔犯法」。只有當法律責任存在，先會因不作為入罪。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>一般原則係「唔救人本身唔犯法」。只有當法律責任存在，先會因不作為入罪。</div>
         <div class="tbox" style="margin: 10px 0; line-height:1.65;">
           <b>📌 Case: <i>R v Miller</i> — Duty Arising from Creating a Danger</b><br>
           <b>Facts:</b> Squatter fell asleep smoking, started fire, woke up but didn't extinguish or call fire brigade. He simply moved to another room and went back to sleep.<br>
           <b>Holding:</b> Once you create a danger and become aware of it, you have a duty to act. His failure to act formed the actus reus.<br>
-          <span style="color:var(--ink); opacity:0.88; font-size:13.5px; line-height:1.6; display:block; margin-top:6px;">中文：責任唔係嚟自「佢係屋主」，而係嚟自「危險係佢造成 + 佢知情」。</span>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：責任唔係嚟自「佢係屋主」，而係嚟自「危險係佢造成 + 佢知情」。</div>
         </div>
         <div class="tbox" style="margin: 10px 0; line-height:1.65;">
           <b>📌 Case: <i>R v Stone &amp; Dobinson</i> — Voluntary Assumption of Care</b><br>
           <b>Facts:</b> Couple took in anorexic relative, failed to summon help. Her condition deteriorated badly and she died.<br>
           <b>Holding:</b> Voluntary assumption of care creates a legal duty. Their gross failure to act made them liable for manslaughter.<br>
-          <span style="color:var(--ink); opacity:0.88; font-size:13.5px; line-height:1.6; display:block; margin-top:6px;">中文：照顧關係一旦成立，「我咩都冇做」唔係抗辯，反而正正係入罪基礎。</span>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：照顧關係一旦成立，「我咩都冇做」唔係抗辯，反而正正係入罪基礎。</div>
         </div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Causation (因果關係)</div>
         <div style="margin-bottom:8px;">The prosecution must prove the defendant's act caused the prohibited result. Step 1 — Factual causation: the 'but-for' test: but for the defendant's act, would the result have occurred? Step 2 — Legal causation: the defendant's act must remain an operative and substantial cause of the result.</div>
         <div style="margin-bottom:8px;">The chain can be broken by a <b>novus actus interveniens</b> — a free, deliberate and informed intervening act by a third party or the victim — but ordinary or even negligent medical treatment normally does not break the chain; only abnormal treatment will.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：先考「若非」測試，再考法律因果。一般甚至疏忽嘅醫療處理通常唔斷鏈，只有異常醫療處理先會斷鏈。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>先考「若非」測試，再考法律因果。一般甚至疏忽嘅醫療處理通常唔斷鏈，只有異常醫療處理先會斷鏈。</div>
         <div class="tbox" style="margin: 10px 0; line-height:1.65;">
           <b>📌 Case: <i>R v Smith</i> — Chain NOT Broken</b><br>
           <b>Facts:</b> Stabbed victim dropped multiple times, given wrong treatment.<br>
           <b>Holding:</b> Chain NOT broken, original wound still operative cause. Defendant remained liable for the death.<br>
-          <span style="color:var(--ink); opacity:0.88; font-size:13.5px; line-height:1.6; display:block; margin-top:6px;">中文：醫療失誤就算幾差，只要原傷勢仍在發揮作用，介入行為唔會自動斷鏈。</span>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：醫療失誤就算幾差，只要原傷勢仍在發揮作用，介入行為唔會自動斷鏈。</div>
         </div>
         <div class="tbox" style="margin: 10px 0; line-height:1.65;">
           <b>📌 Case: <i>R v Jordan</i> — Chain BROKEN</b><br>
           <b>Facts:</b> Victim given large dose of drug he was intolerant to while recovering in hospital, and died from that reaction.<br>
           <b>Holding:</b> Abnormal medical treatment BROKE the chain. It amounted to a novus actus interveniens; defendant was not liable for the death.<br>
-          <span style="color:var(--ink); opacity:0.88; font-size:13.5px; line-height:1.6; display:block; margin-top:6px;">中文：同 R v Smith 對讀係必考位 — 分別唔係「有冇醫療失誤」，而係失誤去到 abnormal 程度、令原傷勢唔再係 operative cause 未。</span>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：同 R v Smith 對讀係必考位 — 分別唔係「有冇醫療失誤」，而係失誤去到 abnormal 程度、令原傷勢唔再係 operative cause 未。</div>
         </div>
         <div class="tbox" style="margin: 10px 0; line-height:1.65;">
           <b>📌 Case: <i>R v Pagett</i> — Reasonable Self-Defence Does Not Break the Chain</b><br>
           <b>Facts:</b> Used hostage as a shield, police shot hostage while returning fire in self-defence.<br>
           <b>Holding:</b> Reasonable act of self-defence doesn't break chain; deliberate third-party act might. Defendant was liable for manslaughter.<br>
-          <span style="color:var(--ink); opacity:0.88; font-size:13.5px; line-height:1.6; display:block; margin-top:6px;">中文：被迫、合理嘅反應係 foreseeable response，唔會斷鏈；死亡源於被告迫使對峙嘅行為。</span>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：被迫、合理嘅反應係 foreseeable response，唔會斷鏈；死亡源於被告迫使對峙嘅行為。</div>
         </div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Mens Rea (犯罪意圖)</div>
         <div style="margin-bottom:8px;">The <b>Mens Rea</b> is the mental element, in three descending levels: (1) <b>Intention</b> — the defendant aims at or knows the result is virtually certain. (2) <b>Recklessness</b> — the defendant foresees a risk and unjustifiably takes it. (3) <b>Negligence</b> — the defendant falls below the standard of the reasonable person, without necessarily foreseeing the risk; criminal liability usually requires gross negligence.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：意圖最高、罔顧次之、疏忽最低。Short Q 要按罪行要求指出需要邊一級 mens rea，唔好籠統寫「有意圖」就算。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>意圖最高、罔顧次之、疏忽最低。Short Q 要按罪行要求指出需要邊一級 mens rea，唔好籠統寫「有意圖」就算。</div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Defences (抗辯)</div>
         <div style="margin-bottom:8px;">Common defences negating liability include Age — a child under 10 bears no criminal liability, Insanity, Automatism, Intoxication, Duress &amp; Necessity and Self-Defence. Each defence has its own elements and evidential requirements; apply each element to the facts.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：唔係「提出咗就脫罪」。每種抗辯都有自己嘅元素同舉證要求，要逐項套事實分析，結論先有分。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>唔係「提出咗就脫罪」。每種抗辯都有自己嘅元素同舉證要求，要逐項套事實分析，結論先有分。</div>
         <div class="tbox" style="margin: 10px 0; line-height:1.65;">
           <b>📌 Case: <i>HKSAR v Shum Man Fai (2021)</i> — Self-Defence: Two Limbs</b><br>
           <b>Facts / Rule:</b> Self-defence must satisfy two limbs — (1) Necessity (honest belief), (2) Reasonableness (proportionate force).<br>
           <b>Holding:</b> (1) Necessity — defendant honestly believed force was necessary to defend himself or another. (2) Reasonableness — force used was reasonable and proportionate to the threat faced. The force must not be retaliatory.<br>
-          <span style="color:var(--ink); opacity:0.88; font-size:13.5px; line-height:1.6; display:block; margin-top:6px;">中文：自衛兩肢：先寫 honest belief（主觀），再寫 proportionate force（客觀），最後檢查有冇 retaliation 成分。威脅過咗再出手，兩肢都唔成立。</span>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：自衛兩肢：先寫 honest belief（主觀），再寫 proportionate force（客觀），最後檢查有冇 retaliation 成分。威脅過咗再出手，兩肢都唔成立。</div>
         </div>
       </li>
       <li style="margin-bottom:20px;">
         <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Classification of Offences &amp; Theft (罪行分類與盜竊)</div>
         <div style="margin-bottom:8px;">Offences may be summary, indictable — serious indictable offences are tried in the CFI before a jury — or either-way. <b>Theft Ordinance, Cap 210, s.2(1)</b> — theft has four elements: dishonestly, appropriates, property belonging to another, with the intention of permanently depriving.</div>
-        <div style="color:var(--ink); opacity:0.85; font-size:14.5px; line-height:1.6; margin-top:6px; margin-bottom:8px;">中文解釋：盜竊四元素缺一不可：不誠實地、挪佔、屬於他人嘅財產、意圖永久剝奪。</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>盜竊四元素缺一不可：不誠實地、挪佔、屬於他人嘅財產、意圖永久剝奪。</div>
       </li>
     </ul>
     <div class="kbox" style="line-height:1.7;"><b>答題骨（老師 L3 原稿）+ Short Q 出題陷阱 / 高分位 — L3 Criminal Law</b>
@@ -490,78 +492,545 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
   </div></details>
 
   <details><summary><span>L4 成人法：家暴・OAPO・DCRVO</span><span class="tag gold">社工實務高頻</span></summary><div class="body">
-    <table><tr><th>OAPO Cap 212</th><th>最高刑罰</th></tr>
-    <tr><td>s.40 普通襲擊</td><td>1 年</td></tr><tr><td>s.39 襲擊致 ABH</td><td>3 年</td></tr>
-    <tr><td>s.19 GBH</td><td>3 年</td></tr><tr><td>s.17 意圖造成 GBH（malice＋武器）</td><td>終身</td></tr>
-    <tr><td>s.2 謀殺 / s.7 誤殺</td><td>終身（誤殺另可罰款）</td></tr><tr><td>s.27 虐待／忽略兒童</td><td>3–10 年</td></tr></table>
     <ul>
-      <li><b>Assault</b>＝展示暴力威脅，令對方合理相信武力即將被使用（apprehend immediate unlawful violence）；<b>Battery</b>＝實際、蓄意、非法使用武力。Common assault 包晒兩者而無加重情節。</li>
-      <li><b>家暴特點：</b>跨階層、長遠影響、形式多樣殘酷、循環重複、受害人多依賴施虐者、懲罰施虐者反而連累受害人（如經濟）。刑事法局限：要等傷害發生、舉證難、後果未必保護到受害人。</li>
-      <li><b>DCRVO Cap 189（民事補救）：</b>申請人＝配偶／同居者（及同住嘅指明未成年人 specified minor）；針對＝配偶／前配偶／同居者／前同居者；理由＝騷擾 molestation（跟蹤、截停、辱罵信件、滋擾電話、纏擾、任何需要法院介入嘅 harassment）。</li>
-      <li><b>法庭可批：</b>不騷擾令 non-molestation order s.3(1)(a)/(b)（可加 s.3(1A) 要求參加改變態度行為嘅課程）、遷出令／重返令 exclusion / entry order s.3(1)(c)。區域法院考慮：雙方行為、各自需要同財政資源、未成年人需要、全部情況。</li>
-      <li><b>逮捕授權書 s.5：</b>附於禁制令嘅條件 — 法庭信納已造成 ABH，或合理相信好可能造成 ABH；可於批令時或令有效期間任何時間附加。</li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Offences Against the Person Ordinance, Cap 212 (《侵害人身罪條例》第 212 章)</div>
+        <div style="margin-bottom:8px;">The <b>Offences Against the Person Ordinance, Cap 212</b> grades offences against the person by the seriousness of the harm and the offender's mental element. <b>s.40</b> common assault — maximum 1 year; <b>s.39</b> assault occasioning actual bodily harm (ABH) — 3 years; <b>s.19</b> wounding or inflicting grievous bodily harm (GBH) — 3 years; <b>s.17</b> GBH with malice and with arms — life imprisonment. At the top of the scale, <b>s.2</b> murder carries life imprisonment, and <b>s.7</b> manslaughter carries life imprisonment and a fine.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Cap 212 按傷害嚴重程度同犯罪意圖分級。背刑罰要連條文一齊背：s.40 普通襲擊 1 年、s.39 ABH 3 年、s.19 GBH 3 年、s.17 惡意加武器 GBH 終身、s.2 謀殺終身、s.7 誤殺終身兼罰款。MC 最鍾意將 s.39 / s.19 / s.17 嘅刑罰對調出題。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Assault &amp; Battery (襲擊與毆打)</div>
+        <div style="margin-bottom:8px;"><b>Assault</b> is a display of threat causing the victim to apprehend immediate unlawful violence — no physical contact is needed, only that the victim anticipates force about to be used. <b>Battery</b> is the actual, intentional and unlawful use of force on another person. Common assault under <b>s.40</b> can be committed by either form where there are no aggravating features. The distinction matters in analysis: identify first whether contact occurred, then grade the resulting harm as ABH or GBH.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Assault 睇「預期」—— 令對方合理相信武力即將被使用，唔使掂到；Battery 睇「接觸」—— 實際施加非法武力。Short Q 分析次序：先分有冇接觸，再分傷害係 ABH 定 GBH，最後先落條文同刑罰。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Ill-treatment or Neglect of a Child — OAPO s.27 (虐待或忽略兒童)</div>
+        <div style="margin-bottom:8px;"><b>OAPO Cap 212, s.27</b> criminalises the ill-treatment or neglect of a child, with a maximum penalty ranging from 3 to 10 years' imprisonment. Although placed in the Adult Law lecture, this provision is the bridge to Child Law in L5: the same section is used to prosecute wilful assault, ill-treatment, neglect, abandonment or exposure of a child causing unnecessary suffering or injury to health. A social worker must therefore know s.27 in both contexts — as a serious offence against the person, and as a core child-protection provision.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>s.27 虐待／忽略兒童最高 3 至 10 年，係 L4 同 L5 之間嘅橋樑條文。L5 會再深入講構成元素；呢度先記住刑罰範圍同佢屬於 Cap 212。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Sexual Offences — Crimes Ordinance (《刑事罪行條例》性罪行)</div>
+        <div style="margin-bottom:8px;">Under the <b>Crimes Ordinance</b>, <b>s.118</b> rape carries life imprisonment, while <b>s.122</b> indecent assault carries a maximum of 10 years. Rape and indecent assault must not be confused: they differ in the act involved and in the maximum penalty. In a domestic or intimate-partner context, forced sex after a refusal may therefore engage criminal liability under s.118 in addition to any civil remedy under the DCRVO — the two tracks are separate and can run together.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>強姦 s.118 終身、非禮 s.122 最高 10 年，唔好撈亂。婚姻或伴侶關係唔係免責理由；拒絕之後強迫性交，要同時諗刑事 s.118 同民事 DCRVO 兩條路。</div>
+        <div class="tbox" style="margin: 8px 0;">
+          <b>📌 Discussion Case: <i>Ho Mai and Mei Li</i> (slides)</b><br>
+          <b>Facts:</b> Ho Mai and Mei Li had been married for 10 years. There was verbal abuse in the marriage, and Ho Mai forced sex on Mei Li after she had refused. Their daughter overheard what happened and told the school social worker.<br>
+          <b>Issues / Holding points:</b> The facts raise (1) whether forced sex after refusal amounts to rape under Crimes Ordinance s.118; (2) whether the verbal abuse and forced sex amount to molestation justifying a non-molestation order under DCRVO Cap 189 s.3; and (3) the school social worker's role on receiving the daughter's disclosure — safety, support and referral.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：結婚 10 年、言語虐待、拒絕後強迫性交、女兒聽到後話畀學校社工知。呢個係課堂討論情境，唔係判例；答題要分開刑事（s.118）同民事（DCRVO）兩條分析線，再加社工收到披露後嘅處理，唔好當成有判決嘅案例嚟引。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Domestic and Cohabitation Relationships Violence Ordinance, Cap 189 — Civil Remedy (《家庭及同居關係暴力條例》第 189 章・民事補救)</div>
+        <div style="margin-bottom:8px;">The <b>Domestic and Cohabitation Relationships Violence Ordinance, Cap 189 (DCRVO)</b> provides a civil remedy for victims of domestic and cohabitation relationship violence, in contrast to the criminal route under Cap 212. Its centrepiece is the non-molestation order under <b>s.3(1)(a)</b> for an adult applicant and <b>s.3(1)(b)</b> for a specified minor. Under <b>s.3(1A)</b>, the court may also direct the respondent to attend a programme aimed at changing the attitude and behaviour that led to the molestation. A civil injunction can be sought without waiting for a criminal prosecution or conviction.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>DCRVO 係民事補救，唔使等刑事檢控或定罪先申請到。不騷擾令：成人 s.3(1)(a)、指明未成年人 s.3(1)(b)；s.3(1A) 可命令答辯人參加改變態度行為嘅課程。答題要寫明申請人係成人定 specified minor，先揀得啱 sub-section。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Exclusion &amp; Entry Orders; Court Considerations; Power of Arrest (遷出令／重返令・法院考慮・逮捕授權)</div>
+        <div style="margin-bottom:8px;">Beyond a non-molestation order, <b>s.3(1)(c)(i)</b> empowers the court to make an exclusion or entry order for an adult, and <b>s.3(1)(c)(ii)</b> does the same for a specified minor — excluding the respondent from, or allowing the applicant to re-enter, the shared home. In deciding whether and how to exercise these powers, the court has regard to the conduct of the parties, the needs and financial resources of the parties, and the needs of any specified minor. Under <b>s.5</b>, an authorisation of arrest may be attached where actual bodily harm has been caused or is likely to be caused, so that a breach can be met with immediate arrest.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>遷出／重返令：成人 s.3(1)(c)(i)、指明未成年人 s.3(1)(c)(ii)。法院考慮三樣嘢：雙方行為、雙方需要同財政資源、指明未成年人嘅需要。s.5 逮捕授權書嘅門檻係已造成 ABH 或好可能造成 ABH。</div>
+        <div class="tbox" style="margin: 8px 0;">
+          <b>📌 Application: <i>Q11 — Mary and Peter</i> (cohabitation violence)</b><br>
+          <b>Facts:</b> Mary and Peter had cohabited for 5 years. Peter isolated Mary from others and then expelled her from the home.<br>
+          <b>Application:</b> As a cohabiting partner, Mary falls within the DCRVO's civil remedy. The isolation and expulsion can amount to molestation; because she has been put out of the home, the remedy she needs is an entry (re-entry) order under s.3(1)(c) to return home, together with a non-molestation order under s.3(1)(a).<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：同居 5 年、被孤立、被趕出門 —— 重點係揀啱令：被趕走嗰方要嘅係重返令返屋企，唔係遷出令。先寫同居關係符合 DCRVO 適用範圍，再寫行為點樣構成 molestation。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Molestation (騷擾)</div>
+        <div style="margin-bottom:8px;"><b>Molestation</b> under the DCRVO is wider than physical violence. It includes assault, intercepting or following the victim, shouting obscenities, sending abusive letters, repeatedly telephoning, and pestering. The concept therefore covers a course of harassing and controlling conduct — such as the isolation in Q11 and the intimate partner violence in Q6 — and not only a single act causing injury. Where the conduct also amounts to a criminal assault or a sexual offence, the criminal law (Cap 212 / Crimes Ordinance) and the civil DCRVO remedy should be analysed in parallel.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Molestation 唔止打人：截停／跟蹤、大叫粗言穢語、辱罵信件、不斷打電話、纏擾都計。Q6 親密伴侶暴力同 Q11 嘅孤立控制，都要由呢個闊定義入手分析；Q5 殺嬰／家暴情境就提醒：家暴題可能同時牽涉刑事罪行，要兩條線一齊寫。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Guardianship — Introduction under the Mental Health Ordinance (《精神健康條例》監護・引子)</div>
+        <div style="margin-bottom:8px;">Adult Law introduces guardianship under the <b>Mental Health Ordinance</b> as the protective framework for adults who cannot protect themselves. A mentally incapacitated person (MIP) in this introductory sense is a mentally disordered or mentally handicapped person who is incapable of living an independent life or of guarding against serious exploitation. Guardianship is therefore a last-resort protective intervention for adults at risk, and its full definitions, the Guardianship Board and guardian powers are examined in detail in L6.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>L4 只係引子：MIP 係精神紊亂或弱智、不能獨立生活或不能防範嚴重剝削嘅人。詳細定義、監護委員會同監護人權力留返 L6 深入講；呢度答題唔好將引子定義同 L6 Part IVB 嘅法定條件撈亂。</div>
+      </li>
     </ul>
+    <div class="kbox" style="line-height:1.7;"><b>Short Q 出題陷阱 / 高分位 — L4 Adult Law</b>
+      <ul style="margin:6px 0 0; padding-left:20px; line-height:1.7;">
+        <li>先分清兩條路：刑事（Cap 212 / Crimes Ordinance，要證明罪行元素同舉證標準）vs 民事（DCRVO Cap 189 禁制令，唔使等定罪）；好多題兩條路都要寫。</li>
+        <li>Assault vs Battery 要寫定義原文：assault = apprehension of immediate unlawful violence（未掂到）；battery = actual intentional unlawful use of force（已掂到）。</li>
+        <li>DCRVO 落 sub-section 要準：不騷擾令成人 s.3(1)(a) / 指明未成年人 s.3(1)(b)；遷出／重返令成人 s.3(1)(c)(i) / 未成年人 s.3(1)(c)(ii)；課程係 s.3(1A)；逮捕授權係 s.5，門檻係 ABH 已造成或好可能造成。</li>
+        <li>刑罰唔好對調：rape s.118 = life；indecent assault s.122 = 10 years；OAPO s.39 / s.19 = 3 years；s.17 = life；s.27 = 3–10 years。</li>
+        <li>Ho Mai / Mei Li 係討論情境唔係判例：要寫 forced sex after refusal → s.118 分析 + 女兒披露後學校社工嘅角色，唔好虛構判決結果。</li>
+      </ul>
+    </div>
   </div></details>
 
   <details><summary><span>L5 兒童法 Child Law</span><span class="tag gold">福利原則必背</span></summary><div class="body">
     <ul>
-      <li><b>離婚唯一理由：</b>婚姻已破裂至無可挽救（Matrimonial Causes Ordinance Cap 179 s.11A），靠五個事實證明：① 通姦 ② 不合理行為 ③ 雙方同意下分居 1 年 ④ 分居 2 年 ⑤ 遺棄 1 年。</li>
-      <li><b>福利原則 Welfare Principle（GMO Cap 13 s.3(1)）：</b>兒童最佳利益係<b>首要同最重要</b>考慮；要考慮兒童可確定嘅意願（按年齡理解）、社署署長報告等資料；唔可以單純比較父定母嘅權利邊個大。</li>
-      <li><b>福利清單重點：</b>兒童意願感受、身心及教育需要、與父母及他人關係、環境改變嘅影響、年齡成熟度背景、已受或可能受嘅傷害、家庭暴力、父母照顧能力、法院可用權力範圍。</li>
-      <li><b>贍養：</b>定期付款／一筆過；考慮兒童財政需要資源、殘疾、破裂前生活水平、教育方式；一般到 18 歲，全日制教育／培訓可延長。附屬濟助 ancillary relief 包括財產轉移、出售、整付等九類命令（Cap 179A r.68）。</li>
-      <li><b>虐兒定義：</b>任何作為或不作為，危害兒童身體、心理、情緒健康同發展 — 身體／心理／性虐待、嚴重忽略、兒童賣淫。</li>
-      <li><b>OAPO s.27：</b>故意襲擊、虐待、忽略、遺棄兒童，令其不必要受苦或健康受損（如唔提供足夠食物衣物住宿，或明知無能力都唔向機構求助）。</li>
-      <li><b>PCJO Cap 213 s.34(2) 需要照顧或保護嘅兒童：</b>已被／正被襲擊虐待忽略或性虐待；健康發展福利被忽略或可避免地受損；好可能被忽略受損；不受控制到可能傷害自己或他人。社署署長可做法定監護人、發照顧令／監管令（監管最長 3 年）。</li>
-      <li><b>性罪行（Crimes Ordinance）：</b>與 13 歲以下女童性交＝終身；16 歲以下＝5 年；向 16 歲以下兒童粗獷猥褻＝10 年；促使兒童賣淫＝10 年。</li>
-      <li><b>處理流程：</b>轉介 → 兒童評估 → 多專業個案會議 MDCC → 共同決定（如交託他人／機構照顧）。難點：刑事制裁要等傷害發生、neglect 概念唔清晰。</li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Divorce — Irretrievable Breakdown &amp; the Five Facts (離婚・婚姻無可挽救破裂與五個事實)</div>
+        <div style="margin-bottom:8px;">Under the <b>Matrimonial Causes Ordinance, Cap 179, s.11A</b>, the sole ground for divorce is that the marriage has broken down irretrievably. Breakdown is proved by one of five facts: (1) adultery; (2) unreasonable behaviour; (3) separation for 1 year with the respondent's consent; (4) living apart for 2 years; (5) desertion for 1 year. The petitioner must plead and prove a fact — dissatisfaction with the marriage alone is not enough — and once divorce is engaged, the court's focus shifts to the children's welfare and financial provision.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>離婚唯一理由係 s.11A 婚姻破裂至無可挽救，再用五個事實證明：通姦、不合理行為、雙方同意分居 1 年、分居 2 年、遺棄 1 年。MC 陷阱係年期：同意分居係 1 年、無同意分居係 2 年、遺棄係 1 年，唔好對調。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">UN Convention on the Rights of the Child &amp; the Best Interests Principle (《兒童權利公約》與兒童最佳利益原則)</div>
+        <div style="margin-bottom:8px;">The <b>UN Convention on the Rights of the Child</b> provides that a child shall not be separated from his or her parents against their will except where such separation is necessary for the best interests of the child, and that parents and others responsible for the child must protect the child from all forms of physical or mental violence, injury or abuse, neglect or negligent treatment, maltreatment or exploitation, including sexual abuse. In Hong Kong family proceedings this translates into the guiding principle that the child's best interest / welfare comes first: custody, care and access arrangements are decided by what serves the child, not by which parent has the stronger claim.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>公約兩大位：① 兒童唔應違背意願同父母分離，除非為其最佳利益而有必要；② 父母要保護兒童免受身體／精神暴力、傷害、虐待、忽略、苛待同剝削，包括性虐待。答題開頭先立 best interests 係指導原則，再套落管養同探視安排。</div>
+        <div class="tbox" style="margin: 8px 0;">
+          <b>📌 Application: <i>Q10 — MIP Father &amp; Post-divorce Co-parenting</i></b><br>
+          <b>Facts:</b> The father is a mentally incapacitated person (MIP), and the question concerns post-divorce co-parenting arrangements for the children.<br>
+          <b>Application:</b> The father's MIP status does not by itself decide custody or access. The court starts from the child's best interests, assesses the actual risk and support available, and considers co-parenting arrangements that protect the child while preserving the parent-child relationship where it is safe to do so.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：父親係 MIP 唔等於自動冇管養或探視權。要由兒童最佳利益出發，評估實際風險同支援，唔好用標籤代替分析 —— 呢點同 L6 嘅 MIP 定義互相呼應。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Welfare Principle &amp; Welfare Checklist — Guardianship of Minors Ordinance, Cap 13, s.3(1) (福利原則與福利清單・《未成年人監護條例》第 3(1) 條)</div>
+        <div style="margin-bottom:8px;">Under the <b>Guardianship of Minors Ordinance, Cap 13, s.3(1)</b>, the child's welfare / best interests are the first and paramount consideration in custody and upbringing proceedings. The court considers the child's ascertainable wishes, assessed according to the child's age and understanding, together with information such as reports of the Director of Social Welfare. The welfare checklist directs attention to: the child's own wishes and feelings; the child's physical, emotional and educational needs; the child's relationships with each parent and with other persons; the likely effect of any change in circumstances; the child's age, maturity and background; any harm the child has suffered or is at risk of suffering, including family violence; each parent's capability of meeting the child's needs; and the range of powers available to the court. The exercise is not a comparison of which parent's rights are greater — the parents' claims are subordinate to what serves the child.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Cap 13 s.3(1)：兒童最佳利益係首要同最重要考慮。福利清單要逐項對事實：兒童意願感受（按年齡同理解能力衡量）、身心及教育需要、與父母及他人嘅關係、環境改變嘅影響、年齡成熟度同背景、已受或可能受嘅傷害（包括家庭暴力）、父母照顧能力、法院可用權力範圍；再加社署署長報告等資料。陷阱位：唔可以寫成單純比較父親定母親邊個權利大 —— 父母權利要讓路畀兒童福利。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Maintenance for Children (兒童贍養費)</div>
+        <div style="margin-bottom:8px;">On divorce, the court may order maintenance for a child by way of periodical payments or a lump sum. The obligation ordinarily lasts until the child reaches 18, but it may continue beyond 18 if the child is still in education or training. Maintenance is part of the welfare analysis, not a bargaining chip between the parents: the question is always what provision the child needs, for how long, and in what form.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>贍養可以定期付款或一筆過。一般到 18 歲為止；如果滿 18 歲後仍在接受教育或培訓，可以延長。寫答案要交代形式（periodical / lump sum）同期數去到幾時。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Separation and Maintenance Orders Ordinance — Grounds (《分居及贍養令條例》申請理由)</div>
+        <div style="margin-bottom:8px;">The <b>Separation and Maintenance Orders Ordinance</b> allows a spouse to seek a separation and maintenance order on specified grounds: the other spouse has been convicted of an assault on the applicant of an aggravated character; desertion; persistent cruelty to the spouse or the children; failure to provide reasonable maintenance; insisting on sexual intercourse while suffering from venereal disease; compelling the spouse into prostitution; or being a habitual drunkard or drug addict. Each ground must be matched to the facts — persistent cruelty, for example, requires a course of conduct, not a single quarrel.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>七個理由要背齊：加重襲擊配偶定罪、遺棄、持續虐待配偶或兒童、冇提供合理贍養、患性病仍堅持性交、迫使配偶賣淫、慣性酗酒或吸毒。Persistent cruelty 要寫「持續」性質，一次爭吵唔夠。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Child Abuse — Definition, Types &amp; Investigation (虐兒・定義、類型與調查)</div>
+        <div style="margin-bottom:8px;"><b>Child abuse</b> is any act or omission that endangers or impairs a child's physical, psychological or emotional health or development. Its types include physical and psychological abuse, sexual abuse, gross neglect, and child prostitution. Suspected cases are investigated through referrals, a child assessment, and a Multi-Disciplinary Case Conference (MDCC), where professionals from different disciplines share information and decide together on the protection and welfare plan for the child.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>定義要寫齊 act or omission（作為或不作為）+ endangers or impairs 健康或發展。類型：身體／心理、性虐待、嚴重忽略、兒童賣淫。流程三步：轉介 → 兒童評估 → 多專業個案會議 MDCC，唔好漏咗社工喺 MDCC 嘅角色。</div>
+        <div class="tbox" style="margin: 8px 0;">
+          <b>📌 Case: <i>HKSAR v L.S.T.</i>, HCCC 318/2024 (Q7)</b><br>
+          <b>Facts:</b> The boy, Z, was found emaciated, weighing only 9.7 kg, with 129 external injuries. He died from prolonged starvation leading to organ and muscle atrophy.<br>
+          <b>Holding points (as stated in Q7):</b> The facts as stated in the source engage gross neglect and physical abuse under the child-abuse definition, OAPO s.27 ill-treatment or neglect, and the PCJO s.34(2) care-or-protection framework; the case is used in the course to examine identification, assessment and multi-disciplinary handling of serious child abuse.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：男童 Z 得 9.7kg、129 處外傷、長期捱餓致器官同肌肉萎縮死亡。呢度只按 Q7 文件所載事實嚟寫；來源冇提供嘅判刑細節唔好自己加。答題重點係嚴重忽略點樣同時觸及虐兒定義、s.27 同 s.34(2)。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Sexual Offences Against Children — Crimes Ordinance (《刑事罪行條例》涉及兒童嘅性罪行)</div>
+        <div style="margin-bottom:8px;">The <b>Crimes Ordinance</b> protects children and mentally incapacitated persons with heavy penalties: unlawful sexual intercourse with a girl under 13 — life imprisonment; with a girl under 16 — 5 years; unlawful sexual intercourse with a mentally incapacitated woman — 10 years; gross indecency towards a child under 16 — 10 years; causing or encouraging child prostitution — 10 years; and buggery — life imprisonment. The age bands are the key examination point: the younger the child, the heavier the maximum, and a child's apparent agreement does not make the act lawful.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>按年齡分級背：13 歲以下女童性交終身、16 歲以下 5 年、與精神上無行為能力女子性交 10 年、向 16 歲以下兒童粗獷猥褻 10 年、促使兒童賣淫 10 年、肛交終身。年齡帶同刑罰係 MC 最愛對調嘅位。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">OAPO s.27 — Ill-treatment or Neglect of a Child (《侵害人身罪條例》第 27 條)</div>
+        <div style="margin-bottom:8px;"><b>OAPO Cap 212, s.27</b> makes it an offence to wilfully assault, ill-treat, neglect, abandon or expose a child in a manner likely to cause unnecessary suffering or injury to health. The slides give concrete examples of neglect: failing to provide adequate food, clothing or lodging for the child, or knowingly failing to take steps to secure help when the carer cannot provide them. The offence therefore covers omissions as much as positive acts — a carer who lets a child starve cannot defend by saying he never struck the child.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>s.27 五個動詞：wilfully assault, ill-treat, neglect, abandon, expose，結果係令兒童不必要受苦或健康受損。例子要識舉：冇提供足夠食物、衣物、住宿，或者明知自己提供唔到都唔去求助 —— 不作為一樣入罪，呼應 L3 omissions 嘅法律責任。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Child in Need of Care or Protection — PCJO Cap 213, s.34(2) (需要照顧或保護嘅兒童)</div>
+        <div style="margin-bottom:8px;">Under the <b>Protection of Children and Juveniles Ordinance, Cap 213, s.34(2)</b>, a child or juvenile is in need of care or protection if: (a) he has been or is being assaulted, ill-treated, neglected or sexually abused; (b) his health, development or welfare has been neglected or avoidably impaired; (c) his health, development or welfare is likely to be neglected or avoidably impaired; or (d) he is beyond control to the extent that harm may be caused to him or others. The Director of Social Welfare (DSW) may act as legal guardian, and the court may make a care order or a supervision order — supervision may last up to 3 years, with the supervisor's role to advise, assist and befriend the child and family.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>s.34(2) 四項 (a)–(d) 要逐項背：已被虐待／忽略／性虐待；健康發展福利已被忽略或可避免受損；好可能被忽略受損；不受控制到可能造成傷害。後果：社署署長可做法定監護人、法庭可發照顧令或監管令，監管最長 3 年，監管人角色係 advise, assist and befriend。</div>
+      </li>
     </ul>
+    <div class="kbox" style="line-height:1.7;"><b>Short Q 出題陷阱 / 高分位 — L5 Child Law</b>
+      <ul style="margin:6px 0 0; padding-left:20px; line-height:1.7;">
+        <li>任何兒童題第一句先立原則：the child's best interests / welfare is the guiding principle，再先至落管養、探視或贍養分析，次序倒轉會失結構分。</li>
+        <li>離婚五個事實年期唔好錯：consensual separation 1 year、living apart 2 years、desertion 1 year；唯一理由永遠係 s.11A irretrievable breakdown。</li>
+        <li>分清三條保護線：刑事 OAPO s.27（懲罰施虐者）、民事保護 PCJO s.34(2)（照顧／監管令）、程序 MDCC（多專業決定）；一條題隨時要三線齊寫。</li>
+        <li>s.34(2) 要逐項 (a)–(d) 對事實，特別係 (c) likely to be impaired —— 未受傷害都可以介入，唔使等傷害發生。</li>
+        <li>引 Q7 <i>HKSAR v L.S.T.</i> HCCC 318/2024 只寫來源事實：9.7 kg、129 injuries、prolonged starvation → organ/muscle atrophy；唔好加來源冇嘅判刑或情節。</li>
+      </ul>
+    </div>
   </div></details>
 
   <details><summary><span>L6 精神健康・遺囑認證・法律援助</span><span class="tag gold">定義題溫床</span></summary><div class="body">
     <ul>
-      <li><b>MHO Cap 136 s.2 定義：</b>精神紊亂 mental disorder＝精神病／心智發展受阻或不完全而顯著損害智能同社交功能並伴異常侵略或嚴重不負責任行為／精神病理障礙／其他心智障礙（唔包括弱智）；弱智 mental handicap＝一般智能低於平均（IQ ≤ 70，韋氏量表）＋適應行為缺損；MIP 精神上無行為能力的人＝精神紊亂或弱智到不能獨立生活或防範嚴重剝削。</li>
-      <li><b>MHO 結構：</b>Part II 財產及事務管理（s.10A/B 法院權力、s.11 委任產業受託監管人 committee）；Part III 接收及羈留（s.30 自願病人、s.31/32 觀察病人 — 法官／裁判官按 1 名醫生意見、s.36 證明病人 — 2 名醫生）；Part IVA 精神健康覆核審裁處（s.59E）；Part IVB 監護委員會。</li>
-      <li><b>申請監護（s.59M/N）：</b>基於 2 名註冊醫生書面報告＋社會調查報告（s.59P）；可申請者：親屬、社工、註冊醫生、社署公職人員；對象須年滿 18 歲。</li>
-      <li><b>批出監護令四條件：</b>① 有精神紊亂或弱智 ② 因而喺個人事務重大範圍內做唔到合理決定 ③ 只有監護先滿足到需要、無其他較少限制方法 ④ 符合其福利利益或為保護他人。監護人可決定居所、同意醫療／牙科治療、管理每月上限 <b>$10,500</b>（講義數字）。委員會原則：MIP 利益 + 其意願（s.59K(2)）。唔滿意：上訴法院／申請覆核／申請指示／向委員會投訴。</li>
-      <li><b>三件平安事 IOP：</b>平安紙 Will（死後資產分配）、持久授權書 EPA Cap 501（授權處理財政法律事務）、預設醫療指示 AD（無能力時嘅醫療意願）。</li>
-      <li><b>遺囑四要素：</b>立遺囑人 testator、執行人 executor、受益人 beneficiary、資產 asset。Probate＝法院認證遺囑真確、批出遺囑認證授權執行人管理遺產。陳振聰偽造龔如心遺囑案：偽造文件最高 14 年（Crimes Ordinance）。</li>
-      <li><b>無遺囑 Cap 73 s.4：</b>有配偶無後嗣無父母兄弟姊妹 → 配偶全取；有配偶有後嗣 → 配偶先取個人財物 + $500,000（同父母／兄弟姊妹分享時 $1,000,000）後再分一半；完全無親屬 → 歸政府 bona vacantia。</li>
-      <li><b>法律援助兩關：</b>經濟審查 means test（可動用收入 ×12 + 可動用資本；60 歲以上有資本豁免額）+ 案情審查 merits test（有合理勝算、判決可執行、案件對申請人重要性）。署長經法律援助署批法援證書。</li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Mental Disorder — MHO Cap 136, s.2 (精神紊亂・《精神健康條例》第 2 條)</div>
+        <div style="margin-bottom:8px;"><b>Mental Health Ordinance, Cap 136, s.2</b> defines <b>mental disorder</b> as: (a) mental illness; (b) arrested or incomplete development of mind, including a significant impairment of intelligence and social functioning associated with abnormally aggressive or seriously irresponsible conduct; (c) psychopathic disorder; or (d) any other disorder or disability of the mind which does not amount to mental handicap. The definition is a legal gateway, not a medical diagnosis: only a person who falls within s.2 can be made subject to the Ordinance's reception, detention and guardianship powers.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>精神紊亂四類：精神病、心智發展受阻或不完全（智能同社交功能顯著受損＋異常侵略或嚴重不負責任行為）、精神病理障礙、其他未達弱智程度嘅心智障礙。記住最後一句：唔屬於 mental handicap 嗰啲先落 (d)，兩個定義唔好撈亂。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Mental Handicap, Mental Incapacity, MIP, Patient &amp; Relative (弱智・精神上無行為能力・MIP・病人・親屬)</div>
+        <div style="margin-bottom:8px;"><b>Mental handicap</b> means sub-average general intellectual functioning with deficiencies in adaptive behaviour — an IQ of 70 or below on the Wechsler scales. <b>Mental incapacity</b> means mental disorder or mental handicap. A <b>mentally incapacitated person (MIP)</b> means, for Part II purposes, a person who is incapable by reason of mental incapacity of managing and administering his property and affairs — and otherwise means a patient or a mentally handicapped person. A <b>patient</b> is a person suffering or appearing to be suffering from a mental disorder. A <b>relative</b> must be aged 18 or above and includes a spouse, child, parent, sibling, grandparent, grandchild, uncle or aunt, nephew or niece, cousin, and a person residing with the MIP.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>定義鏈要順序背：mental handicap（IQ ≤ 70 韋氏量表＋適應行為缺損）→ mental incapacity = mental disorder or mental handicap → MIP（Part II 指不能管理財產事務；其他情況指 patient 或弱智人士）。Relative 要 18 歲以上，同住者都計，呢點同 s.59N 邊個可以申請監護直接相關。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Part II — Management of Property &amp; Affairs (第 II 部・財產及事務管理)</div>
+        <div style="margin-bottom:8px;">Part II of the MHO deals with the property and affairs of an MIP who cannot manage them himself. <b>s.9</b> gives the court power to examine the position; <b>s.10</b> sets out the court's powers over the MIP's property and affairs; and under <b>s.11</b>, where the person is incapable, the court may appoint a committee to act for him. The Part II route is about money and property — it is different from Part IVB guardianship, which is about personal and welfare decisions.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Part II 管錢銀財產：s.9 查核權、s.10 法院權力、s.11 委任 committee（產業受託監管人）。最常見陷阱係將 Part II 同 Part IVB 監護撈亂：一個管財產、一個管個人福利決定，答題要先分清題目問邊樣。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Part III — Reception, Detention &amp; Treatment (第 III 部・接收及羈留)</div>
+        <div style="margin-bottom:8px;">Part III balances treatment against liberty. A <b>s.30</b> voluntary patient is admitted on his own application and is free in principle to leave. Under <b>s.31(1B)</b>, a person may be removed and detained for observation on the opinion of one medical officer, through an order of a District judge or magistrate. Under <b>s.36</b>, a certified patient may be detained for treatment, supported by two medical officers. The number of doctors and the authorising authority are the precise points examined: observation under s.31 needs one medical officer plus a judge or magistrate; detention of a certified patient under s.36 needs two.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>三級記法：s.30 自願病人（自己申請入院）、s.31(1B) 觀察羈留（1 名醫生意見＋法官／裁判官）、s.36 證明病人羈留（2 名醫生）。醫生人數係 MC 同 Short Q 嘅送分／陷阱位，千祈唔好調轉。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Mental Health Review Tribunal &amp; Guardianship Board (精神健康覆核審裁處・監護委員會)</div>
+        <div style="margin-bottom:8px;">Part IV / IVA establishes the <b>Mental Health Review Tribunal</b> (see <b>s.59E</b>), which reviews the detention of patients. Part IVB establishes the <b>Guardianship Board</b>: its functions are set out in <b>s.59K</b>, and its guiding principles are the interests of the MIP and respect for the views and wishes of the MIP. The two bodies do different work — the Tribunal reviews detention, while the Board decides guardianship for personal and welfare matters.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>覆核審裁處（Part IV/IVA，s.59E）覆核羈留；監護委員會（Part IVB，s.59K）決定監護。委員會兩大原則：MIP 嘅利益 + MIP 嘅意願 —— 寫監護題一定要兩樣都提，淨寫「為佢好」唔夠。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Applying for Guardianship — ss.59M, 59N, 59P &amp; 59S; the Criteria (申請監護・程序與批出條件)</div>
+        <div style="margin-bottom:8px;">A guardianship application under <b>s.59M</b> must be founded on the written reports of 2 registered medical practitioners, and guardianship must be in the interests of the welfare of the MIP or for the protection of other persons. Under <b>s.59N</b>, the applicants who may apply are a relative, a social worker, a registered medical practitioner, or a public officer of the Social Welfare Department. A social enquiry report is prepared under <b>s.59P</b>, and under <b>s.59S</b> a guardian must be a willing adult who is capable of providing care and has no conflict of interest. The Board will grant guardianship only where: the person has a mental disorder or mental handicap; the disorder limits his ability to make reasonable decisions about all or a substantial proportion of his personal circumstances; his needs can only be met by guardianship, with no other less restrictive means available; and it is in the interests of his welfare or for the protection of others.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>程序四條文：s.59M 申請基礎（2 名註冊醫生書面報告）、s.59N 申請人（親屬、社工、註冊醫生、社署公職人員）、s.59P 社會調查報告、s.59S 監護人資格（自願成年、有能力照顧、冇利益衝突）。批出四條件最重要係第三項：needs only met by guardianship + no less restrictive means —— 監護係最後手段。</div>
+        <div class="tbox" style="margin: 8px 0;">
+          <b>📌 Case: <i>Director of Social Welfare v Mr L</i> (2007)</b><br>
+          <b>Facts:</b> Mr L was an 82-year-old singleton suffering from senile dementia. He owned property worth millions and was at risk of financial abuse.<br>
+          <b>Holding points:</b> The case illustrates guardianship as a protective measure where dementia has removed the ability to guard against exploitation — the risk to his substantial property made intervention in his interests, rather than leaving him exposed to financial abuse.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：82 歲獨居、老年痴呆、物業價值數百萬、正被財政剝削。對應批出條件：有精神紊亂、決定能力受限、需要監護嚟保障福利。答題要將「財產龐大＋被剝削風險」連去 protection 呢一點。</div>
+        </div>
+        <div class="tbox" style="margin: 8px 0;">
+          <b>📌 Case: <i>Ms L v Mr W</i> (2008)</b><br>
+          <b>Facts:</b> Mr W was a 74-year-old man with senile dementia and a public housing tenant, who was at risk of being driven out of his home by a relative.<br>
+          <b>Holding points:</b> The case shows guardianship protecting an MIP's place of residence against a relative — the very decision (where the MIP lives) that falls within a guardian's powers, and an example of a need ground based on danger to the MIP's housing and welfare.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：74 歲、老年痴呆、公屋住戶、被親屬趕走嘅風險。呢單對應監護人「決定居所」嘅權力，同 Mr L 案一富一基層咁對讀：監護保護嘅唔止財產，亦包括居所同基本生活。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Guardian's Powers &amp; When Guardianship Is Needed (監護人權力與需要監護嘅情況)</div>
+        <div style="margin-bottom:8px;">A guardian's powers are limited and specific: to decide the MIP's place of residence; to consent to medical or dental treatment on the MIP's behalf; and to manage a limited amount of money — a maximum of HK$10,500 per month. Grounds showing a need for guardianship include disagreement over the MIP's care, the MIP's objection to a placement, refusal of treatment, and abuse, neglect, self-neglect, exploitation, or danger to health. Because the powers are limited, guardianship should be presented in answers as a proportionate, least-restrictive intervention — not as a general power to control the MIP's life.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>監護人三權：決定居所、同意醫療／牙科治療、管理有限金錢（上限每月 $10,500）。需要監護嘅情況：照顧安排有爭議、反對入住安排、拒絕治療、虐待／忽略／自我忽略／剝削／健康危險。$10,500 呢個數字係必背畀分點。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Probate, Wills &amp; Intestacy (遺囑認證・平安紙・無遺囑繼承)</div>
+        <div style="margin-bottom:8px;"><b>Probate</b> is the court process of proving the validity and authenticity of a will; the executor named in the will obtains a grant of probate to administer the estate. The key instruments are a Will (平安紙), an <b>Enduring Power of Attorney under Cap 501</b>, and an Advance Directive. The governing statutes include the <b>Wills Ordinance, Cap 30</b> and the <b>Probate and Administration Ordinance, Cap 10</b>. Where there is no will, the <b>Intestates' Estates Ordinance, Cap 73, s.4(2)</b> applies: if the intestate leaves a spouse and no issue and no parent or sibling, the whole estate goes to the surviving spouse; and if there is no surviving relative at all, the estate passes to the HKSAR Government as bona vacantia.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>三件工具分清：平安紙（死後分配）、持久授權書 Cap 501（在生時授權處理事務）、預設醫療指示（醫療意願）。Probate 定義要寫齊 proving validity/authenticity + executor obtains grant。無遺囑 s.4(2) 兩個極端位：只有配偶 → 配偶全取；完全冇親屬 → 歸政府 bona vacantia。</div>
+        <div class="tbox" style="margin: 8px 0;">
+          <b>📌 Case: <i>Chan Chun Chuen</i>, HCCC 182/2012</b><br>
+          <b>Facts:</b> Chan Chun Chuen was prosecuted for forgery of a will purporting to be the will of the late Mrs Nina Wang.<br>
+          <b>Holding points:</b> Forging a will is a serious criminal offence: forgery carries a maximum of 14 years' imprisonment under the Crimes Ordinance. The case shows why probate requires the court to prove a will's authenticity before any grant is made.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：陳振聰偽造聲稱係龔如心遺囑 —— 偽造文件最高 14 年（Crimes Ordinance）。答題價值在於帶出 probate 點解要認證真偽：遺囑一假，成個遺產分配都假。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Legal Aid — Means Test &amp; Merits Test (法律援助・經濟審查與案情審查)</div>
+        <div style="margin-bottom:8px;">Legal aid is administered by the Legal Aid Department and requires the applicant to pass two tests. The <b>means test</b> assesses financial eligibility: monthly disposable income multiplied by 12, plus disposable capital; an owner-occupied property is excluded, and for applicants over 60 a disregard equal to the Ordinary Legal Aid Scheme financial eligibility limit applies to capital. The <b>merits test</b> requires a reasonable chance of success — the Director of Legal Aid must be satisfied that the case has merits before aid is granted. Both tests must be passed; a strong case alone is not enough if the applicant is over the means limit, and vice versa.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>兩關都要過：means test（每月可動用收入 ×12 ＋ 可動用資本；自住物業唔計；60 歲以上有等同普通法援上限嘅資本豁免）＋ merits test（有合理勝算、署長信納有案情理據）。寫答案要逐關分析個案，唔好淨寫「窮就得」。</div>
+      </li>
     </ul>
+    <div class="kbox" style="line-height:1.7;"><b>Short Q 出題陷阱 / 高分位 — L6 Mental Health &amp; Probate</b>
+      <ul style="margin:6px 0 0; padding-left:20px; line-height:1.7;">
+        <li>定義題要引 s.2 原文元素：mental handicap 必須寫 IQ 70 or below on Wechsler scales + deficiencies in adaptive behaviour，淨寫「智力低」冇分。</li>
+        <li>分清三組易混位：Part II（財產・committee）vs Part IVB（福利・guardian）；s.31(1B) 1 名醫生 vs s.36 2 名醫生；覆核審裁處（羈留）vs 監護委員會（監護）。</li>
+        <li>監護批出條件要寫齊四項，特別係 no less restrictive means —— 冇寫最後手段原則，成段分析唔完整；再加 s.59K 兩原則：interests of the MIP + views and wishes of the MIP。</li>
+        <li>數字位：guardian 管理金錢上限 HK$10,500/month；偽造文件最高 14 years；法援 means test 公式係 monthly disposable income × 12 + disposable capital。</li>
+        <li>Probate 要落定義：court process proving validity/authenticity + executor obtains grant of probate；無遺囑要引 Cap 73 s.4(2)，唔好自己作分配比例 —— 來源冇寫嘅情況唔好推演。</li>
+      </ul>
+    </div>
   </div></details>
 
   <details><summary><span>L7 侵權法 Tort — 疏忽係重心</span><span class="tag gold">四元素必考</span></summary><div class="body">
-    <p><b>侵權</b>＝侵犯個人利益嘅民事過錯；功能＝保障權利、補償損失；救濟主要係損害賠償 damages，亦可禁制令。保障利益：人身（身體完整、名譽）、財產（土地、動產、享受）、經濟（欺騙造成嘅純經濟損失）。</p>
-    <table><tr><th>疏忽四元素</th><th>問咩</th><th>關鍵案例／原則</th></tr>
-    <tr><td>① 謹慎責任 Duty</td><td>被告有冇欠原告責任？</td><td>Donoghue v Stevenson 鄰居原則；Caparo 三步：可預見 + 關係密切 proximity + 施加責任屬公平公正合理</td></tr>
-    <tr><td>② 違反責任 Breach</td><td>有冇做到合理謹慎人會做嘅？</td><td>客觀標準；睇：傷害可能性、被告認知、受害人脆弱性、後果嚴重性、防範成本可行性、慣常做法（Bolton v Stone 板球 30 年飛出 6 次 — 風險太細）</td></tr>
-    <tr><td>③ 因果 Causation</td><td>損失係咪由違反造成？</td><td>事實因果 but-for + 實質貢獻；法律因果：新介入行為 novus actus 是否斷鏈</td></tr>
-    <tr><td>④ 損失 Damage</td><td>邊種損失要賠？</td><td>損失「種類」要可預見，方式唔使（Jolley v Sutton）；程度唔使可預見 — 薄頭骨原則 thin skull（Smith v Leech Brain 燒傷觸發癌症，賠死亡）</td></tr></table>
     <ul>
-      <li><b>鄰居原則原話意思：</b>要合理小心，避免可合理預見會傷害「鄰居」嘅作為或不作為；鄰居＝受你行為密切直接影響、你理應預想到嘅人。</li>
-      <li><b>Wagon Mound (No.1)：</b>漏油可預見嘅係污染唔係火災，火災損失種類唔同 → 唔賠。</li>
-      <li><b>Luen Hing Fat v Waan Chuen Ming (2011) CFA：</b>工廠東主借出設備、主管明知承辦商用唔安全方法都唔阻止 → 三步全中，有謹慎責任。人身安全唔可以為慳錢犧牲。</li>
-      <li><b>抗辯：</b>共分疏忽 contributory negligence（Cap 23 s.21 按責任比例扣減賠償 — 部分抗辯）、自願承擔風險 volenti（知情＋自願同意 — 完全抗辯）、非法性 illegality（損失源於自己罪行 — 完全抗辯）。</li>
-      <li><b>佔用人責任 Cap 314 s.3：</b>佔用人（對處所有足夠控制權嘅人，可多於一個）對所有訪客負「一般謹慎責任」— 採取一切情況下合理嘅謹慎，令訪客為獲邀目的使用處所時合理安全。只警告唔一定免責（s.3(4)(a)）：警告要足以令訪客合理安全，要睇位置、點引起注意、夠唔夠具體。分 occupancy duty（處所狀態，如濕滑地面要拖地）vs activity duty（活動本身危險，唔屬本條例）。訪客唔包括擅進者 trespasser。</li>
-      <li><b>妨擾 Nuisance：</b>私人妨擾＝不當干擾他人使用／享受土地（侵入、直接物理損害、干擾安寧享受；例：漏水 Leung Tsang Hung v IO of Kwok Wing House)；公眾妨擾＝危害公眾生命安全健康財產舒適，或妨礙公眾行使共同權利 + 原告受特別損害 + 種類可預見。</li>
-      <li><b>侵犯人身（故意侵權）：</b>Assault（令對方預期即時非法武力）、Battery（實際施加非法武力）、False imprisonment（無合法理由完全限制行動自由）— 全部 actionable per se，唔使證明損失。</li>
-      <li><b>轉承責任 Vicarious liability：</b>無過失都要為他人侵權負責，兩步：① 被告同侵權者關係（僱主僱員 — 睇控制程度、盈虧風險、係咪組織一部分、用邊個設備等；Poon Chau Nam) ② 關係同過錯有密切關連 close connection（Ming An v Ritz-Carlton）。</li>
-      <li><b>時限 Limitation Ordinance Cap 347：</b>人身傷害 3 年（s.27）；一般侵權 6 年（s.4）；契據 specialty 12 年。</li>
-      <li><b>社工活動風險五步（Q16）：</b>辨識危害 → 誰會受害 → 評估風險 → 記錄結果 → 覆檢。加實務：事前場勘、路線設計、家長同意、天氣、人手比例、保險、緊急應變。</li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">What is a Tort? (侵權法是甚麼)</div>
+        <div style="margin-bottom:8px;">A <b>tort</b> is a civil wrong: a breach of a legal duty which affects an individual's interests, and it belongs to <b>private law</b>. It differs from public law, from criminal law — which punishes offenders and protects the public interest — and from contract law, where the obligations arise from voluntary agreement between the parties.</div>
+        <div style="margin-bottom:8px;">Its functions are to protect rights and to compensate loss. The interests protected are: personal interests (bodily integrity, and reputation, protected through defamation), property interests (the integrity of property, the enjoyment of land, protected through nuisance, and intangible interests such as passing off and intellectual property), and economic interests (pure economic loss, and deceit). Relief is usually <b>damages</b>, but an <b>injunction</b> may also be granted.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>侵權係違反法律責任、影響個人利益嘅民事過錯，屬私法。唔好同刑事法撈亂：刑事法處罰罪犯、保障公眾利益；侵權法保障個人權利同補償損失。救濟以損害賠償為主，亦可申請禁制令。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Negligence: The Four Elements (疏忽四元素)</div>
+        <div style="margin-bottom:8px;">To succeed in <b>negligence</b>, the claimant must prove four elements in order: (1) <b>Duty of Care</b> — the defendant owed the claimant a duty to take care; (2) <b>Breach of Duty</b> — the defendant fell below the standard of the reasonable person; (3) <b>Causation</b> — the breach caused the damage; and (4) <b>Damage</b> — the claimant suffered loss of a kind the law will compensate. If any one element fails, the whole claim fails.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>四元素要順序逐個證明，缺一不可。Short Q 分析任何疏忽情境，都要逐個元素套事實，唔好跳過 Duty 直接講賠償；Q16 BGCA 案正正係用呢四元素逐項拆解。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Duty of Care (謹慎責任)</div>
+        <div style="margin-bottom:8px;">A duty of care exists within certain established classes of relationship, such as employer–employee, doctor–patient and school–pupils. Outside those classes, the court asks whether the claimant belonged to a class of persons who would foreseeably suffer loss from the defendant's conduct, and whether the kind of damage suffered was foreseeable.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>先睇關係係咪屬於已知類別（僱主—僱員、醫生—病人、學校—學生）；唔係嘅話，就要證明原告屬於可預見會受損失嘅一類人，而且所受損失嘅「種類」係可預見嘅。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Donoghue v Stevenson</i> [1932] AC 562 — The Neighbour Principle</b><br>
+          <b>Facts:</b> A manufacturer sold ginger beer to a retailer. The purchaser's friend consumed it and found a decomposing snail in the bottle; she suffered illness. She had no contract with the manufacturer, so she could not sue in contract.<br>
+          <b>Holding:</b> The manufacturer owed a duty of care to the ultimate consumer, where the product reaches the consumer in the form in which it left him, with no reasonable possibility of intermediate examination. This case founded the neighbour principle: you must take reasonable care to avoid acts or omissions you can reasonably foresee would injure persons so closely and directly affected by your act that you ought to have them in contemplation.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：冇合約關係唔代表冇責任。產品去到最終消費者手上時冇機會中途檢查，製造商就對消費者負謹慎責任 —— 呢個就係鄰居原則嘅來源。</div>
+        </div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>The Wagon Mound (No.1)</i> — The Kind of Damage Must Be Foreseeable</b><br>
+          <b>Facts:</b> Furnace oil was spilled from a vessel. The damage that was foreseeable from such a spillage was pollution of the water, not fire damage.<br>
+          <b>Holding:</b> The fire damage was not actionable, because fire was not the kind of damage that was foreseeable; only damage of a foreseeable kind can be recovered.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：漏油可預見嘅係污染，唔係火災。損失種類唔同、唔可預見，就唔賠 —— 呢個位同 Jolley（方式唔使預見）、Smith v Leech Brain（程度唔使預見）要分清楚。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">The Caparo Three-Stage Test (Caparo 三步測試)</div>
+        <div style="margin-bottom:8px;">In novel situations, the court applies the three-stage test in <i>Caparo Industries plc v Dickman</i> [1990] 2 AC 605: (1) the damage must be reasonably foreseeable; (2) there must be a relationship of close <b>proximity</b> between the parties — which may be physical, circumstantial or causal; and (3) it must be fair, just and reasonable to impose a duty of care. All three stages must be satisfied.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>新類型個案用 Caparo 三步：可預見性、關係密切（身體上、情境上或因果上）、施加責任屬公平公正合理。三步要齊，淨係可預見並唔足夠。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Luen Hing Fat Coating &amp; Finishing Factory Ltd v Waan Chuen Ming</i> (2011) 14 HKCFAR 14</b><br>
+          <b>Facts:</b> A factory operator lent pallet jacks and a bearing trolley to an independent contractor's employee, to reinstall a 1.5-ton machine part by an unsafe method. The supervisor knew of the method but did not stop it or warn him; the part fell and crushed both his legs.<br>
+          <b>Holding:</b> A duty of care was owed. The operation was dangerous and harm was foreseeable; the claimant was on the defendant's premises using loaned equipment; the defendant took a positive role in the operation and had chosen the contractor who had to borrow equipment; and personal safety was at risk.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：傷者唔係自己員工都好：被告借出設備、積極參與、明知方法唔安全又唔阻止 —— proximity 同 fair, just and reasonable 都成立，人身安全唔可以為慳錢犧牲。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Breach of Duty (違反謹慎責任)</div>
+        <div style="margin-bottom:8px;">The classic definition comes from <i>Blyth v Birmingham Waterworks</i>: negligence is the omission to do something which a reasonable man would do, or doing something which a prudent and reasonable man would not do. The standard is objective — the <b>reasonable and prudent man</b> in the defendant's position. The defendant's own weaknesses or inexperience are irrelevant (a learner driver is judged by the standard of a competent driver), but a higher standard applies where the defendant holds himself out as having specialist skill.</div>
+        <div style="margin-bottom:8px;">In deciding whether the standard was met, the court weighs: the likelihood of harm, the defendant's knowledge of the risk, the vulnerability of the victims (for example, children), the magnitude of the consequences, the cost and practicability of precautions, and common practice. Overall, the court balances the risk against the effectiveness, expense and inconvenience of the precautions that could have been taken.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>標準係客觀嘅「合理謹慎人」，唔睇被告個人弱點或經驗不足；但自稱專家就要用專家標準。答題要逐個因素套事實，唔好淨係寫「佢唔小心」。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Bolton v Stone</i> [1951] AC 850 — Likelihood of Harm</b><br>
+          <b>Facts / Rule:</b> Cricket balls were hit over a 17-foot fence only 6 times in 30 years. Where the likelihood of harm is that small, the reasonable person is not necessarily in breach for failing to take further precautions: the likelihood and magnitude of the risk are weighed against the cost and practicability of preventing it.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：30 年先飛出 6 次，風險細到合理人唔一定要額外防範。呢個案係用嚟講 likelihood of harm 呢個因素，唔係話「有人受傷就一定有 breach」。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Causation (因果關係)</div>
+        <div style="margin-bottom:8px;">Factual causation is tested by the 'but-for' test: but for the defendant's breach, would the damage have occurred? A material contribution to the damage may also suffice. Legal causation asks whether the chain of causation was broken by a <b>novus actus interveniens</b> — an intervening act, which may be a natural event, the act of a third party, or the plaintiff's own act. Whether the chain is broken is ultimately a matter of common sense.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>先考事實因果（but-for test），再考法律因果（有冇新介入行為斷鏈）。同 L3 刑事法嘅 causation 框架相同，但呢度係民事索償，舉證標準係 balance of probabilities。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Damage &amp; Remoteness (損失與遙遠性)</div>
+        <div style="margin-bottom:8px;">The <b>kind</b> of damage must be foreseeable, but the <b>manner</b> in which it occurs need not be, and the <b>extent</b> of the damage need not be foreseeable either. Under the thin skull (eggshell skull) rule, the defendant takes the claimant as he finds him: if the claimant has a hidden vulnerability, the defendant is liable for the full extent of the harm once a foreseeable kind of injury is shown.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>三個位要分清：種類（kind）要可預見、方式（manner）唔使、程度（extent）唔使。以下兩個案例正正係考呢個分別。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Jolley v Sutton LBC</i> [2000] 1 WLR 1082 — Manner Need Not Be Foreseeable</b><br>
+          <b>Facts:</b> A rotten, abandoned boat was left on the defendant's land. Two boys aged 13 and 14 meddled with it and lifted it up; the boat fell on one of them, causing paraplegia.<br>
+          <b>Holding:</b> It was foreseeable that children would meddle with the boat and be at risk of physical injury, so the defendant was liable — the kind of damage (physical injury) was foreseeable even though the precise manner in which it happened was not.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：細路會搞隻爛船、會受傷，呢個「種類」可預見；隻船點跌法唔使預見，被告照賠。</div>
+        </div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Smith v Leech Brain &amp; Co</i> [1962] 2 QB 405 — Thin Skull Rule</b><br>
+          <b>Facts:</b> Molten metal burnt a worker's lip at work. The burn triggered a cancer, and the worker died three years later.<br>
+          <b>Holding:</b> The burn was a foreseeable kind of injury, so the defendant was liable for the death. Under the thin skull rule, the defendant takes the claimant as he finds him — the extent of the damage need not be foreseeable.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：燒傷本身可預見就夠；工人本身易生癌係佢嘅「薄頭骨」，被告要為最終死亡負責，唔可以話「我冇預見會死人」。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Defences (抗辯)</div>
+        <div style="margin-bottom:8px;">(1) <b>Contributory negligence</b>: under the <b>Law Amendment and Reform (Consolidation) Ordinance, Cap 23, s.21</b>, where the claimant is partly at fault, damages are reduced to such extent as the court thinks just and equitable, having regard to the claimant's share in the responsibility, including causative potency and relative blameworthiness — this is only a partial defence. (2) <b>Voluntary assumption of risk (volenti)</b>: the claimant had full knowledge of the nature and extent of the risk and voluntarily consented to run it — a complete defence. (3) <b>Illegality</b>: a claimant cannot recover damages for loss consequent on his own criminal act — also a complete defence.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>MC 最鍾意考「部分定完全」：共分疏忽只係按比例扣減賠償；自願承擔風險同非法性先係完全抗辯，成立就一蚊都冇。volenti 仲要證明原告知悉風險嘅性質同程度兼自願同意，淨係「知道有危險」唔足夠。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Occupiers' Liability (佔用人責任)</div>
+        <div style="margin-bottom:8px;">Under the <b>Occupiers' Liability Ordinance, Cap 314, s.3</b>, an occupier owes the <b>common duty of care</b> to all his visitors: to take such care as is reasonable in all the circumstances to see that the visitor will be reasonably safe in using the premises for the purposes for which he is invited or permitted to be there. An <b>occupier</b> is a person with a sufficient degree of control over the premises — owners, tenants and contractors may all qualify, and there may be more than one occupier. A <b>visitor</b> is a person who enters with express or implied permission; trespassers are not visitors.</div>
+        <div style="margin-bottom:8px;">The duty covers negligent acts and omissions — for example, an occupier may be liable over a slippery floor that must be mopped, even if the occupier did not create the liquid. A warning does not automatically absolve the occupier: under <b>s.3(4)(a)</b>, the warning must be enough to enable the visitor to be reasonably safe, judged by its placement, how it was brought to the visitor's attention, and its specificity. Finally, distinguish the <b>occupancy duty</b> (the state or static condition of the premises, e.g. a defect on the floor or a slippery staircase) from the <b>activity duty</b> (an activity carried on at the premises, e.g. students hitting a goalpost while playing soccer).</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>貼咗警告牌唔等於免責 —— 警告要足以令訪客合理安全，要睇位置、點引起注意、夠唔夠具體。仲要分清 occupancy duty 睇處所狀態，activity duty 睇活動本身，兩者唔好撈亂。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Nuisance (妨擾)</div>
+        <div style="margin-bottom:8px;"><b>Private nuisance</b> is a condition or activity which unduly interferes with another person's use or enjoyment of land, in three forms: (1) encroachment onto the neighbour's land; (2) direct physical injury to the neighbour's land; and (3) interference with the neighbour's quiet enjoyment of his land — water leakage between flats is a common example. <b>Public nuisance</b> is a state of affairs endangering the lives, safety, health, property or comfort of the public, or obstructing the public in the exercise of common rights; an individual claimant must additionally show particular injury of a foreseeable type, and the defendant must have known or ought to have known of the nuisance.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>私人妨擾要證明不當干擾土地嘅使用或享受；公眾妨擾影響嘅係公眾，個人原告仲要額外證明自己受咗特別損害，而且損害種類可預見、被告知道或應該知道。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Leung Tsang Hung v Incorporated Owners of Kwok Wing House</i> (2007) 10 HKCFAR 480</b><br>
+          <b>Facts / Rule:</b> The leading Hong Kong authority on public nuisance cited in the lecture: a public nuisance is a state of affairs endangering the lives, safety, health, property or comfort of the public, or obstructing the public in exercising common rights; the claimant must suffer particular injury of a foreseeable type, and the defendant must have known, or ought to have known, of the risk.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：引呢個案要寫齊公眾妨擾嘅構成：影響公眾 + 原告特別損害 + 種類可預見 + 被告知情或應知情，缺一不可。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Intentional Torts: Trespass (故意侵權：侵犯)</div>
+        <div style="margin-bottom:8px;"><b>Trespass to the person</b> takes three forms: <b>assault</b> — an act causing the victim to apprehend immediate unlawful force; <b>battery</b> — the actual infliction of unlawful force on another; and <b>false imprisonment</b> — the complete restraint of the victim's freedom of movement without lawful excuse. All three are actionable per se: no proof of damage is needed. The same family of torts includes <b>trespass to land</b> and <b>wrongful interference with goods</b>.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>同 L4 分清：刑事嗰邊 assault / battery 睇 OAPO 刑罰；侵權嗰邊重點係 actionable per se —— 冇實際損失都可以告。False imprisonment 要係「完全」限制行動自由，先至成立。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Vicarious Liability (轉承責任)</div>
+        <div style="margin-bottom:8px;"><b>Vicarious liability</b> is legal responsibility imposed on one person for the torts of another, regardless of the fault of the non-tortfeasor. Two questions must be answered: first, is the relationship between the defendant and the tortfeasor one that can give rise to vicarious liability — classically, employer–employee; and secondly, is the tort sufficiently closely connected with that relationship?</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>轉承責任唔睇被告自己有冇錯，睇兩樣嘢：關係（係咪僱主—僱員）同關連（侵權行為同職務有冇密切關連）。社工機構為員工嘅侵權行為負責，正正係呢個原則。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Poon Chau Nam v Yim Siu Cheung</i> (2007) 10 HKCFAR 156 — The Relationship Test</b><br>
+          <b>Facts / Rule:</b> The modern approach to identifying an employment relationship weighs all the circumstances: the degree of control exercised, who bears the chance of profit and risk of loss, whether the worker is part of the organisation, whether he works on his own account or for the employer's business, who provides the equipment, the tax arrangements, the parties' own view of the relationship, and the structure of the trade.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：唔好淨睇合約寫「自僱」就算，要逐個因素睇實質關係：控制程度、盈虧、設備、稅務、係咪組織一部分。</div>
+        </div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Ming An Insurance Co (HK) Ltd v Ritz-Carlton Ltd</i> (2002) 5 HKCFAR 569 — The Close Connection Test</b><br>
+          <b>Facts / Rule:</b> Even where an employment relationship exists, there must be a close connection between the employment and the tort. Relevant considerations include the nature of the employment, the exposure of the public to risk created by the work, and whether the employee was acting in the employer's interests or solely for himself.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：員工純粹為自己目的行事（solely for himself），關連就可能唔成立；係執行職務、令公眾暴露於風險之中，僱主就要負責。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Remedies &amp; Limitation Periods (救濟與時限)</div>
+        <div style="margin-bottom:8px;">The main remedy is <b>damages</b>, in several forms: general damages (for pain, suffering and loss of amenity), special damages (quantifiable financial loss), aggravated damages, and exemplary (punitive) damages. An <b>injunction</b> may also be granted to stop a continuing wrong. Under the <b>Limitation Ordinance, Cap 347</b>: <b>s.27</b> allows 3 years for personal injury claims; <b>s.4</b> allows 6 years for actions founded on tort generally; and 12 years for an action upon a specialty (a deed).</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>時限數字係 MC 畀分位：人身傷害 3 年（s.27）、一般侵權 6 年（s.4）、契據 12 年，唔好對調。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Social Work Application: Outdoor Activities &amp; Risk Assessment (社工應用：戶外活動與風險評估 · Q16)</div>
+        <div style="margin-bottom:8px;">For a social worker organising activities, risk management follows five steps: (1) identify the hazard; (2) identify the person who would suffer; (3) assess the risk; (4) document (record) the results; and (5) review. In practice this means a site visit and route design beforehand, considering location and weather, an activity rundown and notice, guardian consent signatures, health declaration forms and participant information, proper staffing establishments, insurance (third-party liability and accident insurance), and clear safety procedures if an incident happens.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>五步要背齊次序：辨識危害 → 誰會受害 → 評估風險 → 記錄結果 → 覆檢。Q16 正正係考「機構做漏邊幾步」：冇試橋承重、檢查站太近橋、冇派人駐橋、冇警告牌。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Fong Chong Chuen v The Boys' and Girls' Clubs Association of Hong Kong</i> (DCPI 548/2018) — Q16</b><br>
+          <b>Facts:</b> The plaintiff was injured in an outdoor activity organised by the BGCA when a bridge collapsed under the combined weight of three young men crossing it at the same time. The bridge was an old piece of concrete weakened by weathering and material fatigue; Checkpoint 2 had been set up too close to the bridge, and no personnel were stationed at the bridge.<br>
+          <b>Holding:</b> The BGCA was liable in negligence. As organiser it owed a duty of care which included testing or ascertaining whether the bridge could hold at least three participants before the activity, and ensuring that no more than two people crossed at the same time. It breached that duty by failing to warn the plaintiff of the dangers of walking on the bridge (which were not obvious to him), failing to take reasonable care to run the event in a reasonably safe way, failing to design out unnecessary dangers, and failing to place sufficient warning signs. Had it tested the bridge, it would have redesigned the route or controlled the crossing, and the injury could have been avoided. The latent defect defence failed: following <i>Sanfield Building Contractors Ltd v Li Kai Cheong</i> (2003) 6 HKCFAR 207, the defendant had to adduce evidence of an alternative cause due to a latent defect, and it did not discharge that evidential burden.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：橋塌嘅原因係三人總重量超出承重。機構嘅責任包括事前測試承重同控制人數；「潛在缺陷」抗辯要由被告舉證證明有另一個成因，舉唔出就失敗。答 Q16 要逐項指出邊啲作為／不作為低過標準，再寫返五步點樣預防。</div>
+        </div>
+      </li>
     </ul>
+    <div class="kbox" style="line-height:1.7;"><b>Short Q 出題陷阱 / 高分位 — L7 Tort Law</b>
+      <ul style="margin:6px 0 0; padding-left:20px; line-height:1.7;">
+        <li>疏忽題固定次序：Duty → Breach → Causation → Damage，逐個元素套事實；漏咗一個元素，成題失分。</li>
+        <li>Duty 要寫齊 Caparo 三步原文：reasonable foreseeability、close proximity、fair, just and reasonable；淨寫 Donoghue 鄰居原則並唔足夠。</li>
+        <li>Remoteness 三個位唔好撈亂：Wagon Mound 係「種類」要可預見（污染，唔係火災）；Jolley 係「方式」唔使預見；Smith v Leech Brain 係「程度」唔使預見（thin skull rule）。</li>
+        <li>抗辯要分清部分定完全：contributory negligence（Cap 23 s.21）只按比例扣減；volenti 要證明知悉風險性質同程度兼自願同意，同 illegality 一樣係完全抗辯。</li>
+        <li>OLO Cap 314：警告唔等於免責 —— s.3(4)(a) 要求警告足以令訪客合理安全；再分清 occupancy duty（處所狀態）同 activity duty（活動本身）。</li>
+        <li>Q16 BGCA：五步背齊（identify hazard → who would suffer → assess risk → document → review），並指出 latent defect 抗辯嘅舉證責任喺被告身上。</li>
+      </ul>
+    </div>
   </div></details>
 
-  <details><summary><span>L8 人權 + L9 Kong Yun-ming 司法覆核</span><span class="tag gold">Short Q 熱門</span></summary><div class="body">
+  <details><summary><span>L8 人權 Human Rights</span><span class="tag gold">Short Q 熱門</span></summary><div class="body">
     <ul>
-      <li><b>人權特質：</b>最基本權利、生而有之、<b>不可剝奪 inalienable、普遍 universal</b>（不分年齡種族貧富殘疾）、全天候存在；本質係道德權利 moral rights — 未納入法律前法院唔會強制執行，最終責任人係國家。權利唔係絕對：可受公共秩序、安全、他人權利限制。</li>
-      <li><b>國際框架：</b>UDHR 1948（12 月 10 日人權日，係宣言唔係法律）；ICCPR + ICESCR 1966 合稱國際人權法案；本地落實：《基本法》Art 39 + 《人權法案條例》Cap 383。自由派（Mill：限制自由只為防傷害他人）vs 社群／義務本位（尊嚴來自履行崗位義務；如中國唔將公民政治權利排喺經濟社會文化權利之上）。</li>
-      <li><b>司法覆核 JR：</b>挑戰公權決定嘅<b>程序／合法性</b>，唔係決定本身啱唔啱；救濟如 mandamus（命令去做）、prohibition（禁止去做）；要用盡其他補救先上法院。香港保障框架仲有：中英聯合聲明、傳媒、公民社會；限制例子：公安條例。</li>
-      <li><b>ECHR 與社工：</b>Art 2 生命（安樂死／墮胎）、3 禁酷刑（院舍照顧標準）、5 自由安全（羈留、同意入院）、6 公平審訊、8 私人及家庭生活（查閱通信、保密）、10 表達、12 結婚組織家庭、13 有效補救。</li>
-      <li><b>Kong Yun-ming v Director of Social Welfare (2013) CFA — 必背：</b>孔允明 2005 年持單程證來港翌日丈夫去世，未滿 7 年居港被拒綜援兼失去公屋。爭議條文：Art 36 福利權、Art 145 政策制訂權、Art 25 法律面前平等、人權法案 Art 22 不受歧視。</li>
-      <li><b>比例原則分析（CFA）：</b>限制權利要 ① 有合法社會目的 ② 與目的有合理關連 rationally connected ③ 唔可以明顯無合理基礎 manifestly without reasonable foundation（完整版四步再加：唔超越必要 + 社會得益與個人權利合理平衡）。</li>
-      <li><b>點解政府輸：</b>「慳錢」本身唔係合法目的；7 年要求同單程證家庭團聚政策 + 人口 rejuvenation 政策相衝突；慳到嘅錢微不足道；申請人若非 7 年要求本合資格、生活低於署方基本需要標準，7 年要求等於抽走安全網（para 44）。結果：7 年要求違憲，上訴得直。</li>
-      <li><b>對照 Yao Man Fai George v DSW (2010)：</b>1 年連續居港要求被裁違憲（違反 Art 25 平等 + Art 31 遷徙自由；受影響者只佔申請人 4.7%、多數獲豁免，政府證明唔到真正需要）。CFI 當年反而維持 Kong 嘅 7 年要求，到 CFA 先推翻。</li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">What are Human Rights? (人權是甚麼)</div>
+        <div style="margin-bottom:8px;"><b>Human rights</b> are the most fundamental rights a person has. They exist to give every person protection in all areas of life, and in nature they are moral rights; the International Bill of Human Rights formulates the basic standards in international law. Two defining features must always be stated: human rights are <b>inalienable</b> — they cannot be taken away or seriously limited — and <b>universal</b> — they are the same for all persons everywhere, regardless of age, race, wealth or disability, simply because a person is a human being. All human beings are equal, and human rights do not come and go.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>定義題必寫 inalienable（不可剝奪）同 universal（普遍）兩個特質，同埋理據：因為係人，所以享有，唔取決於年齡、種族、貧富或殘疾。人權本質係道德權利，呢點會帶出下一節「未納入法律前法院唔會強制執行」。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Human Rights as Values &amp; as Demands (人權作為價值與訴求)</div>
+        <div style="margin-bottom:8px;">Human rights operate on two levels. As <b>values</b>, they are capable of implementation within different value systems, and their essential elements are recognisable everywhere. As <b>demands</b>, they are claims made by the powerless against power holders — primarily the state and its agents, but also business, religious leaders and professionals. The point of the demand is that the weaker person be respected, and that those holding power use it responsibly.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>社工角度最重要係第二層：人權係弱者向掌權者提出嘅訴求。掌權者唔止國家，仲包括商界、宗教領袖同專業人員 —— 社工自己都係被要求負責任用權嘅一方。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Origins &amp; Development (起源與發展)</div>
+        <div style="margin-bottom:8px;">The idea has long roots: the Greek city states, and Buddhist and Confucian thinkers, all developed notions of human dignity and right conduct. In the 19th century came the anti-slavery movement, the Red Cross, and the Hague and Geneva Conventions. The modern era of human rights began with the <b>Universal Declaration of Human Rights 1948</b>, approved by the UN General Assembly on 10 December — the date now marked as Human Rights Day.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>唔好答「人權係西方發明」：來源包括希臘城邦、佛教同儒家思想。現代人權時代以 1948 年《世界人權宣言》為起點，12 月 10 日係人權日，MC 會考年份同日期。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Human Rights in Everyday Life (日常生活中的人權議題)</div>
+        <div style="margin-bottom:8px;">Human rights are not abstract: they arise in practical, everyday issues — discrimination (on grounds of sex, race, disability and age), work (pay, conditions and trade unions), legal and political questions (crime, security and justice), and access to health and education services. For social workers, these are the settings in which clients' rights are actually won or lost.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Short Q 若問「人權同社工有咩關係」，就用呢四組日常議題作答：歧視、工作、法律與政治、醫療與教育服務，唔好淨係背公約年份。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Moral Rights vs Legal Rights (道德權利與法律權利)</div>
+        <div style="margin-bottom:8px;">A <b>legal right</b> is enforceable in court: if Appel owns a home, that is his legal right, and if Brian enters without his agreement, Brian breaks the law and the court can provide a remedy. A <b>moral right</b> is less strong: the court will not enforce it — for example, a father who does not pay rent for a daughter squatting in his property breaches a moral duty, and the consequence is social disapproval only. Yet the right to adequate housing is a human right in international law, and the ultimate duty holder for it is the state.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>分別在於可否由法院執行：法律權利有法院救濟；道德權利被違反只會招來社會非議。但適足住房係國際法上嘅人權，最終責任人係國家，唔係個別家人。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Implementation: The Responsibility of the State (落實：國家的責任)</div>
+        <div style="margin-bottom:8px;">Primary responsibility for implementing human rights rests with each state. By ratifying a convention, a state commits itself both morally and in international law. Provisions of the UDHR or of treaties may over time become part of <b>international customary law</b>, binding on all countries whether or not they have ratified. International standards may also be embodied in domestic law, which is when they become directly enforceable at home.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>落實嘅主責在國家。批約＝道德上同國際法上嘅承諾；條文仲可以演變成國際習慣法，約束所有國家；寫入本地法律之後，先至可以直接喺本地法院援引。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">The Liberal View: J.S. Mill (自由主義觀點)</div>
+        <div style="margin-bottom:8px;">In the 19th-century Western liberal view associated with <b>J.S. Mill</b>, human rights exist to protect individuals from overweening state power, and the state should support individual freedom. Restriction of freedom is legitimate only to protect individuals from harm to others. This emphasis on rights is a product of Western liberal thinking, and it is naturally appealing to the powerless.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Mill 嘅核心係 harm principle：限制自由唯一正當理由係防止傷害他人。呢種以權利為本嘅思想源於西方自由主義，對弱勢者特別有吸引力。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Duty-Based Societies (義務本位社會)</div>
+        <div style="margin-bottom:8px;">Not every society is rights-based. In <b>duty-based societies</b>, basic values are upheld differently: a person's status in the community, and his dignity, are secured by performing his duties responsibly. For example, China refuses to rate civil and political rights ahead of economic, social and cultural rights such as adequate food and housing.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>對比位：自由主義以「權利」為尊嚴來源；義務本位社會以「負責任地履行崗位義務」為尊嚴來源。中國唔將公民及政治權利排喺食物、住房等經濟社會文化權利之上，係課堂例子。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">The Modern International Framework (現代國際框架)</div>
+        <div style="margin-bottom:8px;">After the Second World War the United Nations was formed, and the <b>UDHR 1948</b> set the benchmark — it is not a code of law, but a standard against which states are measured. Binding covenants followed in 1966: the <b>International Covenant on Civil and Political Rights (ICCPR)</b> and the <b>International Covenant on Economic, Social and Cultural Rights (ICESCR)</b>. Other conventions address specific groups, including conventions on disability and on discrimination against women.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>UDHR 係宣言、benchmark，本身唔係法律；1966 年兩大公約先至係有約束力嘅條約。ICCPR 管公民政治權利，ICESCR 管經濟社會文化權利，唔好調轉。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Europe: The ECHR &amp; Domestic Effect (歐洲人權公約與本地效力)</div>
+        <div style="margin-bottom:8px;">In Europe, the Council of Europe produced the <b>European Convention on Human Rights (ECHR)</b>, signed in 1950 and in force from 1953, with its court headquartered in Strasbourg. Note carefully: the ECHR is not the European Union. Before the Human Rights Act 1998, complaining to the European Court of Human Rights meant taking the UK government to court in Strasbourg, because the Convention had no direct effect in domestic law.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>兩個常見錯誤：ECHR 唔係歐盟（係 Council of Europe）；1998 年之前，公約權利喺英國本地法院用唔到，要遠赴 Strasbourg 告政府。原因就係下面 Brind 案講嘅國會至上。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>R v Secretary of State for the Home Department, ex p Brind</i> [1991] — Lord Bridge</b><br>
+          <b>Facts / Rule:</b> Although the Convention bound the UK at Strasbourg, it had no effect in national law because of parliamentary supremacy: a treaty is not justiciable in domestic courts unless and until it is incorporated by Parliament. Lord Bridge's statement in Brind is the classic authority for this position.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：條約簽咗唔等於本地法院用到 —— 要經國會立法納入（incorporation）先至得。呢個原則同 Q13 Lubiano 案「國際公約要經立法本地化」係同一個道理。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Human Rights Act 1998 (《人權法》1998)</div>
+        <div style="margin-bottom:8px;">After 1998, all UK laws must comply with the ECHR, and English courts can themselves adjudicate Convention rights. But the Act has real constraints: it applies to public bodies, not private individuals; applicants must first attempt all other legal remedies; and the court can only declare that a decision was wrong in law for a particular reason — it is then for the public body to correct it.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>1998 年之後唔使再去 Strasbourg，本地法院可以審。但要記住三個限制：只管公營機構、要先用盡其他補救、法院只指出決定喺法律上錯，改正係公營機構嘅事。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Judicial Review (司法覆核)</div>
+        <div style="margin-bottom:8px;"><b>Judicial review</b> invites the court to supervise public decision-making: the court may order a local authority to act (<b>mandamus</b>) or order it not to act (<b>prohibition</b>). Crucially, JR is concerned with the <b>process</b> by which a decision was arrived at, not with the merits of the decision itself. The lecture example is the concurrent appointment of residence masters, which raised the inappropriate use of public funding.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>JR 睇程序，唔睇決定本身啱唔啱；mandamus 係命令去做，prohibition 係禁止去做，兩個拉丁名唔好調轉。L9 Kong Yun-ming 正正係用 JR 挑戰社署署長嘅決定。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Hong Kong: Protection &amp; Restriction (香港：保障與限制)</div>
+        <div style="margin-bottom:8px;">In Hong Kong, human rights are protected through a combination of the Sino-British Joint Declaration, the <b>Basic Law</b>, the <b>Bill of Rights Ordinance</b>, judicial review, the mass media, and the civil community. Against these protections stand statutory restrictions, such as those imposed by the <b>Public Order Ordinance</b> — the tension between protection and restriction is a recurring examination theme.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>香港框架要成組背：聯合聲明、基本法、人權法案條例、司法覆核、傳媒、公民社會；限制例子用《公安條例》。答題要兩邊都寫，先顯得平衡。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">ECHR Articles &amp; Social Work Relevance (公約條文與社工相關性)</div>
+        <div style="margin-bottom:8px;"><b>Article 2</b> — right to life (euthanasia, abortion); <b>Article 3</b> — prohibition of torture (punishment of children, standards of care in homes, treatment in psychiatric hospitals and prisons); <b>Article 5</b> — liberty and security of the person (detention, capacity to consent to hospital admission, asylum seekers, political interference in court sentences); <b>Article 6</b> — right to a fair trial (arrest, fair trial, discharge from prison or secure hospital); <b>Article 8</b> — respect for private and family life (checking correspondence, surveillance, the rights of patients to nominate a relative); <b>Article 10</b> — freedom of expression (confidentiality, press coverage); <b>Article 12</b> — the right to marry and found a family (the position of transsexuals, changing birth data); <b>Article 13</b> — right to an effective remedy (denying children access to remedies).</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>唔好淨背條文編號，要連社工情境一齊背：Art 3 連院舍照顧標準、Art 5 連同意入院能力、Art 8 連查閱服務使用者通信同保密，呢啲正正係 Short Q 嘅出題方式。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Application: The Live-In Rule Challenge (應用：外傭強制同住規則 · Q13)</div>
+        <div style="margin-bottom:8px;">Q13 applies the human rights framework to a live issue: the requirement that foreign domestic helpers live in their employer's home. FDHs are well informed of this arrangement before coming to Hong Kong, and the legal challenge to the rule ultimately failed — the case shows the limits of human rights arguments where immigration law and unincorporated treaty rights are involved.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>答 Q13 要用返上面嘅框架分析：訴求方係弱者（外傭）、掌權者係入境處處長；但 ICESCR 權利未經立法本地化，加上出入境保留條款，挑戰最終失敗，同住要求維持。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Lubiano Nancy Almorin v Director of Immigration</i> (CA, 21 September 2020, CACV 112/2018) — Q13</b><br>
+          <b>Facts:</b> A foreign domestic helper challenged the Live-In Requirement — the rule that the Director of Immigration grants an FDH employment visa only if she undertakes to reside at her employer's residence. She argued the rule heightened the risk that FDHs would be forced to work on rest days, violating the ICESCR Article 7(b) and (d) rights to safe and healthy working conditions, adequate rest and limited working hours. The Court of First Instance dismissed her judicial review in 2018; she appealed.<br>
+          <b>Holding:</b> The Court of Appeal dismissed the appeal and upheld the CFI. The ICESCR Article 7 right was not given domestic effect by the Employment Ordinance (Cap 57): treaty rights become enforceable only through an act of domestication by the legislature (the EO s.17 rest-day entitlement in fact predated the ICESCR's application to Hong Kong). The immigration reservation in the Bill of Rights Ordinance (Cap 383) s.11 applied, and the Live-In Requirement also fell within the ICESCR Article 6 reservation, being designed to safeguard employment opportunities for local non-live-in domestic helpers. On causation, the applicant failed the high threshold: if an employer ill-treats an FDH, the real cause is the employer, not the live-in arrangement. The Live-In Requirement therefore remains in force.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：四個敗因要齊：① ICESCR 第 7 條權利未經立法本地化，僱傭條例唔等於實施咗佢；② 《人權法案條例》第 11 條出入境保留適用；③ 第 6 條保留涵蓋以保障本地家務工就業為目的嘅規則；④ 因果唔成立 —— 虐待嘅真正成因係僱主，唔係同住安排本身。</div>
+        </div>
+      </li>
     </ul>
+    <div class="kbox" style="line-height:1.7;"><b>Short Q 出題陷阱 / 高分位 — L8 Human Rights</b>
+      <ul style="margin:6px 0 0; padding-left:20px; line-height:1.7;">
+        <li>定義題要寫齊 inalienable 同 universal，同埋理據「because a person is a human being」；淨寫「人人有權利」冇分。</li>
+        <li>UDHR 1948 係宣言、benchmark，唔係法律；有約束力嘅係 1966 年 ICCPR 同 ICESCR，兩者唔好調轉（前者公民政治、後者經濟社會文化）。</li>
+        <li>條約本地效力位：引 Brind —— treaty not justiciable unless incorporated by Parliament；同 Lubiano 嘅 domestication 原則互相呼應，係跨課題高分位。</li>
+        <li>HRA 1998 三個限制要齊：只適用於 public bodies、要先用盡其他補救、法院只指出法律上錯而唔代為改正。</li>
+        <li>JR 睇 process 唔睇 merits；mandamus（命令做）同 prohibition（禁止做）唔好調轉。ECHR 唔係歐盟，總部喺 Strasbourg。</li>
+        <li>Q13 Lubiano 四個敗因（未本地化、出入境保留、第 6 條保留、因果唔成立）要逐點寫，結論係同住要求維持、個案失敗。</li>
+      </ul>
+    </div>
+  </div></details>
+
+  <details><summary><span>L9 Kong Yun-ming 案例：司法覆核與福利權</span><span class="tag gold">案例必背</span></summary><div class="body">
+    <ul>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">The Case: Facts &amp; Procedural History (案件事實與程序)</div>
+        <div style="margin-bottom:8px;"><i>Kong Yunming v Director of Social Welfare</i> is the leading Hong Kong case on the constitutional right to social welfare. Kong challenged, by judicial review, the seven-year residence requirement for CSSA introduced on 1 January 2004 — one of two challenges arising from the Task Force on Population Policy Report 2003. The Court of First Instance upheld the requirement in 2009 and the Court of Appeal agreed; the Court of Final Appeal reversed them (FACV 2/2013).</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>程序次序係畀分位：CFI（2009）維持 7 年要求 → 上訴庭維持 → CFA 推翻並裁定違憲。唔好寫成「法庭一開始就判政府輸」。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Kong Yunming v Director of Social Welfare</i> (CFA, FACV 2/2013)</b><br>
+          <b>Facts:</b> Kong Yunming, a mainlander born in 1949, met her husband (a Hong Kong permanent resident born in 1929) in 2001 and married him in 2003, when he was 74 and she was 54. He had been a CSSA recipient since 1985. She was granted a one-way permit on 30 November 2005 to join him, and arrived in Hong Kong on 21 December 2005, aged 56. Her husband, aged 76, died the following day, 22 December 2005. The Housing Authority repossessed his public housing flat, leaving her homeless and admitted to a shelter for street sleepers. When she applied for CSSA on 20 March 2006, she was refused: she had not met the seven-year residence requirement, and the Director of Social Welfare did not exercise his discretion to waive it in her case. She was granted legal aid and brought judicial review proceedings.<br>
+          <b>Holding:</b> The CFA unanimously allowed the appeal and declared the seven-year residence requirement unconstitutional. The requirement was not rationally connected to the Government's declared aim of ensuring the sustainability of the social security system, and was manifestly without reasonable foundation.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：事實要寫齊數字同日期：1949 年出生、2003 年結婚、丈夫自 1985 年領綜援、2005 年 12 月 21 日持單程證抵港、翌日丈夫去世、公屋被收回、2006 年申請綜援被拒、署長冇行使酌情豁免。呢啲事實正正係 CFA 同情同法理嘅基礎。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">CSSA: Purpose &amp; History (綜援：目的與歷史)</div>
+        <div style="margin-bottom:8px;">The <b>Comprehensive Social Security Assistance (CSSA)</b> Scheme is a safety net for those who cannot support themselves financially, for reasons such as age or family circumstances, meeting basic needs such as food and shelter. The residence requirement has tightened and loosened over time: a 10-year requirement in 1948; reduced to 5 years in 1959; a 1-year requirement proposed in a 1970 Executive Council memorandum; in 1993 Public Assistance became CSSA; and in 2004 the requirement was raised to 7 years — the change Kong challenged.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>年份位要背齊：1948 十年 → 1959 五年 → 1970 行會備忘錄建議一年 → 1993 公共援助改名綜援 → 2004 七年。歷史顯示 7 年唔係一向如此，而係 2004 年突然收緊，先至有違憲挑戰嘅空間。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Constitutional Provisions (憲法條文)</div>
+        <div style="margin-bottom:8px;">Kong relied on: <b>Basic Law Article 36</b> — Hong Kong residents shall have the right to social welfare in accordance with law, and the welfare benefits and retirement security of the labour force shall be protected by law; <b>Basic Law Article 25</b> — all Hong Kong residents shall be equal before the law; and <b>Bill of Rights Article 22</b> — rights enjoyed without discrimination. Against her stood <b>Basic Law Article 145</b>: the HKSAR Government shall, on its own, formulate policies on the development and improvement of the social welfare system in the light of economic conditions and social needs. The case is therefore a contest between a constitutional right (Art 36) and a governmental policy power (Art 145).</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>成案嘅骨架係 Art 36（福利權）對 Art 145（政策制訂權）：政府話福利政策由政府因應經濟同社會需要制訂；Kong 話 Art 36 係受憲法保障嘅權利，限制佢要過到比例審查。Art 25 同人權法案 Art 22 係平等／不歧視嘅輔助理據。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">The CFA's Proportionality Analysis (終院判決：比例原則 · paras 36–37)</div>
+        <div style="margin-bottom:8px;">At paras 36–37 the CFA held that <b>Article 36</b> protects a real right to social welfare — on the Q12 analysis, the right to CSSA benefits under the scheme as it stood on 1 July 1997, with a qualifying condition of one year's residence — while <b>Article 145</b> empowers the Government to formulate policies that may modify, reduce or even eliminate benefits. The tension is resolved this way: any restriction on the Art 36 right is subject to constitutional review by <b>proportionality analysis</b>. As formulated in the case, the test asks: (1) is the restriction pursuing a legitimate societal aim? (2) is it rationally connected to that aim? and (3) is it manifestly without reasonable foundation?</div>
+        <div style="margin-bottom:8px;">Two further findings matter. At para 44, the seven-year requirement removed the safety net Kong would otherwise have had: she was left living below the living standard defined by the Director of Social Welfare himself. At para 46, the requirement did not apply to all new arrivals — there were exceptional cases and the Director's discretion — which undercut the claim that a uniform seven-year bar was necessary.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>段號係高分位：paras 36–37 定框架（Art 36 有權利、限制要過比例審查）；para 44 講後果（安全網被抽走，生活低過署方自訂嘅基本標準）；para 46 講一致性（本身有例外同酌情，一刀切七年好難話係必要）。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Legitimate Aim: Why "Saving Money" Failed (合法目的：為何「慳錢」唔成立 · Section G)</div>
+        <div style="margin-bottom:8px;">A legitimate societal aim must further the legitimate interests of society. The CFA held that the Government's claim to <b>save money</b> is not, by itself, a legitimate aim: both the purpose and the effect of the expenditure cut must be considered. The sustainability claim was examined at para 53 — built on the one-way permit scheme, the ageing population and the rise in CSSA expenditure — but it did not hold up. At Section H2, the court noted that family union under the one-way permit scheme is the main source of population growth.</div>
+        <div style="margin-bottom:8px;">The CFA's stance was that the seven-year requirement ran against two of the Government's own social policies: the one-way permit family union policy, and the population policy of rejuvenating the ageing population. The savings achieved were insignificant, CSSA spending overall had increased, and the Director had reported in 2003 that 18% of new arrivals were on CSSA. On that evidence, the requirement could not be justified by sustainability.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>呢段係成案勝負關鍵，要寫齊三層：① 慳錢本身唔係合法目的，要睇埋削減嘅目的同效果；② 7 年要求同單程證家庭團聚、人口年輕化兩項政府自己嘅政策自相矛盾；③ 實際慳到嘅錢微不足道，綜援總開支反而上升。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Other Justifications Considered (其他理據 · Sections K &amp; L)</div>
+        <div style="margin-bottom:8px;">The Government's further arguments (Section K) also failed: the complaint that non-contributory, heavily subsidised benefits lacked coherence; the plea at para 102 for uniformity of qualifying periods across benefits; the point that new arrivals contribute to the economy, for example by looking after children (95% of new arrivals on CSSA were women); and the unclear impact of the fiscal deficit. Nor did the matters in Section L save the requirement: that prior warning of the change had been given, or that charities and the Director's discretion could fill the gap. The basis of the decision is therefore precise: the seven-year requirement was <b>not rationally connected</b> to its declared aim of ensuring sustainability.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>結論要寫準：CFA 唔係話「政府唔可以慳錢」，而係話呢個 7 年要求同「確保可持續」呢個目的之間冇合理關連（not rationally connected），所以過唔到比例測試。寫錯敗因成段失分。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Karen Kong (2012): A Critique of the Approach (學者批評)</div>
+        <div style="margin-bottom:8px;"><b>Karen Kong (2012)</b> argues that the court's internal restraints on adjudicating socio-economic rights are misplaced: there is room for a more principled approach, while still respecting the democratically elected government's freedom to determine its policies. Her central point is that <b>Article 36</b> is a self-standing right — yet the judgment reads as if the Art 36 right hinges on Art 145, so that the welfare right risks being reduced to whatever the policy power leaves behind.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>Short Q 問「評價判決」嗰陣用呢段：Karen Kong 唔係話結果錯，而係話推理太保守 —— Art 36 應該係獨立權利，唔應該睇落好似要依附 Art 145 先存在。引學者批評係批判思考嘅高分位。</div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Comparison: Yao Man Fai George v DSW (2010) (對照案例)</div>
+        <div style="margin-bottom:8px;">The second challenge arising from the same 2004 changes attacked a different requirement: the one-year <b>continuous</b> residence requirement. The contrast between the two cases — different requirement, different applicant, different court outcome at first instance — is a favourite comparison question.</div>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>唔好撈亂兩案：Kong 挑戰「居港滿 7 年」要求（新來港者）；Yao 挑戰「連續居港 1 年」要求（返港嘅永久居民）。要求唔同、申請人身份唔同、援引條文都唔同。</div>
+        <div class="tbox" style="margin: 10px 0; line-height:1.65;">
+          <b>📌 Case: <i>Yao Man Fai George v Director of Social Welfare</i> (2010)</b><br>
+          <b>Facts:</b> Yao, a Hong Kong permanent resident, had his employment in the Mainland terminated and returned to Hong Kong. He applied for CSSA but was rejected because he did not satisfy the one-year continuous residence requirement.<br>
+          <b>Holding:</b> The Court of First Instance declared the requirement unconstitutional. It infringed Basic Law Article 25 (equality before the law) and Article 31 (freedom to travel): discrimination based on the period of absence was unjustifiable, and the Government failed to show a genuine need for the requirement — only 4.7% of CSSA applicants fell into this category, and the majority of them obtained a waiver anyway.<br>
+          <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--teal); color: var(--ink); font-weight: 500;">🇭🇰 中文：Yao 嘅殺著係數據：受影響者只佔申請人 4.7%，大多數仲獲豁免 —— 政府證明唔到真正需要，區別對待就唔成立。條文要齊：Art 25 平等 + Art 31 遷徙自由。</div>
+        </div>
+      </li>
+      <li style="margin-bottom:20px;">
+        <div style="font-weight:800; font-size:15.5px; color:var(--teal); margin-bottom:4px;">Karen Kong's Seven Questions (評估居港要求嘅七條問題)</div>
+        <div style="margin-bottom:8px;">Karen Kong proposes seven questions for assessing whether a residence requirement goes no more than necessary. They convert the proportionality test into a working checklist for evaluating welfare restrictions:</div>
+        <ul style="margin:6px 0 0; padding-left:20px; line-height:1.7;">
+          <li>(1) What is the Government's assessment of compliance with economic, social and cultural rights?</li>
+          <li>(2) How serious is the limitation on the dignity and livelihood of the disadvantaged group?</li>
+          <li>(3) Is there special concern for those most gravely affected?</li>
+          <li>(4) What is the financial implication of the requirement?</li>
+          <li>(5) Were alternative options considered — for example, gradual steps rather than a one-off change?</li>
+          <li>(6) Is there a mechanism for periodic review and monitoring?</li>
+          <li>(7) Was there sufficient public consultation?</li>
+        </ul>
+        <div class="zh-note"><b>🇭🇰 中文導讀：</b><br>七條問題係現成嘅分析框架：Short Q 畀任何新嘅福利限制措施，都可以逐條套用 —— 特別係 (2) 對弱勢尊嚴同生計嘅影響、(5) 有冇較溫和嘅替代方案（漸進 vs 一刀切）、(7) 諮詢是否足夠。</div>
+      </li>
+    </ul>
+    <div class="kbox" style="line-height:1.7;"><b>Short Q 出題陷阱 / 高分位 — L9 Kong Yun-ming</b>
+      <ul style="margin:6px 0 0; padding-left:20px; line-height:1.7;">
+        <li>先定框架：Art 36 係福利權（以 1997 年 7 月 1 日綜援計劃、一年居港期為內容），Art 145 只係政策制訂權；限制權利要過 proportionality，唔好將兩條倒轉。</li>
+        <li>比例測試寫齊三步：legitimate aim → rationally connected → not manifestly without reasonable foundation；段號要準：paras 36–37（框架）、44（抽走安全網）、46（酌情例外）、53（可持續性）、102（劃一資格期）。</li>
+        <li>「慳錢」陷阱：saving money 本身唔係 legitimate aim，要睇埋削減嘅 purpose and effect；加上慳款微不足道、綜援開支反升，先至得出 not rationally connected 嘅結論。</li>
+        <li>政策衝突位係關鍵理由：7 年要求同時牴觸單程證家庭團聚政策同 rejuvenate the ageing population 人口政策 —— 係政府自己嘅政策打自己。</li>
+        <li>兩案唔好撈亂：Kong 係 7 年要求，CFI 2009 維持、CFA 推翻；Yao Man Fai 係 1 年連續居港，CFI 已裁違憲（Art 25 + Art 31，受影響者只佔 4.7%）。</li>
+        <li>高分位：引 Karen Kong (2012) 批評（Art 36 係 self-standing right，唔應依附 Art 145）同佢七條問題做評估框架，顯示批判思考。</li>
+      </ul>
+    </div>
   </div></details>
 
   <details><summary><span>L10–L12 補充：私隱／起底・性騷擾・專業操守・強制舉報</span><span class="tag">未有 slides · 靠 Q17–Q20</span></summary><div class="body">
