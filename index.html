@@ -153,19 +153,27 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 .mock-sticky .timer{font-size:20px}
 .flash{outline-offset:4px}
 #backTop {
-  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 40;
+  position: fixed; right: 16px; bottom: calc(80px + env(safe-area-inset-bottom)); z-index: 40;
   width: 48px; height: 48px; min-height: 48px; padding: 0; border-radius: 50%;
   background: var(--dark); color: #fff; border-color: var(--dark); font-size: 22px; line-height: 1;
   box-shadow: 0 6px 18px rgba(0,0,0,.25);
   opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
 }
 #backTop.show { opacity: .92; visibility: visible; }
+#feedbackBtn {
+  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 41;
+  min-height: 48px; padding: 12px 18px; border-radius: 999px;
+  background: var(--teal); color: #fff; border: 1px solid var(--teal);
+  font-size: 15.5px; font-weight: 800; line-height: 1;
+  box-shadow: 0 8px 22px rgba(0,0,0,.30);
+}
+#feedbackBtn:hover { filter: brightness(1.08); }
 @media(prefers-color-scheme:dark){#backTop{background:#f2f3f5;color:#111;border-color:#f2f3f5}}
 @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}.stats4{grid-template-columns:repeat(2,1fr)}.study-grid{grid-template-columns:repeat(2,1fr)}.cat-list{grid-template-columns:1fr}table{font-size:13px}th,td{padding:6px}.mock-sticky{top:66px}.seg button{padding:5px 13px}}
 @media(prefers-reduced-motion:reduce){.flash-inner{transition:none}html{scroll-behavior:auto}}
 @media print{
   body{background:#fff;color:#000;font-size:11pt}
-  .topbar,#backTop,.mock-sticky,.filterrow,.progress-tools,.qfoot,.sess-nav,button:not(.opt){display:none !important}
+  .topbar,#backTop,#feedbackBtn,.mock-sticky,.filterrow,.progress-tools,.qfoot,.sess-nav,button:not(.opt){display:none !important}
   .view{display:block !important}
   .wrap{max-width:none;padding:0 6px}
   section{padding:10px 0;page-break-inside:avoid}
@@ -179,12 +187,56 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
   textarea{border:1px solid #999;min-height:60px}
   footer{color:#333}
 }
+/* ===== gamification: themes / user bar / modals / toast ===== */
+body.theme-pikmin{--bg:#edf5e1;--card:#ffffff;--card2:#d9eac4;--ink:#22330f;--muted:#5c6b45;--line:#cbdcb0;--dark:#3f6212;--gold:#a16207;--gold-bg:#fef9c3;--teal:#4d7c0f;--teal-bg:#ecfccb;--shadow:0 1px 3px rgba(63,98,18,.10),0 6px 18px rgba(63,98,18,.07)}
+body.theme-pikachu{--bg:#fff6cf;--card:#fffef7;--card2:#fde68a;--ink:#3b2f0b;--muted:#7c6a2a;--line:#f3d96b;--dark:#92400e;--gold:#d97706;--gold-bg:#fef3c7;--teal:#b45309;--teal-bg:#fef3c7;--shadow:0 1px 3px rgba(146,64,14,.10),0 6px 18px rgba(146,64,14,.07)}
+body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
+.topbar-in{flex-wrap:wrap}
+.userbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.user-chip{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:14px;font-weight:700;min-height:38px;box-shadow:var(--shadow)}
+.user-chip .xp{color:var(--gold);font-weight:900}
+.user-chip.pop{animation:xppop .45s ease}
+@keyframes xppop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.user-chip.pop{animation:none}}
+.gmodal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;background:rgba(10,10,14,.55);padding:16px}
+.gmodal.open{display:flex}
+.gmodal-card{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.30);max-width:480px;width:100%;max-height:86vh;overflow:auto;padding:22px}
+.gmodal-card h2{font-size:20px;margin-bottom:6px}
+.gmodal-card .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.lb-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:10px}
+.lb-table th,.lb-table td{border:none;border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
+.lb-table th{color:var(--muted);font-size:12.5px;background:transparent}
+.lb-table td.n,.lb-table th.n{text-align:right;font-variant-numeric:tabular-nums}
+.lb-me td{font-weight:900;background:var(--gold-bg)}
+#gToast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(16px);z-index:90;background:var(--dark);color:#fff;border-radius:18px;padding:11px 20px;font-size:14.5px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.30);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s;max-width:calc(100vw - 32px);text-align:center}
+#gToast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+@media(prefers-color-scheme:dark){#gToast{background:#f2f3f5;color:#111}}
+.theme-opts{display:grid;gap:10px;margin-top:10px}
+.theme-opt{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;border-radius:14px;padding:13px 16px;height:auto;min-height:52px}
+.theme-opt .tn{font-weight:800;font-size:15.5px}
+.theme-opt .td{color:var(--muted);font-size:13px;font-weight:500}
+.theme-opt.on{border-color:var(--teal);background:var(--teal-bg)}
+.theme-opt.locked{opacity:.6}
+.user-chip .streak{color:var(--red);font-weight:800}
+.avatar-opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.avatar-opt{font-size:27px;line-height:1;padding:9px 12px;border-radius:14px;background:var(--card2);border:2px solid transparent;min-height:52px;min-width:56px}
+.avatar-opt.on{border-color:var(--teal);background:var(--teal-bg)}
+.lb-tabs{display:flex;gap:8px;margin-top:14px}
+.lb-tab{flex:1;border-radius:12px;padding:10px 8px;font-weight:800;min-height:44px}
+.lb-tab.on{background:var(--dark);color:#fff;border-color:var(--dark)}
+@media print{.gmodal,#gToast,.userbar{display:none !important}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
 <div class="topbar"><div class="topbar-in">
   <button id="menuBtn" aria-label="開啟選單 Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
+  <div class="userbar" aria-label="用戶與遊戲化 User and rewards">
+    <span class="user-chip" id="userChip"><span id="userAvatar" aria-hidden="true">🦊</span> <span id="userName">同學</span> <span aria-hidden="true">|</span> <span class="xp">🌟 XP: <span id="xpVal">0</span></span> <span aria-hidden="true">|</span> <span class="streak">🔥 Streak: <span id="streakVal">0</span> 天</span></span>
+    <button id="gachaBtn" class="small" aria-label="抽蛋，50 XP 解鎖隨機主題 Gacha, 50 XP">🥚 抽蛋 (50 XP)</button>
+    <button id="lbOpenBtn" class="small" aria-label="開啟排行榜 Open leaderboard">🏆 排行榜</button>
+  </div>
   <div class="seg" role="group" aria-label="主要頁面 Main pages">
     <button data-go="study" class="active">Study</button>
     <button data-go="analysis">Analysis</button>
@@ -270,6 +322,16 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
       <span id="progressMsg" class="muted small" role="status" aria-live="polite"></span>
     </div>
     <p class="muted small" style="margin:10px 0 0">換裝置或想備份，可以匯出 JSON，再喺另一部裝置匯入。列印會展開全部筆記內容。</p>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <h3>🎨 主題切換 Theme</h3>
+    <p class="muted small" style="margin:0">Pikmin 同 Pikachu 主題要先喺頂部撳「🥚 抽蛋 (50 XP)」隨機解鎖；解鎖咗就可以隨時喺呢度切換，選擇會自動儲存。</p>
+    <div class="theme-opts" role="group" aria-label="主題選擇 Theme options">
+      <button class="theme-opt" data-theme-opt="default"><span><span class="tn">Default 預設</span><br><span class="td">簡潔灰白 · Quizer 風</span></span><span data-theme-state="default"></span></button>
+      <button class="theme-opt" data-theme-opt="pikmin"><span><span class="tn">🌱 Pikmin 皮克敏風</span><br><span class="td">綠色 · 大自然色系</span></span><span data-theme-state="pikmin"></span></button>
+      <button class="theme-opt" data-theme-opt="pikachu"><span><span class="tn">⚡ Pikachu 皮卡丘風</span><br><span class="td">黃色 · 可愛色系</span></span><span data-theme-state="pikachu"></span></button>
+    </div>
+    <p class="muted small" style="margin:10px 0 0">你而家有 <b id="setXp">0</b> XP · 用戶名稱：<b id="setName">—</b></p>
   </div>
   <div class="card" style="margin-top:12px">
     <h3>重置</h3>
@@ -1183,6 +1245,77 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 </div>
 
 <button id="backTop" aria-label="回到頂部 Back to top" title="回到頂部 Back to top">↑</button>
+<button id="feedbackBtn" aria-label="意見反饋 Feedback" title="意見反饋 Feedback">💬 意見反饋</button>
+
+<!-- GAMIFICATION: username modal -->
+<div class="gmodal" id="nameModal" role="dialog" aria-modal="true" aria-labelledby="nameModalTitle">
+  <div class="gmodal-card">
+    <h2 id="nameModalTitle">👋 歡迎嚟到 SOWK403 溫書站！</h2>
+    <p class="muted" style="margin:0;font-size:14.5px">先輸入你嘅用戶名稱，先可以開始儲 XP、抽蛋解鎖主題，同上傳成績去排行榜。新用戶即刻有 <b>🌟 100 XP 新手禮包</b>！</p>
+    <label class="small muted" for="nameInput" style="display:block;margin-top:14px">用戶名稱 Username</label>
+    <input id="nameInput" type="text" maxlength="24" placeholder="例如：Chiu" autocomplete="off">
+    <p id="nameErr" class="small" style="color:var(--red);margin:6px 0 0;min-height:18px" role="alert"></p>
+    <span class="small muted" style="display:block;margin-top:10px">選擇你嘅頭像 (Avatar)</span>
+    <div class="avatar-opts" id="avatarOpts" role="radiogroup" aria-label="選擇頭像 Choose your avatar">
+      <button type="button" class="avatar-opt on" data-avatar="🦊" role="radio" aria-checked="true" aria-label="狐狸 Fox">🦊</button>
+      <button type="button" class="avatar-opt" data-avatar="🐻" role="radio" aria-checked="false" aria-label="熊 Bear">🐻</button>
+      <button type="button" class="avatar-opt" data-avatar="🐱" role="radio" aria-checked="false" aria-label="貓 Cat">🐱</button>
+      <button type="button" class="avatar-opt" data-avatar="🐶" role="radio" aria-checked="false" aria-label="狗 Dog">🐶</button>
+      <button type="button" class="avatar-opt" data-avatar="🐼" role="radio" aria-checked="false" aria-label="熊貓 Panda">🐼</button>
+      <button type="button" class="avatar-opt" data-avatar="🐨" role="radio" aria-checked="false" aria-label="樹熊 Koala">🐨</button>
+    </div>
+    <div class="row"><button id="nameSave" class="primary" style="flex:1">開始溫書 Start →</button></div>
+  </div>
+</div>
+
+<!-- GAMIFICATION: leaderboard modal -->
+<div class="gmodal" id="lbModal" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="gmodal-card">
+    <h2 id="lbTitle">🏆 排行榜 Leaderboard</h2>
+    <p class="muted" style="margin:0;font-size:14px">頭 20 名。成績會自動同步，同其他同學一齊衝分！</p>
+    <div class="lb-tabs" role="tablist" aria-label="排行榜類型 Leaderboard type">
+      <button type="button" class="lb-tab on" id="lbTabXp" data-lbtab="xp" role="tab" aria-selected="true">總 XP 排行榜</button>
+      <button type="button" class="lb-tab" id="lbTabMock" data-lbtab="mock" role="tab" aria-selected="false">模擬試排行榜</button>
+    </div>
+    <div id="lbBody"><p class="muted" style="margin-top:14px">載入中… Loading…</p></div>
+    <p id="lbMsg" class="small muted" style="margin:10px 0 0;min-height:18px" role="status" aria-live="polite"></p>
+    <div class="row" style="align-items:center">
+      <span class="small" style="flex:1;color:var(--teal);font-weight:600">✅ 成績已自動同步</span>
+      <button id="lbRefresh" class="small">↻ 重新載入</button>
+      <button id="lbClose" class="small">關閉 Close</button>
+    </div>
+    <p class="small muted" style="margin:10px 0 0">💡 提示：成績會隨住你溫書自動同步，毋須手動上傳。</p>
+  </div>
+</div>
+
+<!-- GAMIFICATION: version update notification modal -->
+<div class="gmodal" id="updateModal" role="dialog" aria-modal="true" aria-labelledby="updateModalTitle">
+  <div class="gmodal-card">
+    <h2 id="updateModalTitle">🚀 網站已更新！</h2>
+    <p class="muted" style="margin:0;font-size:14.5px">今次更新有以下新功能：</p>
+    <ul id="updateList" style="margin:12px 0 4px;padding-left:22px;line-height:1.9"></ul>
+    <div class="row"><button id="updateOk" class="primary" style="flex:1">知道了</button></div>
+  </div>
+</div>
+
+<!-- FEEDBACK: user feedback + optional screenshot upload -->
+<div class="gmodal" id="feedbackModal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+  <div class="gmodal-card">
+    <h2 id="feedbackTitle">💬 提交意見 / 問題回報</h2>
+    <p class="muted" style="margin:0;font-size:14px">提交者：<b id="feedbackUser">同學</b>（自動以你嘅用戶名稱提交）</p>
+    <label class="small muted" for="feedbackText" style="display:block;margin-top:14px">你嘅意見 / 問題（必填）</label>
+    <textarea id="feedbackText" rows="5" placeholder="請描述你遇到嘅問題、想新增嘅功能，或者對筆記嘅疑問..."></textarea>
+    <label class="small muted" for="feedbackFile" style="display:block;margin-top:12px">📸 附加截圖 (可選)</label>
+    <input id="feedbackFile" type="file" accept="image/*">
+    <p id="feedbackFileName" class="small muted" style="margin:6px 0 0;min-height:18px"></p>
+    <div class="row">
+      <button id="feedbackCancel">❌ 取消</button>
+      <button id="feedbackSubmit" class="primary" style="flex:1">🚀 提交意見</button>
+    </div>
+  </div>
+</div>
+
+<div id="gToast" role="status" aria-live="polite"></div>
 
 <script>
 var CASES=[
@@ -1595,6 +1728,7 @@ document.getElementById('mcList').addEventListener('click',function(e){
   var b=e.target.closest('.opt'); if(!b||b.disabled) return;
   var qi=+b.getAttribute('data-q'), oi=+b.getAttribute('data-o');
   mcState[qi]=oi; mcKeep[qi]=1; saveProgress(); renderMC(); updateOverview();
+  if(oi===MC[qi].a && typeof window.awardXP==='function') window.awardXP(5);
   var exp=document.getElementById('mcExp'+qi); if(exp) exp.scrollIntoView({behavior:'smooth',block:'center'});
 });
 var mcGridBtns=document.querySelectorAll('[data-mcmode]');
@@ -1669,11 +1803,13 @@ if(sqSessEl){
     var rb=e.target.closest('[data-rate]');
     if(rb){
       var ri=+rb.getAttribute('data-rate'), rv=+rb.getAttribute('data-val');
+      var sqFirstRate=(sqRatings[ri]===undefined);
       sqRatings[ri]=rv;
       if(rv<3) sqSrs[ri]=Date.now();
       else if(rv===3) sqSrs[ri]=Date.now()+3*86400000;
       else sqSrs[ri]=Date.now()+7*86400000;
       saveProgress(); updateOverview();
+      if(sqFirstRate && typeof window.awardXP==='function') window.awardXP(5);
       var rbs=sqSessEl.querySelectorAll('.rate-btn'); for(var k=0;k<rbs.length;k++){ var on=+rbs[k].getAttribute('data-val')===rv; rbs[k].classList.toggle('active',on); rbs[k].setAttribute('aria-pressed',on?'true':'false'); }
       setTimeout(function(){
         if(sqPos<sqQueue.length-1){ sqPos++; sqAnsOpen=false; renderSqSession(); var t=document.getElementById('sqSession'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }
@@ -1708,7 +1844,7 @@ document.getElementById('mockStart').addEventListener('click',function(){
   var h='<h3 style="margin:14px 0 8px">Part A · MC（10 題）</h3>';
   idx.forEach(function(qi,k){ var q=MC[qi]; h+='<div class="card" style="margin-bottom:10px"><p style="font-weight:700;margin:0 0 6px">'+(k+1)+'. '+q.q+'</p>'+(function(){ var ord=shuffleArr(q.o.map(function(_,j){return j;})); return ord.map(function(oj,dk){ return '<button class="opt mock-opt" data-mq="'+qi+'" data-mo="'+oj+'">'+'ABCD'[dk]+'. '+q.o[oj]+'</button>';}).join(''); })()+'</div>'; });
   h+='<h3 style="margin:14px 0 8px">Part B · Short Q（2 題，自己寫，之後開範答自評）</h3>';
-  sidx.forEach(function(si,k){ var s=SQ[si]; h+='<div class="card" style="margin-bottom:10px"><p style="font-weight:700;margin:0 0 6px">S'+(k+1)+'. '+s.q+'</p><textarea placeholder="喺度寫你嘅答案…"></textarea><div class="kbox" style="margin-top:10px"><b>自評畀分點：</b><ul style="margin:6px 0;padding-left:20px">'+s.pts.map(function(p){return '<li>'+p+'</li>';}).join('')+'</ul></div></div>'; });
+  sidx.forEach(function(si,k){ var s=SQ[si]; h+='<div class="card" style="margin-bottom:10px"><p style="font-weight:700;margin:0 0 6px">S'+(k+1)+'. '+s.q+'</p><textarea placeholder="喺度寫你嘅答案…"></textarea><div class="kbox" style="margin-top:10px"><b>自評畀分點：</b><ul style="margin:6px 0;padding-left:20px">'+s.pts.map(function(p){return '<li>'+p+'</li>';}).join('')+'</ul></div><div style="margin-top:10px"><label class="small muted" for="mockSqRate'+k+'">自評分數 Self-rating（0–5）：</label> <select class="mock-sq-rate" id="mockSqRate'+k+'" data-sq="'+si+'" style="width:auto"><option value="">未評分</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div></div>'; });
   document.getElementById('mockArea').innerHTML=h;
   document.getElementById('mockResult').textContent='';
   var msub=document.getElementById('mockSubmit'); if(msub) msub.disabled=false;
@@ -1725,8 +1861,12 @@ document.getElementById('mockArea').addEventListener('click',function(e){
 function submitMock(){
   var cards=document.querySelectorAll('#mockArea [data-q]'), right=0, total=0;
   cards.forEach(function(c){ total++; var qi=+c.getAttribute('data-q'), pick=+c.getAttribute('data-pick'); var opts=c.querySelectorAll('.mock-opt'); opts.forEach(function(o){ o.disabled=true; var oi=+o.getAttribute('data-mo'); if(oi===MC[qi].a) o.classList.add('correct'); else if(oi===pick) o.classList.add('wrong'); }); if(pick===MC[qi].a) right++; });
+  var sqScore=0;
+  document.querySelectorAll('#mockArea .mock-sq-rate').forEach(function(sel){ sel.disabled=true; sqScore+=(+sel.value||0); });
+  var mockScore=right*10+sqScore;
   clearInterval(mockTimerId);
-  document.getElementById('mockResult').textContent='MC 成績：'+right+' / '+total+'（Short Q 請按畀分點自評）';
+  document.getElementById('mockResult').textContent='MC 成績：'+right+' / '+total+'（'+(right*10)+' 分）＋ Short Q 自評 '+sqScore+' 分 ＝ 模擬試總分 '+mockScore+' 分';
+  if(typeof window.recordMockScore==='function') window.recordMockScore(mockScore);
   var msub=document.getElementById('mockSubmit'); if(msub) msub.disabled=true;
 }
 var mockSubmitBtn=document.getElementById('mockSubmit'); if(mockSubmitBtn) mockSubmitBtn.addEventListener('click',submitMock);
@@ -1856,6 +1996,308 @@ window.addEventListener('beforeprint', function() {
   document.querySelectorAll('details').forEach(function(d) { d.open = true; });
 });
 
+</script>
+<script>
+const APP_VERSION = '2.2';
+const CHANGELOG = ['💬 新增意見反饋及截圖上傳', '🦊 新增自訂 Avatar 頭像', '🔥 新增連續溫書 Streak 獎勵', '🏆 新增模擬試排行榜', '☁️ 成績現已自動同步', '🎨 加入皮克敏與皮卡丘主題'];
+/* ===== Gamification: identity + XP + gacha themes + Supabase leaderboard =====
+   All network code is wrapped in try...catch so an offline / failed
+   Supabase call can never break the revision site. */
+(function(){
+  var K_NAME='sowk403_username', K_EXP='sowk403_exp', K_THEME='sowk403_theme', K_UNLOCK='sowk403_unlocked';
+  var K_AVATAR='sowk403_avatar', K_LAST='sowk403_last_login', K_STREAK='sowk403_streak', K_MOCK='sowk403_mock_score', K_SREWARD='sowk403_streak_rewarded';
+  var THEMES={default:{label:'Default 預設',icon:'🎓'},pikmin:{label:'Pikmin 皮克敏',icon:'🌱'},pikachu:{label:'Pikachu 皮卡丘',icon:'⚡'}};
+  function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function getName(){ return lsGet(K_NAME)||''; }
+  function getXP(){ var v=parseInt(lsGet(K_EXP),10); return isNaN(v)?0:v; }
+  function setXP(v){ lsSet(K_EXP,String(Math.max(0,Math.floor(v)))); }
+  function getTheme(){ var t=lsGet(K_THEME); return THEMES[t]?t:'default'; }
+  function getAvatar(){ return lsGet(K_AVATAR)||'🦊'; }
+  function getStreak(){ var v=parseInt(lsGet(K_STREAK),10); return isNaN(v)?0:v; }
+  function getMockScore(){ var v=parseInt(lsGet(K_MOCK),10); return isNaN(v)?0:v; }
+  function getUnlocked(){ try{ var u=JSON.parse(lsGet(K_UNLOCK)||'[]'); return Array.isArray(u)?u.filter(function(x){return x==='pikmin'||x==='pikachu';}):[]; }catch(e){ return []; } }
+  function escHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  var toastTimer=null;
+  function showToast(msg,ms){
+    var t=document.getElementById('gToast'); if(!t) return;
+    t.textContent=msg; t.classList.add('show');
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){ t.classList.remove('show'); }, ms||3200);
+  }
+
+  function renderUser(pop){
+    var n=getName(), x=getXP();
+    var un=document.getElementById('userName'); if(un) un.textContent=n||'同學';
+    var av=document.getElementById('userAvatar'); if(av) av.textContent=getAvatar();
+    var sv=document.getElementById('streakVal'); if(sv) sv.textContent=getStreak();
+    var xv=document.getElementById('xpVal'); if(xv) xv.textContent=x;
+    var sx=document.getElementById('setXp'); if(sx) sx.textContent=x;
+    var sn=document.getElementById('setName'); if(sn) sn.textContent=n||'—';
+    if(pop){ var chip=document.getElementById('userChip'); if(chip){ chip.classList.remove('pop'); void chip.offsetWidth; chip.classList.add('pop'); } }
+    renderThemeOpts();
+  }
+  window.awardXP=function(n){
+    setXP(getXP()+(+n||0)); renderUser(true); scheduleSync();
+  };
+  /* Called by submitMock() in the main script: keeps only the best
+     mock score locally, then lets the debounced auto-sync upload it. */
+  window.recordMockScore=function(score){
+    score=Math.max(0,Math.floor(+score||0));
+    if(score>getMockScore()) lsSet(K_MOCK,String(score));
+    scheduleSync();
+  };
+
+  /* ----- themes ----- */
+  function applyTheme(t,quiet){
+    if(!THEMES[t]) t='default';
+    if(t!=='default' && getUnlocked().indexOf(t)<0){ if(!quiet) showToast('🔒 呢個主題未解鎖，去抽蛋試下運氣！'); return; }
+    document.body.classList.remove('theme-pikmin','theme-pikachu');
+    if(t!=='default') document.body.classList.add('theme-'+t);
+    lsSet(K_THEME,t); renderThemeOpts();
+    if(syncArmed) scheduleSync();
+  }
+  function renderThemeOpts(){
+    var cur=getTheme(), un=getUnlocked();
+    document.querySelectorAll('[data-theme-opt]').forEach(function(btn){
+      var t=btn.getAttribute('data-theme-opt'), locked=(t!=='default'&&un.indexOf(t)<0);
+      btn.classList.toggle('on', cur===t);
+      btn.classList.toggle('locked', locked);
+      var st=btn.querySelector('[data-theme-state]');
+      if(st) st.textContent = locked ? '🔒 未解鎖' : (cur===t ? '✓ 使用中' : '已解鎖');
+    });
+  }
+  document.querySelectorAll('[data-theme-opt]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=btn.getAttribute('data-theme-opt');
+      if(t!=='default' && getUnlocked().indexOf(t)<0){ showToast('🔒 '+THEMES[t].label+' 未解鎖 — 撳頂部「🥚 抽蛋 (50 XP)」隨機解鎖！'); return; }
+      applyTheme(t); showToast('🎨 已切換主題：'+THEMES[t].label);
+    });
+  });
+
+  /* ----- gacha ----- */
+  var gachaBtn=document.getElementById('gachaBtn');
+  if(gachaBtn) gachaBtn.addEventListener('click',function(){
+    var locked=['pikmin','pikachu'].filter(function(t){ return getUnlocked().indexOf(t)<0; });
+    if(!locked.length){ showToast('🎉 你已經解鎖晒全部主題，唔使再抽啦！去 Settings 切換主題啦。',4200); return; }
+    var xp=getXP();
+    if(xp<50){ showToast('🥚 XP 唔夠！抽蛋需要 50 XP，你而家得 '+xp+' XP。答啱 MC 或者完成 Short Q 自評，每次 +5 XP。',4600); return; }
+    setXP(xp-50);
+    var won=locked[Math.floor(Math.random()*locked.length)];
+    var un=getUnlocked(); un.push(won); lsSet(K_UNLOCK,JSON.stringify(un));
+    applyTheme(won,true); renderUser(false);
+    showToast('🎉 恭喜！你抽中並解鎖咗 '+THEMES[won].icon+' '+THEMES[won].label+' 主題，已經幫你套用！（餘下 '+getXP()+' XP）',5200);
+  });
+
+  /* ----- avatar picker (inside the username modal) ----- */
+  var selectedAvatar=getAvatar();
+  function paintAvatarOpts(){
+    document.querySelectorAll('[data-avatar]').forEach(function(btn){
+      var on=btn.getAttribute('data-avatar')===selectedAvatar;
+      btn.classList.toggle('on',on); btn.setAttribute('aria-checked',on?'true':'false');
+    });
+  }
+  var avatarOptsEl=document.getElementById('avatarOpts');
+  if(avatarOptsEl) avatarOptsEl.addEventListener('click',function(e){
+    var b=e.target.closest('[data-avatar]'); if(!b) return;
+    selectedAvatar=b.getAttribute('data-avatar'); paintAvatarOpts();
+  });
+  paintAvatarOpts();
+
+  /* ----- username modal (first visit) ----- */
+  var nameModal=document.getElementById('nameModal');
+  function openNameModal(){ if(nameModal){ nameModal.classList.add('open'); var inp=document.getElementById('nameInput'); if(inp) setTimeout(function(){ inp.focus(); },60); } }
+  function saveName(){
+    var inp=document.getElementById('nameInput'), err=document.getElementById('nameErr');
+    var v=(inp?inp.value:'').trim();
+    if(!v){ if(err) err.textContent='請輸入用戶名稱先可以開始。Please enter a username.'; return; }
+    var isNew=!getName();
+    lsSet(K_NAME,v.slice(0,24));
+    lsSet(K_AVATAR,selectedAvatar);
+    if(isNew && lsGet(K_EXP)===null){ setXP(100); if(err) err.textContent=''; if(nameModal) nameModal.classList.remove('open'); renderUser(false); showToast('🎁 歡迎 '+v+'！已派發 100 XP 新手禮包，祝你溫書順利！',4600); scheduleSync(); maybeShowUpdate(); return; }
+    if(nameModal) nameModal.classList.remove('open');
+    renderUser(false); scheduleSync(); maybeShowUpdate();
+  }
+  var nameSaveBtn=document.getElementById('nameSave');
+  if(nameSaveBtn) nameSaveBtn.addEventListener('click',saveName);
+  var nameInput=document.getElementById('nameInput');
+  if(nameInput) nameInput.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); saveName(); } });
+
+  /* ----- Supabase leaderboard ----- */
+  var supabaseClient=null;
+  try{
+    if(window.supabase && window.supabase.createClient){
+      supabaseClient=window.supabase.createClient('https://wwuszvynmdclsfbkvxfs.supabase.co','sb_publishable_do2NuYPqospBWhdrnp6Q1A_Xg1POnfG');
+    }
+  }catch(e){ supabaseClient=null; }
+
+  /* ----- Auto-sync: debounced upsert to the leaderboard -----
+     Every XP / theme change re-arms a 3-second timer, so a burst of
+     answers produces ONE background request carrying the latest score.
+     Failures are swallowed silently — syncing must never disturb study. */
+  var syncTimer=null, syncArmed=false;
+  function scheduleSync(){
+    if(syncTimer) clearTimeout(syncTimer);
+    syncTimer=setTimeout(syncScore,3000);
+  }
+  async function syncScore(){
+    try{
+      var name=getName();
+      if(!name || !supabaseClient) return;
+      var res=await supabaseClient.from('leaderboard').upsert({username:name,score:getXP(),avatar:getAvatar(),streak:getStreak(),mock_score:getMockScore()},{onConflict:'username'});
+      if(res.error) throw res.error;
+    }catch(e){ /* silent by design */ }
+  }
+
+  var lbModal=document.getElementById('lbModal'), lbBody=document.getElementById('lbBody'), lbMsg=document.getElementById('lbMsg');
+  function lbSetMsg(m){ if(lbMsg) lbMsg.textContent=m||''; }
+  var lbMode='xp';
+  async function loadLeaderboard(){
+    if(lbBody) lbBody.innerHTML='<p class="muted" style="margin-top:14px">載入中… Loading…</p>';
+    lbSetMsg('');
+    try{
+      if(!supabaseClient) throw new Error('no client');
+      var isMock=lbMode==='mock';
+      var res=await supabaseClient.from('leaderboard').select('*').order(isMock?'mock_score':'score',{ascending:false}).limit(20);
+      if(res.error) throw res.error;
+      var rows=res.data||[];
+      if(!rows.length){ lbBody.innerHTML='<p class="muted" style="margin-top:14px">排行榜暫時未有紀錄 — 做第一個上榜嘅人！</p>'; return; }
+      var me=getName(), h='<table class="lb-table"><thead><tr><th style="width:52px">名次</th><th>頭像</th><th>用戶</th><th class="n">🔥 Streak</th><th class="n">'+(isMock?'模擬試分數':'XP')+'</th></tr></thead><tbody>';
+      rows.forEach(function(r,idx){
+        var medal=idx===0?'🥇':idx===1?'🥈':idx===2?'🥉':(idx+1);
+        var mine=me && String(r.username||'')===me;
+        var val=isMock?(+r.mock_score||0):(+r.score||0);
+        h+='<tr'+(mine?' class="lb-me"':'')+'><td>'+medal+'</td><td style="font-size:20px">'+escHtml(r.avatar||'🦊')+'</td><td>'+escHtml(r.username||'—')+(mine?' （你）':'')+'</td><td class="n">🔥 '+(+r.streak||0)+' 天</td><td class="n">'+val+'</td></tr>';
+      });
+      h+='</tbody></table>';
+      lbBody.innerHTML=h;
+    }catch(e){
+      if(lbBody) lbBody.innerHTML='<p style="margin-top:14px">📡 暫時未能連接排行榜 <span class="muted">(Unable to load the leaderboard right now — check your connection and try again.)</span></p>';
+    }
+  }
+  document.querySelectorAll('[data-lbtab]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      lbMode=btn.getAttribute('data-lbtab')==='mock'?'mock':'xp';
+      document.querySelectorAll('[data-lbtab]').forEach(function(b){ var on=b===btn; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false'); });
+      loadLeaderboard();
+    });
+  });
+  function openLb(){ if(lbModal) lbModal.classList.add('open'); loadLeaderboard(); }
+  function closeLb(){ if(lbModal) lbModal.classList.remove('open'); }
+  var lbOpenBtn=document.getElementById('lbOpenBtn');
+  if(lbOpenBtn) lbOpenBtn.addEventListener('click',openLb);
+  var lbCloseBtn=document.getElementById('lbClose');
+  if(lbCloseBtn) lbCloseBtn.addEventListener('click',closeLb);
+  var lbRefreshBtn=document.getElementById('lbRefresh');
+  if(lbRefreshBtn) lbRefreshBtn.addEventListener('click',loadLeaderboard);
+  if(lbModal) lbModal.addEventListener('click',function(e){ if(e.target===lbModal) closeLb(); });
+
+  /* ----- Feedback: user comments + optional screenshot upload -----
+     The screenshot (if any) goes to the Supabase Storage bucket
+     'feedback-images' under a unique file name built from a timestamp,
+     the username and the sanitised original file name, so uploads never
+     overwrite each other. The row (username / content / image_url) is
+     then inserted into the 'feedback' table. Everything is wrapped in
+     try...catch: a failed submission shows a toast and never breaks
+     the revision features. */
+  var feedbackBtn=document.getElementById('feedbackBtn');
+  var feedbackModal=document.getElementById('feedbackModal');
+  var fbText=document.getElementById('feedbackText');
+  var fbFile=document.getElementById('feedbackFile');
+  var fbFileName=document.getElementById('feedbackFileName');
+  function openFeedback(){
+    var fu=document.getElementById('feedbackUser'); if(fu) fu.textContent=getName()||'同學';
+    if(feedbackModal) feedbackModal.classList.add('open');
+    if(fbText) setTimeout(function(){ fbText.focus(); },60);
+  }
+  function closeFeedback(){ if(feedbackModal) feedbackModal.classList.remove('open'); }
+  function resetFeedbackForm(){
+    if(fbText) fbText.value='';
+    if(fbFile) fbFile.value='';
+    if(fbFileName) fbFileName.textContent='';
+  }
+  if(feedbackBtn) feedbackBtn.addEventListener('click',openFeedback);
+  var fbCancelBtn=document.getElementById('feedbackCancel');
+  if(fbCancelBtn) fbCancelBtn.addEventListener('click',closeFeedback);
+  if(feedbackModal) feedbackModal.addEventListener('click',function(e){ if(e.target===feedbackModal) closeFeedback(); });
+  if(fbFile) fbFile.addEventListener('change',function(){
+    if(fbFileName) fbFileName.textContent=(fbFile.files&&fbFile.files[0])?('已選擇：'+fbFile.files[0].name):'';
+  });
+  function safeFilePart(s){ return String(s||'file').replace(/[^A-Za-z0-9._-]/g,'_'); }
+  var fbSubmitBtn=document.getElementById('feedbackSubmit');
+  if(fbSubmitBtn) fbSubmitBtn.addEventListener('click',async function(){
+    var content=(fbText?fbText.value:'').trim();
+    if(!content){ showToast('✏️ 請先寫低你嘅意見或者問題，先可以提交。'); if(fbText) fbText.focus(); return; }
+    var origLabel=fbSubmitBtn.textContent;
+    fbSubmitBtn.disabled=true; fbSubmitBtn.textContent='⏳ 提交中…';
+    try{
+      if(!supabaseClient) throw new Error('no client');
+      var username=getName()||'同學';
+      var imageUrl=null;
+      var file=(fbFile&&fbFile.files)?fbFile.files[0]:null;
+      if(file){
+        var path=Date.now()+'_'+safeFilePart(username)+'_'+safeFilePart(file.name);
+        var up=await supabaseClient.storage.from('feedback-images').upload(path,file);
+        if(up.error) throw up.error;
+        imageUrl=supabaseClient.storage.from('feedback-images').getPublicUrl(path).data.publicUrl;
+      }
+      var ins=await supabaseClient.from('feedback').insert([{username:username,content:content,image_url:imageUrl}]);
+      if(ins.error) throw ins.error;
+      closeFeedback(); resetFeedbackForm();
+      showToast('✅ 多謝你嘅意見！我哋會盡快跟進。',4200);
+    }catch(e){
+      showToast('📡 提交失敗，請檢查網絡後再試。',4200);
+    }finally{
+      fbSubmitBtn.disabled=false; fbSubmitBtn.textContent=origLabel;
+    }
+  });
+
+  /* ----- Version update notification -----
+     Shown once per APP_VERSION. Brand-new users see the name modal
+     first; saveName() calls maybeShowUpdate() again after they finish. */
+  var K_VER='sowk403_version';
+  var updateModal=document.getElementById('updateModal');
+  var updateList=document.getElementById('updateList');
+  if(updateList) updateList.innerHTML=CHANGELOG.map(function(c){ return '<li>'+escHtml(c)+'</li>'; }).join('');
+  function maybeShowUpdate(){
+    if(lsGet(K_VER)!==APP_VERSION && updateModal) updateModal.classList.add('open');
+  }
+  var updateOkBtn=document.getElementById('updateOk');
+  if(updateOkBtn) updateOkBtn.addEventListener('click',function(){
+    lsSet(K_VER,APP_VERSION);
+    if(updateModal) updateModal.classList.remove('open');
+  });
+
+  /* ----- Study streak -----
+     sowk403_last_login stores the last visit day (local YYYY-MM-DD).
+     Same day: streak unchanged. Yesterday: +1. Gap of 2+ days: reset
+     to 1. When the streak first reaches a multiple of 3 or 7 on a day,
+     a one-off 50 XP bonus is granted; sowk403_streak_rewarded records
+     that day so a same-day reload never pays out twice. */
+  function dayStr(d){ var m=d.getMonth()+1, dd=d.getDate(); return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd; }
+  function checkStreak(){
+    var now=new Date(), today=dayStr(now);
+    if(lsGet(K_LAST)===today) return getStreak();
+    var y=new Date(now.getTime()); y.setDate(y.getDate()-1);
+    var streak=(lsGet(K_LAST)===dayStr(y)) ? getStreak()+1 : 1;
+    lsSet(K_STREAK,String(streak)); lsSet(K_LAST,today);
+    if(streak>=3 && (streak%3===0 || streak%7===0) && lsGet(K_SREWARD)!==today){
+      lsSet(K_SREWARD,today);
+      showToast('🔥 連續溫書 '+streak+' 日！送你 50 XP！',4800);
+      window.awardXP(50);
+    }
+    return streak;
+  }
+
+  /* ----- init ----- */
+  applyTheme(getTheme(),true);
+  if(lsGet(K_EXP)===null && getName()) setXP(0);
+  checkStreak();
+  renderUser(false);
+  syncArmed=true;
+  if(!getName()) openNameModal(); else maybeShowUpdate();
+})();
 </script>
 </body>
 </html>
