@@ -236,7 +236,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 @media print{.gmodal,#gToast,.userbar,.assistant-row{display:none !important}}
 /* ===== V2.3 assistant greeting (Duolingo style) ===== */
 .assistant-row{display:flex;align-items:flex-start;gap:12px;margin-top:16px}
-.assistant-avatar{font-size:46px;line-height:1.1;flex:0 0 auto;animation:avatarBounce 1.6s ease-in-out infinite;filter:drop-shadow(0 3px 4px rgba(0,0,0,.18))}
+.assistant-avatar{font-size:46px;line-height:1.1;flex:0 0 auto;width:56px;height:56px;display:flex;align-items:center;justify-content:center;animation:avatarBounce 1.6s ease-in-out infinite;filter:drop-shadow(0 3px 4px rgba(0,0,0,.18))}
 @keyframes avatarBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @media(prefers-reduced-motion:reduce){.assistant-avatar{animation:none}}
 .assistant-bubble{position:relative;flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:18px;border-bottom-left-radius:6px;box-shadow:var(--shadow);padding:14px 42px 16px 16px}
@@ -267,7 +267,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 .inv-item{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:10px 8px;text-align:center}
 .inv-imgbox{height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
 .inv-imgbox img{max-width:100%;height:auto;max-height:64px;object-fit:contain;pointer-events:none}
-.avatar-wrap #userAvatar{position:relative;z-index:0}
+.avatar-wrap #userAvatar{position:relative;z-index:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
 .inv-name{font-size:13px;font-weight:700;line-height:1.35;min-height:34px}
 .rarity{display:inline-block;font-size:11px;font-weight:900;padding:1px 8px;border-radius:999px;margin:2px 0 6px}
 .rarity.R{background:var(--card);color:var(--muted);border:1px solid var(--line)}
@@ -277,20 +277,57 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 #gachaResultImg{margin:12px auto 4px;pointer-events:none}
 #gachaResultImg.frame{width:130px;height:130px;object-fit:contain}
 #gachaResultImg.banner{width:100%;max-width:280px;max-height:90px;object-fit:contain}
+#gachaResultImg.avatar{width:130px;height:130px;object-fit:cover;border-radius:50%}
+.inv-imgbox img.inv-avthumb{width:56px;height:56px;max-height:56px;object-fit:cover;border-radius:50%}
 .lb-avwrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:20px;line-height:1;vertical-align:middle;flex:0 0 auto}
 .lb-avwrap .lb-emoji{position:relative;z-index:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%;text-align:center;line-height:1}
 .lb-avwrap .lb-frameimg{position:absolute;inset:0;width:32px;height:32px;object-fit:cover;pointer-events:none;z-index:1}
 @media print{#invModal,#gachaModal{display:none !important}}
+/* ===== V2.6 gacha animation + floating background decor ===== */
+.gacha-egg{font-size:92px;line-height:1.1;display:inline-block;cursor:pointer;user-select:none;-webkit-user-select:none;padding:12px;border-radius:50%}
+.gacha-egg.shaking{animation:eggShake .45s ease-in-out infinite}
+@keyframes eggShake{0%,100%{transform:rotate(0deg) translateX(0)}20%{transform:rotate(-13deg) translateX(-4px)}40%{transform:rotate(11deg) translateX(4px)}60%{transform:rotate(-9deg) translateX(-3px)}80%{transform:rotate(7deg) translateX(3px)}}
+#gachaResultBox{display:flex;align-items:center;justify-content:center;margin:10px auto 2px}
+#gachaResultBox .item-img-frame{width:150px;height:150px;object-fit:contain}
+#gachaResultBox .item-img-banner{width:100%;max-width:300px;object-fit:contain}
+#gachaResultBox .item-img-avatar{width:80px;height:80px;object-fit:cover;border-radius:50%}
+.gacha-dup{font-weight:800;color:var(--gold)}
+#bgDecor span{position:absolute;line-height:1;opacity:.15;animation-name:bgFloatUp;animation-timing-function:linear;animation-iteration-count:infinite;will-change:transform}
+@keyframes bgFloatUp{0%{transform:translateY(12vh) rotate(-6deg)}50%{transform:translateY(-45vh) rotate(6deg)}100%{transform:translateY(-105vh) rotate(-6deg)}}
+@media(prefers-reduced-motion:reduce){#bgDecor span{animation:none}.gacha-egg.shaking{animation:none}}
+@media print{#bgDecor{display:none !important}}
+/* ===== V2.7 legal vocabulary ===== */
+.vocab-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 6px}
+.vocab-tabs button{min-height:42px;padding:8px 18px;font-size:15px;border-radius:999px}
+.vocab-panel{margin-top:10px}
+#vocabTable{min-width:700px;width:100%}
+#vocabTable th:nth-child(1),#vocabTable td:nth-child(1){min-width:210px}
+#vocabTable th:nth-child(4),#vocabTable td:nth-child(4){min-width:240px}
+.speak-btn{min-height:32px;min-width:36px;padding:2px 8px;margin-left:6px;font-size:14px;border-radius:999px;vertical-align:middle}
+.vfl-en{font-size:26px;font-weight:900;line-height:1.3}
+.vfl-ex{font-size:15.5px;line-height:1.6;margin-top:8px}
+.vfl-desc{font-size:14px;line-height:1.6;margin-top:8px;opacity:.85}
+.spell-q{font-size:19px;font-weight:800;margin:6px 0 12px}
+.spell-row{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+.spell-row input{flex:1 1 220px;font-size:17px}
+.spell-hint{font-size:19px;letter-spacing:2px;font-weight:700;margin-top:10px;min-height:26px}
+.spell-result{margin-top:14px;font-size:17px}
+.spell-result .ok{color:var(--green);font-weight:900}
+.spell-result .bad{color:var(--red);font-weight:900}
+.spell-detail{background:var(--card2);border-radius:12px;padding:12px 14px;font-size:14.5px;line-height:1.65;margin-top:10px}
+.spell-streak{font-weight:900;font-size:16px}
+@media print{#vocab{display:none !important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+<div id="bgDecor" style="position:fixed; inset:0; pointer-events:none; z-index:-1; overflow:hidden;" aria-hidden="true"></div>
 
 <div class="topbar"><div class="topbar-in">
   <button id="menuBtn" aria-label="開啟選單 Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
   <div class="userbar" aria-label="用戶與遊戲化 User and rewards">
     <span class="user-chip" id="userChip"><span class="avatar-wrap"><span id="userAvatar" aria-hidden="true">🦊</span><img id="userFrameImg" alt="" aria-hidden="true" onerror="this.style.display='none'" style="display:none;position:absolute;inset:-4px;width:40px;height:40px;object-fit:contain;pointer-events:none;z-index:1"></span> <span class="nf-frame" id="nameWrap"><img id="userBannerImg" class="nf-bg" alt="" aria-hidden="true" onerror="this.style.display='none'" style="display:none"><span id="userName" class="nf-txt">同學</span></span> <span aria-hidden="true">|</span> <span class="xp">🌟 XP: <span id="xpVal">0</span></span> <span aria-hidden="true">|</span> <span class="streak">🔥 Streak: <span id="streakVal">0</span> 天</span></span>
-    <button id="gachaBtn" class="small" aria-label="抽蛋，50 XP 隨機抽頭像框或名字框 Gacha, 50 XP">🥚 抽蛋 (50 XP)</button>
+    <button id="gachaBtn" class="small" aria-label="抽蛋，50 XP 隨機抽頭像框、名字框或特殊頭像 Gacha, 50 XP">🥚 抽蛋 (50 XP)</button>
     <button id="invOpenBtn" class="small" aria-label="開啟背包 Open inventory">🎒 背包</button>
     <button id="lbOpenBtn" class="small" aria-label="開啟排行榜 Open leaderboard">🏆 排行榜</button>
   </div>
@@ -305,6 +342,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
   <button data-go="notes">重點筆記 Notes <span>L1–L9 + L10–L12 補充</span></button>
   <button data-go="cases">案例庫 Cases Q1–Q20 <span>20 個導修案例</span></button>
   <button data-go="flash">Flashcards <span>28 張背誦卡</span></button>
+  <button data-go="vocab">📖 法律詞彙 Vocab <span>100 詞・總表＋閃卡＋拼寫</span></button>
   <button data-go="mc">MC 練習 <span>400 題</span></button>
   <button data-go="shortq">Short Q 練習 <span>100 題・一次一題</span></button>
   <button data-go="mock">模擬試 Mock Exam <span>隨機 10 MC + 2 Short Q</span></button>
@@ -352,6 +390,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
     <button class="cat-row" data-go="mc"><span class="cn">MC 練習</span><span class="cm">400 題 →</span></button>
     <button class="cat-row" data-go="shortq"><span class="cn">Short Q 練習</span><span class="cm">100 題 →</span></button>
     <button class="cat-row" data-go="flash"><span class="cn">Flashcards 背誦卡</span><span class="cm">28 張 →</span></button>
+    <button class="cat-row" data-go="vocab"><span class="cn">📖 法律詞彙</span><span class="cm">100 詞 →</span></button>
     <button class="cat-row" data-go="notes"><span class="cn">重點筆記</span><span class="cm">L1–L12 →</span></button>
     <button class="cat-row" data-go="cases"><span class="cn">案例庫 Q1–Q20</span><span class="cm">20 案例 →</span></button>
     <button class="cat-row" data-go="plan"><span class="cn">7 日衝刺計劃</span><span class="cm">每日清單 →</span></button>
@@ -403,7 +442,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
     <button id="resetBtn" class="small" aria-label="清除全部進度 Reset all progress">↺ 清除全部進度 Reset</button>
     <span id="resetMsg" class="muted small" role="status" aria-live="polite"></span>
   </div>
-  <p class="muted small" style="text-align:center;margin:16px 0 4px">版本 Version 2.4</p>
+  <p class="muted small" style="text-align:center;margin:16px 0 4px">版本 Version 2.7</p>
 </section>
 
 <!-- OVERVIEW -->
@@ -1188,6 +1227,62 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
   </div>
 </section>
 
+<!-- VOCAB -->
+<section id="vocab" class="view">
+  <div class="mod-head"><div class="kicker">Legal Vocabulary 法律詞彙</div><h1>📖 法律詞彙庫</h1><p>L1–L9 共 100 個核心法律詞彙：總表查閱＋發音、閃卡回想、拼寫挑戰練返考試要寫得出嘅英文。</p></div>
+  <div class="vocab-tabs" role="group" aria-label="詞彙練習模式 Vocabulary modes">
+    <button type="button" class="active" data-vtab="glossary" aria-label="詞彙總表 Glossary">📚 詞彙總表</button>
+    <button type="button" data-vtab="flash" aria-label="詞彙閃卡 Vocab flashcards">📇 詞彙閃卡</button>
+    <button type="button" data-vtab="spell" aria-label="拼寫挑戰 Spelling challenge">⌨️ 拼寫挑戰</button>
+  </div>
+
+  <div class="vocab-panel" id="vpanel-glossary">
+    <input id="vocabSearch" type="search" placeholder="🔍 搜尋詞彙（英文／中文／解釋）… 例：negligence / 疏忽 / duty" aria-label="搜尋詞彙 Search vocabulary">
+    <p class="muted small" id="vocabCount" role="status" style="margin:10px 0 4px"></p>
+    <div class="table-scroll" id="vocabTableScroll"></div>
+  </div>
+
+  <div class="vocab-panel" id="vpanel-flash" hidden>
+    <div class="flash" id="vocabFlash" tabindex="0" role="button" aria-label="詞彙閃卡，撳一下或按 Enter／Space 翻卡 Vocab flashcard, activate to flip">
+      <div class="flash-inner">
+        <div class="face"><div class="tag gold" id="vflMeta"></div><div class="q" id="vflFront" style="font-size:30px"></div><div class="muted small">撳卡睇英文答案 · <span id="vflPos"></span></div></div>
+        <div class="face back"><div class="tag">英文答案 Answer</div><div id="vflBack"></div></div>
+      </div>
+    </div>
+    <div id="vflRates" style="display:none;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+      <button type="button" class="grade-btn" data-vgrade="again" aria-label="唔記得 Again">🔴 Again</button>
+      <button type="button" class="grade-btn" data-vgrade="good" aria-label="記得 Good">🟡 Good</button>
+      <button type="button" class="grade-btn" data-vgrade="easy" aria-label="好熟 Easy">🟢 Easy</button>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+      <button type="button" id="vflRandom" aria-label="隨機抽一張詞彙卡 Random vocab card">🔀 隨機抽</button>
+      <button type="button" id="vflFlip" class="gold" aria-label="翻轉詞彙卡 Flip vocab card">🔄 翻轉 Flip</button>
+      <button type="button" id="vflNext" class="primary" aria-label="下一張詞彙卡 Next vocab card">下一張 →</button>
+    </div>
+    <p class="muted small" style="text-align:center;margin-top:10px">翻開答案後撳 Good 或 Easy，每個詞今次開頁只會計一次 +5 XP。</p>
+  </div>
+
+  <div class="vocab-panel" id="vpanel-spell" hidden>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
+        <span class="spell-streak" id="spellStreakLabel">🔥 連勝：0</span>
+        <span class="muted small">答啱 +10 XP（用咗提示唔計 XP）；連啱每 5 題額外 +20 XP</span>
+      </div>
+      <p class="spell-q" id="spellQ"></p>
+      <div class="spell-row">
+        <input id="spellInput" type="text" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="輸入英文詞彙…" aria-label="輸入英文答案 Type the English term">
+        <button type="button" id="spellSubmit" class="primary" aria-label="提交答案 Submit answer">提交</button>
+        <button type="button" id="spellHintBtn" aria-label="顯示提示 Show hint">💡 提示</button>
+      </div>
+      <div class="spell-hint" id="spellHintText" aria-live="polite"></div>
+      <div class="spell-result" id="spellResult" role="status" aria-live="polite"></div>
+      <div style="text-align:center;margin-top:14px">
+        <button type="button" id="spellNext" class="primary" style="display:none" aria-label="下一題 Next question">下一題 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MC -->
 <section id="mc" class="view">
   <div class="mod-head"><div class="kicker">MC Practice</div><h1>MC 練習</h1><p>Questions and answers in English; explanations in English + 中文。即做即對，答完可以按記憶程度排下次複習。</p></div>
@@ -1297,7 +1392,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 
 <footer>
   資料來源：SOWK403 課程大綱、L1–L9 講義 slides（Dr. Kwan Wai-hong）、Q1–Q20 導修案例文件、Law Made Simple Ch.1。L10–L12 講義未發放，相關內容以 Q17–Q20 文件為據，實際考試範圍以老師最新公布為準。本頁題目為按課程內容自擬嘅練習題，唔係真試卷或 past paper。
-  <div class="muted small" style="margin-top:10px;text-align:center">版本 Version 2.4</div>
+  <div class="muted small" style="margin-top:10px;text-align:center">版本 Version 2.7</div>
 </footer>
 </div>
 
@@ -1308,7 +1403,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 <div class="gmodal" id="nameModal" role="dialog" aria-modal="true" aria-labelledby="nameModalTitle">
   <div class="gmodal-card">
     <h2 id="nameModalTitle">👋 歡迎嚟到 SOWK403 溫書站！</h2>
-    <p class="muted" style="margin:0;font-size:14.5px">先輸入你嘅用戶名稱，先可以開始儲 XP、抽蛋抽頭像框同名字框，同上傳成績去排行榜。新用戶即刻有 <b>🌟 100 XP 新手禮包</b>！</p>
+    <p class="muted" style="margin:0;font-size:14.5px">先輸入你嘅用戶名稱，先可以開始儲 XP、抽蛋抽頭像框、名字框同特殊頭像，同上傳成績去排行榜。新用戶即刻有 <b>🌟 100 XP 新手禮包</b>！</p>
     <label class="small muted" for="nameInput" style="display:block;margin-top:14px">用戶名稱 Username</label>
     <input id="nameInput" type="text" maxlength="24" placeholder="例如：Chiu" autocomplete="off">
     <p id="nameErr" class="small" style="color:var(--red);margin:6px 0 0;min-height:18px" role="alert"></p>
@@ -1321,6 +1416,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
       <button type="button" class="avatar-opt" data-avatar="🐼" role="radio" aria-checked="false" aria-label="熊貓 Panda">🐼</button>
       <button type="button" class="avatar-opt" data-avatar="🐨" role="radio" aria-checked="false" aria-label="樹熊 Koala">🐨</button>
     </div>
+    <p class="small muted" style="margin:8px 0 0">💡 可透過抽蛋解鎖特殊頭像（寶可夢與皮克敏）！</p>
     <div class="row"><button id="nameSave" class="primary" style="flex:1">開始溫書 Start →</button></div>
   </div>
 </div>
@@ -1349,25 +1445,39 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 <div class="gmodal" id="invModal" role="dialog" aria-modal="true" aria-labelledby="invTitle">
   <div class="gmodal-card">
     <h2 id="invTitle">🎒 背包 Inventory</h2>
-    <p class="muted" style="margin:0;font-size:14px">你抽中嘅頭像框同名字框會喺呢度，撳「裝備」即刻套用喺 Navbar 同排行榜。</p>
+    <p class="muted" style="margin:0;font-size:14px">你抽中嘅頭像框、名字框同特殊頭像會喺呢度，撳「裝備」即刻套用喺 Navbar 同排行榜。</p>
     <h3 style="margin:16px 0 0;font-size:16px">🖼️ 頭像框 Avatar Frames</h3>
     <div id="invFrames"></div>
     <h3 style="margin:18px 0 0;font-size:16px">🏷️ 名字框 Name Frames</h3>
     <div id="invBanners"></div>
+    <h3 style="margin:18px 0 0;font-size:16px">🖼️ 特殊頭像 Special Avatars</h3>
+    <div id="invAvatars"></div>
+    <div class="row" style="margin-top:12px"><button id="invUseEmoji" class="small" style="flex:1">↩️ 用返 Emoji 頭像</button></div>
     <div class="row"><button id="invClose" class="small" style="flex:1">關閉 Close</button></div>
   </div>
 </div>
 
-<!-- V2.4: gacha result modal -->
+<!-- V2.6: gacha modal — shake animation first, result revealed after.
+     Settlement already happened before this opens (see the draw handler);
+     while shaking it cannot be closed (backdrop / ESC are inert), a tap
+     on the egg skips the animation, and only 確認 closes it after the
+     reveal. -->
 <div class="gmodal" id="gachaModal" role="dialog" aria-modal="true" aria-labelledby="gachaTitle">
   <div class="gmodal-card" style="text-align:center">
-    <h2 id="gachaTitle">🎉 恭喜抽中！</h2>
-    <img id="gachaResultImg" alt="抽中嘅物品 Gacha prize" onerror="this.style.display='none'">
-    <p style="margin:4px 0 0;font-size:17px;font-weight:800" id="gachaResultName"></p>
-    <p style="margin:2px 0 0" id="gachaResultMeta"></p>
-    <div class="row" style="justify-content:center">
-      <button id="gachaToInv" class="primary">🎒 去背包裝備</button>
-      <button id="gachaOk">知道了</button>
+    <div id="gachaStage">
+      <div class="gacha-egg" id="gachaEgg" role="button" tabindex="0" aria-label="跳過動畫 Skip animation" title="撳一下跳過動畫">🥚</div>
+      <p class="muted" style="margin:6px 0 0">🎰 抽蛋中…<br><span class="small">撳個蛋可以跳過動畫</span></p>
+    </div>
+    <div id="gachaResult" style="display:none">
+      <h2 id="gachaTitle">🎉 恭喜抽中！</h2>
+      <div id="gachaResultBox"></div>
+      <p style="margin:4px 0 0;font-size:17px;font-weight:800" id="gachaResultName"></p>
+      <p style="margin:2px 0 0" id="gachaResultMeta"></p>
+      <p class="gacha-dup" id="gachaDupMsg" style="display:none;margin:8px 0 0">抽到重複物品！已轉換為 25 XP</p>
+      <div class="row" style="justify-content:center">
+        <button id="gachaOk" class="primary">確認</button>
+        <button id="gachaToInv">🎒 去背包裝備</button>
+      </div>
     </div>
   </div>
 </div>
@@ -2015,7 +2125,7 @@ if(printBtn) printBtn.addEventListener('click',function(){
   window.print();
 });
 /* nav + dashboard rendering */
-var VIEW_IDS=['study','analysis','settings','overview','notes','cases','flash','mc','shortq','mock','plan','howto'];
+var VIEW_IDS=['study','analysis','settings','overview','notes','cases','flash','vocab','mc','shortq','mock','plan','howto'];
 function showView(id){
   VIEW_IDS.forEach(function(v){ var el=document.getElementById(v); if(el) el.classList.toggle('active', v===id); });
   var segBtns=document.querySelectorAll('.seg button');
@@ -2025,6 +2135,7 @@ function showView(id){
   var mb2=document.getElementById('menuBtn'); if(mb2) mb2.setAttribute('aria-expanded','false');
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='shortq'&&!sqQueue.length&&!sqDone) startSq('continue');
+  if(typeof window.onViewShown==='function') window.onViewShown(id);
 }
 document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ showView(b.getAttribute('data-go')); }); });
 var menuBtn=document.getElementById('menuBtn');
@@ -2082,11 +2193,14 @@ window.addEventListener('beforeprint', function() {
 
 </script>
 <script>
-const APP_VERSION = '2.4';
+const APP_VERSION = '2.7';
 /* CHANGELOG is keyed by version so the update modal only ever shows the
    current version's notes; keep the most recent 3–4 versions and delete
    older keys by hand. maybeShowUpdate() reads CHANGELOG[APP_VERSION]. */
 const CHANGELOG = {
+  '2.7': ['📖 新增法律詞彙庫', '🔍 詞彙搜尋與發音', '⌨️ 拼寫挑戰'],
+  '2.6': ['🎰 扭蛋動畫升級', '🌌 動態背景元素'],
+  '2.5': ['🖼️ 新增特殊頭像（寶可夢與皮克敏）', '🎒 背包新增特殊頭像區', '🔄 頭像渲染改用 renderAvatar()'],
   '2.4': ['🎒 新增裝備與扭蛋系統', '🖼️ 新增頭像框與名字框', '🎨 主題改為免費任揀'],
   '2.3': ['🌞 新增專屬助手打招呼', '🔔 修復更新提示框', '🧹 自動清理舊更新紀錄'],
   '2.2': ['💬 新增意見反饋及截圖上傳'],
@@ -2099,7 +2213,7 @@ const CHANGELOG = {
 (function(){
   var K_NAME='sowk403_username', K_EXP='sowk403_exp', K_THEME='sowk403_theme', K_UNLOCK='sowk403_unlocked';
   var K_AVATAR='sowk403_avatar', K_LAST='sowk403_last_login', K_STREAK='sowk403_streak', K_MOCK='sowk403_mock_score', K_SREWARD='sowk403_streak_rewarded';
-  var K_INV='sowk403_inventory', K_EQF='sowk403_equipped_avatar_frame', K_EQB='sowk403_equipped_name_frame';
+  var K_INV='sowk403_inventory', K_EQF='sowk403_equipped_avatar_frame', K_EQB='sowk403_equipped_name_frame', K_EA='sowk403_equipped_avatar';
   /* ===== V2.4 item pool: 23 items with FIXED rarities (14 R / 7 SR / 2 SSR).
      Images live in the repo's assets/ folder next to this file and are
      referenced by relative path; the gacha draws uniformly at random. ===== */
@@ -2128,10 +2242,35 @@ const CHANGELOG = {
     {id:'banner_10',type:'name_frame',name:'彩虹夢幻帶',rarity:'SR',path:'assets/banner_10.png'},
     {id:'banner_11',type:'name_frame',name:'傳說龍紋帶',rarity:'SSR',path:'assets/banner_11.png'}
   ];
+  /* ===== V2.5 special avatar pool: 17 Pokémon & Pikmin avatars with FIXED
+     rarities (10 R / 5 SR / 2 SSR). Merged into ITEM_POOL below, so the
+     gacha draws uniformly over all 40 items and the inventory + duplicate
+     refund (25 XP) treat special avatars exactly like frames. ===== */
+  var AVATAR_POOL=[
+    {id:'avatar_1',type:'special_avatar',name:'杰尼龜',rarity:'R',img:'assets/avatar_1.png',path:'assets/avatar_1.png'},
+    {id:'avatar_2',type:'special_avatar',name:'比卡超',rarity:'SSR',img:'assets/avatar_2.png',path:'assets/avatar_2.png'},
+    {id:'avatar_3',type:'special_avatar',name:'妙蛙種子',rarity:'R',img:'assets/avatar_3.png',path:'assets/avatar_3.png'},
+    {id:'avatar_4',type:'special_avatar',name:'小火龍',rarity:'R',img:'assets/avatar_4.png',path:'assets/avatar_4.png'},
+    {id:'avatar_5',type:'special_avatar',name:'紅皮克敏',rarity:'R',img:'assets/avatar_5.png',path:'assets/avatar_5.png'},
+    {id:'avatar_6',type:'special_avatar',name:'藍皮克敏',rarity:'R',img:'assets/avatar_6.png',path:'assets/avatar_6.png'},
+    {id:'avatar_7',type:'special_avatar',name:'黃皮克敏',rarity:'R',img:'assets/avatar_7.png',path:'assets/avatar_7.png'},
+    {id:'avatar_8',type:'special_avatar',name:'伊布',rarity:'SR',img:'assets/avatar_8.png',path:'assets/avatar_8.png'},
+    {id:'avatar_9',type:'special_avatar',name:'卡比獸',rarity:'SR',img:'assets/avatar_9.png',path:'assets/avatar_9.png'},
+    {id:'avatar_10',type:'special_avatar',name:'胖丁',rarity:'R',img:'assets/avatar_10.png',path:'assets/avatar_10.png'},
+    {id:'avatar_11',type:'special_avatar',name:'岩石皮克敏',rarity:'R',img:'assets/avatar_11.png',path:'assets/avatar_11.png'},
+    {id:'avatar_12',type:'special_avatar',name:'羽毛皮克敏',rarity:'SR',img:'assets/avatar_12.png',path:'assets/avatar_12.png'},
+    {id:'avatar_13',type:'special_avatar',name:'耿鬼',rarity:'SR',img:'assets/avatar_13.png',path:'assets/avatar_13.png'},
+    {id:'avatar_14',type:'special_avatar',name:'波加曼',rarity:'R',img:'assets/avatar_14.png',path:'assets/avatar_14.png'},
+    {id:'avatar_15',type:'special_avatar',name:'白皮克敏',rarity:'R',img:'assets/avatar_15.png',path:'assets/avatar_15.png'},
+    {id:'avatar_16',type:'special_avatar',name:'噴火龍',rarity:'SSR',img:'assets/avatar_16.png',path:'assets/avatar_16.png'},
+    {id:'avatar_17',type:'special_avatar',name:'紫皮克敏',rarity:'SR',img:'assets/avatar_17.png',path:'assets/avatar_17.png'}
+  ];
+  for(var _ai=0;_ai<AVATAR_POOL.length;_ai++) ITEM_POOL.push(AVATAR_POOL[_ai]);
   function itemById(id){ for(var i=0;i<ITEM_POOL.length;i++) if(ITEM_POOL[i].id===id) return ITEM_POOL[i]; return null; }
   function getInventory(){ try{ var a=JSON.parse(lsGet(K_INV)||'[]'); return Array.isArray(a)?a.filter(function(x){ return !!itemById(x); }):[]; }catch(e){ return []; } }
   function getEqFrame(){ return lsGet(K_EQF)||''; }
   function getEqBanner(){ return lsGet(K_EQB)||''; }
+  function getEqAvatar(){ return lsGet(K_EA)||''; }
   var THEMES={default:{label:'Default 預設',icon:'🎓'},pikmin:{label:'Pikmin 皮克敏',icon:'🌱'},pikachu:{label:'Pikachu 皮卡丘',icon:'⚡'}};
   function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
@@ -2146,11 +2285,26 @@ const CHANGELOG = {
   function escHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
   var toastTimer=null;
+  window.showToast=function(msg,ms){ showToast(msg,ms); };
   function showToast(msg,ms){
     var t=document.getElementById('gToast'); if(!t) return;
     t.textContent=msg; t.classList.add('show');
     if(toastTimer) clearTimeout(toastTimer);
     toastTimer=setTimeout(function(){ t.classList.remove('show'); }, ms||3200);
+  }
+
+  /* ----- V2.5 renderAvatar(): the ONE way avatars are rendered -----
+     No argument → the LOCAL user: the equipped special avatar image
+     (sowk403_equipped_avatar path) when set, otherwise the chosen emoji.
+     With an argument → a REMOTE leaderboard row's avatar value: a path
+     (starts with 'assets/' or ends in '.png') renders as a round <img>,
+     anything else renders as emoji text. onerror hides a missing image,
+     so a not-yet-uploaded file never shows a broken-image icon. */
+  function isAvatarPath(v){ return typeof v==='string' && (v.indexOf('assets/')===0 || /\.png$/i.test(v)); }
+  function renderAvatar(value){
+    var v=(value===undefined)?(getEqAvatar()||getAvatar()):(value||'🦊');
+    if(isAvatarPath(v)) return '<img src="'+escHtml(v)+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.style.display=\'none\'">';
+    return escHtml(v);
   }
 
   /* ----- V2.4 equipped-frame overlays in the navbar -----
@@ -2180,7 +2334,7 @@ const CHANGELOG = {
   function renderUser(pop){
     var n=getName(), x=getXP();
     var un=document.getElementById('userName'); if(un) un.textContent=n||'同學';
-    var av=document.getElementById('userAvatar'); if(av) av.textContent=getAvatar();
+    var av=document.getElementById('userAvatar'); if(av) av.innerHTML=renderAvatar();
     var sv=document.getElementById('streakVal'); if(sv) sv.textContent=getStreak();
     var xv=document.getElementById('xpVal'); if(xv) xv.textContent=x;
     var sx=document.getElementById('setXp'); if(sx) sx.textContent=x;
@@ -2197,7 +2351,7 @@ const CHANGELOG = {
      button only hides the bubble for this visit — no localStorage —
      so it comes back on the next load / refresh. */
   function renderGreeting(){
-    var av=document.getElementById('assistantAvatar'); if(av) av.textContent=getAvatar();
+    var av=document.getElementById('assistantAvatar'); if(av) av.innerHTML=renderAvatar();
     var txt=document.getElementById('assistantText'); if(!txt) return;
     var name=getName()||'同學', streak=getStreak(), xp=getXP(), msg;
     if(streak>=3){
@@ -2231,12 +2385,38 @@ const CHANGELOG = {
     scheduleSync();
   };
 
+  /* ----- V2.6 floating background decor -----
+     #bgDecor is a fixed, pointer-events:none layer at z-index:-1: the
+     page background itself is painted on the canvas (body background
+     propagation), so the emoji stay visible in the gaps between the
+     opaque white cards — which naturally cover the decor behind them.
+     Regenerated on load (applyTheme runs at init) and on every theme
+     switch: 8 emoji on desktop, 4 at <=760px, each with a random
+     position, duration and negative delay so they drift upward out of
+     phase with each other. prefers-reduced-motion stops the drift in
+     CSS (animation:none). */
+  var BG_SETS={default:['⭐','✨','💫'],pikmin:['🍃','🌿','🌱'],pikachu:['⚡','✨','💛']};
+  function renderBgDecor(){
+    var box=document.getElementById('bgDecor'); if(!box) return;
+    var set=BG_SETS[getTheme()]||BG_SETS.default;
+    var n=8; try{ n=window.matchMedia('(max-width: 760px)').matches?4:8; }catch(e){}
+    var h='';
+    for(var i=0;i<n;i++){
+      var e=set[Math.floor(Math.random()*set.length)];
+      var left=(Math.random()*94).toFixed(1), top=(55+Math.random()*40).toFixed(1);
+      var dur=(16+Math.random()*18).toFixed(1), delay=(-Math.random()*24).toFixed(1);
+      var size=Math.round(20+Math.random()*18);
+      h+='<span style="left:'+left+'%;top:'+top+'%;font-size:'+size+'px;animation-duration:'+dur+'s;animation-delay:'+delay+'s">'+e+'</span>';
+    }
+    box.innerHTML=h;
+  }
+
   /* ----- themes ----- */
   function applyTheme(t,quiet){
     if(!THEMES[t]) t='default';
     document.body.classList.remove('theme-pikmin','theme-pikachu');
     if(t!=='default') document.body.classList.add('theme-'+t);
-    lsSet(K_THEME,t); renderThemeOpts();
+    lsSet(K_THEME,t); renderThemeOpts(); renderBgDecor();
     if(syncArmed) scheduleSync();
   }
   function renderThemeOpts(){
@@ -2256,36 +2436,95 @@ const CHANGELOG = {
     });
   });
 
-  /* ----- V2.4 gacha: frames only (Pikmin / Pikachu themes are free in
-     Settings now). Costs 50 XP, draws uniformly from ITEM_POOL. A
-     duplicate converts back to 25 XP; a new item joins the inventory,
-     shows the prize modal and triggers an auto-sync. ----- */
+  /* ----- V2.6 gacha: ATOMIC settlement first, animation second -----
+     The draw handler settles EVERYTHING before the modal opens:
+     XP check → deduct 50 XP (existing sowk403_exp store) → draw →
+     duplicate ? awardXP(25) exactly once : add to sowk403_inventory →
+     renderUser + one scheduleSync(). Only then isDrawing=true and the
+     gachaModal opens with the shaking egg; the 1.5s animation is pure
+     presentation and can never re-run the settlement. isDrawing locks
+     the button against double-taps. revealGacha() has a guard so the
+     timer and the tap-to-skip can only reveal once between them.
+     While shaking, backdrop clicks and ESC are inert; after the
+     reveal only 確認 (or 去背包裝備) closes the modal, and closing
+     clears the timer, resets the modal to its shaking state and sets
+     isDrawing=false. prefers-reduced-motion shortens the wait to 0. */
+  let isDrawing = false;
   var gachaModal=document.getElementById('gachaModal');
-  function closeGacha(){ if(gachaModal) gachaModal.classList.remove('open'); }
+  var gachaEgg=document.getElementById('gachaEgg');
+  var gachaStage=document.getElementById('gachaStage');
+  var gachaResult=document.getElementById('gachaResult');
+  var gachaTimer=null, gachaRevealed=false, gachaWon=null, gachaDup=false;
+  function gachaReducedMotion(){ try{ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+  function gachaImgHtml(it){
+    var onerr=' onerror="this.style.display=\'none\'"';
+    if(it.type==='avatar_frame') return '<img class="item-img-frame" src="'+it.path+'" alt="'+escHtml(it.name)+'" style="object-fit:contain"'+onerr+'>';
+    if(it.type==='name_frame') return '<img class="item-img-banner" src="'+it.path+'" alt="'+escHtml(it.name)+'" style="object-fit:contain;max-height:60px"'+onerr+'>';
+    return '<img class="item-img-avatar" src="'+it.path+'" alt="'+escHtml(it.name)+'" style="object-fit:cover;border-radius:50%;width:80px;height:80px"'+onerr+'>';
+  }
+  function revealGacha(){
+    if(gachaRevealed) return; /* guard: timer + skip reveal only once */
+    gachaRevealed=true;
+    if(gachaTimer){ clearTimeout(gachaTimer); gachaTimer=null; }
+    if(!gachaWon) return;
+    if(gachaEgg) gachaEgg.classList.remove('shaking');
+    if(gachaStage) gachaStage.style.display='none';
+    var box=document.getElementById('gachaResultBox'); if(box) box.innerHTML=gachaImgHtml(gachaWon);
+    var title=document.getElementById('gachaTitle'); if(title) title.textContent=gachaDup?'🎰 抽蛋結果':'🎉 恭喜抽中！';
+    var nm=document.getElementById('gachaResultName'); if(nm) nm.textContent=gachaWon.name;
+    var mt=document.getElementById('gachaResultMeta');
+    if(mt) mt.innerHTML='<span class="rarity '+gachaWon.rarity+'">'+gachaWon.rarity+'</span> '+(gachaWon.type==='avatar_frame'?'頭像框':gachaWon.type==='special_avatar'?'特殊頭像':'名字框')+' · 餘下 '+getXP()+' XP';
+    var dup=document.getElementById('gachaDupMsg'); if(dup) dup.style.display=gachaDup?'block':'none';
+    if(gachaResult) gachaResult.style.display='block';
+  }
+  function resetGachaModal(){
+    if(gachaTimer){ clearTimeout(gachaTimer); gachaTimer=null; }
+    gachaRevealed=false; gachaWon=null; gachaDup=false;
+    if(gachaResult) gachaResult.style.display='none';
+    if(gachaStage) gachaStage.style.display='block';
+    if(gachaEgg) gachaEgg.classList.remove('shaking');
+    var box=document.getElementById('gachaResultBox'); if(box) box.innerHTML='';
+  }
+  function closeGacha(){
+    if(!gachaRevealed) return; /* locked while shaking */
+    if(gachaModal) gachaModal.classList.remove('open');
+    resetGachaModal();
+    isDrawing=false;
+  }
   var gachaBtn=document.getElementById('gachaBtn');
   if(gachaBtn) gachaBtn.addEventListener('click',function(){
+    if(isDrawing) return; /* state lock: no double draws */
     var xp=getXP();
     if(xp<50){ showToast('🥚 XP 唔夠！抽蛋需要 50 XP，你而家得 '+xp+' XP。答啱 MC 或者完成 Short Q 自評，每次 +5 XP。',4600); return; }
+    /* --- atomic settlement: all of this completes BEFORE the modal
+       opens, so the animation can never charge or refund twice --- */
     setXP(xp-50);
     var won=ITEM_POOL[Math.floor(Math.random()*ITEM_POOL.length)];
     var inv=getInventory();
-    if(inv.indexOf(won.id)>=0){
-      renderUser(false);
-      showToast('抽到重複物品！已轉換為 25 XP',4200);
-      window.awardXP(25);
-      return;
-    }
-    inv.push(won.id); lsSet(K_INV,JSON.stringify(inv));
+    var isDup=inv.indexOf(won.id)>=0;
+    if(isDup){ window.awardXP(25); } /* duplicate refund, exactly once */
+    else { inv.push(won.id); lsSet(K_INV,JSON.stringify(inv)); }
     renderUser(false); scheduleSync();
-    var img=document.getElementById('gachaResultImg');
-    if(img){ img.onerror=function(){ this.style.display='none'; }; img.style.display='block'; img.src=won.path; img.alt=won.name; img.className=(won.type==='avatar_frame'?'frame':'banner'); }
-    var nm=document.getElementById('gachaResultName'); if(nm) nm.textContent='🎉 恭喜抽中 '+won.name+'！';
-    var mt=document.getElementById('gachaResultMeta'); if(mt) mt.innerHTML='<span class="rarity '+won.rarity+'">'+won.rarity+'</span> '+(won.type==='avatar_frame'?'頭像框':'名字框')+' · 餘下 '+getXP()+' XP';
+    /* --- presentation only from here on --- */
+    resetGachaModal();
+    gachaWon=won; gachaDup=isDup;
+    isDrawing=true;
     if(gachaModal) gachaModal.classList.add('open');
+    if(gachaEgg) gachaEgg.classList.add('shaking');
+    gachaTimer=setTimeout(revealGacha, gachaReducedMotion()?0:1500);
   });
+  if(gachaEgg){
+    gachaEgg.addEventListener('click',function(){ if(isDrawing) revealGacha(); }); /* tap the egg to skip */
+    gachaEgg.addEventListener('keydown',function(e){ if(isDrawing && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); revealGacha(); } });
+  }
   var gachaOkBtn=document.getElementById('gachaOk');
   if(gachaOkBtn) gachaOkBtn.addEventListener('click',closeGacha);
-  if(gachaModal) gachaModal.addEventListener('click',function(e){ if(e.target===gachaModal) closeGacha(); });
+  if(gachaModal) gachaModal.addEventListener('click',function(e){
+    if(e.target===gachaModal){ /* V2.6: backdrop never closes the gacha modal — 確認 only, after the reveal */ }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && isDrawing && gachaModal && gachaModal.classList.contains('open')) e.preventDefault(); /* ESC disabled during a draw */
+  });
   var gachaToInvBtn=document.getElementById('gachaToInv');
   if(gachaToInvBtn) gachaToInvBtn.addEventListener('click',function(){ closeGacha(); openInv(); });
 
@@ -2301,13 +2540,17 @@ const CHANGELOG = {
     var h='<div class="inv-grid">';
     owned.forEach(function(it){
       var eq=equippedPath===it.path;
-      h+='<div class="inv-item"><div class="inv-imgbox"><img src="'+it.path+'" alt="'+escHtml(it.name)+'" style="max-width:100%;height:auto;object-fit:contain" onerror="this.style.display=\'none\'"></div><div class="inv-name">'+escHtml(it.name)+'</div><span class="rarity '+it.rarity+'">'+it.rarity+'</span><br>'+(eq?'<button class="small" disabled>✓ 已裝備</button>':'<button class="small primary" data-equip="'+it.id+'">裝備</button>')+'</div>';
+      var thumb=(it.type==='special_avatar')
+        ? '<img class="inv-avthumb" src="'+it.path+'" alt="'+escHtml(it.name)+'" onerror="this.style.display=\'none\'">'
+        : '<img src="'+it.path+'" alt="'+escHtml(it.name)+'" style="max-width:100%;height:auto;object-fit:contain" onerror="this.style.display=\'none\'">';
+      h+='<div class="inv-item"><div class="inv-imgbox">'+thumb+'</div><div class="inv-name">'+escHtml(it.name)+'</div><span class="rarity '+it.rarity+'">'+it.rarity+'</span><br>'+(eq?'<button class="small" disabled>✓ 已裝備</button>':'<button class="small primary" data-equip="'+it.id+'">裝備</button>')+'</div>';
     });
     return h+'</div>';
   }
   function renderInv(){
     var f=document.getElementById('invFrames'); if(f) f.innerHTML=invSectionHtml('avatar_frame',getEqFrame());
     var b=document.getElementById('invBanners'); if(b) b.innerHTML=invSectionHtml('name_frame',getEqBanner());
+    var a=document.getElementById('invAvatars'); if(a) a.innerHTML=invSectionHtml('special_avatar',getEqAvatar());
   }
   function openInv(){ renderInv(); if(invModal) invModal.classList.add('open'); }
   function closeInv(){ if(invModal) invModal.classList.remove('open'); }
@@ -2319,9 +2562,20 @@ const CHANGELOG = {
     if(e.target===invModal){ closeInv(); return; }
     var btn=e.target.closest('[data-equip]'); if(!btn) return;
     var it=itemById(btn.getAttribute('data-equip')); if(!it) return;
-    if(it.type==='avatar_frame') lsSet(K_EQF,it.path); else lsSet(K_EQB,it.path);
+    if(it.type==='avatar_frame') lsSet(K_EQF,it.path); else if(it.type==='special_avatar') lsSet(K_EA,it.path); else lsSet(K_EQB,it.path);
     renderUser(false); renderInv(); scheduleSync();
     showToast('✅ 已裝備「'+it.name+'」！',3200);
+  });
+
+  /* ----- V2.5: switch back to the emoji avatar -----
+     Clears sowk403_equipped_avatar so renderAvatar() falls back to the
+     chosen emoji, re-renders the navbar at once and triggers an
+     auto-sync so the leaderboard avatar goes back to the emoji too. */
+  var invUseEmojiBtn=document.getElementById('invUseEmoji');
+  if(invUseEmojiBtn) invUseEmojiBtn.addEventListener('click',function(){
+    try{ localStorage.removeItem(K_EA); }catch(e){}
+    renderUser(false); renderInv(); scheduleSync();
+    showToast('↩️ 已改用返 Emoji 頭像 '+getAvatar()+'！',3200);
   });
 
   /* ----- avatar picker (inside the username modal) ----- */
@@ -2379,7 +2633,7 @@ const CHANGELOG = {
     try{
       var name=getName();
       if(!name || !supabaseClient) return;
-      var res=await supabaseClient.from('leaderboard').upsert({username:name,score:getXP(),avatar:getAvatar(),streak:getStreak(),mock_score:getMockScore(),avatar_frame:getEqFrame()||null,name_frame:getEqBanner()||null},{onConflict:'username'});
+      var res=await supabaseClient.from('leaderboard').upsert({username:name,score:getXP(),avatar:(getEqAvatar()||getAvatar()),streak:getStreak(),mock_score:getMockScore(),avatar_frame:getEqFrame()||null,name_frame:getEqBanner()||null},{onConflict:'username'});
       if(res.error) throw res.error;
     }catch(e){ /* silent by design */ }
   }
@@ -2402,7 +2656,7 @@ const CHANGELOG = {
         var medal=idx===0?'🥇':idx===1?'🥈':idx===2?'🥉':(idx+1);
         var mine=me && String(r.username||'')===me;
         var val=isMock?(+r.mock_score||0):(+r.score||0);
-        var avCell='<span class="lb-avwrap"><span class="lb-emoji" aria-hidden="true">'+escHtml(r.avatar||'🦊')+'</span>'+(r.avatar_frame?'<img class="lb-frameimg" src="'+escHtml(r.avatar_frame)+'" alt="" aria-hidden="true" onerror="this.style.display=\'none\'">':'')+'</span>';
+        var avCell='<span class="lb-avwrap"><span class="lb-emoji" aria-hidden="true">'+renderAvatar(r.avatar)+'</span>'+(r.avatar_frame?'<img class="lb-frameimg" src="'+escHtml(r.avatar_frame)+'" alt="" aria-hidden="true" onerror="this.style.display=\'none\'">':'')+'</span>';
         var nmText=escHtml(r.username||'—')+(mine?' （你）':'');
         var nmCell=r.name_frame?'<span class="nf-frame small framed"><img class="nf-bg" src="'+escHtml(r.name_frame)+'" alt="" aria-hidden="true" onerror="this.style.display=\'none\'"><span class="nf-txt">'+nmText+'</span></span>':'<span>'+nmText+'</span>';
         h+='<tr'+(mine?' class="lb-me"':'')+'><td>'+medal+'</td><td>'+avCell+'</td><td class="lb-user">'+nmCell+'</td><td class="n">🔥 '+(+r.streak||0)+' 天</td><td class="n">'+val+'</td></tr>';
@@ -2538,6 +2792,352 @@ const CHANGELOG = {
   renderUser(false);
   syncArmed=true;
   if(!getName()) openNameModal(); else maybeShowUpdate();
+})();
+</script>
+<script>
+/* ===== V2.7 Legal Vocabulary: glossary + flashcards + spelling =====
+   VOCAB is the verified 100-term set extracted from the L1–L9 course
+   materials. vocabSessionSeen is in-memory only (one XP award per term
+   per page session); spellingStreak resets on tab switch / leaving the
+   vocab view. Nothing here touches localStorage. */
+var VOCAB = [
+  { id: "v001", en: "Rule of Law", zh: "法治", descEn: "The principle that everyone, including the government, is subject to the law.", descZh: "所有人（包括政府）都要受法律約束嘅原則。", lecture: "L1", topic: "Legal System", type: "Principle", example: "The Rule of Law requires that government power be exercised according to law, not arbitrarily." },
+  { id: "v002", en: "Common Law", zh: "普通法", descEn: "Law developed by judges through decisions in individual cases.", descZh: "由法官透過個別案件嘅判決發展出嚟嘅法律。", lecture: "L1", topic: "Legal System", type: "Term", example: "Hong Kong follows the Common Law system inherited from England." },
+  { id: "v003", en: "Case Law", zh: "案例法", descEn: "Law created by the decisions of courts in previous cases.", descZh: "由法院以往案件嘅判決所形成嘅法律。", lecture: "L1", topic: "Legal System", type: "Term", example: "Social workers should check Case Law to see how courts have interpreted an Ordinance." },
+  { id: "v004", en: "Statute", zh: "成文法", descEn: "A written law passed by a legislative body.", descZh: "由立法機關制定嘅成文法律。", lecture: "L1", topic: "Legal System", type: "Term", example: "A Statute passed by the Legislative Council is a primary source of Hong Kong law." },
+  { id: "v005", en: "Basic Law", zh: "基本法", descEn: "The constitutional document of the Hong Kong Special Administrative Region.", descZh: "香港特別行政區嘅憲制文件。", lecture: "L1", topic: "Legal System", type: "Legislation", example: "The Basic Law guarantees the rights and freedoms enjoyed by Hong Kong residents." },
+  { id: "v006", en: "One Country, Two Systems", zh: "一國兩制", descEn: "The principle under which Hong Kong keeps its own legal system within China.", descZh: "香港喺中國之內保留本身法律制度嘅原則。", lecture: "L1", topic: "Legal System", type: "Principle", example: "Under One Country, Two Systems, Hong Kong maintains the Common Law system." },
+  { id: "v007", en: "Separation of Powers", zh: "三權分立", descEn: "The division of government power among the executive, the legislature and the judiciary.", descZh: "將政府權力分畀行政、立法同司法三個機關。", lecture: "L1", topic: "Legal System", type: "Principle", example: "The Separation of Powers prevents any one branch of government from holding unchecked power." },
+  { id: "v008", en: "Equality Before the Law", zh: "法律面前人人平等", descEn: "The principle that every person is subject to the same law and courts.", descZh: "每個人都受同一套法律同法院管轄嘅原則。", lecture: "L1", topic: "Legal System", type: "Principle", example: "Equality Before the Law means that a social worker and a client are treated equally by the courts." },
+  { id: "v009", en: "Judicial Independence", zh: "司法獨立", descEn: "The principle that judges must decide cases free from outside pressure.", descZh: "法官唔受外界壓力影響、獨立判案嘅原則。", lecture: "L2", topic: "Legal System", type: "Principle", example: "Judicial Independence protects judges from interference by the executive or the legislature." },
+  { id: "v010", en: "Court of Final Appeal", zh: "終審法院", descEn: "The highest court in Hong Kong.", descZh: "香港最高級別嘅法院。", lecture: "L2", topic: "Legal System", type: "Term", example: "An appeal may reach the Court of Final Appeal as the final court in Hong Kong." },
+  { id: "v011", en: "High Court", zh: "高等法院", descEn: "A superior court in Hong Kong consisting of the Court of Appeal and the Court of First Instance.", descZh: "香港嘅高等法院，由上訴法庭同原訟法庭組成。", lecture: "L2", topic: "Legal System", type: "Term", example: "The case was heard in the High Court on appeal from the District Court." },
+  { id: "v012", en: "District Court", zh: "區域法院", descEn: "A court in Hong Kong that hears civil and criminal cases of intermediate seriousness.", descZh: "處理中等嚴重程度民事同刑事案件嘅法院。", lecture: "L2", topic: "Legal System", type: "Term", example: "The District Court can hear civil claims up to its jurisdictional limit." },
+  { id: "v013", en: "Magistrates' Court", zh: "裁判法院", descEn: "The lowest criminal court in Hong Kong, hearing summary offences.", descZh: "香港最低級嘅刑事法院，處理簡易程序罪行。", lecture: "L2", topic: "Legal System", type: "Term", example: "Minor criminal cases are usually first heard in the Magistrates' Court." },
+  { id: "v014", en: "Barrister", zh: "大律師", descEn: "A lawyer who specialises in advocacy in court.", descZh: "專門喺法庭上進行辯護嘅律師。", lecture: "L2", topic: "Legal System", type: "Term", example: "The Barrister presented the defence case in court." },
+  { id: "v015", en: "Solicitor", zh: "事務律師", descEn: "A lawyer who advises clients and prepares cases, and may appear in lower courts.", descZh: "向當事人提供法律意見同準備案件嘅律師，亦可喺低級法院出庭。", lecture: "L2", topic: "Legal System", type: "Term", example: "The client first consulted a Solicitor about the family dispute." },
+  { id: "v016", en: "Department of Justice", zh: "律政司", descEn: "The government department responsible for prosecutions and legal advice to the government.", descZh: "負責刑事檢控同向政府提供法律意見嘅政府部門。", lecture: "L2", topic: "Legal System", type: "Term", example: "The Department of Justice decides whether to prosecute a criminal case." },
+  { id: "v017", en: "Civil Law", zh: "大陸法", descEn: "A legal system based mainly on written codes, in contrast to the Common Law system.", descZh: "主要以成文法典為基礎嘅法律制度，同普通法制度相對。", lecture: "L2", topic: "Legal System", type: "Term", example: "Civil Law systems rely more on codes than on decisions in individual cases." },
+  { id: "v018", en: "Legislative Council", zh: "立法會", descEn: "The legislature of Hong Kong, which enacts Ordinances.", descZh: "香港嘅立法機關，負責制定條例。", lecture: "L2", topic: "Legal System", type: "Term", example: "The Legislative Council enacts Ordinances for Hong Kong." },
+  { id: "v019", en: "National Security Law", zh: "香港國家安全法", descEn: "The law on safeguarding national security in the Hong Kong Special Administrative Region.", descZh: "維護香港特別行政區國家安全嘅法律。", lecture: "L2", topic: "Legal System", type: "Legislation", example: "The defendant was charged with an offence under the National Security Law." },
+  { id: "v020", en: "Actus Reus", zh: "[釋義] 犯罪行為 / 犯意行為", descEn: "The prohibited act or conduct that constitutes a crime.", descZh: "構成犯罪嘅被禁止行為或舉動。", lecture: "L3", topic: "Criminal Law", type: "Latin", example: "The prosecution must prove both the Actus Reus and the Mens Rea beyond reasonable doubt." },
+  { id: "v021", en: "Mens Rea", zh: "犯罪意圖", descEn: "The mental element of a crime, such as intention or recklessness.", descZh: "犯罪嘅心理元素，例如意圖或魯莽。", lecture: "L3", topic: "Criminal Law", type: "Latin", example: "The court found that the Mens Rea was proved because the defendant acted intentionally." },
+  { id: "v022", en: "Intention", zh: "意圖", descEn: "A form of mens rea in which the defendant means to bring about the prohibited result.", descZh: "一種犯罪意圖，被告有意造成被禁止嘅結果。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "Intention was proved because the defendant aimed the weapon at the victim." },
+  { id: "v023", en: "Recklessness", zh: "魯莽", descEn: "A form of mens rea in which the defendant foresees a risk and takes it unjustifiably.", descZh: "一種犯罪意圖，被告預見風險但仍然不合理地冒險。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "Recklessness was established because the defendant foresaw the risk of harm and took it anyway." },
+  { id: "v024", en: "Burden of Proof", zh: "舉證責任", descEn: "The duty of a party to prove the facts it asserts.", descZh: "一方證明佢所主張事實嘅責任。", lecture: "L3", topic: "Criminal Law", type: "Principle", example: "In a criminal trial, the Burden of Proof rests on the prosecution." },
+  { id: "v025", en: "Beyond Reasonable Doubt", zh: "毫無合理疑點", descEn: "The standard of proof in criminal cases.", descZh: "刑事案件嘅舉證標準。", lecture: "L3", topic: "Criminal Law", type: "Principle", example: "The prosecution must prove its case Beyond Reasonable Doubt." },
+  { id: "v026", en: "Murder", zh: "謀殺", descEn: "The unlawful killing of another person with the required mental element.", descZh: "具備所需犯罪意圖嘅非法殺人。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "The defendant was charged with Murder after the victim died from the injuries." },
+  { id: "v027", en: "Manslaughter", zh: "誤殺", descEn: "The unlawful killing of a person without the mental element required for murder.", descZh: "冇謀殺所需犯罪意圖嘅非法殺人。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "The charge was reduced from murder to Manslaughter because the required intention was not proved." },
+  { id: "v028", en: "Assault", zh: "襲擊", descEn: "An act that causes another person to apprehend immediate unlawful violence.", descZh: "令另一個人預期會即時受到非法暴力嘅行為。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "Raising a fist as if to strike may amount to Assault even if no contact follows." },
+  { id: "v029", en: "Battery", zh: "毆打", descEn: "The unlawful application of force to another person.", descZh: "非法地向另一個人施加武力。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "Battery requires the application of force, however slight, to another person." },
+  { id: "v030", en: "Theft", zh: "盜竊", descEn: "The dishonest appropriation of property belonging to another with intent to permanently deprive.", descZh: "不誠實地挪佔屬於另一個人嘅財產，並意圖永久剝奪。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "Theft is committed when a person dishonestly appropriates property belonging to another." },
+  { id: "v031", en: "Theft Ordinance", zh: "盜竊罪條例", descEn: "The Ordinance (Cap. 210) that defines theft and related offences in Hong Kong.", descZh: "界定香港盜竊罪及相關罪行嘅條例（第 210 章）。", lecture: "L3", topic: "Criminal Law", type: "Legislation", example: "The defendant was charged with theft under the Theft Ordinance." },
+  { id: "v032", en: "Offences Against the Person Ordinance", zh: "侵害人身罪條例", descEn: "The Ordinance (Cap. 212) covering offences of violence against the person.", descZh: "涵蓋針對人身暴力罪行嘅條例（第 212 章）。", lecture: "L3", topic: "Criminal Law", type: "Legislation", example: "Wounding with intent is an offence under the Offences Against the Person Ordinance." },
+  { id: "v033", en: "Crimes Ordinance", zh: "刑事罪行條例", descEn: "The Ordinance (Cap. 200) covering a wide range of criminal offences, including sexual offences.", descZh: "涵蓋多種刑事罪行（包括性罪行）嘅條例（第 200 章）。", lecture: "L3", topic: "Criminal Law", type: "Legislation", example: "Rape is an offence under the Crimes Ordinance." },
+  { id: "v034", en: "Causation", zh: "因果關係", descEn: "The link that must be shown between the conduct of the defendant and the prohibited result.", descZh: "必須證明被告行為同被禁止結果之間嘅聯繫。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "Causation was in issue because the victim refused medical treatment." },
+  { id: "v035", en: "Self-defence", zh: "自衛", descEn: "A defence where reasonable force is used to defend oneself or another person.", descZh: "用合理武力保護自己或另一個人嘅抗辯理由。", lecture: "L3", topic: "Criminal Law", type: "Term", example: "The defendant claimed Self-defence and said the force used was reasonable." },
+  { id: "v036", en: "R v Miller", zh: "[釋義] 不作為與犯罪行為案例", descEn: "A case on whether a failure to act can form part of the actus reus of a crime.", descZh: "關於不作為可唔可以構成犯罪行為一部分嘅案例。", lecture: "L3", topic: "Criminal Law", type: "Case", example: "In R v Miller, the court held that the failure to act after starting a fire formed part of the offence." },
+  { id: "v037", en: "R v Stone and Dobinson", zh: "[釋義] 不作為殺人案例", descEn: "A case in which a duty to act arose and a failure to act led to a manslaughter conviction.", descZh: "被告有作為責任但冇履行，最終被判誤殺嘅案例。", lecture: "L3", topic: "Criminal Law", type: "Case", example: "In R v Stone and Dobinson, the defendants owed a duty to care for the victim and failed to act." },
+  { id: "v038", en: "R v Jordan", zh: "[釋義] 因果關係中斷案例", descEn: "A case in which medical treatment was held to break the chain of causation.", descZh: "醫療處理被裁定中斷咗因果鏈嘅案例。", lecture: "L3", topic: "Criminal Law", type: "Case", example: "In R v Jordan, the chain of causation was broken by grossly negligent medical treatment." },
+  { id: "v039", en: "HKSAR v Shum Man Fai", zh: "[釋義] 自衛案例（2021）", descEn: "A 2021 Hong Kong case on self-defence discussed in the criminal law lectures.", descZh: "刑事法講座中討論嘅 2021 年香港自衛案例。", lecture: "L3", topic: "Criminal Law", type: "Case", example: "In HKSAR v Shum Man Fai, the court considered whether the force used in self-defence was reasonable." },
+  { id: "v040", en: "Domestic Violence", zh: "家庭暴力", descEn: "Violence or abuse between people in a domestic or cohabitation relationship.", descZh: "喺家庭或同居關係入面發生嘅暴力或虐待。", lecture: "L4", topic: "Adult Law", type: "Term", example: "Domestic Violence may give rise to protection under the Domestic and Cohabitation Relationships Violence Ordinance." },
+  { id: "v041", en: "Domestic and Cohabitation Relationships Violence Ordinance", zh: "家庭及同居關係暴力條例", descEn: "The Ordinance (Cap. 189) that provides protection against domestic and cohabitation relationship violence.", descZh: "為家庭及同居關係暴力提供保護嘅條例（第 189 章）。", lecture: "L4", topic: "Adult Law", type: "Legislation", example: "The applicant sought a non-molestation order under the Domestic and Cohabitation Relationships Violence Ordinance." },
+  { id: "v042", en: "Non-molestation Order", zh: "不得騷擾令", descEn: "A court order prohibiting a person from molesting another person.", descZh: "禁止一個人騷擾另一個人嘅法庭命令。", lecture: "L4", topic: "Adult Law", type: "Term", example: "The court granted a Non-molestation Order to protect the applicant from further abuse." },
+  { id: "v043", en: "Molestation", zh: "騷擾", descEn: "Conduct that harasses, pesters or interferes with another person.", descZh: "騷擾、糾纏或干擾另一個人嘅行為。", lecture: "L4", topic: "Adult Law", type: "Term", example: "Molestation under the Ordinance includes conduct that causes fear or distress." },
+  { id: "v044", en: "Cohabitation", zh: "同居", descEn: "Living together in a relationship similar to marriage.", descZh: "以類似婚姻關係嘅方式一齊生活。", lecture: "L4", topic: "Adult Law", type: "Term", example: "Cohabitation is relevant to whether the Ordinance applies to the parties." },
+  { id: "v045", en: "Injunction", zh: "禁制令", descEn: "A court order requiring a person to do, or to refrain from doing, a particular act.", descZh: "要求一個人做或者唔做某件事嘅法庭命令。", lecture: "L4", topic: "Adult Law", type: "Term", example: "The court granted an Injunction to stop the respondent from entering the home." },
+  { id: "v046", en: "Rape", zh: "強姦", descEn: "Sexual intercourse with another person without that person's consent.", descZh: "未經對方同意而同對方發生性行為。", lecture: "L4", topic: "Adult Law", type: "Term", example: "Rape is a serious offence under the Crimes Ordinance." },
+  { id: "v047", en: "Indecent Assault", zh: "猥褻侵犯", descEn: "An assault that is indecent in nature.", descZh: "帶有猥褻性質嘅襲擊。", lecture: "L4", topic: "Adult Law", type: "Term", example: "Indecent Assault requires an assault accompanied by circumstances of indecency." },
+  { id: "v048", en: "Grievous Bodily Harm", zh: "嚴重身體傷害", descEn: "Really serious harm to the body.", descZh: "對身體造成真正嚴重嘅傷害。", lecture: "L4", topic: "Adult Law", type: "Term", example: "Causing Grievous Bodily Harm with intent is an offence under the Offences Against the Person Ordinance." },
+  { id: "v049", en: "Welfare Principle", zh: "福祉原則", descEn: "The principle that the welfare of the child is the first and paramount consideration.", descZh: "兒童福祉係首要同最重要考慮嘅原則。", lecture: "L5", topic: "Child Law", type: "Principle", example: "Under the Welfare Principle, the court must treat the welfare of the child as paramount." },
+  { id: "v050", en: "Welfare Checklist", zh: "福祉清單", descEn: "A list of factors the court must consider when applying the welfare principle.", descZh: "法院應用福祉原則時必須考慮嘅因素清單。", lecture: "L5", topic: "Child Law", type: "Term", example: "The court worked through the Welfare Checklist before making an order about the child." },
+  { id: "v051", en: "Best Interests of the Child", zh: "兒童最佳利益", descEn: "The standard that decisions affecting a child must serve the best interests of the child.", descZh: "影響兒童嘅決定必須以兒童最佳利益為依歸嘅標準。", lecture: "L5", topic: "Child Law", type: "Principle", example: "The judge decided the case by reference to the Best Interests of the Child." },
+  { id: "v052", en: "Convention on the Rights of the Child", zh: "兒童權利公約", descEn: "The United Nations treaty setting out the rights of children.", descZh: "列明兒童權利嘅聯合國公約。", lecture: "L5", topic: "Child Law", type: "Legislation", example: "The Convention on the Rights of the Child requires states to protect children from abuse." },
+  { id: "v053", en: "Matrimonial Causes Ordinance", zh: "婚姻訴訟條例", descEn: "The Ordinance (Cap. 179) governing divorce and related matrimonial proceedings.", descZh: "規管離婚及相關婚姻訴訟嘅條例（第 179 章）。", lecture: "L5", topic: "Child Law", type: "Legislation", example: "The petitioner relied on one of the five facts in the Matrimonial Causes Ordinance." },
+  { id: "v054", en: "Protection of Children and Juveniles Ordinance", zh: "保護兒童及少年條例", descEn: "The Ordinance (Cap. 213) providing for the protection of children and juveniles.", descZh: "為保護兒童及少年而設嘅條例（第 213 章）。", lecture: "L5", topic: "Child Law", type: "Legislation", example: "A care order may be made under the Protection of Children and Juveniles Ordinance." },
+  { id: "v055", en: "Custody", zh: "管養權", descEn: "The legal right to care for and make decisions about a child.", descZh: "照顧兒童同為兒童作決定嘅法律權利。", lecture: "L5", topic: "Child Law", type: "Term", example: "After the divorce, the mother applied for Custody of the children." },
+  { id: "v056", en: "Care and Control", zh: "照顧及管束", descEn: "The day-to-day care and control of a child.", descZh: "對兒童嘅日常照顧同管束。", lecture: "L5", topic: "Child Law", type: "Term", example: "The court granted Care and Control of the child to the father." },
+  { id: "v057", en: "Maintenance", zh: "贍養費", descEn: "Financial support paid for a spouse or a child.", descZh: "為配偶或子女支付嘅經濟支援。", lecture: "L5", topic: "Child Law", type: "Term", example: "The court ordered the father to pay Maintenance for the child until the age of 18." },
+  { id: "v058", en: "Child Abuse", zh: "虐待兒童", descEn: "Harm or ill-treatment of a child, including physical, sexual or emotional abuse and neglect.", descZh: "對兒童嘅傷害或虐待，包括身體、性或情緒虐待同疏忽照顧。", lecture: "L5", topic: "Child Law", type: "Term", example: "Suspected Child Abuse must be reported through the proper multi-disciplinary procedures." },
+  { id: "v059", en: "Mental Health Ordinance", zh: "精神健康條例", descEn: "The Ordinance (Cap. 136) governing the care and treatment of persons with mental disorder.", descZh: "規管精神紊亂人士照顧同治療嘅條例（第 136 章）。", lecture: "L6", topic: "Mental Health & Probate", type: "Legislation", example: "Admission for observation may be made under the Mental Health Ordinance." },
+  { id: "v060", en: "Mental Disorder", zh: "精神紊亂", descEn: "A disorder of the mind as defined in the Mental Health Ordinance.", descZh: "精神健康條例所界定嘅精神紊亂。", lecture: "L6", topic: "Mental Health & Probate", type: "Term", example: "Mental Disorder is defined in section 2 of the Mental Health Ordinance." },
+  { id: "v061", en: "Mental Handicap", zh: "智障", descEn: "A condition defined in the Ordinance by reference to intellectual functioning, including an IQ of 70 or below.", descZh: "條例以智力功能界定嘅狀況，包括智商 70 或以下。", lecture: "L6", topic: "Mental Health & Probate", type: "Term", example: "A person with Mental Handicap may need a guardian to manage their affairs." },
+  { id: "v062", en: "Guardianship Board", zh: "監護委員會", descEn: "The board that appoints guardians for persons who lack capacity to manage their affairs.", descZh: "為冇能力處理自己事務嘅人士委任監護人嘅委員會。", lecture: "L6", topic: "Mental Health & Probate", type: "Term", example: "An application for a guardian is made to the Guardianship Board." },
+  { id: "v063", en: "Guardian", zh: "監護人", descEn: "A person appointed to make decisions for someone who cannot manage their own affairs.", descZh: "獲委任為冇能力處理自己事務人士作決定嘅人。", lecture: "L6", topic: "Mental Health & Probate", type: "Term", example: "The Guardian may manage the money of the person under guardianship within the statutory limit." },
+  { id: "v064", en: "Probate", zh: "遺囑認證", descEn: "The court process of proving a will and authorising the executor to administer the estate.", descZh: "證明遺囑有效並授權遺囑執行人處理遺產嘅法庭程序。", lecture: "L6", topic: "Mental Health & Probate", type: "Term", example: "Probate must be obtained before the executor can deal with the deceased estate." },
+  { id: "v065", en: "Intestates' Estates Ordinance", zh: "無遺囑者遺產條例", descEn: "The Ordinance (Cap. 73) governing the distribution of estates where a person dies without a will.", descZh: "規管死者冇立遺囑時遺產分配嘅條例（第 73 章）。", lecture: "L6", topic: "Mental Health & Probate", type: "Legislation", example: "Where a person dies without a will, the estate is distributed under the Intestates' Estates Ordinance." },
+  { id: "v066", en: "Executor", zh: "遺囑執行人", descEn: "A person named in a will to administer the estate of the deceased.", descZh: "遺囑中指定處理死者遺產嘅人。", lecture: "L6", topic: "Mental Health & Probate", type: "Term", example: "The Executor applied for a grant of probate to administer the estate." },
+  { id: "v067", en: "Legal Aid", zh: "法律援助", descEn: "Publicly funded legal help for those who pass the means and merits tests.", descZh: "為通過經濟審查同案情審查嘅人士提供嘅公費法律協助。", lecture: "L6", topic: "Mental Health & Probate", type: "Term", example: "Legal Aid is available only to applicants who pass the means and merits tests." },
+  { id: "v068", en: "Chan Chun Chuen", zh: "[釋義] 遺囑偽造案例", descEn: "A case on will forgery discussed in the mental health and probate lectures.", descZh: "精神健康及遺囑認證講座中討論嘅遺囑偽造案例。", lecture: "L6", topic: "Mental Health & Probate", type: "Case", example: "Chan Chun Chuen was discussed as a case involving the forgery of a will." },
+  { id: "v069", en: "Tort", zh: "侵權行為", descEn: "A civil wrong that gives rise to a claim for damages.", descZh: "會引起損害賠償申索嘅民事過錯。", lecture: "L7", topic: "Tort", type: "Term", example: "A Tort claim is brought in the civil courts, not by prosecution." },
+  { id: "v070", en: "Negligence", zh: "疏忽", descEn: "A tort committed by a failure to take reasonable care, causing harm to another person.", descZh: "冇採取合理謹慎而對另一個人造成傷害嘅侵權行為。", lecture: "L7", topic: "Tort", type: "Term", example: "Negligence requires a duty of care, a breach of that duty, causation and damage." },
+  { id: "v071", en: "Duty of Care", zh: "謹慎責任", descEn: "A legal duty to take reasonable care to avoid harming others.", descZh: "採取合理謹慎以避免傷害他人嘅法律責任。", lecture: "L7", topic: "Tort", type: "Term", example: "The teacher owed a Duty of Care to the children on the outdoor activity." },
+  { id: "v072", en: "Breach of Duty", zh: "違反責任", descEn: "A failure to meet the standard of care required by the duty of care.", descZh: "冇達到謹慎責任所要求嘅謹慎標準。", lecture: "L7", topic: "Tort", type: "Term", example: "Breach of Duty is judged by the standard of the reasonable person." },
+  { id: "v073", en: "But For Test", zh: "[釋義] 若非測試", descEn: "A test for factual causation: the harm would not have occurred but for the conduct of the defendant.", descZh: "事實因果關係測試：若非被告嘅行為，損害就唔會發生。", lecture: "L7", topic: "Tort", type: "Principle", example: "Under the But For Test, the claimant must show that the harm would not have occurred without the breach." },
+  { id: "v074", en: "Foreseeability", zh: "可預見性", descEn: "Whether the harm was reasonably foreseeable at the time of the conduct.", descZh: "喺行為發生嗰陣，損害係咪合理可預見。", lecture: "L7", topic: "Tort", type: "Term", example: "Foreseeability limits liability to harm that could reasonably have been anticipated." },
+  { id: "v075", en: "Neighbour Principle", zh: "[釋義] 鄰人原則", descEn: "The principle that a duty of care is owed to persons closely and directly affected by an act.", descZh: "對受行為密切同直接影響嘅人負有謹慎責任嘅原則。", lecture: "L7", topic: "Tort", type: "Principle", example: "The Neighbour Principle was stated in Donoghue v Stevenson." },
+  { id: "v076", en: "Vicarious Liability", zh: "轉承責任", descEn: "Liability of an employer for torts committed by an employee in the course of employment.", descZh: "僱主為僱員喺受僱期間犯下嘅侵權行為承擔嘅責任。", lecture: "L7", topic: "Tort", type: "Term", example: "Vicarious Liability may make an organisation liable for the negligence of its employee." },
+  { id: "v077", en: "Nuisance", zh: "妨擾", descEn: "Unlawful interference with the use or enjoyment of land, or with a public right.", descZh: "非法干擾土地嘅使用或享用，或者干擾公眾權利。", lecture: "L7", topic: "Tort", type: "Term", example: "Noise from the worksite may amount to Nuisance if it unreasonably interferes with enjoyment of land." },
+  { id: "v078", en: "Trespass", zh: "擅闖", descEn: "Unlawful interference with land, goods or the person.", descZh: "非法干擾土地、財物或人身。", lecture: "L7", topic: "Tort", type: "Term", example: "Trespass to land occurs when a person enters land without permission." },
+  { id: "v079", en: "Damages", zh: "損害賠償", descEn: "Money awarded by a court to compensate for harm suffered.", descZh: "法院判給用嚟補償所受傷害嘅金錢。", lecture: "L7", topic: "Tort", type: "Term", example: "The claimant was awarded Damages for the injuries caused by the negligence." },
+  { id: "v080", en: "Limitation Ordinance", zh: "時效條例", descEn: "The Ordinance (Cap. 347) setting time limits for bringing claims.", descZh: "訂明提出申索時限嘅條例（第 347 章）。", lecture: "L7", topic: "Tort", type: "Legislation", example: "A claim brought after the period in the Limitation Ordinance may be time-barred." },
+  { id: "v081", en: "Occupiers Liability Ordinance", zh: "佔用人法律責任條例", descEn: "The Ordinance (Cap. 314) governing the duty of occupiers to visitors.", descZh: "規管佔用人對訪客責任嘅條例（第 314 章）。", lecture: "L7", topic: "Tort", type: "Legislation", example: "The duty owed to a visitor is governed by the Occupiers Liability Ordinance." },
+  { id: "v082", en: "Donoghue v Stevenson", zh: "[釋義] 蝸牛案", descEn: "The case that established the neighbour principle and the modern law of negligence.", descZh: "確立鄰人原則同現代疏忽法嘅案例。", lecture: "L7", topic: "Tort", type: "Case", example: "Donoghue v Stevenson established the neighbour principle in the law of negligence." },
+  { id: "v083", en: "Caparo v Dickman", zh: "[釋義] 三階段測試案例", descEn: "A case setting out the three-stage test for a duty of care: foreseeability, proximity and fairness.", descZh: "提出謹慎責任三階段測試（可預見性、關係密切性、公平性）嘅案例。", lecture: "L7", topic: "Tort", type: "Case", example: "Under Caparo v Dickman, a duty of care requires foreseeability, proximity and that it be fair, just and reasonable." },
+  { id: "v084", en: "The Wagon Mound", zh: "[釋義] 損害遙遠性案例", descEn: "A case holding that liability in negligence is limited to reasonably foreseeable damage.", descZh: "裁定疏忽責任只限於合理可預見損害嘅案例。", lecture: "L7", topic: "Tort", type: "Case", example: "In The Wagon Mound, unforeseeable damage was held to be too remote." },
+  { id: "v085", en: "Smith v Leech Brain", zh: "[釋義] 薄頭骨規則案例", descEn: "A case applying the thin skull rule: the defendant takes the victim as found.", descZh: "應用薄頭骨規則（被告要按受害人原有狀況承擔責任）嘅案例。", lecture: "L7", topic: "Tort", type: "Case", example: "In Smith v Leech Brain, the defendant was liable for the full extent of the harm despite the vulnerability of the victim." },
+  { id: "v086", en: "Bolton v Stone", zh: "[釋義] 板球案：合理可預見性", descEn: "A case on whether a very low risk of harm made the conduct unreasonable.", descZh: "關於極低傷害風險係咪令行為變得不合理嘅案例。", lecture: "L7", topic: "Tort", type: "Case", example: "In Bolton v Stone, the risk of a cricket ball escaping was held to be so small that there was no breach of duty." },
+  { id: "v087", en: "Human Rights", zh: "人權", descEn: "Basic rights and freedoms that belong to every person.", descZh: "每個人都擁有嘅基本權利同自由。", lecture: "L8", topic: "Human Rights", type: "Term", example: "Human Rights protect the dignity and freedom of every individual." },
+  { id: "v088", en: "Universal Declaration of Human Rights", zh: "世界人權宣言", descEn: "The 1948 United Nations declaration setting out fundamental human rights.", descZh: "1948 年聯合國列明基本人權嘅宣言。", lecture: "L8", topic: "Human Rights", type: "Legislation", example: "The Universal Declaration of Human Rights proclaims that all human beings are born free and equal in dignity and rights." },
+  { id: "v089", en: "International Covenant on Civil and Political Rights", zh: "公民權利和政治權利國際公約", descEn: "A United Nations treaty protecting civil and political rights, applied in Hong Kong through the Bill of Rights.", descZh: "保護公民權利同政治權利嘅聯合國公約，透過人權法案喺香港實施。", lecture: "L8", topic: "Human Rights", type: "Legislation", example: "The International Covenant on Civil and Political Rights protects the right to a fair trial." },
+  { id: "v090", en: "International Covenant on Economic, Social and Cultural Rights", zh: "經濟、社會與文化權利國際公約", descEn: "A United Nations treaty protecting economic, social and cultural rights, including social welfare.", descZh: "保護經濟、社會同文化權利（包括社會福利）嘅聯合國公約。", lecture: "L8", topic: "Human Rights", type: "Legislation", example: "The International Covenant on Economic, Social and Cultural Rights recognises the right to social security." },
+  { id: "v091", en: "Hong Kong Bill of Rights Ordinance", zh: "香港人權法案條例", descEn: "The Ordinance (Cap. 383) giving effect to the ICCPR in Hong Kong law.", descZh: "喺香港法律中實施《公民權利和政治權利國際公約》嘅條例（第 383 章）。", lecture: "L8", topic: "Human Rights", type: "Legislation", example: "Rights in the Hong Kong Bill of Rights Ordinance can be enforced in the Hong Kong courts." },
+  { id: "v092", en: "European Convention on Human Rights", zh: "歐洲人權公約", descEn: "A regional human rights treaty of the Council of Europe, discussed for comparison in the lectures.", descZh: "歐洲委員會嘅區域人權公約，講座中用作比較討論。", lecture: "L8", topic: "Human Rights", type: "Legislation", example: "The European Convention on Human Rights was discussed in the lectures alongside the Hong Kong framework." },
+  { id: "v093", en: "Judicial Review", zh: "司法覆核", descEn: "A court process for reviewing the legality of a decision or act of a public body.", descZh: "覆核公共機構決定或行為合法性嘅法庭程序。", lecture: "L8", topic: "Human Rights", type: "Term", example: "The applicant sought Judicial Review of the decision to refuse social welfare." },
+  { id: "v094", en: "Proportionality", zh: "相稱性原則", descEn: "The principle that a restriction on a right must be proportionate to a legitimate aim.", descZh: "對權利嘅限制必須同合法目的相稱嘅原則。", lecture: "L8", topic: "Human Rights", type: "Principle", example: "Proportionality requires the court to ask whether the restriction goes no further than necessary." },
+  { id: "v095", en: "Lubiano", zh: "[釋義] 外傭留宿規定案例", descEn: "A case on the mandatory live-in rule for foreign domestic workers and human rights.", descZh: "關於外籍家庭傭工強制留宿規定同人權嘅案例。", lecture: "L8", topic: "Human Rights", type: "Case", example: "In Lubiano, the court considered the live-in rule for foreign domestic workers." },
+  { id: "v096", en: "Kong Yun-ming", zh: "孔允明案", descEn: "A judicial review case on the seven-year residence requirement for CSSA.", descZh: "關於綜援七年居港規定嘅司法覆核案例。", lecture: "L9", topic: "Human Rights", type: "Case", example: "In Kong Yun-ming, the applicant challenged the seven-year residence requirement for CSSA." },
+  { id: "v097", en: "Comprehensive Social Security Assistance", zh: "綜合社會保障援助", descEn: "The Hong Kong social security scheme providing financial assistance to those in need.", descZh: "為有需要人士提供經濟援助嘅香港社會保障計劃。", lecture: "L9", topic: "Human Rights", type: "Term", example: "Comprehensive Social Security Assistance is intended as a safety net for people who cannot support themselves." },
+  { id: "v098", en: "Legitimate Aim", zh: "合法目的", descEn: "A lawful objective that may justify a restriction on a right, if the restriction is proportionate.", descZh: "如果限制係相稱嘅，可以為限制權利提供理據嘅合法目標。", lecture: "L9", topic: "Human Rights", type: "Term", example: "Saving money was held not to be a Legitimate Aim in Kong Yun-ming." },
+  { id: "v099", en: "Seven-year Residence Requirement", zh: "七年居港規定", descEn: "The requirement of seven years residence in Hong Kong to qualify for CSSA, challenged in Kong Yun-ming.", descZh: "申領綜援要喺香港住滿七年嘅規定，喺孔允明案中受到挑戰。", lecture: "L9", topic: "Human Rights", type: "Term", example: "The Seven-year Residence Requirement was challenged as a disproportionate restriction on the right to social welfare." },
+  { id: "v100", en: "Yao Man Fai", zh: "[釋義] 綜援居港年期比較案例", descEn: "A case compared with Kong Yun-ming on the residence requirement for social welfare.", descZh: "喺社會福利居港規定方面同孔允明案比較嘅案例。", lecture: "L9", topic: "Human Rights", type: "Case", example: "Yao Man Fai was compared with Kong Yun-ming in the lectures on social welfare rights." }
+];
+(function(){
+  function escV(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  function award(n){ if(typeof window.awardXP==="function") window.awardXP(n); }
+  function toast(msg,ms){ if(typeof window.showToast==="function") window.showToast(msg,ms); }
+
+  /* ---------- tabs ---------- */
+  var vocabTab="glossary";
+  function switchVocabTab(name){
+    vocabTab=name;
+    spellingStreak=0; renderSpellStreak();
+    var btns=document.querySelectorAll("[data-vtab]");
+    for(var i=0;i<btns.length;i++) btns[i].classList.toggle("active", btns[i].getAttribute("data-vtab")===name);
+    var panels=["glossary","flash","spell"];
+    for(var j=0;j<panels.length;j++){
+      var p=document.getElementById("vpanel-"+panels[j]);
+      if(p) p.hidden = (panels[j]!==name);
+    }
+  }
+  var tabBtns=document.querySelectorAll("[data-vtab]");
+  for(var ti=0;ti<tabBtns.length;ti++){
+    tabBtns[ti].addEventListener("click",function(){ switchVocabTab(this.getAttribute("data-vtab")); });
+  }
+  /* Leaving the vocab view resets the spelling streak (tab switches are
+     handled inside switchVocabTab). showView() calls window.onViewShown. */
+  window.onViewShown=function(id){
+    if(id!=="vocab"){ spellingStreak=0; renderSpellStreak(); }
+  };
+
+  /* ---------- Tab 1: glossary ---------- */
+  var speechOK=("speechSynthesis" in window);
+  function speakTerm(en){
+    try{
+      if(!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      var u=new SpeechSynthesisUtterance(en);
+      u.lang="en-GB";
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+  }
+  function renderGlossary(){
+    var input=document.getElementById("vocabSearch");
+    var q=(input?input.value:"").toLowerCase().trim();
+    var rows=VOCAB.filter(function(v){
+      if(!q) return true;
+      return v.en.toLowerCase().indexOf(q)>-1 || v.zh.indexOf(q)>-1 || v.descEn.toLowerCase().indexOf(q)>-1 || v.descZh.indexOf(q)>-1;
+    });
+    var html="<table id=\"vocabTable\"><thead><tr><th>英文 English</th><th>中文</th><th>主題 Topic</th><th>解釋</th></tr></thead><tbody>";
+    rows.forEach(function(v){
+      html+="<tr><td><b>"+escV(v.en)+"</b><button type=\"button\" class=\"speak-btn\" data-speak=\""+escV(v.en)+"\" aria-label=\"朗讀 "+escV(v.en)+"\">🔊</button></td><td>"+escV(v.zh)+"</td><td>"+escV(v.topic)+"<br><span class=\"muted small\">"+escV(v.lecture)+" · "+escV(v.type)+"</span></td><td>"+escV(v.descZh)+"</td></tr>";
+    });
+    if(!rows.length) html+="<tr><td colspan=\"4\" class=\"muted\">搵唔到符合嘅詞彙，試下其他關鍵字。</td></tr>";
+    html+="</tbody></table>";
+    var wrap=document.getElementById("vocabTableScroll");
+    if(wrap) wrap.innerHTML=html;
+    var cnt=document.getElementById("vocabCount");
+    if(cnt) cnt.textContent="顯示 "+rows.length+" / "+VOCAB.length+" 個詞";
+    if(!speechOK){
+      var btns=document.querySelectorAll(".speak-btn");
+      for(var i=0;i<btns.length;i++) btns[i].style.display="none";
+    }
+  }
+  var searchInput=document.getElementById("vocabSearch");
+  if(searchInput) searchInput.addEventListener("input",renderGlossary);
+  var tableScroll=document.getElementById("vocabTableScroll");
+  if(tableScroll) tableScroll.addEventListener("click",function(e){
+    var b=e.target.closest(".speak-btn");
+    if(b) speakTerm(b.getAttribute("data-speak"));
+  });
+
+  /* ---------- Tab 2: vocab flashcards ---------- */
+  let vocabSessionSeen = {};
+  var vflIdx=0, vflFlipped=false;
+  function renderVocabFlash(){
+    var v=VOCAB[vflIdx];
+    var card=document.getElementById("vocabFlash");
+    if(card) card.classList.toggle("flipped",vflFlipped);
+    var meta=document.getElementById("vflMeta");
+    if(meta) meta.textContent=v.lecture+" · "+v.topic+" · "+v.type;
+    var front=document.getElementById("vflFront");
+    if(front) front.textContent=v.zh;
+    var pos=document.getElementById("vflPos");
+    if(pos) pos.textContent="第 "+(vflIdx+1)+" / "+VOCAB.length+" 張";
+    var back=document.getElementById("vflBack");
+    if(back) back.innerHTML="<div class=\"vfl-en\">"+escV(v.en)+"</div><div class=\"vfl-ex\">"+escV(v.example)+"</div><div class=\"vfl-desc\">"+escV(v.descEn)+"<br>"+escV(v.descZh)+"</div>";
+    var rates=document.getElementById("vflRates");
+    if(rates) rates.style.display=vflFlipped?"flex":"none";
+  }
+  function vflShow(i){
+    vflIdx=((i%VOCAB.length)+VOCAB.length)%VOCAB.length;
+    vflFlipped=false;
+    renderVocabFlash();
+  }
+  function vflFlip(){
+    vflFlipped=!vflFlipped;
+    renderVocabFlash();
+  }
+  function vflRandom(){
+    if(VOCAB.length<2){ vflShow(vflIdx); return; }
+    var n=vflIdx;
+    while(n===vflIdx) n=Math.floor(Math.random()*VOCAB.length);
+    vflShow(n);
+  }
+  var vflashEl=document.getElementById("vocabFlash");
+  if(vflashEl){
+    vflashEl.addEventListener("click",vflFlip);
+    vflashEl.addEventListener("keydown",function(e){
+      if(e.key==="Enter"||e.key===" "){ e.preventDefault(); vflFlip(); }
+    });
+  }
+  var vflFlipBtn=document.getElementById("vflFlip");
+  if(vflFlipBtn) vflFlipBtn.addEventListener("click",vflFlip);
+  var vflNextBtn=document.getElementById("vflNext");
+  if(vflNextBtn) vflNextBtn.addEventListener("click",function(){ vflShow(vflIdx+1); });
+  var vflRandomBtn=document.getElementById("vflRandom");
+  if(vflRandomBtn) vflRandomBtn.addEventListener("click",vflRandom);
+  var rateBtns=document.querySelectorAll("[data-vgrade]");
+  for(var ri=0;ri<rateBtns.length;ri++){
+    rateBtns[ri].addEventListener("click",function(){
+      var g=this.getAttribute("data-vgrade");
+      var v=VOCAB[vflIdx];
+      if((g==="good"||g==="easy") && !vocabSessionSeen[v.id]){
+        vocabSessionSeen[v.id]=true;
+        award(5);
+      }
+      vflShow(vflIdx+1);
+    });
+  }
+
+  /* ---------- Tab 3: spelling challenge ---------- */
+  let spellingStreak = 0;
+  var spellIdx=-1, spellAnswered=false, spellHintUsed=false;
+  function renderSpellStreak(){
+    var el=document.getElementById("spellStreakLabel");
+    if(el) el.textContent="🔥 連勝："+spellingStreak;
+  }
+  function spellHintOf(en){
+    var out="", wordStart=true;
+    for(var i=0;i<en.length;i++){
+      var c=en.charAt(i);
+      if((c>="A"&&c<="Z")||(c>="a"&&c<="z")){
+        out+= wordStart ? c : "_";
+        wordStart=false;
+      }else{
+        out+=c;
+        wordStart=true;
+      }
+    }
+    return out;
+  }
+  function newSpellQuestion(){
+    if(VOCAB.length>1){
+      var n=spellIdx;
+      while(n===spellIdx) n=Math.floor(Math.random()*VOCAB.length);
+      spellIdx=n;
+    }else{
+      spellIdx=0;
+    }
+    spellAnswered=false;
+    spellHintUsed=false;
+    var v=VOCAB[spellIdx];
+    var qEl=document.getElementById("spellQ");
+    if(qEl) qEl.textContent="請輸入「"+v.zh+"」的英文：";
+    var input=document.getElementById("spellInput");
+    if(input){ input.value=""; input.disabled=false; }
+    var submit=document.getElementById("spellSubmit");
+    if(submit) submit.disabled=false;
+    var hintBtn=document.getElementById("spellHintBtn");
+    if(hintBtn) hintBtn.disabled=false;
+    var hintText=document.getElementById("spellHintText");
+    if(hintText) hintText.textContent="";
+    var result=document.getElementById("spellResult");
+    if(result) result.innerHTML="";
+    var next=document.getElementById("spellNext");
+    if(next) next.style.display="none";
+    renderSpellStreak();
+    var vsec=document.getElementById("vocab");
+    if(input && vsec && vsec.classList.contains("active")) input.focus();
+  }
+  function checkSpell(){
+    if(spellAnswered) return;
+    var v=VOCAB[spellIdx];
+    var input=document.getElementById("spellInput");
+    var ans=(input?input.value:"").toLowerCase().trim();
+    var correct = ans === v.en.toLowerCase().trim();
+    spellAnswered=true;
+    if(input) input.disabled=true;
+    var submit=document.getElementById("spellSubmit");
+    if(submit) submit.disabled=true;
+    var hintBtn=document.getElementById("spellHintBtn");
+    if(hintBtn) hintBtn.disabled=true;
+    var detail="<div class=\"spell-detail\"><b>"+escV(v.en)+"</b> — "+escV(v.descEn)+"<br><span class=\"muted\">"+escV(v.descZh)+"</span><br>例句："+escV(v.example)+"</div>";
+    var result=document.getElementById("spellResult");
+    if(correct){
+      spellingStreak++;
+      var html="<span class=\"ok\">✓ 正確！</span>";
+      if(spellHintUsed){
+        html+=" <span class=\"muted small\">用咗提示，今題唔加 XP</span>";
+      }else{
+        award(10);
+      }
+      if(spellingStreak>0 && spellingStreak%5===0){
+        award(20);
+        toast("🔥 連續答啱 "+spellingStreak+" 題！額外送 20 XP！",4200);
+      }
+      if(result) result.innerHTML=html+detail;
+    }else{
+      spellingStreak=0;
+      if(result) result.innerHTML="<span class=\"bad\">✗ 正確答案係："+escV(v.en)+"</span>"+detail;
+    }
+    renderSpellStreak();
+    var next=document.getElementById("spellNext");
+    if(next) next.style.display="";
+  }
+  var spellSubmitBtn=document.getElementById("spellSubmit");
+  if(spellSubmitBtn) spellSubmitBtn.addEventListener("click",checkSpell);
+  var spellInputEl=document.getElementById("spellInput");
+  if(spellInputEl) spellInputEl.addEventListener("keydown",function(e){
+    if(e.key==="Enter"){
+      if(spellAnswered) newSpellQuestion(); else checkSpell();
+    }
+  });
+  var spellHintBtn=document.getElementById("spellHintBtn");
+  if(spellHintBtn) spellHintBtn.addEventListener("click",function(){
+    if(spellAnswered||spellHintUsed) return;
+    spellHintUsed=true;
+    spellHintBtn.disabled=true;
+    var hintText=document.getElementById("spellHintText");
+    if(hintText) hintText.textContent="💡 "+spellHintOf(VOCAB[spellIdx].en);
+  });
+  var spellNextBtn=document.getElementById("spellNext");
+  if(spellNextBtn) spellNextBtn.addEventListener("click",newSpellQuestion);
+
+  /* ---------- init ---------- */
+  renderGlossary();
+  vflShow(0);
+  newSpellQuestion();
 })();
 </script>
 </body>
