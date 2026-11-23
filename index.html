@@ -170,6 +170,8 @@ summary:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,s
 #feedbackBtn:hover { filter: brightness(1.08); }
 @media(prefers-color-scheme:dark){#backTop{background:#f2f3f5;color:#111;border-color:#f2f3f5}}
 @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}.stats4{grid-template-columns:repeat(2,1fr)}.study-grid{grid-template-columns:repeat(2,1fr)}.cat-list{grid-template-columns:1fr}table{font-size:13px}th,td{padding:6px}.mock-sticky{top:66px}.seg button{padding:5px 13px}}
+.menu-panel .menu-extra{display:none}
+@media(max-width:640px){#gachaBtn,#invOpenBtn,#lbOpenBtn{display:none}.seg{display:none}.user-chip .avatar-wrap,.user-chip #nameWrap,.user-chip>span[aria-hidden="true"]{display:none}.topbar-in{padding:8px 10px;gap:8px}.study-card .d-en{display:none}.menu-panel .menu-extra{display:flex}}
 @media(prefers-reduced-motion:reduce){.flash-inner{transition:none}html{scroll-behavior:auto}}
 @media print{
   body{background:#fff;color:#000;font-size:11pt}
@@ -338,6 +340,12 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
   </div>
 </div>
 <div class="menu"><div class="menu-panel" id="menuPanel">
+  <button data-go="study" class="menu-extra">📚 Study 溫書</button>
+  <button data-go="analysis" class="menu-extra">📊 Analysis 分析</button>
+  <button data-go="settings" class="menu-extra">⚙️ Settings 設定</button>
+  <button id="menuGachaBtn" class="menu-extra">🥚 抽蛋 (50 XP)</button>
+  <button id="menuInvBtn" class="menu-extra">🎒 背包</button>
+  <button id="menuLbBtn" class="menu-extra">🏆 排行榜</button>
   <button data-go="quiz1" style="color:var(--red);font-weight:900;">🔥 Quiz 1 必考真題 <span style="color:var(--red);">24 條精華</span></button>
   <button data-go="overview">總覽 Overview <span>打法・對比表・條文速查</span></button>
   <button data-go="notes">重點筆記 Notes <span>L1–L9 + L10–L12 補充</span></button>
@@ -370,6 +378,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
     <h1>溫書 Dashboard</h1>
     <p>524 questions · 13 categories · 403 MC + 121 Short Q + 28 Flashcards</p>
   </div>
+  <button id="firstQBtn" class="primary go-mode" data-view="mc" data-mode="continue" style="width:100%;margin-top:16px;display:none">開始第一題 →</button>
   <div class="stats4" style="margin-top:16px">
     <div class="stat-card"><b id="gSeen">0</b><div class="lb">Seen 已做</div><div class="sub">of 524</div></div>
     <div class="stat-card"><b id="gAcc">–</b><div class="lb">Accuracy 正確率</div><div class="sub">MC 答對率</div></div>
@@ -379,12 +388,12 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 
   <div class="dash-label">Study 學習</div>
   <div class="study-grid">
-    <button class="study-card dark go-mode" data-view="mc" data-mode="continue"><span class="t">Continue 繼續<span class="n" id="gCntContinue">0</span></span><span class="d">Drill questions you haven't seen 繼續練習未做過嘅題目</span></button>
-    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d">Timed and scored like the real thing 計時模擬考試</span></button>
-    <button class="study-card go-mode" data-view="mc" data-mode="wrong"><span class="t">Review Wrong 複習錯題<span class="n" id="gCntWrong">0</span></span><span class="d">Questions you've missed before 重做答錯過嘅題目</span></button>
-    <button class="study-card go-mode" data-view="mc" data-mode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="gCntDue">0</span></span><span class="d">Cards scheduled for today 今日到期要複習嘅題目</span></button>
-    <button class="study-card go-mode" data-view="mc" data-mode="flagged"><span class="t">Flagged 已標記<span class="n" id="gCntFlag">0</span></span><span class="d">Questions you starred 你標記咗嘅題目</span></button>
-    <button class="study-card go-mode" data-view="shortq" data-mode="continue"><span class="t">Short Q 繼續<span class="n" id="gCntSq">0</span></span><span class="d">One question at a time 一次一題，寫完自評</span></button>
+    <button class="study-card dark go-mode" data-view="mc" data-mode="continue"><span class="t">Continue 繼續<span class="n" id="gCntContinue">0</span></span><span class="d"><span class="d-en">Drill questions you haven't seen</span> 繼續練習未做過嘅題目</span></button>
+    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d"><span class="d-en">Timed and scored like the real thing</span> 計時模擬考試</span></button>
+    <button class="study-card go-mode" data-view="mc" data-mode="wrong"><span class="t">Review Wrong 複習錯題<span class="n" id="gCntWrong">0</span></span><span class="d"><span class="d-en">Questions you've missed before</span> 重做答錯過嘅題目</span></button>
+    <button class="study-card go-mode" data-view="mc" data-mode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="gCntDue">0</span></span><span class="d"><span class="d-en">Cards scheduled for today</span> 今日到期要複習嘅題目</span></button>
+    <button class="study-card go-mode" data-view="mc" data-mode="flagged"><span class="t">Flagged 已標記<span class="n" id="gCntFlag">0</span></span><span class="d"><span class="d-en">Questions you starred</span> 你標記咗嘅題目</span></button>
+    <button class="study-card go-mode" data-view="shortq" data-mode="continue"><span class="t">Short Q 繼續<span class="n" id="gCntSq">0</span></span><span class="d"><span class="d-en">One question at a time</span> 一次一題，寫完自評</span></button>
   </div>
 
   <div class="dash-label">Modules 溫習模組</div>
@@ -677,6 +686,15 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
     <p class="muted small" style="margin:10px 0 0">換裝置或想備份，可以匯出 JSON，再喺另一部裝置匯入。列印會展開全部筆記內容。</p>
   </div>
   <div class="card" style="margin-top:12px">
+    <h3>👤 用戶名稱 Username</h3>
+    <p class="muted small" style="margin:0 0 10px">未設定用戶名都可以照常溫書；設定用戶名之後先可以上排行榜，第一次設定即刻有 <b>🌟 100 XP 新手禮包</b>。</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <input id="setNameInput" type="text" maxlength="24" placeholder="例如：Chiu" autocomplete="off" style="flex:1;min-width:140px">
+      <button id="setNameSave" class="primary small">儲存用戶名</button>
+    </div>
+    <p id="setNameMsg" class="small muted" style="margin:8px 0 0;min-height:18px" role="status"></p>
+  </div>
+  <div class="card" style="margin-top:12px">
     <h3>🎨 主題切換 Theme</h3>
     <p class="muted small" style="margin:0">Pikmin 同 Pikachu 主題而家免費任揀，隨時喺呢度切換，選擇會自動儲存。抽蛋改為抽頭像框同名字框，抽中之後去「🎒 背包」就可以裝備。</p>
     <div class="theme-opts" role="group" aria-label="主題選擇 Theme options">
@@ -692,7 +710,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
     <button id="resetBtn" class="small" aria-label="清除全部進度 Reset all progress">↺ 清除全部進度 Reset</button>
     <span id="resetMsg" class="muted small" role="status" aria-live="polite"></span>
   </div>
-  <p class="muted small" style="text-align:center;margin:16px 0 4px">版本 Version 2.9</p>
+  <p class="muted small" style="text-align:center;margin:16px 0 4px">版本 Version 2.9.1</p>
 </section>
 
 <!-- OVERVIEW -->
@@ -1544,13 +1562,13 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
   </div>
   <div class="dash-label">Study 學習</div>
   <div class="study-grid">
-    <button class="study-card dark" data-mcmode="continue"><span class="t">Continue 繼續<span class="n" id="mcCntContinue">0</span></span><span class="d">Drill questions you haven't seen 未做過嘅題目</span></button>
-    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d">Timed and scored like the real thing</span></button>
-    <button class="study-card" data-mcmode="wrong"><span class="t">Review Wrong 複習錯題<span class="n" id="mcCntWrong">0</span></span><span class="d">Questions you've missed before</span></button>
-    <button class="study-card" data-mcmode="answered"><span class="t">Answered Before 重做<span class="n" id="mcCntAnswered">0</span></span><span class="d">Drill the questions you've already answered</span></button>
-    <button class="study-card" data-mcmode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="mcCntDue">0</span></span><span class="d">Cards scheduled for today</span></button>
-    <button class="study-card" data-mcmode="flagged"><span class="t">Flagged 已標記<span class="n" id="mcCntFlag">0</span></span><span class="d">Questions you starred</span></button>
-    <button class="study-card" data-mcmode="all"><span class="t">All MC 全部題目<span class="n">400</span></span><span class="d">Shuffle the entire bank 全部題目洗牌練習</span></button>
+    <button class="study-card dark" data-mcmode="continue"><span class="t">Continue 繼續<span class="n" id="mcCntContinue">0</span></span><span class="d"><span class="d-en">Drill questions you haven't seen</span> 未做過嘅題目</span></button>
+    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d"><span class="d-en">Timed and scored like the real thing</span></span></button>
+    <button class="study-card" data-mcmode="wrong"><span class="t">Review Wrong 複習錯題<span class="n" id="mcCntWrong">0</span></span><span class="d"><span class="d-en">Questions you've missed before</span></span></button>
+    <button class="study-card" data-mcmode="answered"><span class="t">Answered Before 重做<span class="n" id="mcCntAnswered">0</span></span><span class="d"><span class="d-en">Drill the questions you've already answered</span></span></button>
+    <button class="study-card" data-mcmode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="mcCntDue">0</span></span><span class="d"><span class="d-en">Cards scheduled for today</span></span></button>
+    <button class="study-card" data-mcmode="flagged"><span class="t">Flagged 已標記<span class="n" id="mcCntFlag">0</span></span><span class="d"><span class="d-en">Questions you starred</span></span></button>
+    <button class="study-card" data-mcmode="all"><span class="t">All MC 全部題目<span class="n">400</span></span><span class="d"><span class="d-en">Shuffle the entire bank</span> 全部題目洗牌練習</span></button>
   </div>
   <div class="dash-label">Practice by Category 分類練習</div>
   <div class="cat-list" id="mcCats"></div>
@@ -1571,13 +1589,13 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
   </div>
   <div class="dash-label">Study 學習</div>
   <div class="study-grid">
-    <button class="study-card dark" data-sqmode="continue"><span class="t">Continue 繼續<span class="n" id="sqCntContinue">0</span></span><span class="d">Questions you haven't answered 未做過嘅題目</span></button>
-    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d">Timed and scored like the real thing</span></button>
-    <button class="study-card" data-sqmode="wrong"><span class="t">Review Weak 複習弱項<span class="n" id="sqCntWrong">0</span></span><span class="d">Self-rated below 3 自評低過 3 分嘅題目</span></button>
-    <button class="study-card" data-sqmode="answered"><span class="t">Answered Before 重做<span class="n" id="sqCntAnswered">0</span></span><span class="d">Questions you've already rated</span></button>
-    <button class="study-card" data-sqmode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="sqCntDue">0</span></span><span class="d">Cards scheduled for today</span></button>
-    <button class="study-card" data-sqmode="flagged"><span class="t">Flagged 已標記<span class="n" id="sqCntFlag">0</span></span><span class="d">Questions you starred</span></button>
-    <button class="study-card" data-sqmode="all"><span class="t">All Short Q 全部題目<span class="n">100</span></span><span class="d">Shuffle the entire bank 全部題目洗牌練習</span></button>
+    <button class="study-card dark" data-sqmode="continue"><span class="t">Continue 繼續<span class="n" id="sqCntContinue">0</span></span><span class="d"><span class="d-en">Questions you haven't answered</span> 未做過嘅題目</span></button>
+    <button class="study-card" data-go="mock"><span class="t">Exam Simulation 模擬試</span><span class="d"><span class="d-en">Timed and scored like the real thing</span></span></button>
+    <button class="study-card" data-sqmode="wrong"><span class="t">Review Weak 複習弱項<span class="n" id="sqCntWrong">0</span></span><span class="d"><span class="d-en">Self-rated below 3</span> 自評低過 3 分嘅題目</span></button>
+    <button class="study-card" data-sqmode="answered"><span class="t">Answered Before 重做<span class="n" id="sqCntAnswered">0</span></span><span class="d"><span class="d-en">Questions you've already rated</span></span></button>
+    <button class="study-card" data-sqmode="due"><span class="t">Spaced Repetition 間隔重複<span class="n" id="sqCntDue">0</span></span><span class="d"><span class="d-en">Cards scheduled for today</span></span></button>
+    <button class="study-card" data-sqmode="flagged"><span class="t">Flagged 已標記<span class="n" id="sqCntFlag">0</span></span><span class="d"><span class="d-en">Questions you starred</span></span></button>
+    <button class="study-card" data-sqmode="all"><span class="t">All Short Q 全部題目<span class="n">100</span></span><span class="d"><span class="d-en">Shuffle the entire bank</span> 全部題目洗牌練習</span></button>
   </div>
   <div class="dash-label">Practice by Category 分類練習</div>
   <div class="cat-list" id="sqCats"></div>
@@ -1642,7 +1660,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 
 <footer>
   資料來源：SOWK403 課程大綱、L1–L9 講義 slides（Dr. Kwan Wai-hong）、Q1–Q20 導修案例文件、Law Made Simple Ch.1。L10–L12 講義未發放，相關內容以 Q17–Q20 文件為據，實際考試範圍以老師最新公布為準。本頁題目為按課程內容自擬嘅練習題，唔係真試卷或 past paper。
-  <div class="muted small" style="margin-top:10px;text-align:center">版本 Version 2.9</div>
+  <div class="muted small" style="margin-top:10px;text-align:center">版本 Version 2.9.1</div>
 </footer>
 </div>
 
@@ -1653,7 +1671,7 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
 <div class="gmodal" id="nameModal" role="dialog" aria-modal="true" aria-labelledby="nameModalTitle">
   <div class="gmodal-card">
     <h2 id="nameModalTitle">👋 歡迎嚟到 SOWK403 溫書站！</h2>
-    <p class="muted" style="margin:0;font-size:14.5px">先輸入你嘅用戶名稱，先可以開始儲 XP、抽蛋抽頭像框、名字框同特殊頭像，同上傳成績去排行榜。新用戶即刻有 <b>🌟 100 XP 新手禮包</b>！</p>
+    <p class="muted" style="margin:0;font-size:14.5px">輸入用戶名，即刻有 <b>🌟 100 XP 新手禮包</b>！</p>
     <label class="small muted" for="nameInput" style="display:block;margin-top:14px">用戶名稱 Username</label>
     <input id="nameInput" type="text" maxlength="24" placeholder="例如：Chiu" autocomplete="off">
     <p id="nameErr" class="small" style="color:var(--red);margin:6px 0 0;min-height:18px" role="alert"></p>
@@ -1666,8 +1684,8 @@ body.theme-pikachu .zh-note b,body.theme-pikmin .zh-note b{color:var(--teal)}
       <button type="button" class="avatar-opt" data-avatar="🐼" role="radio" aria-checked="false" aria-label="熊貓 Panda">🐼</button>
       <button type="button" class="avatar-opt" data-avatar="🐨" role="radio" aria-checked="false" aria-label="樹熊 Koala">🐨</button>
     </div>
-    <p class="small muted" style="margin:8px 0 0">💡 可透過抽蛋解鎖特殊頭像（寶可夢與皮克敏）！</p>
     <div class="row"><button id="nameSave" class="primary" style="flex:1">開始溫書 Start →</button></div>
+    <div style="text-align:center;margin-top:10px"><button type="button" id="nameSkip" style="background:none;border:none;color:var(--muted);font-size:13px;text-decoration:underline;cursor:pointer;padding:4px 8px">跳過，先睇下</button></div>
   </div>
 </div>
 
@@ -2737,6 +2755,15 @@ function showView(id){
 document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ showView(b.getAttribute('data-go')); }); });
 var menuBtn=document.getElementById('menuBtn');
 if(menuBtn) menuBtn.addEventListener('click',function(){ var mp=document.getElementById('menuPanel'); var open=mp.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',open?'true':'false'); });
+/* ----- 漢堡包選單入面嘅抽蛋／背包／排行榜（手機版）：閂選單後撳返頂欄對應按鈕 ----- */
+function closeMenu(){ var mp=document.getElementById('menuPanel'); if(mp) mp.classList.remove('open'); var mb=document.getElementById('menuBtn'); if(mb) mb.setAttribute('aria-expanded','false'); }
+function menuAction(id){ var b=document.getElementById(id); if(b) b.click(); }
+var menuGachaBtn=document.getElementById('menuGachaBtn');
+if(menuGachaBtn) menuGachaBtn.addEventListener('click',function(){ closeMenu(); menuAction('gachaBtn'); });
+var menuInvBtn=document.getElementById('menuInvBtn');
+if(menuInvBtn) menuInvBtn.addEventListener('click',function(){ closeMenu(); menuAction('invOpenBtn'); });
+var menuLbBtn=document.getElementById('menuLbBtn');
+if(menuLbBtn) menuLbBtn.addEventListener('click',function(){ closeMenu(); menuAction('lbOpenBtn'); });
 var goModeBtns=document.querySelectorAll('.go-mode');
 for(var _gi=0;_gi<goModeBtns.length;_gi++){ goModeBtns[_gi].addEventListener('click',function(){
   var v=this.getAttribute('data-view'), m=this.getAttribute('data-mode');
@@ -2764,6 +2791,7 @@ function renderDash(){
   if(sqCatsEl2){ var groups={}; SQ.forEach(function(s,i){ var t=sqTopicOf(s); (groups[t]=groups[t]||[]).push(i); });
     sqCatsEl2.innerHTML=Object.keys(groups).map(function(t){ var und=0; groups[t].forEach(function(i){ if(!sqAttempted(i)) und++; }); return '<button class="cat-row" data-sqcat="'+t+'"'+(t==='Quiz 1 真題'?' style="border:2px solid var(--gold); background:var(--gold-bg); color:var(--gold);"':'')+'><span class="cn">'+t+'</span><span class="cm">未做 '+und+' · 共 '+groups[t].length+'</span></button>'; }).join(''); }
   setTxt('gSeen',mcDone+sqSeenN); setTxt('gAcc',mcAcc===null?'–':mcAcc+'%'); setTxt('gFlag',mcFlagN+sqFlagN); setTxt('gDue',mcDueN+sqDueN);
+  var fqb=document.getElementById('firstQBtn'); if(fqb) fqb.style.display=((mcDone+sqSeenN)===0?'':'none');
   setTxt('gCntContinue',MC.length-mcDone); setTxt('gCntWrong',mcWrong); setTxt('gCntDue',mcDueN+sqDueN); setTxt('gCntFlag',mcFlagN+sqFlagN); setTxt('gCntSq',SQ.length-sqSeenN);
   setTxt('anMcAcc',mcAcc===null?'–':mcAcc+'%'); setTxt('anMcSub','已做 '+mcDone+' / '+MC.length);
   setTxt('anSqAvg',sqAvg===null?'–':(Math.round(sqAvg*10)/10)+' / 5'); setTxt('anSqSub','已自評 '+sqRated+' / '+SQ.length);
@@ -2790,11 +2818,12 @@ window.addEventListener('beforeprint', function() {
 
 </script>
 <script>
-const APP_VERSION = '2.9';
+const APP_VERSION = '2.9.1';
 /* CHANGELOG is keyed by version so the update modal only ever shows the
    current version's notes; keep the most recent 3–4 versions and delete
    older keys by hand. maybeShowUpdate() reads CHANGELOG[APP_VERSION]. */
 const CHANGELOG = {
+  '2.9.1': ['⏭️ 歡迎彈窗加「跳過，先睇下」，唔使即刻入名都入到', '▶️ 新用戶加「開始第一題」全闊按鈕', '📱 手機版頂欄收起，只留 XP 同 Streak', '✏️ 學習卡手機版只顯示中文一行', '🔥 新增 Quiz 1 溫習頁面（24 條真題＋完整解析）', '📝 題庫新增 24 條 Quiz 1 真題（共 524 題）', '🌟 首頁新增 Quiz 1 必考 Banner', '📝 全部 400 條 MC + 100 條 SQ 改寫成 Quiz 1 真題風格（靜態題庫）'],
   '2.9': ['🔥 新增 Quiz 1 溫習頁面（24 條真題＋完整解析）', '📝 題庫新增 24 條 Quiz 1 真題（共 524 題）', '🌟 首頁新增 Quiz 1 必考 Banner', '📝 全部 400 條 MC + 100 條 SQ 改寫成 Quiz 1 真題風格（靜態題庫）'],
   '2.7': ['📖 新增法律詞彙庫', '🔍 詞彙搜尋與發音', '⌨️ 拼寫挑戰'],
   '2.6': ['🎰 扭蛋動畫升級', '🌌 動態背景元素'],
@@ -2809,7 +2838,7 @@ const CHANGELOG = {
    All network code is wrapped in try...catch so an offline / failed
    Supabase call can never break the revision site. */
 (function(){
-  var K_NAME='sowk403_username', K_EXP='sowk403_exp', K_THEME='sowk403_theme', K_UNLOCK='sowk403_unlocked';
+  var K_NAME='sowk403_username', K_EXP='sowk403_exp', K_THEME='sowk403_theme', K_UNLOCK='sowk403_unlocked', K_SKIP='sowk403_name_skipped';
   var K_AVATAR='sowk403_avatar', K_LAST='sowk403_last_login', K_STREAK='sowk403_streak', K_MOCK='sowk403_mock_score', K_SREWARD='sowk403_streak_rewarded';
   var K_INV='sowk403_inventory', K_EQF='sowk403_equipped_avatar_frame', K_EQB='sowk403_equipped_name_frame', K_EA='sowk403_equipped_avatar';
   /* ===== V2.4 item pool: 23 items with FIXED rarities (14 R / 7 SR / 2 SSR).
@@ -2937,6 +2966,7 @@ const CHANGELOG = {
     var xv=document.getElementById('xpVal'); if(xv) xv.textContent=x;
     var sx=document.getElementById('setXp'); if(sx) sx.textContent=x;
     var sn=document.getElementById('setName'); if(sn) sn.textContent=n||'—';
+    var sni=document.getElementById('setNameInput'); if(sni && document.activeElement!==sni) sni.value=n||'';
     if(pop){ var chip=document.getElementById('userChip'); if(chip){ chip.classList.remove('pop'); void chip.offsetWidth; chip.classList.add('pop'); } }
     renderEquipped();
     renderThemeOpts();
@@ -3201,7 +3231,7 @@ const CHANGELOG = {
     var isNew=!getName();
     lsSet(K_NAME,v.slice(0,24));
     lsSet(K_AVATAR,selectedAvatar);
-    if(isNew && lsGet(K_EXP)===null){ setXP(100); if(err) err.textContent=''; if(nameModal) nameModal.classList.remove('open'); renderUser(false); showToast('🎁 歡迎 '+v+'！已派發 100 XP 新手禮包，祝你溫書順利！',4600); scheduleSync(); maybeShowUpdate(); return; }
+    if(isNew){ setXP(getXP()+100); if(err) err.textContent=''; if(nameModal) nameModal.classList.remove('open'); renderUser(false); showToast('🎁 歡迎 '+v+'！已派發 100 XP 新手禮包，祝你溫書順利！',4600); scheduleSync(); maybeShowUpdate(); return; }
     if(nameModal) nameModal.classList.remove('open');
     renderUser(false); scheduleSync(); maybeShowUpdate();
   }
@@ -3209,6 +3239,29 @@ const CHANGELOG = {
   if(nameSaveBtn) nameSaveBtn.addEventListener('click',saveName);
   var nameInput=document.getElementById('nameInput');
   if(nameInput) nameInput.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); saveName(); } });
+  /* ----- 跳過設定用戶名：直接入 Dashboard，唔派 XP；之後可喺 Settings 補返 ----- */
+  function skipName(){
+    lsSet(K_SKIP,'1');
+    if(nameModal) nameModal.classList.remove('open');
+    maybeShowUpdate();
+  }
+  var nameSkipBtn=document.getElementById('nameSkip');
+  if(nameSkipBtn) nameSkipBtn.addEventListener('click',skipName);
+  /* ----- Settings 補設定用戶名：第一次設定先派 100 XP（跳過後做過題都照派） ----- */
+  function saveNameFromSettings(){
+    var inp=document.getElementById('setNameInput'), msg=document.getElementById('setNameMsg');
+    var v=(inp?inp.value:'').trim();
+    if(!v){ if(msg) msg.textContent='請輸入用戶名稱。'; return; }
+    var isNew=!getName();
+    lsSet(K_NAME,v.slice(0,24));
+    if(isNew){ setXP(getXP()+100); if(msg) msg.textContent='🎁 已設定用戶名「'+v+'」，100 XP 新手禮包已派發！'; showToast('🎁 歡迎 '+v+'！已派發 100 XP 新手禮包，祝你溫書順利！',4600); }
+    else { if(msg) msg.textContent='已更新用戶名為「'+v+'」。'; }
+    renderUser(false); scheduleSync();
+  }
+  var setNameSaveBtn=document.getElementById('setNameSave');
+  if(setNameSaveBtn) setNameSaveBtn.addEventListener('click',saveNameFromSettings);
+  var setNameInput=document.getElementById('setNameInput');
+  if(setNameInput) setNameInput.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); saveNameFromSettings(); } });
 
   /* ----- Supabase leaderboard ----- */
   var supabaseClient=null;
@@ -3389,7 +3442,7 @@ const CHANGELOG = {
   checkStreak();
   renderUser(false);
   syncArmed=true;
-  if(!getName()) openNameModal(); else maybeShowUpdate();
+  if(!getName() && !lsGet(K_SKIP)) openNameModal(); else maybeShowUpdate();
 })();
 </script>
 <script>
